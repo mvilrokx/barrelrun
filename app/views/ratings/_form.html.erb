@@ -1,0 +1,20 @@
+<% form_for @rating do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :rateable_id %><br />
+    <%= f.text_field :rateable_id %>
+  </p>
+  <p>
+    <%= f.label :rateable_type %><br />
+    <%= f.text_field :rateable_type %>
+  </p>
+  <p>
+    <%= f.label :rate %><br />
+    <%= f.text_field :rate %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

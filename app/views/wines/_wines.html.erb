@@ -1,0 +1,55 @@
+<div id="wines">
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @wines, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @wines %>
+    </div>
+  </div>
+
+  <table style="background: white;">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Type</th>
+      <th>Vintage</th>
+      <th>Varietal</th>
+      <th>Pictures</th>
+      <th colspan=3>Action</th>
+    </tr>    
+  <% @wines.each do |wine| %>
+    <tr>
+      <td><%=h wine.name %></td>
+      <td><%=h wine.description %></td>
+      <td><%=h number_to_currency(wine.price) %></td>
+      <td><%=h wine.wine_type %></td>
+      <td><%=h wine.vintage %></td>
+      <td><%=h wine.varietal %></td>
+      <% if wine.pictures.length > 0 then %>
+      <td><%= image_tag wine.pictures[0].url(:thumb) %></td>
+      <% else %>
+      <td></td>
+      <% end %>
+      <td><%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), wine, :title=> "Show", :class => 'dialog_form_link' %>
+      <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_wine_path(wine), :title=> "Edit", :class => 'dialog_form_link' %>
+      <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), wine, :title=> "Delete", :class => 'delete' %>
+<% if false %> <!-- commenting out ruby code -->
+<!--      <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete %></td> -->
+<!--      <td><%= link_to "Delete", delete_wine_path(wine), :class => "dialog_form_link" %></td> -->
+<% end %>
+    </tr>
+  <% end %>
+  </table>
+
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @wines, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @wines %>
+    </div>
+  </div>
+</div>
+

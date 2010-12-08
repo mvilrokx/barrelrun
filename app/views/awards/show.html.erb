@@ -1,0 +1,24 @@
+<div class="entry_form">
+  <% title "Award" %>
+
+  <p>
+    <strong>Title:</strong>
+    <%=h @award.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%=h @award.description %>
+  </p>
+  <% if @award.pictures.length > 0 then %>
+    <% for picture in @award.pictures %>
+  <p>
+      <%= image_tag picture.url(:large) %>  
+  </p>
+    <% end %>
+  <% end %>
+</div>
+<p>
+  <%= link_to "Edit", edit_award_path(@award) %> |
+  <%= link_to "Destroy", @award, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", awards_path %>
+</p>

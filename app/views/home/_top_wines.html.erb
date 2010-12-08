@@ -1,0 +1,29 @@
+<div id='top_list'>
+  <h2>Top 10 Wines</h2>
+  <ol>
+    <% @wines.each_with_index do |wine, idx| %>
+      <% if idx == 0 then %>
+    <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
+      <% else %>
+    <li>
+      <% end %>
+        <%=h wine.name %> <br>- <%=h wine.winery.city %>, <%=h wine.winery.state %> 
+        <%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), wine, :title=> "Show", :class => 'dialog_form_link' %>
+        <% if user_signed_in? %>
+          <div style="float: right;" class="stars">
+            <form action="/wines/<%= wine.id %>/rating/" method="post">
+              <%= render_stars wine %>
+            </form>
+          </div>
+          <% else %>
+          <div style="float: right;" class="stars">
+           <form action="/wines/<%= wine.id %>/rating/" method="post">
+              <%= render_stars wine, true %>
+           </form>
+          </div>
+          <% end %>
+    </li>
+    <% end %>
+  </ol>
+</div>
+

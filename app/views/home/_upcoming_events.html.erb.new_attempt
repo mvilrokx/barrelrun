@@ -1,0 +1,42 @@
+<div class='top_list'>
+  <h2>Upcoming Events</h2>
+    <% @events.each do |event| %>
+      <% if user_signed_in? %>
+        <div class="stars">
+        
+          <form action="<%= event_ratings_path(event.id) %>" method="post">
+            <%= render_stars event %>
+          </form>
+        </div>
+        <div class="action-menu">
+          <a class="action-menu-link" href="#"><span class="action-span">action</span></a>
+          <div style="display: none;" class="list-action-menu">
+            <ul>
+              <li><a href="/events/<%= event.id%>/comments" class="dialog_form_link">Comments</a></li>
+        <% if event.favorites.find_by_user_id(current_user) %>
+              <li><a href="/events/<%= event.id%>/favorites/<%= event.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a></li>
+        <% else %>
+              <li><a href="/events/<%= event.id%>/favorites" class="add_as_favorite">Add To My Favorites</a></li>
+        <% end %>
+              
+              <li><a href="/events/<%= event.id%>" class="dialog_form_link">Show Details</a></li>
+              <li><a class="map-wine" href="#" data-winery-lat=<%=h event.winery.lat %> data-winery-lng=<%=h event.winery.lng %> >Map It</a></li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <div class="stars">
+          <form action="/events/<%= event.id %>/rating/" method="post">
+            <%= render_stars event, true %>
+          </form>
+        </div>
+      <% end %>       
+      <a class="list_element" href="#"><%=h event.title %>
+      <img id="heart_<%=h event.id %>" src="../images/thumb_up.png"
+      <% if event.favorites.find_by_user_id(current_user) %>
+        >
+      <% else %>
+        style="display: none;">
+      <% end %>
+    <% end %>
+</div>

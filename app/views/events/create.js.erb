@@ -1,0 +1,6 @@
+var msg = '<%= escape_javascript(flash.delete(:notice)) %>'
+$('#main_body').before('<div class="notice message" id="notice_notice" style="display:none";>' + msg + '</div>');
+$('.notice').fadeIn(500);
+$('.notice').fadeOut(2000,function(){$(this).remove();});
+$('#listing tr:last').after('<%= escape_javascript(render(:partial => "event_row", :locals=>{:event=>@event})) %>');
+$("#new_event")[0].reset();

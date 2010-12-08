@@ -1,0 +1,19 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_for @picture, :html => {:multipart => true } do |f| %>
+      <%= f.error_messages %>
+
+      <%= f.label :title %>
+      <span class="div_texbox">
+        <%= f.file_field :photo %>
+    	</span>
+      <%= f.hidden_field :pictureable_id %>
+      <%= f.hidden_field :pictureable_type %>
+
+      <span class="div_texbox">            
+        <%= f.submit "Save" %>
+     	</span>
+
+    <% end %>
+  </fieldset>  
+</div>

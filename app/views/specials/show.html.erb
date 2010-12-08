@@ -1,0 +1,33 @@
+<div class="entry_form">
+  <% title "Special" %>
+
+  <p>
+    <strong>Title:</strong>
+    <%=h @special.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%=h @special.description %>
+  </p>
+  <p>
+    <strong>Start Date:</strong>
+    <%=h @special.start_date %>
+  </p>
+  <p>
+    <strong>End Date:</strong>
+    <%=h @special.end_date %>
+  </p>
+
+  <% if @special.pictures.length > 0 then %>
+    <% for picture in @special.pictures %>
+  <p>
+      <%= image_tag picture.url(:large) %>  
+  </p>
+    <% end %>
+  <% end %>
+</div>
+<p>
+  <%= link_to "Edit", edit_special_path(@special) %> |
+  <%= link_to "Destroy", @special, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", specials_path %>
+</p>

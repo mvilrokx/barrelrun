@@ -1,0 +1,22 @@
+<h1>Comments</h1>  
+  
+<ul id="comments">
+  <% @comments.each do |comment| %>  
+    <li><%= comment.content %></li>  
+  <% end %>  
+</ul>  
+  
+<h2>New Comment</h2>
+<div class="entry_form">
+  <% form_for [@commentable, Comment.new] do |f| %>  
+    <%= f.error_messages %>
+    <fieldset>
+      <ol>
+        <li>
+        <%= f.label :content, "Comment" %>  
+        <%= f.text_area :content, :rows => 5 %>  
+      </li>  
+      <li><%= f.submit %></li>  
+    </ol>  
+  <% end %>
+</div>  

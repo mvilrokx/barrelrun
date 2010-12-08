@@ -1,0 +1,25 @@
+<%= javascript_include_tag 'jug_application.js' %>
+
+<div id="user_feed" style="overflow: auto; height: 300px;"></div>
+
+<script type="text/javascript" charset="utf-8">
+
+  var log = function(data) {
+    $('<div class="feed">' + data + '</div>').prependTo('#user_feed').hide().slideDown("slow");
+  };
+
+  var jug = new Juggernaut({port: 8080});
+  
+  jug.on("connect", function(){ log("Connected") });
+  jug.on("disconnect", function(){ log("Disconnected") });
+  jug.on("reconnect", function(){ log("Reconnecting") });
+  
+  log("Subscribing to barrelrun user feed");
+  
+  jug.subscribe("channel1", function(data){
+    log(data);
+  });
+  
+  // Expose for debugging
+  window.jug = jug;
+</script>

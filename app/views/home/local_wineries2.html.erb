@@ -1,0 +1,71 @@
+<div id="map"
+  align="right"
+  style="border: 1px solid #979797;
+		 min-width: 400px;
+		 min-height: 800px;
+		 height: 800px;
+		 background-color: #FFFFFF;
+		 border: 1px solid #999999;
+		 padding: 10px;"></div>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<% if @wineries -%>
+<script type="text/javascript">
+   var wineries = <%= @wineries.to_json %>;
+</script>
+<%end-%>
+
+<script type="text/javascript">
+
+   var infoWindow = new google.maps.InfoWindow({});
+   var markers = new Array();
+   
+   function drawMap() {
+      var latlng = new google.maps.LatLng(37.559, -122.308);
+      var myOptions = {
+         zoom: 8,
+         center: latlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map"), myOptions);
+//      var marker;
+      var infowindow;
+    
+      for (var i=0; i<wineries.length; i++){
+         var winery = wineries[i];
+         var latLng = new google.maps.LatLng(winery.winery.lat, winery.winery.lng)
+         var marker = new google.maps.Marker({
+            position: latLng, 
+            map: map,
+            title: winery.winery.winery_name,
+            html: infoWindowContent(winery.winery) //"<strong>test</strong>"
+         });
+//         marker.set('Winery', winery);
+
+         google.maps.event.addListener(marker, 
+                                       "click", 
+//                                       "mouseover", 
+                                       function(event) {
+                                          infoWindow.setContent(this.html);
+                                          infoWindow.open(map,this);
+                                       });
+
+      }
+   };
+   
+   function infoWindowContent(winery) {
+      var contentString = 
+         '<div id="infoWindowContent" >' +
+         '<h1>' + winery.winery_name + '</h1>' +
+         '<p>' +  winery.address + '</p>' +
+         '<p>' +  winery.city + ', ' + winery.state + ' ' + winery.zipcode + '</p>' +
+         '</div>'
+      ;
+      
+      return contentString;
+   };
+  
+  drawMap();
+
+</script>

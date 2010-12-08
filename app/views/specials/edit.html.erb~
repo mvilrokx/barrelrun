@@ -1,0 +1,21 @@
+<% title("Edit Special") %>
+
+<div class="container entry_form">
+  <hr class="space">
+  <div class="push-3 span-18 last main">
+    <hr class="space">
+    <div class="push-1 span-16">
+    
+      <h2>Edit Special</h2>
+      <%= render :partial => 'form' %>
+
+    </div>
+  </div>
+
+  <div id="jstemplates">
+    <%= yield :jstemplates %>
+  </div>
+
+</div>
+
+<p><%= link_to "Back to List", specials_path %></p>

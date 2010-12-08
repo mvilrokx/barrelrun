@@ -1,0 +1,44 @@
+<div class="entry_form">
+
+  <% form_for @special, :html => {:multipart => true } do |f| %>
+    <%= f.error_messages %>
+    <fieldset>
+      <ol>
+        <li>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </li>
+        <li>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </li>
+        <li>
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date, :class=>'jqueryui_date' %>
+        </li>
+        <li>
+          <%= f.label :end_date %>
+          <%= f.text_field :end_date, :class=>'jqueryui_date' %>
+        </li>
+        <%= f.hidden_field :winery_id %>
+
+        <div id="picture_fields">
+	      <% f.fields_for :pictures do |builder| %>
+          <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
+        <% end %>
+        </div>
+        <li>
+          <p><%= add_child_link "Add Picture?", :pictures %></p>
+          <%= new_child_fields_template f, :pictures, {:partial => "shared/picture"} %>
+        </li>
+
+      <li><%= f.submit %></li>
+      </ol>
+    </fieldset>    
+  <% end %>
+
+  <div id="jstemplates">
+    <%= yield :jstemplates %>
+  </div>
+  
+</div>

@@ -1,0 +1,11 @@
+one:
+  user_id: 1
+  rateable_id: 1
+  rateable_type: MyString
+  rate: 1
+
+two:
+  user_id: 1
+  rateable_id: 1
+  rateable_type: MyString
+  rate: 1

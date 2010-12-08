@@ -1,0 +1,3 @@
+$("#top_wineries").html("<%= escape_javascript(render :partial=>"home/top_wineries", :locals=>{:top_wineries=>@wineries}) %>");
+starRating.create('#top_wineries .stars');
+addNotice("<p><%= escape_javascript(flash.delete(:notice)) %></p>");

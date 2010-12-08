@@ -1,0 +1,113 @@
+winery name|wine| price |type|vintage|varietal
+Baily Vineyard & Winery|Riesling|$14.95|white|2008|Riesling
+|Chardonnay|$17.95|white|2009|Chardonnay
+|Rose of Cabernet Sauvignon|$16.95|white|2009|Cabernet Sauvignon
+|Meritage|$42.00|red|2004|Meritage
+|Merlot|$19.95|red|2006|Merlot
+Briar Rose Winery|Cabernet Franc|$42.00|red|2004|Cabernet Franc
+|Aleatico Port|$36.00|port|2005|Blend
+|Estate Zinfandel|$75.00|red|2008|Zinfandel
+|Orange Muscat|$35.00|dessert|2005|Muscat
+Callaway Vineyard & Winery|Special Selection Merlot|$28.00|red|2005|Merlot
+|Winemaker's Reserve Syrah|$38.00|red|2007|Syrah
+|Special Selection Chardonnay|$18.00|white|2008|Chardonnay
+|Special Selection Muscat Canelli|$18.00|dessert|2009|Muscat
+Churon Winery|Amoroso|$24.99|red|2006|Blend
+|Merlot|$29.99|red|2005|Merlot
+|Pinot Gris|$16.99|white|2008|Pinot Gris
+|Gold Nectar|$18.99|dessert|2008|Blend
+Cougar Vineyard & Winery|Chardonnay Limited Production|$16.95|white|2009|Chardonnay
+|Meritage Limited Production|$34.95|red|2007|Meritage
+Danza del Sol Winery|Cabernet Sauvignon|$26.95|red|2008|Cabernet Sauvignon
+|Tempranillo|$28.95|red|2009|Blend
+|Merlot|$26.95|red|2008|Merlot
+|Chardonnay Reserve|$26.95|white|2009|Chardonnay
+|Dos Blancos|$21.95|white|2009|Blend
+Falkner Winery|Amante Super Tuscan Style|$39.95|red|2005|Blend
+|Cabernet Sauvignon|$24.95|red|2006|Cabernet Sauvignon
+|Meritage Bordeaux Style|$39.95|red|2006|Blend
+|Sauvignon Blanc|$18.95|white|2009|Sauvignon Blanc
+|Riesling|$18.95|white|2009|Riesling
+Foot Path / Foote Print Winery|Cabernet Franc|$30.00|red|2007|Cabernet Franc
+|Syrah|$30.00|red|2007|Syrah
+|Zinfandel|$30.00|red|2008|Zinfandel
+|Port|$32.00|port|2006|Blend
+Frangipani Estate Winery|Grenache Rose|$15.00|rose|2005|Blend
+|Zinfandel|$24.00|red|2005|Zinfandel
+|Merlot|$24.00|red|2003|Merlot
+|Sauvignon Blanc|$16.00|white|2005|Sauvignon Blanc
+Hart Winery|Roussanne|$16.00|white|2008|Roussanne
+|Three|$14.40|red|2007|Blend
+|Syrah|$24.00|red|2007|Syrah
+|Zinfandel|$24.00|red|2006|Zinfandel
+Keyways Vineyards & Winery|Long Valley Creek Cuvee|$41.00|red|2008|Blend
+|Merlot|$42.00|red|2008|Merlot
+|Roussanne|$27.00|white|2009|Roussanne
+|Tempranache|$23.00|dessert|2009|Blend
+Longshadow Ranch Vineyard & Winery|Merlot|$28.00|red|2007|Merlot
+|Cabernet Franc|$36.00|red|2007|Cabernet Franc
+|Estate Consault|$30.00|red|2007|Cinsault
+|Estate Vineyard Syrah|$32.00|red|2007|Syrah
+|Muscat of Alexandria|$16.00|dessert|2007|Muscat
+|White Feather Chardonnay|$18.00|white|2007|Chardonnay
+|White Merlot|$18.00|white|2007|Merlot
+Lorimar Vineyard & Winery|Adagio|$32.00|red|2008|Blend
+|Nocturne|$36.00|red|2008|Syrah
+|Duetto|$18.00|white|2009|Blend
+|Sparking Wine|$21.00|sparkling|2008|Blend
+Maurice Car'rie Vineyard & Winery|Cabernet Sauvignon|$15.95|red|2007|Cabernet Sauvignon
+|Merlot|$15.95|red|2008|Merlot
+|Pineapple California Sparkling Wine|$12.95|sparkling|2009|Blend
+|Heather's Mist NV|$12.95|white|2009|Blend
+Miramonte Winery|Sangiovese|$27.95|red|2005|Sangiovese
+|Four Torch|$27.95|red|2005|Meritage
+|Cabernet Sauvignon|$36.95|red|2004|Cabernet Sauvignon
+|Sauvignon Blanc|$19.95|white|2006|Sauvignon Blanc
+|Pinot Grigio|$21.95|white|2008|Pinot Gris
+Monte de Oro Winery|Synergy 65|$33.00|red|2005|Blend
+|Syrah|$34.00|red|2006|Syrah
+|Cabernet Sauvignon|$32.00|red|2006|Cabernet Sauvignon
+|Pinot Gris|$16.00|white|2009|Pinot Gris
+|Muscat Canelli|$18.00|dessert|2009|Muscat
+|Chardonnay|$21.00|white|2008|Chardonnay
+|Viognier|$22.00|white|2009|Viognier
+Mount Palomar Winery|Castelletto Sangiovese|$24.00|red|2006|Sangiovese
+|Castelletto Trovato|$28.00|red|2006|Blend
+|Meritage|$24.00|red|2006|Meritage
+|Viognier|$20.00|white|2007|Viognier
+|Chardonnay|$20.00|white|2007|Chardonnay
+Oak Mountain Winery|Chardonnay No-Oak|$18.00|white|2009|Chardonnay
+|Chardonnay|$19.00|white|2009|Chardonnay
+|Brut Champagne|$14.95|sparkling|2009|Blend
+|Merlot "Select Barrels"|$60.00|red|2002|Merlot
+|For Pete's Sake|$28.00|red|2007|Blend
+Palumbo Family Vineyards & Winery|Viognier "Buon Vicino"|$18.00|white|2009|Viognier
+|"Rosato Secco" Rose|$18.00|rose|2009|Blend
+|Merlot "Catfish Vineyards"|$38.00|red|2007|Merlot
+|Tre Fratelli "Meritage"|$38.00|red|2007|Meritage
+Ponte Family Estate Winery|Cabernet Sauvignon|$28.95|red|2008|Cabernet Sauvignon
+|Meritage|$34.95|red|2007|Meritage
+|Pinot Grigio|$23.95|white|2009|Pinot Gris
+|Juliet|$20.95|dessert|2009|Blend
+Robert Renzoni Vineyards|Pinot Grigio|$20.00|white|2008|Pinot Grigio
+|Barile Chardonnay|$26.00|white|2008|Chardonnay
+|Sangiovese|$28.00|red|2008|Sangiovese
+|Fiore di Fano|$58.00|red|2007|Blend
+Stuart Cellars|Callista|$12.00|white|2005|Blend
+|Chardonnay|$18.00|white|2008|Chardonnay
+|Viognier|$21.00|white|2008|Viognier
+|White Port NV|$35.00|port|2009|Blend
+Thornton Winery|Riesling|$23.00|white|2008|Riesling
+|Chardonnay|$26.00|white|2008|Chardonnay
+|Syrah|$24.00|red|2006|Syrah
+|Late Harvest Zinfandel|$20.00|red|2006|Zinfandel
+Wiens Family Cellars|Estate Chardonnay|$25.00|white|2007|Chardonnay
+|Viognier|$19.00|white|2008|Viognier
+|Reserve Merlot|$49.00|red|2007|Merlot
+|Reflection|$39.00|red|2008|Blend
+|Ruby Port|$32.00|port|2006|Blend
+|White Port|$32.00|port|2006|Blend
+Wilson Creek Winery & Vineyard|Estate Syrah|$32.95|red|2007|Syrah
+|Estate Zinfandel|$34.95|red|2007|Zinfandel
+|Decadencia Chocolate Dessert Wine|$36.95|dessert|2009|Blend
+|Estate Chardonnay|$17.95|white|2007|Chardonnay

@@ -1,0 +1,711 @@
+winery name|wine| price |type|vintage|varietal
+Acacia|Cuvee 304|$25.00 |white|2009|Chardonnay
+|Carneros Lone Tree|$50.00 |red|2008|Pinto Noir
+|Kick Ranch|$45.00 |red|2008|Syrah
+|Carneros Late Harvest|$18.00 |dessert|2006|Chardonnay
+Ackerman Family Vineyards |Alavigna Tosca|$50.00 |red|2007| Super Tuscan
+|Cabernet Sauvignon|$75.00 |red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon|$75.00 |red|2004|Cabernet Sauvignon
+Adastra Vineyards|Chardonnay|$35.00 |white|2007|Chardonnay
+|Merlot|$40.00 |red|2007|Merlot
+|Proximus|$56.00 |red|2006|Pinot Noir
+|Ed's Red|$15.00 |red|2007|Blend
+Aetna Springs Cellars |Estate Cabernet Sauvignon|$20.00 |red|2004|Cabernet Sauvignon
+|Estate Syrah|$20.00 |red|2004|Syrah
+Alpha Omega Winery|Chardonnay Unoaked|$36.00 |white|2009|Chardonnay
+|Propietary Red|$86.00 |red|2007|Blend
+|Sauvignon Blanc|$34.00 |white|2009|Sauvignon Blanc
+|Late Harvest|$82.00 |dessert|2008|Blend
+75 Wine Co.|Sauvignon Blanc|$13.00 |white|2008|Sauvignon Blanc
+|The Sum|$20.00 |red|2008|Blend
+|Cabernet Sauvignon|$20.00 |red|2009|Cabernet Sauvignon
+Abiouness Wines|Stanley Ranch Carneros|$38.00 |red|2007|Pinot Noir
+|Hudson Valley Carneros|$40.00 |red|2007|Pinot Noir
+|Game Farm Ranch|$30.00 |red|2006|Sangiovese
+|Rose Of Pinot Noir|$15.00 |rose|2009|Pinot Noir
+Ahnfelt Wines|Sauvignon Blanc||white|2006|Sauvignon Blanc
+|Merlot||red|2005|Merlot
+|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+Alex Sotelo Cellars|Alma Sauvignon Blanc||white|2008|Sauvignon Blanc
+|Merlot||red|2005|Merlot
+|The Big A Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Zinfandel||red|2005|Zinfandel
+Allora Vineyards|Cabernet Franc||red|2006|Cabernet Franc
+|Cielo||red|2006|Blend
+|Petite Sirah||red|2006|Petite Sirah
+|Allora "Lusso"||red|2005|Cabernet Sauvignon
+Altamura Winery & Vineyards|Sauvignon Blanc||white|2007|Sauvignon Blanc
+|Sangiovese||red|2006|Sangiovese
+|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+Amethyst|Reserve Pinot Grigio|$23.00 |white|2005|Pinot Grigio
+|Vinalia (Nebbiolo)|$27.00 |red|2003|Blend
+|Cabernet Sauvignon|$44.00 |red|2004|Cabernet Sauvignon
+Amici Cellars |Sauvignon Blanc|$18.00 |white|2008|Sauvignon Blanc
+|Olema Cabernet Sauvignon|$20.00 |red|2007|Cabernet Sauvignon
+|Cabernet Sauvignon|$39.00 |red|2004|Cabernet Sauvignon
+|Old Toll Road|$75.00 |red|2005|Blend
+Amicus Cellars|Reserve Shiraz||red|2005|Shiraz
+|Shiraz/Cab/Malbec||red|2004|Blend
+|Shiraz/Cab/Malbec||red|2005|Blend
+Amizetta Vineyards|Estate Bottled Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Estate Bottled Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+|Complexity Meritage||red|2006|Blend
+Amuse Bouche |Merlot|$225.00 |red|2008|Merlot
+|Vin Perdu||red|2008|Blend
+Ancien Wines|Carneros Pinot Noir||red|2007|Pinot Noir
+|Mink Vineyard||red|2007|Pinot Noir
+|Haynes Vineyard||white|2007|Chardonnay
+|Carneros Sangiacomo Vineyard||white|2009|Pinot Gris
+Andretti Winery|Sauvignon Blanc|$31.00 |white|2007|Pinot Grigio
+|Sangiovese|$41.00 |red|2007|Sangiovese
+|Howell Mountain Zinfadel|$41.00 |red|2007|Zinfandel
+|Cabernet Sauvignon|$46.00 |red|2007|Cabernet Sauvignon
+Andrew Geoffrey Vineyards|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2004|Cabernet Sauvignon
+Andrew Lane|Cabernet Franc|$70.00 |red|2005|Cabernet Franc
+|Cabernet Sauvignon|$30.00 |red|2005|Cabernet Sauvignon
+|Merlot|$33.95 |red|2005|Merlot
+|Petite Sirah|$60.00 |red|2007|Petite Sirah
+Anomaly Vineyards|Cabernet Sauvignon|$85.00 |red|2007|Cabernet Sauvignon
+Anselmo Vigne|Cabernet Sauvignon||red|2004|Cabernet Sauvignon
+Anterra Wine|Cabernet Sauvignon||red|2002|Cabernet Sauvignon
+|Merlot||red|2002|Merlot
+Antica|Chardonnay||white|2007|Chardonnay
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Ardente Winery|Cabernet Sauvignon|$25.00 |red|2003|Cabernet Sauvignon
+|Sangiovese|$35.00 |red|2002|Sangiovese
+|Cabernet Sauvignon|$45.00 |red|2003|Cabernet Sauvignon
+Arcadia Vineyards|A Label Dry Riesling|$13.99 |white||Riesling
+|A Label Merlot|$19.99 |red||Merlot
+|A Label Cabernet Sauvignon|$19.99 |red||Cabernet Sauvignon
+|Phantom White Port|$12.99 |dessert||Port
+Arger-Martucci Vineyards|Viognier|$21.99 |white|2007|Viognier
+|Pinot Noir|$27.99 |red|2005|Pinot Noir
+|Odyssey|$49.99 |red|2005|Blend
+|Petite Sirah|$44.99 |red|2005|Petite Sirah
+Arietta |On The White Keys||white|2009|Blend
+|Cabernet Sauvignon||red|2008|Cabernet Sauvignon
+|Quartet||red|2008|Blend
+|Variation One||red|2008|Blend
+Arkenstone Vineyards|Obsidian|$120.00 |red|2006|Blend
+|Sauvignon Blanc|$45.00 |white|2007|Sauvignon Blanc
+Armstrong Ranch|Cabernet Sauvignon|$65.00 |red|2003|Cabernet Sauvignon
+Arns Winery|Syrah|$50.00 |red|2006|Syrah
+|Cabernet Sauvignon|$50.00 |red|2005|Cabernet Sauvignon
+|Estate Cabernet Sauvignon|$75.00 |red|2005|Cabernet Sauvignon
+Arroyo Winery |Nameless|$30.00 |red|2007|Blend
+|Bodego|$40.00 |red|2007|Blend
+|Chardonnay|$24.00 |white|2009|Chardonnay
+Artesa Winery|Chardonnay Carneros||white|2009|Chardonnay
+|Merlot||red|2005|Merlot
+|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+Astrale e Terra|Sauvignon Blanc|$24.00 |white|2008|Sauvignon Blanc
+|Syrah|$32.00 |red|2003|Syrah
+|Estate Merlot|$32.00 |red|2004|Merlot
+|Estate Cabernet Sauvignon|$50.00 |red|2004|Cabernet Sauvignon
+Atalon|Sauvignon Blanc|$24.00 |white|2007|Sauvignon Blanc
+|Merlot|$34.00 |red|2004|Merlot
+|Cabernet Sauvignon|$44.00 |red|2004|Cabernet Sauvignon
+Atlas Peak Vineyards|Cabernet Sauvignon|$38.00 |red|2005|Cabernet Sauvignon
+|Howell Mountain Cabernet|$85.00 |red|2005|Cabernet Sauvignon
+|Claret|$85.00 |red|2005|Claret
+Au Sommet|Cabernet Sauvignon|$250.00 |red|2008|Cabernet Sauvignon
+August Briggs Wines|Russian River Pinot Noir|$38.00 |red|2008|Pinot Noir
+|Old Vines' Zinfandel|$35.00 |red|2008|Zinfandel
+|Two Moon Vineyard' Dry Creek Valley Cabernet Sauvignon|$55.00 |red|2006|Cabernet Sauvignon
+Autumn Moon Cellars|Chardonnay Carneros||white|2003|Chardonnay
+|Cabernet Sauvignon||red|2002|Cabernet Sauvignon
+Bacio Divino|Bacio Divino|$80.00 |red|2007|Cabernet Sauvignon
+|Pazzo|$32.00 |red|2007|Blend
+|Vagabond|$60.00 |red|2007|Blend
+|Janzen 'Beckstoffer To Kalon Vineyard'|$135.00 |red|2007|Blend
+Baldacci Vineyards|Four Sons Cabernet Sauvignon|$35.00 |red|2006|Cabernet Sauvignon
+|Balack Label Cabernet Sauvignon|$65.00 |red|2005|Cabernet Sauvignon
+|Brenda's Vineyard Cabernet Sauvignon|$85.00 |red|2006|Cabernet Sauvignon
+Ballentine Vineyards|Chenin Blanc|$15.00 |white|2008|Chenin Blanc
+|Zinfandel|$20.00 |red|2006|Zinfandel
+|Integrity|$32.00 |red|2003|Blend
+|Zinfandel Port|$40.00 |dessert|2005|Port
+Barbour Vineyards|Cabernet Sauvignon|$100.00 |red|2007|Cabernet Sauvignon
+|Cabernet Sauvignon Etched Magnum|$350.00 |red|2005|Cabernet Sauvignon
+Bardessono|Cabernet Sauvignon|$33.00 |red|2006|Cabernet Sauvignon
+|Petite Sirah|$37.00 |red|2007|Petite Sirah
+|Cabernet Sauvignon|$60.00 |red|2004|Cabernet Sauvignon
+Barlow Vineyards |Cabernet Sauvignon|$50.00 |red|2006|Cabernet Sauvignon
+|Zinfandel|$28.00 |red|2007|Zinfandel
+|Barrouge|$45.00 |red|2007|Blend
+|Sailor's Delight|$13.00 |rose|2005|Blend
+Barnett Vineyards |Savoy Vineyard Chardonnay|$35.00 |white|2007|Chardonnay
+|Viento Calle Pinot Noir|$45.00 |red|2008|Pinot Noir
+|Merlot|$48.00 |red|2007|Merlot
+Bartalotti|Rutherford Cabernet Sauvignon|$48.00 |red|2005|Cabernet Sauvignon
+|Reserve Stags Leap District Cabernet Sauvignon|$60.00 |red|2005|Cabernet Sauvignon
+Beau Vigne|Persuasion|$39.95 |white|2008|Chardonnay
+|Juliet|$55.00 |red|2008|Blend
+|Cult|$75.00 |red|2008|Cabernet Sauvignon
+|Cabernet Sauvignon Reserve|$100.00 |red|2007|Cabernet Sauvignon
+Beaucanon Estate|Estate Sauvignon Blanc|$20.00 |white|2009|Sauvignon Blanc
+|Estate Merlot|$25.00 |red|2004|Merlot
+|Estate Cabernet Franc|$26.00 |red|2005|Cabernet Franc
+|Trifecta|$35.00 |red|2005|Blend
+Beaulieu Vineyard|Chardonnay Carneros||white||Chardonnay
+|Reserve Tapestry||red||Blend
+|Clone 6 Cabernet Sauvignon||red||Cabernet Sauvignon
+Bell Wine Cellars |Sauvignon Blanc|$17.00 |white|2009|Sauvignon Blanc
+|Big Guy Red|$20.00 |red|2007|Blend
+|Syrah|$26.00 |red|2007|Syrah
+|Cabernet Sauvignon Reserve Clone 6|$90.00 |red|2007|Cabernet Sauvignon
+Bello Family|Cabernet Sauvignon|$45.00 |red|2004|Cabernet Sauvignon
+|Cabernet sauvignon|$85.00 |red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon|$95.00 |red|2007|Cabernet Sauvignon
+Benessere Vineyards|Muscat de Canelli|$18.00 |dessert|2008|Muscat 
+|Pinot Grigio |$24.00 |white|2009|Pinot Grigio
+|Sangiovese|$32.00 |red|2007|Sangiovese
+|Phenomenon|$60.00 |red|2006|Blend
+Bennett Lane Winery|Maximus White|$28.00 |white|2009|Blend
+|Cabernet Sauvignon|$55.00 |red|2006|Cabernet Sauvignon
+|Reserve Cabernet Sauvignon|$95.00 |red|2007|Cabernet Sauvignon
+|Dessert Wine|$60.00 |dessert||Port
+Beringer Vineyards|Chenin Blanc|$7.00 |white|2009|Chenin Blanc
+|Rose Leaning Oak|$20.00 |rose|2009|Pinot Noir
+|Cabernet Sauvignon Leaning Oak|$34.00 |red|2006|Cabernet Sauvignon
+|Private Reserve Cabernet Sauvignon|$300.00 |red|1991|Cabernet Sauvignon
+Bettinelli Vineyards|Sparkling Viognier|$24.00 |white|2002|Viognier
+|Merlot|$30.00 |red|2001|Merlot
+|Lake County Zinfandel|$65.00 |red|2002|Zinfandel
+Bevan Cellars|Sauvignon Blanc|$28.00 |white|2009|Sauvignon Blanc
+|Ontogeny Red|$58.00 |red|2008|Blend
+|Syrah Richard's Cuvee|$70.00 |red|2008|Syrah
+|Red Wine Double E's Cuvee|$150.00 |red|2008|Blend
+Bialla Vineyards|Cabernet Sauvignon|$125.00 |red|2007|Cabernet Sauvignon
+Black Cat Vineyards|Estate Syrah|$42.00 |red|2007|Syrah
+|Cuvee  |$42.00 |red|2006|Blend
+|Cabernet Sauvignon|$55.00 |red|2007|Cabernet Sauvignon
+Bighorn Cellars|Chardonnay Camelback Vineyard|$25.00 |white|2007|Chardonnay
+|Broken Rock Vineyard Merlot|$36.00 |red|2004|Merlot
+|Cabernet Sauvignon|$45.00 |red|1997|Cabernet Sauvignon
+Black Cordon Vineyards|Cabernet Sauvignon|$60.00 |red|2007|Cabernet Sauvignon
+Black Coyote Chateau|Sauvignon Blanc|$22.00 |white|2008|Sauvignon Blanc
+|Cabernet Reserve|$85.00 |red|2007|Cabernet Sauvignon
+Black Sears Winery|Estate Zinfandel|$42.00 |red|2008|Zinfandel
+|Estate Howell Mountain Red|$65.00 |red|2006|Blend
+|Estate Cabernet Sauvignon|$80.00 |red|2004|Cabernet Sauvignon
+Black Stallion Winery |Oak Knoll Riesling|$24.00 |white|2009|Riesling
+|Carneros Chardonnay|$36.00 |white|2008|Chardonnay
+|Cabernet Sauvignon|$75.00 |red|2002|Cabernet Sauvignon
+|North Coast Muscat|$38.00 |dessert|2009|Muscat 
+Blackford|Cabernet|$38.00 |red|2001|Cabernet Sauvignon
+Boeschen Vineyards|Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Carrera Estate||red|2007|Blend
+|Estate Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Bond Estates|Melbury||red|2007|
+|Quella||red|2007|
+|St. Eden||red|2007|
+Bouchaine Vineyards |Bouche d'Or Chadonnay|$30.00 |dessert|2009|Chardonnay
+|Carneros Pinot Noir|$30.00 |red|2007|Pinot Noir
+|Estate Chardonnay|$25.00 |white|2008|Chardonnay
+Bourassa Vineyards |Merlot Reserve|$29.00 |red|2006|Merlot
+|Cabernet Sauvignon|$26.00 |red|2006|Cabernet Sauvignon
+|Petite Verdot|$49.00 |red|2006|Petit Verdot
+Boyanci|Boyanci||red|2008|Blend
+Boyd Family Vineyards|Ruby Tuesday Rose||rose|2009|Syrah
+|Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Merlot||red|2006|Merlot
+|Syrah||red|2007|Syrah
+Brandes Cellars|Chardonnay|$30.00 |white|2005|Chardonnay
+|Cabernet Sauvignon|$45.00 |red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon|$75.00 |red|2006|Cabernet Sauvignon
+Bravante Vineyards |North Coast Sauvignon Blanc|$19.00 |white|2008|Sauvignon Blanc
+|Howell Mountain Trio|$42.00 |red|2006|Blend
+|Estate Merlot|$56.00 |red|2007|Merlot
+|Estate Cabernet Sauvignon|$60.00 |red|2006|Cabernet Sauvignon
+Bremer Family Winery|Merlot|$55.00 |red|2005|Merlot
+|Claret|$70.00 |red|2005|Blend
+|Austintatiuos|$105.00 |red|2005|Blend
+Bressler Vineyards|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2004|Cabernet Sauvignon
+Brian Arden Wines|Sauvignon Blanc|$23.00 |white|2009|Sauvignon Blanc
+|Zinfandel|$28.00 |red|2008|Zinfandel
+Broman Cellars |Sauvignon Blanc|$17.00 |white|2009|Sauvignon Blanc
+|Syrah|$24.00 |red|2005|Syrah
+|Cabernet Sauvignon|$48.00 |red|2005|Cabernet Sauvignon
+Brookdale Vineyards|Cabernet sauvignon|$45.00 |red|2006|Cabernet Sauvignon
+|Cabernet Sauvignon|$45.00 |red|2005|Cabernet Sauvignon
+Brookman Cellars|Cabernet Sauvignon||red|2003|Cabernet Sauvignon
+Brown Estate Vineyards |Zinfandel|$36.00 |red|2009|Zinfandel
+|Cabernet Sauvignon|$55.00 |red|2006|Cabernet Sauvignon
+|Duppy Conquerer|$98.00 |dessert|2007|Cabernet Sauvignon
+Bryant Family Vineyard|Cabernet Sauvignon||red||Cabernet Sauvignon
+Bucella|Cuvee Katrina Eileen||red|2008|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2008|Cabernet Sauvignon
+|Merlot||red|2008|Merlot
+Buehler Vineyards|Russian Reserve Chardonnay|$16.00 |white|2009|Chardonnay
+|White Zinfandel|$7.00 |white|2009|Zinfandel
+|Zinfandel|$19.00 |red|2009|Zinfandel
+|Papa Knoll's Cabernet Sauvignon|$45.00 |red|2007|Cabernet Sauvignon
+Buoncristiani Family Winery|Chardonnay|$90.00 |white|2009|Chardonnay
+|Syrah|$60.00 |red|2007|Syrah
+|O.P.C. |$48.00 |red|2007|Blend
+|Cabernet Sauvignon|$90.00 |red|2007|Cabernet Sauvignon
+Burgess Cellars|Petite Sirah|$25.00 |red|2007|Petite Sirah
+|Merlot|$25.00 |red|2006|Merlot
+|Cabernet Sauvignon|$36.00 |red|2006|Cabernet Sauvignon
+|Reserve Cabernet Sauvignon|$72.00 |red|2005|Cabernet Sauvignon
+C & T Cellars|Sauvignon Blanc|$15.00 |white|2008|Sauvignon Blanc
+|Front Porch Merlot|$15.00 |red|2007|Merlot
+|Rooftop Red Cab|$20.00 |red|2006|Cabernet Sauvignon
+|Patio Pinot|$22.00 |red|2007|Pinot Noir
+Ca' Momi|Bianco Di Napa||white|2009|Blend
+|Moscato||dessert|2008|Moscato
+|Zinfandel||red|2007|Zinfandel
+|Pinot Noir||red|2008|Pinot Noir
+Cade Winery|Sauvignon Blanc|$26.00 |white|2009|Sauvignon Blanc
+|Cuvee Cabernet sauvignon|$60.00 |red|2007|Cabernet Sauvignon
+|Howell Mountain Cabernet|$72.00 |red|2007|Cabernet Sauvignon
+Cain Vineyard & Winery |NV6 Cuvee|$34.00 |red|2005|Blend
+|NV6 Cuvee|$34.00 |red|2006|Blend
+|Cain Five||red|2005|Blend
+|The Benchland||red|2006|Cabernet Sauvignon
+Cakebread Cellars|Sauvignon Blanc|$24.00 |white|2009|Sauvignon Blanc
+|Zinfandel|$35.00 |red|2008|Zinfandel
+|Syrah|$51.00 |red|2007|Syrah
+|Benchland Select Cabernet Sauvignon|$106.00 |red|2006|Cabernet Sauvignon
+Calafia Cellars|Red Table Wine||red|2005|Blend
+Cali 351|Sauvignon Blanc|$24.00 |white|2007|Sauvignon Blanc
+|Chardonnay |$30.00 |white|2006|Chardonnay
+|Cabernet Sauvignon|$49.00 |red|2005|Cabernet Sauvignon
+|Pinot Noir|$49.00 |red|2007|Pinot Noir
+Calistoga Cellars|Sauvignon Blanc|$13.57 |white|2009|Sauvignon Blanc
+|Cabernet Sauvignon|$28.50 |red|2007|Cabernet Sauvignon
+|Triumph|$57.25 |red|2007|Blend
+|Cabernet Sauvignon Port|$20.00 |port||Cabernet Sauvignon
+Campion Winery|Pinot Noir||red|2005|Pinot Noir
+|Pinot Noir||red|2006|Pinot Noir
+Canard Vineyard|Estate Rose|$12.00 |rose|2007|Cabernet Sauvignon
+|Estate Zinfandel||red|2006|Zinfandel
+|Estate Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+Cardinale Estate|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+Carneros Della Notte|Oak Park Cabernet Sauvignon|$40.00 |red|2005|Cabernet Sauvignon
+|Los Carneros Pinot Noir|$48.00 |red|2005|Pinot Noir
+|Eclipse Late Harvest Pinot Noir|$60.00 |dessert|2006|Pinot Noir
+|D III Vineyard Pinot Noir|$150.00 |red|2006|Pinot Noir
+Carter Cellars|Truchard Vineyard Merlot|$65.00 |red|2008|Merlot
+|Hossfeld Coliseum Red Blend|$75.00 |red|2008|Blend
+|Revilo Vineyard Cabernet|$85.00 |red|2008|Cabernet Sauvignon
+|To Kalon Cabernst|$125.00 |red|2008|Cabernet Sauvignon
+Cartlidge & Browne Winery|Chardonnay||white|2008|Chardonnay
+|Sauvignon Blanc||white|2008|Sauvignon Blanc
+|Zinfandel||red|2007|Zinfandel
+|Dessert Syrah||dessert||Syrah
+Carver Sutro Wines|Petite Sirah||red|2006|Petite Sirah
+Casa Carneros Winery|Merlot|$25.00 |red|2002|Merlot
+|Pinot Noir|$35.00 |red|2005|Pinot Noir
+Casa Nuestra Winery & Vineyards|Dry Chenin Blanc|$24.00 |white|2009|Chenin Blanc
+|Dry Riesling|$24.00 |white|2009|Riesling
+|Meritage|$45.00 |red|2007|Blend
+|Cabernet Sauvignon|$55.00 |red|2007|Cabernet Sauvignon
+Casa Piena Winery|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Castello di Amorosa |Pinot Grigio |$20.00 |white|2009|Pinot Grigio
+|Gewurztraminer Dolcino|$21.00 |white|2009|Gewurztraminer
+|Il Brigante|$29.00 |red|2006|Blend
+|Merlot|$34.00 |red|2007|Merlot
+Caymus Vineyards |Zinfandel|$32.00 |red|2007|Zinfandel
+|Cabernet|$70.00 |red|2008|Cabernet Sauvignon
+|Special Selection Cabernet|$130.00 |red|2008|Cabernet Sauvignon
+Ceja Vineyards|Vino de Casa|$20.00 |white|2008|Blend
+|Bella Flor|$22.00 |rose|2008|Syrah
+|Carneros Merlot|$34.00 |red|2007|Merlot
+|Cabernet Sauvignon|$50.00 |red|2006|Cabernet Sauvignon
+Celani Family Vineyards|Vincezna Cabernet Rose|$16.99 |rose|2009|Cabernet Sauvignon
+|Proprietary Red|$60.00 |red|2007|Blend
+|Cabernet Sauvignon|$80.00 |red|2007|Cabernet Sauvignon
+Chanticleer|Cabernet Sauvignon|$58.00 |red|2007|Cabernet Sauvignon
+|Sangiovese|$45.00 |red|2008|Sangiovese
+Chameleon Cellars|Sauvignon Blanc|$18.00 |white|2006|Sauvignon Blanc
+|Carignane|$17.00 |red|2005|Carignane
+|Zinfandel|$24.00 |red|2005|Zinfandel
+|Cabernet Sauvignon|$31.00 |red|2005|Cabernet Sauvignon
+Chappellet Winery |Chardonnay |$32.00 |white|2008|Chardonnay
+|Mountain Cuvee|$29.00 |red|2008|Blend
+|Signature Cabernet Sauvignon|$48.00 |red|2008|Cabernet Sauvignon
+Charles Krug Winery |Sauvignon Blanc|$18.00 |white|2009|Sauvignon Blanc
+|Carneros Chardonnay|$20.00 |white|2008|Chardonnay
+|Carneros Pinot Noir|$25.00 |red|2007|Pinot Noir
+|Vintage Selection Cabernet Sauvignon|$69.00 |red|2006|Cabernet Sauvignon
+Charnu Winery|Cuvee Blanc|$24.00 |white|2009|Blend
+|Cabernet Sauvignon|$75.00 |red|2007|Cabernet Sauvignon
+Charter Oak Winery|Old Vine Petite Sirah|$42.00 |red|2007|Petite Sirah
+|Estate Zinfandel|$42.00 |red|2007|Zinfandel
+|Veeder Cabernet Sauvignon|$60.00 |red|2006|Cabernet Sauvignon
+Chase Cellars |Petite Sirah|$45.00 |red|2006|Petite Sirah
+|Hayne Vineyard Zinfandel|$45.00 |red|2007|Zinfandel
+|Cabernet Sauvignon|$65.00 |red|2006|Cabernet Sauvignon
+|Zinfandel Port|$45.00 |port||Zinfandel
+Chateau Boswell|True Course Chardonnay||white|2008|Chardonnay
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+|Estate Cabernet Sauvignon||red|2008|Cabernet Sauvignon
+Chateau Montelena Winery|Riesling|$24.00 |white|2009|Riesling
+|Petite Sirah|$30.00 |red|2007|Petite Sirah
+|Cabernet Sauvignon|$49.00 |red|2007|Cabernet Sauvignon
+|Estate Cabernet |$135.00 |red|2006|Cabernet Sauvignon
+Chateau Potelle|Chardonnay VGS|$45.00 |white|2009|Chardonnay
+|Zinfandel VGS|$65.00 |red|2007|Zinfandel
+|Cabernet VGS|$75.00 |red|2005|Cabernet Sauvignon
+Chercher Trouver Winery|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+Chiarello Vineyards |Giana Zinfandel|$35.00 |red|2007|Zinfandel
+|Eileen Cabernet|$60.00 |red|2006|Cabernet Sauvignon
+Chimney Rock Winery |Fume Blanc||white|2008|Sauvignon Blanc
+|Elevage||red|2006|Blend
+|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+|Rose of Cabernet Franc||red|2008|Cabernet Franc
+Cimarossa Winery|Howell Mountain Cabernet|$60.00 |red|2006|Cabernet Sauvignon
+|Howell Mountain Cabernet|$65.00 |red|2005|Cabernet Sauvignon
+Clark-Claudon Vineyards |Wild Iris Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Estate Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+|Estate Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Clif Family Winery |Climber Sauvignon Blanc|$14.00 |white|2009|Sauvignon Blanc
+|Rte. Blanc|$18.00 |white|2009|Sauvignon Blanc
+|Gary's Improv Zinfandel|$35.00 |red|2007|Zinfandel
+|Kit's Killer Cab|$38.00 |red|2006|Cabernet Sauvignon
+Cliff Lede Vineyards|Sauvignon Blanc|$22.00 |white|2009|Sauvignon Blanc
+|Cabernet Sauvignon Stags Leap District|$60.00 |red|2007|Cabernet Sauvignon
+|High Fidelity|$75.00 |red|2007|Blend
+|Imagine Rhapsody|$90.00 |red|2007|Cabernet Sauvignon
+Clos du Val Wine Co.|Carneros Chardonnay|$24.00 |white|2008|Chardonnay
+|Ariadne|$21.00 |white|2008|Blend
+|Reserve Pinot Noir|$55.00 |red|2007|Pinot Noir
+|SLD Cabernet Sauvignon|$70.00 |red|2006|Cabernet Sauvignon
+Clos Pegase|Vin Gris|$19.00 |rose|2009|Blend
+|Merlot|$25.00 |red|2006|Merlot
+|Syrah|$35.00 |red|2007|Syrah
+|Cabernet Hommage|$90.00 |red|2006|Cabernet Sauvignon
+Cloud View Winery|Estate Red Wine|$65.00 |red|2005|Blend
+COHO|Stanley Ranch Pinot Noir|$45.00 |red|2007|Pinot Noir
+|Merlot||red|2006|Merlot
+|Headwaters||red|2008|Cabernet Sauvignon
+|Summitvine Ranch Cabernet||red|2006|Cabernet Sauvignon
+Colgin Cellars|Herb Lamb Cabernet|$290.00 |red|2007|Cabernet Sauvignon
+|Tychson Hil Cabernet|$290.00 |red|2007|Cabernet Sauvignon
+|Cariad|$290.00 |red|2007|Blend
+Coniglio Winery|Cabernet Franc|$40.00 |red|2005|Cabernet Franc
+|Diamond Mountain Cabernet|$60.00 |red|2005|Cabernet Sauvignon
+|Oakville Cabernet|$60.00 |red|2005|Cabernet Sauvignon
+Conn Creek Winery |Sauvignon Blanc|$18.00 |white|2009|Sauvignon Blanc
+|Cabernet Sauvignmon|$25.00 |red|2006|Cabernet Sauvignon
+|Collins Vineyard Cabernet|$45.00 |red|2005|Cabernet Sauvignon
+|Anthology|$50.00 |red|2005|Blend
+Continuum Estate|Continuum||red|2007|Blend
+Corison Winery|Corazon Gewurztraminer|$30.00 |white|2007|Gewurztraminer
+|Cabernet Sauvignon|$70.00 |red|2007|Cabernet Sauvignon
+|Kronos Vineyard Cabernet|$98.00 |red|2006|Cabernet Sauvignon
+|Corazon Cabernet Rose|$24.00 |rose|2007|Cabernet Sauvignon
+Cornerstone Cellars |Coralina Rose|$16.00 |rose|2009|Blend
+|Cabernet Franc|$30.00 |red|2008|Cabernet Franc
+|Syrah|$20.00 |red|2008|Syrah
+|Howell Mountain Cabernet|$75.00 |red|2005|Cabernet Sauvignon
+Corra|Cabernet Sauvignon|$125.00 |red|2007|Cabernet Sauvignon
+Cosentino Winery|Gewurztraminer  |$22.00 |white|2007|Gewurztraminer
+|Sangiovese|$25.00 |red|2007|Sangiovese
+|The Poet |$75.00 |red|2007|Blend
+|Estate Cabernet Sauvignon|$80.00 |red|2005|Cabernet Sauvignon
+Coup de Foudre|Pinot Noir||red|2008|Pinot Noir
+|Cabernet Sauvignon||red|2008|Cabernet Sauvignon
+|37.2 Cuvee||red|2008|Blend
+Courtesan|Oakville Cabernet||red|2004|Cabernet Sauvignon
+Covenant|Cabernet Sauvignon|$90.00 |red|2007|Cabernet Sauvignon
+|Cabernet Sauvignon|$90.00 |red|2008|Cabernet Sauvignon
+|Solomon Lot 70||red|2008|Cabernet Sauvignon
+|Red C|$44.00 |red|2008|Cabernet Sauvignon
+Crane Brothers|Merlot|$30.00 |red|2006|Merlot
+|Syrah|$36.00 |red|2006|Syrah
+|Brodatious|$36.00 |red|2007|Blend
+|Cabernet Sauvignon|$44.00 |red|2006|Cabernet Sauvignon
+Crane Family Vineyards |Estate Merlot|$50.00 |red|2007|Merlot
+|Cabernet Sauvignon|$62.00 |red|2007|Cabernet Sauvignon
+|Allison's Cuvee|$70.00 |red|2007|Blend
+|Douceur|$60.00 |port|2007|Zinfandel
+Crocker & Starr|Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Cabernet Franc||red|2007|Cabernet Franc
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Culler Winery|Syrah|$25.00 |red|2008|Syrah
+|Howell Mountain Cabernet|$65.00 |red|2007|Cabernet Sauvignon
+Cuvaison Winery|Sauvignon Blanc|$20.00 |white|2009|Sauvignon Blanc
+|S Block Chardonnay|$38.00 |white|2008|Chardonnay
+|Block F5 Pinot Noir|$45.00 |red|2008|Pinot Noir
+|Brandlin Cabernet|$85.00 |red|2006|Cabernet Sauvignon
+D.R. Stephens Estate|Chardonnay||white|2008|Chardonnay
+|DR II||red|2007|Cabernet Sauvignon
+|Moose Valley Vineyard Cabernet||red|2007|Cabernet Sauvignon
+|Walther River Block||red|2007|Cabernet Sauvignon
+Dana|Helms Vineyard Cabernet||red|2007|Cabernet Sauvignon
+|Hershey Vineyard Caberent||red|2007|Cabernet Sauvignon
+|Lotus Vineyard Cabernet||red|2007|Cabernet Sauvignon
+Dancing Hares Vineyard |Dancing Hares||red|2006|Blend
+Dalla Valle Vineyards|Maya||red||Blend
+|Cabernet Sauvignon||red|2002|Cabernet Sauvignon
+Darioush Winery|Signature Viognier|$39.00 |white|2009|Viognier
+|Signature Chardonnay|$43.00 |white|2008|Chardonnay
+|Signature Shiraz|$68.00 |red|2007|Shiraz
+|Signature Cabernet Sauvignon|$80.00 |red|2007|Cabernet Sauvignon
+Darms Lane|Cabernet Sauvignon|$60.00 |red|2006|Cabernet Sauvignon
+|Linda's Hillside Cabernet |$75.00 |red|2007|Cabernet Sauvignon
+David Arthur Vineyards|Sauvignon Blanc|$25.00 |white|2008|Sauvignon Blanc
+|Chardonnay|$42.00 |white|2007|Chardonnay
+|Meritaggio|$55.00 |red|2007|Blend
+|Elevation 1147|$135.00 |red|2007|Cabernet Sauvignon
+David Fulton Winery|Old Vine Petite Sirah|$45.00 |red|2006|Petite Sirah
+Del Bondio Wine Co.|Chenin Blanc|$8.50 |white|2009|Chenin Blanc
+|Oakville Syrah|$23.00 |red|2006|Syrah
+|Cabernet Sauvignon|$36.00 |red|2006|Cabernet Sauvignon
+|A Meta|$29.00 |red|2007|Blend
+Del Dotto Vineyards|Caves Merlot |$39.00 |red|2005|Merlot
+|Cave Blend|$49.00 |red|2007|Blend
+|Howell Mountain Cabernet Franc|$125.00 |red|2007|Cabernet Franc
+|Howell Mountain Cabernet Sauvignon|$195.00 |red|2007|Cabernet Sauvignon
+Delectus Winery|Merlot|$50.00 |red|2006|Merlot
+|Cabernet Sauvignon|$100.00 |red|2005|Cabernet Sauvignon
+|Cuvee Julia|$135.00 |red|2006|Blend
+Desante Wines|L'Atelier|$28.00 |white|2008|Blend
+|Old Vine Chardonnay|$35.00 |white|2008|Chardonnay
+|Old Vine Sauvignon Blanc|$32.00 |white|2008|Sauvignon Blanc
+|Oakville Terraces Cabernet|$70.00 |red|2006|Cabernet Sauvignon
+Detert Family Vineyards|Cabernet Franc||red|2007|Cabernet Franc
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+Diamond Creek Vineyards|Chardonnay|$18.00 |white|2007|Chardonnay
+|Pinot Noir|$30.00 |red|2006|Pinot Noir
+|Hira Ranch Merlot|$30.00 |red|2006|Merlot
+|Cabernet Reserve|$30.00 |red|2005|Cabernet Sauvignon
+Diamond Terrace|Howell Mountain Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+|Diamond Mountain Cabernet||red||Cabernet Sauvignon
+Dillon Vineyards|Chardonnay Stainless Steel Fermented||white|2006|Chardonnay
+|Chardonnay Barrel Fermented||white|2006|Chardonnay
+Dolce|Dolce|$85.00 |dessert|2005|
+Domaine Carneros|Brut Rose Sparkling|$36.00 |sparkling|2006|Blend
+|Avant Garde Chardonnay|$30.00 |white|2008|Chardonnay
+|Avant Garde Merlot|$30.00 |red|2006|Merlot
+|The Famous Gate Pinot Noir|$68.00 |red|2007|Pinot Noir
+Domaine Chandon |Viognier|$23.00 |red|2008|Viognier
+|Pinot Noir Rose|$22.95 |rose|2008|Pinot Noir
+|NV Rose|$25.00 |rose||
+Domaine Charbay|Cabernet Sauvignon|$45.00 |red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon|$49.00 |red|2003|Cabernet Sauvignon
+|Ruby Port|$50.00 |port||
+|Distillers Port||port||Blend
+Domaine Georg Rafael|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+Domaine La Due|Carneros Pinot Noir|$27.50 |red|2002|Pinot Noir
+Dominari|Chardonnay|$25.00 |white|2007|Chardonnay
+|Zinfandel|$35.00 |red|2007|Zinfandel
+|Merlot|$45.00 |red|2006|Merlot
+|Cabernet Sauvignon|$75.00 |red|2005|Cabernet Sauvignon
+Dominus Estate |Dominus||red|2007|Blend
+Downing Family Vineyards|Fly By Night Zinfandel|$24.00 |red|2007|Zinfandel
+|Cabernet Sauvignon|$34.00 |red|2006|Cabernet Sauvignon
+Drinkward Peschon|Entre Deux Meres||red|2007|Cabernet Sauvignon
+Duckhorn Vineyards|Sauvignon Blanc|$27.00 |white|2009|Sauvignon Blanc
+|Semillon|$27.00 |white|2009|Semillon
+|Merlot|$52.00 |red|2007|Merlot
+|Estate Grown Cabernet Sauvignon|$95.00 |red|2006|Cabernet Sauvignon
+Dunn Vineyards |Howell Mountain Cabernet Sauvignon||red||Cabernet Sauvignon
+|Napa Valley Cabernet Sauvignon||red||Cabernet Sauvignon
+Dutch Henry Winery|Rutherford Zinfandel|$46.00 |red|2006|Zinfandel
+|Estate Syrah|$48.00 |red|2006|Syrah
+|Pinot Noir|$49.00 |red|2006|Pinot Noir
+|Chafen Family Reserve Cabernet|$95.00 |red|2005|Cabernet Sauvignon
+Dyer Vineyard|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+Eagle & Rose Estate |Zinfandel Rose|$12.00 |rose|2008|Zinfandel
+|Sauvignon Blanc|$14.00 |white|2008|Sauvignon Blanc
+|Cabernet Sauvignon|$26.00 |red|2007|Cabernet Sauvignon
+|Late Harvest Sauvignon Blanc|$24.00 |dessert|2006|Sauvignon Blanc
+Eagle Eye|Sauvignon Blanc|$19.99 |white|2008|Sauvignon Blanc
+|Merlot|$21.99 |red|2005|Merlot
+|Voluptous|$24.99 |red|2006|Blend
+|Cabernet Sauvignon|$31.99 |red|2005|Cabernet Sauvignon
+Eagle Trace|Because|$28.00 |red|2007|Blend
+|Estate Grown Merlot|$45.00 |red|2006|Merlot
+|Pinot Noir|$65.00 |red|2007|Pinot Noir
+|Estate Grown Cabernet Sauvignon|$60.00 |red|2005|Cabernet Sauvignon
+Edge|Cabernet Sauvignon|$20.00 |red|2008|Cabernet Sauvignon
+Ehlers Estate|Estate Sauvignon Blanc|$28.00 |white|2009|Sauvignon Blanc
+|Estate Merlot|$45.00 |red|2007|Merlot
+|One Twenty Over Eight|$45.00 |red|2007|Cabernet Sauvignon
+|Estate St. Helena Cabernet Sauvignon 1886|$95.00 |red|2006|Cabernet Sauvignon
+El Molino Winery|Rutherford Chardonnay||white|2008|Chardonnay
+|Rutherford Pinot Noir||red|2007|Pinot Noir
+Elaine St. Clair|Syrah|$32.00 |red|2005|Syrah
+Elan Vineyards|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+Elizabeth Spencer Wines|Chenin Blanc|$25.00 |white|2009|Chenin Blanc
+|ExS Block 7 Chardonnay|$60.00 |white|2007|Chardonnay
+|Cabernet Franc|$55.00 |red|2007|Cabernet Franc
+|Rutherford Cabernet Sauvignon|$75.00 |red|2006|Cabernet Sauvignon
+Elke Vineyards|Brut Sparkling Pinot & Chardonnay|$20.00 |sparkling||Blend
+|Chardonnay|$20.00 |white|2009|Chardonnay
+|Blue Diamond Pinot Noir|$34.00 |red|2007|Pinot Noir
+|Rose Of Pinot Noir|$15.00 |rose|2008|Pinot Noir
+Elkhorn Peak Cellars|Pinot Noir|$34.00 |red|2007|Pinot Noir
+|Chardonnay|$28.00 |white|2007|Chardonnay
+|Pinot Noir Rose|$20.00 |rose|2008|Pinot Noir
+|Dessert Wine|$20.00 |dessert||Blend
+Elyse Wine Cellars |L'ingenue|$28.00 |white|2008|Blend
+|Chardonnay|$32.00 |white|2008|Chardonnay
+|Morisoli Vineyard Cabernet|$70.00 |red|2005|Cabernet Sauvignon
+|Cabernet Sauvignon Port|$32.00 |port|2005|Cabernet Sauvignon
+Emerson Brown|Cabernet Sauvignon|$50.00 |red|2007|Cabernet Sauvignon
+EMH Vineyards|Black Cat Cabernet Sauvignon|$75.00 |red|2008|Cabernet Sauvignon
+|Black Cat Cabernet Sauvignon|$85.00 |red|2007|Cabernet Sauvignon
+Emilio's Terrace|Emilio's Terrace|$40.00 |red|2007|Blend
+Emmolo Wine Co.|Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Merlot||red|2007|Merlot
+|Syrah||red|2006|Syrah
+Envy Wines|Sauvignon Blanc|$23.00 |white|2008|Sauvignon Blanc
+|Bee Bee's Blend|$48.00 |red|2007|Blend
+|Estate Petite Sirah|$45.00 |red|2008|Petite Sirah
+|Estate Merlot|$34.00 |red|2008|Merlot
+Enzo Wines|Magic Hill|$95.00 |red|2006|Blend
+Eponymous|Red Wine  |$45.00 |red|2007|Blend
+|Cabernet Sauvignon|$58.00 |red|2006|Cabernet Sauvignon
+Erba Mountainside Vineyrds|Chardonnay|$28.00 |white|2007|Chardonnay
+|Merlot|$37.00 |red|2004|Merlot
+|Merlot|$37.00 |red|2005|Merlot
+|Syrah|$40.00 |red|2004|Syrah
+|Syrah|$40.00 |red|2005|Syrah
+|Cabernet Sauvignon|$55.00 |red|2004|Cabernet Sauvignon
+|Cabernet Sauvignon|$55.00 |red|2005|Cabernet Sauvignon
+Esca Wines|Syrah|$23.00 |red|2006|Syrah
+|Cabernet Sauvignon|$28.00 |red|2006|Cabernet Sauvignon
+Etude Wines|Rose Of Pinot Noir|$20.00 |rose|2009|Pinot Noir
+|Pinot Noir Estate Carneros|$42.00 |red|2007|Pinot Noir
+|Cabernet Sauvignon Rutherford|$100.00 |red|2006|Cabernet Sauvignon
+Failla|Sonoma Coast Chardonnay||white|2009|Chardonnay
+|Vivien Pinot Noir||red|2007|Pinot Noir
+|Pinot Noir Peay Vineyard||red|2007|Pinot Noir
+|Syrah Estate Vineyard||red|2008|Syrah
+Fairchild Estate Vineyards|Napa Valley Cabernet Sauvignon|$125.00 |red|2007|Cabernet Sauvignon
+|Sigaro Cabernet Sauvignon|$150.00 |red|2007|Cabernet Sauvignon
+Fantesca Estate & Winery|Chardonnay Russian River|$75.00 |white|2008|Chardonnay
+|Cabernet Sauvignon|$90.00 |red|2007|Cabernet Sauvignon
+Far Niente Winery|Bottled Chardonnay|$56.00 |white|2009|Chardonnay
+|Estate Bottled Cabernet Sauvignon|$105.00 |red|2007|Cabernet Sauvignon
+|Cave Collection Cabernet Sauvignon|$135.00 |red|2006|Cabernet Sauvignon
+Farella Vineyard|La Luce Sauvignon Blanc|$15.00 |white|2009|Sauvignon Blanc
+|Coombsville Divide Merlot|$24.00 |red|2006|Merlot
+|Road Block Syrah|$30.00 |red|2007|Syrah
+|ALTA Bordeaux Blend|$75.00 |red|2005|Blend
+Faust |Faust|$50.00 |red|2006|Blend
+Favia|Suize Viognier||white|2006|Viognier
+|Cerro Sur Napa Valley Red Wine||red|2007|Blend
+|La Magdelana Napa Valley Red Wine||red|2007|Blend
+|Quarzo Amador Syrah||red|2007|Syrah
+Fleury Estate Winery|ZCAB|$65.00 |red|2007|Blend
+|Pinot Noir|$75.00 |red|2007|Pinot Noir
+|Lauren Bryce Cabernet Sauvignono|$125.00 |red|2006|Cabernet Sauvignon
+|Howell Mountain BDX Reserve Blend|$210.00 |red|2007|Blend
+Flora Springs Winery & Vineyards|Barrel Fermented Chardonnay|$30.00 |white|2008|Chardonnay
+|Trilogy|$65.00 |red|2007|Blend
+|Napa Valley Merlot|$24.00 |red|2008|Merlot
+|Napa Valley Cabernet Sauvignon|$36.00 |red|2007|Cabernet Sauvignon
+Flying Horse Winery |Sauvignon Blanc|$16.00 |white|2007|Sauvignon Blanc
+|Cabernet Sauvignon|$25.00 |red|2006|Cabernet Sauvignon
+|Petite Sirah|$25.00 |red|2006|Petite Sirah
+Folie a Deux|Sauvignon Blanc|$17.00 |white|2007|Sauvignon Blanc
+|Chardonnay|$18.00 |white|2007|Chardonnay
+|Zinfandel Amador County|$18.00 |red|2007|Zinfandel
+|Cabernet Sauvignon|$28.00 |red|2007|Cabernet Sauvignon
+Forman Vineyards|Chardonnay||white|2003|Chardonnay
+|Cabernet Sauvignon ||red|2002|Cabernet Sauvignon
+Fontanella Family Winery|Chardonnay Mt. Veeder |$30.00 |white|2009|Chardonnay
+|Chardonnay Napa Valley|$18.00 |white|2008|Chardonnay
+|Cabernet Sauvignon Mt. Veeder|$50.00 |red|2007|Cabernet Sauvignon
+Fountainhead Cellars|Morisoli Borges Cabernet Sauvignon|$45.00 |red|2003|Cabernet Sauvignon
+Franciscan |Sauvignon Blanc||white|2008|Sauvignon Blanc
+|Chardonnay ||white|2008|Chardonnay
+|Merlot||red|2006|Merlot
+|Magnificat||red|2006|Blend
+Frank Family Vineyards |Chardonnay|$32.50 |white|2008|Chardonnay
+|Zinfandel|$36.75 |red|2007|Zinfandel
+|Reserve Pinot Noir|$55.00 |red|2008|Pinot Noir
+|Zinfandel Port|$65.00 |port||Zinfandel
+Franus Wine Company |Rose Lake County|$15.00 |rose|2009|Blend
+|Chardonnay|$32.00 |white|2009|Chardonnay
+|Zinfandel Brandlin Vineyard|$35.00 |red|2007|Zinfandel
+|Red Wine Napa Valley|$50.00 |red|2005|Blend
+Frazier Winery|Merlot|$40.00 |red|2007|Merlot
+|Cabernet Franc|$52.00 |red|2007|Cabernet Franc
+|Petite Verdot|$75.00 |red|2007|Petite Verdot
+|Memento|$110.00 |red|2006|Cabernet Sauvignon
+Freemark Abbey Winery|Sauvignon Blanc||white|2009|Sauvignon Blanc
+|Viognier||white|2009|Viognier
+|Josephine||red|2006|Blend
+|Edelwein Gold Late Harvest Rielsings||dessert|2008|Riesling
+Frias Family Vineyard |Red Wine|$35.00 |red|2007|Blend
+|Syrah|$35.00 |red|2007|Syrah
+|Spring Mountain Cabernet|$70.00 |red|2006|Cabernet Sauvignon
+|Rose Wine|$17.00 |rose|2009|
+Frog's Leap Winery |Sauvignon Blanc|$18.00 |white|2009|Sauvignon Blanc
+|Zinfandel|$27.00 |red|2008|Zinfandel
+|Rutherford|$75.00 |red|2006|Cabernet Sauvignon
+|Pink|$14.00 |rose|2009|Blend
+Fuse|Cabernet Sauvignon Napa Valley|$25.00 |red|2006|Blend
+Futo |FUTO||red|2007|Blend
+|FUTO||red|2006|Blend
+G Cook|Merlot||red|2005|Merlot
+|Abduction||red|2006|Blend
+|Zinfandel||red||Zinfandel
+|Estate Cabernet||red|2004|Cabernet Sauvignon
+Gabrielle Collection|Equilateral||red|2004|Cabernet Sauvignon
+|Juxtaposition||red|2004|Blend
+|Vertex Red Cuvee Blend 611||red|2003|Blend
+|Vertex Red Cuvee Blend 611||red|2004|Blend
+Galleron Signature Wines|Jaeger Merlot||red|2002|Merlot
+|Zinfandel Branham Rockpile|$32.00 |red|2002|Zinfandel
+|Cabernet Sauvignon Generation Series|$40.00 |red|2004|Cabernet Sauvignon
+Gamble Family Vineyards|Sauvignon Blanc|$28.00 |white|2008|Sauvignon Blanc
+|Heritage Sites|$25.00 |red|2006|Blend
+|Old Vine Syrah|$36.00 |red|2006|Syrah
+|Paramount Red Wine|$60.00 |red|2005|Blend
+Gargiulo Vineyards|Wood Ranch Chardonnay||white||Chardonnay
+|Aprile Super Oakville Blend||red||Blend
+|Money Road Ranch Merlot||red||Merlot
+|575 OVX Cabernet Sauvignon||red||Cabernet Sauvignon
+Garric Cellars|Cabernet Sauvignon||red|2006|Cabernet Sauvignon
+|Cabernet Sauvignon||red|2007|Cabernet Sauvignon
+|GRX The Precription||red|2007|Cabernet Sauvignon
+Gemella Wines|Napa Valley Viognier|$35.00 |white|2008|Viognier
+|Petite Sirah Port|$60.00 |port|2005|Petite Sirah
+Gemstone Vineyard|Gemstone||red|2007|Cabernet Sauvignon
+|Gemstone||red|2006|Cabernet Sauvignon
+Ghost Horse Vineyards|Cabernet Sauvignon||red|2005|Cabernet Sauvignon
+|Fantome||red|2005|Cabernet Sauvignon
+|Apparition||red|2005|Cabernet Sauvignon
+|Spectre||red|2005|Cabernet Sauvignon
+Girard Winery|Sauvignon Blanc|$16.00 |white|2009|Sauvignon Blanc
+|Old Vine Zinfandel|$24.00 |red|2008|Zinfandel
+|Petite Sirah|$28.00 |red|2008|Petite Sirah
+|Diamond Mountain Cabernet|$75.00 |red|2007|Cabernet Sauvignon
+Godspeed Vineyards|Chardonnay||white|2007|Chardonnay
+|Cabernet||red|2002|Cabernet Sauvignon
+|Trinity||red|2005|Blend
+Goosecross Cellars|Oak Knoll Viognier|$32.00 |white|2009|Viognier
+|Napa Valley Pinot Noir|$39.00 |red|2009|Pinot Noir
+|Napa Valley Syrah|$36.00 |red|2007|Syrah
+|Napa Valley Cabernet Sauvignon|$52.00 |red|2007|Cabernet Sauvignon
+Grace Family Vineyards|Cabernet Sauvignon||red|2003|Cabernet Sauvignon
+|Blank Vineyard||red|2003|Cabernet Sauvignon
+Grassi|Ribolla|$28.00 |white|2009|Ribolla
+|Cabernet Sauvignon|$60.00 |red|2007|Cabernet Sauvignon
+|Cabernet Sauvignon|$60.00 |red|2006|Cabernet Sauvignon
+Grasso Vineyard|Chardonnay|$27.00 |white|2007|Chardonnay
+|Cabernet Sauvignon Olive Ridge Vineyard|$49.00 |red|2006|Cabernet Sauvignon
+Green & Red Vineyard|Sauvignon Blanc Catacula Vineyard|$20.00 |white|2008|Sauvignon Blanc
+|Zinfandel Tip Top Vineyard|$28.00 |red|2006|Zinfandel
+|Sobrante|$23.00 |red|2005|Blend
+|Petite Sirah Tip Top Vineyard|$30.00 |red|2005|Petite Sirah
+Gridley Family Cellars|Cabernet Franc|$45.00 |red|2006|Cabernet Franc
+|Rose of Cabernet Franc|$19.00 |rose|2009|Cabernet Franc
+Grgich Hills Estate|Fume Blanc|$30.00 |white|2008|Sauvignon Blanc
+|Chardonnay Carneros|$75.00 |white|2006|Chardonnay
+|Miljenkos Old Vine Zinfandel|$85.00 |red|2008|Zinfandel
+|Yountville Selection Cabernet Sauvignon|$135.00 |red|2006|Cabernet Sauvignon

@@ -1,0 +1,63 @@
+   <table cellspacing='0' id='top_list'>
+   <caption>Specials <%= link_to_remote (
+      image_tag("/images/arrow_refresh.png",:border => 0,:title => "Refresh List"),
+      :url=>"/home/upcoming_specials",
+      :method=>"get",
+      :update=>"upcoming_specials") %>
+   </caption>
+   <% @specials.each do |special| %>
+     <tr>
+       <td>
+         <table cellspacing='0' width="100%">
+           <tr>
+           <% if user_signed_in? %>
+      <div class="stars">
+       <form action="/specials/<%= special.id %>/rating/" method="post">
+          <%= render_stars special %>
+       </form>
+      </div>
+
+             <td>
+               <div class="action-menu">
+                  <a class="action-menu-link" href="#"><span class="action-span">action</span></a>
+                  <div style="display: none;" class="list-action-menu">
+                    <ul>
+                      <li><a href="/specials/<%= special.id%>/comments" class="dialog_form_link">Comments</a></li>
+                      <li><a href="/specials/<%= special.id%>/favorites" >Add To My Favorites</a></li>
+                      <li><a href="/specials/<%= special.id%>" class="dialog_form_link">Show Details</a></li>
+                    </ul>
+                  </div>
+               </div>
+             </td>
+           <% else %>
+      <div class="stars">
+       <form action="/specials/<%= special.id %>/rating/" method="post">
+          <%= render_stars special, true %>
+       </form>
+      </div>
+           <% end %>       
+           </tr>  
+           <tr>
+             <td colspan="2">
+               <a class="list_element" href="#"><%=h special.title %>
+                  <span class="triangle-border">
+                     <table cellspacing='0'>
+                        <tr>
+                           <th>Comments</th>
+                        </tr>
+                     <% special.comments.each do |comment| %>
+                        <tr>
+                           <td><%= comment.user.username %> says: "<%= comment.content %>"</td>
+                        </tr>
+                     <% end %>
+                     </table>
+                  </span>
+               </a>   
+             </td>
+           </tr>
+         </table>
+       </td>  
+     </tr>
+   <% end %>
+   </table>
+

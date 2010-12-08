@@ -1,0 +1,46 @@
+<div id="wines">
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @specials, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @specials %>
+    </div>
+  </div>
+
+  <table style="background: white;">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Pictures</th>
+      <th colspan=3>Action</th>
+    </tr>
+  <% for special in @specials %>
+    <tr>
+      <td><%=h special.title %></td>
+      <td><%=h special.description %></td>
+      <td><%=h special.start_date %></td>
+      <td><%=h special.end_date %></td>
+    <% if special.pictures.length > 0 then %>
+    <td><%= image_tag special.pictures[0].url(:thumb) %></td>
+    <% else %>
+    <td></td>
+    <% end %>
+      <td><%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), special, :title=> "Show", :class => 'dialog_form_link' %>
+      <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_special_path(special), :title=> "Edit", :class => 'dialog_form_link' %>
+      <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), special, :title=> "Delete", :class => 'delete' %>
+    </tr>
+  <% end %>
+  </table>
+
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @specials, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @specials %>
+    </div>
+  </div>
+</div>

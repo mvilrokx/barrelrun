@@ -1,0 +1,24 @@
+<div id='top_list'>
+  <h2>Places to Go</h2>
+  <ul>
+    <% @events.each_with_index do |event, idx| %>
+    <li>
+      <%=h event.title %> <br>
+      - <%=h event.winery.city %>, <%=h event.winery.state %>
+        <% if user_signed_in? %>
+        <div style="float: right;" class="stars">
+          <form action="/events/<%= event.id %>/rating/" method="post">
+            <%= render_stars event %>
+          </form>
+        </div>
+        <% else %>
+        <div style="float: right;" class="stars">
+         <form action="/events/<%= event.id %>/rating/" method="post">
+            <%= render_stars event, true %>
+         </form>
+        </div>
+        <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>

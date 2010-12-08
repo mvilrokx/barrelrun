@@ -1,0 +1,8 @@
+<div class="entry_form">
+  <h2>Are you sure you want to delete this Wine?</h2>
+  <% form_for @wine, :html => { :method => 'delete' } do |f| %>
+      <%= submit_tag "Yes" %>
+      <%= submit_tag "No", :name => "cancel" %>
+      <td><%= link_to 'Remove Row', @wine, :class => "delete" %></td>
+  <% end %>
+</div>

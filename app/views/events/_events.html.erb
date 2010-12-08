@@ -1,0 +1,42 @@
+<div id="events">
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @events, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @events %>
+    </div>
+  </div>
+
+  <table style="background: white;">
+     <tr>
+       <th>Title</th>
+       <th>Description</th>
+       <th>Place</th>
+       <th>Start Date</th>
+       <th>End Date</th>
+
+       <th>Price</th>
+       <th>Contact Name</th>
+       <th>Contact Phone</th>
+       <th>Contact Email</th>
+       <th>Invitation Type</th>
+
+       <th>Pictures</th>
+       <th colspan=3>Action</th>
+     </tr>
+     <% for event in events %>
+       <%= render :partial=>"event_row", :locals=>{:event=>event} %>
+     <% end %>
+   </table>
+
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @events, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @events %>
+    </div>
+  </div>
+
+</div>

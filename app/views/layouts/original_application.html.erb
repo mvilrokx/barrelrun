@@ -1,0 +1,66 @@
+<!DOCTYPE htmlPUBLIC "-//W3C//DTDXHTML1.0Transitional//EN"
+                     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Point2Wine</title>
+   <%=stylesheet_link_tag "point2wine",:media=> "all" %>
+   <%= javascript_include_tag :defaults %>
+   <%= ajaxful_rating_style %></head>
+<body>
+   <div id="canvas">
+      <div id="header">
+         <%=image_tag("/images/wino-scaled-big2.jpg",:size=> "100x100")%>
+         <%=@page_title|| "Point2Wine" %>
+         <div id="user_nav">
+         <% if user_signed_in? %>
+            <ul>
+               <li><%= link_to "Signed in as " + current_user.username, edit_user_registration_path %></li>
+               <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+               <li><%= link_to "Help" %></li>
+            </ul>   
+         <% elsif winery_signed_in? %>
+            <ul>
+               <li><%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %></li>
+               <li><%= link_to "Sign Out", destroy_winery_session_path %></li>
+               <li><%= link_to "Help" %></li>
+            </ul>               
+         <% else %>
+            <ul>
+               <li><%= link_to "User Registration", new_user_registration_path %></li>
+               <li><%= link_to "Winery Registration", new_winery_registration_path %></li>
+               <li><%= link_to "User Sign In", new_user_session_path %></li>
+               <li><%= link_to "Winery Sign In", new_winery_session_path %></li>
+            </ul>
+         <% end %>
+         </div>
+      </div>
+      <div id="menu">
+         <ul>
+            <li><%= link_with_active "Home", root_path %></li>
+         <% if user_signed_in? %>
+            <li><%= link_with_active "Account", edit_user_registration_path %></li>
+            <li><%= link_to "My Favorites" %></li>
+         <% end %>
+         <% if winery_signed_in? %>
+            <li><%= link_with_active "Account", edit_winery_registration_path %></li>
+            <li><%= link_with_active "Wines", wines_path %></li>
+            <li><%= link_to "Events" %></li>
+            <li><%= link_to "Specials" %></li>
+            <li><%= link_to "Awards" %></li>
+         <% end %>
+         </ul>
+      </div>
+      <div id="main">
+      <% flash.each do |key, msg| %>
+         <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
+         <% content_tag :script, :type => "text/javascript" do -%>
+            setTimeout("new Effect.Fade('notice_<%= key %>');", 8000);
+         <% end %>
+      <% end %>
+         <div id="main_body">
+            <%=yield:layout%>
+         </div>   
+      </div>
+   </div>
+</body>
+</html>

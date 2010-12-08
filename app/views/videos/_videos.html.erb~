@@ -1,0 +1,40 @@
+<div id="videos">
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @videos, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @videos %>
+    </div>
+  </div>
+
+  <table style="background: white;">
+    <tr>
+      <th>Title</th>
+      <th>Welcome Video?</th>
+      <th>File Name</th>
+      <th>Size</th>
+      <th colspan=2>Action</th>
+    </tr>
+  <% for video in @videos %>
+    <tr>
+      <td><%=h video.title %></td>
+      <td><%= video.primary ? "Yes" : link_to ("No", { :action => "make_primary", :id => video.id }, :method => :put, :title => "Click to Make Primary Video") %></td>
+      <td><%=h video.name %></td>
+      <td><%=h (video.file_size/(1024*1024)).round() %> MB</td>
+      <td><%= link_to image_tag("../images/control_play.png", :border=>0, :alt=>"Show"), video, :title=> "Show", :class => 'dialog_form_link' %></td>
+      <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), video, :title=> "Delete", :class => 'delete' %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <div class="pagination">
+    <div class="span-13">
+      <%= will_paginate @videos, :container => false %>
+    </div>
+    <div class="page_info span-7 last">
+      <%= page_entries_info @videos %>
+    </div>
+  </div>
+
+</div>

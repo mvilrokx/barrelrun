@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Barrelrun - <%= yield(:title)|| "Discover and connect" %></title>
+  <%=stylesheet_link_tag "barrelrun",:media=> "all" %>
+  <%=stylesheet_link_tag "barrelrun_mobile" if mobile_devise? %>
+  <%=stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
+  <script type="text/javascript"><!--
+   function authToken(){
+     return '<%= form_authenticity_token if protect_against_forgery? -%>';
+   }
+  //--></script>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js' %>
+  <%= javascript_include_tag 'jquery.tools.min.js' %>
+  <%= javascript_include_tag 'flowplayer-3.2.4.min.js' %>
+  <%= javascript_include_tag 'jwplayer.js' %>
+  <%= javascript_include_tag 'application' %>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <meta charset="utf-8" />
+</head>
+<body>
+  <div id="header">
+    <div class="container" id="header_container">
+      <div class="span-8 prepend-top" id="company_logo">
+        <%= link_to image_tag("../images/barrelrun_logo.png", :border=>0), root_path %>
+      </div>
+      <% form_tag ({:action => "all_objects_search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+        <div id="header_search_box">
+          <div class="span-8">
+            <label>Enter Winery, Wine or Region</label><br>
+            <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+          </div>
+          <div class="span-5">
+            <label>Nearby (Enter City)</label><br>
+            <input size="20" type="text">
+          </div>
+          <div class="span-2 prepend-top">
+            <input class="button grey" type="submit" value="Search">
+          </div>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+      <div class="span-7 pull-7 last" id="signed_in">
+        <%= link_to "Signed in as " + current_user.username, edit_user_registration_path %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      </div>
+      <% elsif winery_signed_in? %>
+      <div class="span-7 pull-7 last" id="signed_in">
+        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        <%= link_to "Sign Out", destroy_winery_session_path %>
+      </div>
+      <% else %>
+      <div class="span-1 pull-1 last" id="login_icon">
+        <%= link_to  image_tag("../images/login_button.png", :border=>0), new_user_session_path, :class=>"signin" %>
+        <%= render :partial => "layouts/inline_user_sign_in" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="container">
+      <div id="nav" class="span-24 last">
+        <ul>
+          <li><%= link_with_active "Home", root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_with_active "Account", edit_user_registration_path %></li>
+          <li><%= link_with_active "My Favorites", favorites_path %></li>
+        <% end %>
+        <% if winery_signed_in? %>
+          <li><%= link_with_active "Account", edit_winery_registration_path %></li>
+          <li><%= link_with_active "Wines", wines_path %></li>
+          <li><%= link_with_active "Events", events_path %></li>
+          <li><%= link_with_active "Specials", specials_path %></li>
+          <li><%= link_with_active "Awards", awards_path %></li>
+          <li><%= link_with_active "Pictures", pictures_path %></li>
+          <li><%= link_with_active "VLog", videos_path %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="container">
+        <%=yield :layout%>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container" style="background-color: rgb(189,189,189);">
+      <div class="span-5 colborder prepend-4"><span style="font-weight: bold;">I want to Know about</span><br>
+        Barrelrun<br>
+        Terms of Service<br>
+        Privacy
+      </div>
+      <div class="span-5 colborder"><span style="font-weight: bold;">I am a biz owner and want to</span>
+        <br>Advertise<br>
+        Get more info
+      </div>
+      <div class="span-8 last"><span style="font-weight: bold;">I am a winery and want to</span><br>
+        <%= link_to "Register", new_winery_registration_path %><br>
+        <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
+        Get more info
+      </div>
+      <div class="prepend-7 span-10 append-7 prepend-top last">
+        <h4>Copyright &copy <%= Time.new.year%> Barrelrun.  All rights reserved.</h4>
+      </div>
+    </div>
+  </div>
+
+  <% flash.each do |key, msg| %>
+     <% content_tag :script, :type => "text/javascript" do -%>
+        $(document).ready(function() {
+           addNotice("<p><%= msg %></p>");
+        });   
+     <% end %>
+  <% end %>
+
+  <div id="message_box">
+  </div>
+
+</body>
+</html>

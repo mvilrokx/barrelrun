@@ -1,0 +1,41 @@
+<div class="entry_form">
+  <% title "Event" %>
+
+  <p>
+    <strong>Title:</strong>
+    <%=h @event.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%=h @event.description %>
+  </p>
+  <p>
+    <strong>Place:</strong>
+    <%=h @event.place %>
+  </p>
+  <p>
+    <strong>Start Date:</strong>
+    <%=h @event.start_date %>
+  </p>
+  <p>
+    <strong>End Date:</strong>
+    <%=h @event.end_date %>
+  </p>
+  <p>
+    <strong>Winery:</strong>
+    <%=h @event.winery_id %>
+  </p>
+
+  <% if @event.pictures.length > 0 then %>
+    <% for picture in @event.pictures %>
+  <p>
+      <%= image_tag picture.url(:large) %>  
+  </p>
+    <% end %>
+  <% end %>
+</div>
+<p>
+  <%= link_to "Edit", edit_event_path(@event) %> |
+  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", events_path %>
+</p>

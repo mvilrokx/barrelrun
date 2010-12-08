@@ -1,0 +1,175 @@
+<div class="prepend-top prepend-1 span-22 append-1 last">
+  <div class="span-22 last">
+    <h2><%=h @winery.winery_name %></h2>
+  </div>
+  <div class="span-13 colborder">
+    <div class="span-13">
+      <div class="span-8">
+        <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=8&markers=color:blue|label:S|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
+	      </div>
+      <div class="span-5 last">
+        <div class="span-5 last strong">
+          <%=h @winery.winery_name %>
+        </div>
+        <div class="span-5 last strong">
+          <% if user_signed_in? %>
+            <div class="stars">
+              <form action="/wineries/<%= @winery.id %>/rating/" method="post">
+                <%= render_stars @winery %>
+              </form>
+            </div>
+          <% else %>
+            <div class="stars">
+                <%= render_stars @winery, true %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="span-5 last strong">
+          <%=h @winery.address %>
+          <%=h @winery.address2 %>
+          <%=h @winery.address3 %>
+        </div>
+        <div class="span-5 last strong">
+          <%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
+        </div>
+        <div class="span-5 last strong">
+          <%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
+        </div>
+        <div class="span-5 last strong">
+          <a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
+        </div>
+        <hr class="space" />
+        <div class="span-5 last strong">
+          <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", winery_comments_path(@winery), :title=> "Write a Comment" %>
+        </div>
+
+
+      </div>
+    </div>
+    
+    <hr/>
+    
+    <div class="span-13">
+      <div class="span-13">
+        <div class="span-13 last">
+          <h2>Awards</h2>
+          <% for award in @winery.awards %>
+            <p><%= award.title %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    
+    <div class="span-13">
+      <div class="span-13">
+        <div class="span-6 colborder">
+
+          <div class="span-6 last">
+            <h2>Wine List</h2>
+          </div>  
+
+          <% for wine in @winery.wines %>
+          <div class="span-6 last">
+            <div class="span-2">
+              <% if wine.pictures.length > 0 then %>
+                <%= image_tag wine.pictures[0].url(:thumb) %>
+              <% else %>
+                <%= image_tag("../images/no_image_available.png", :alt=>"No Image Found", :width=>"40", :height=>"40", :style=>"padding-bottom: 5px; vertical-align: middle;") %>
+              <% end %>
+            </div>  
+            <div class="span-4 last">
+              <strong><%= wine.name %></strong>
+              <% if user_signed_in? %>
+                <div class="stars">
+                  <form action="/wines/<%= wine.id %>/rating/" method="post">
+                    <%= render_stars wine %>
+                  </form>
+                </div>
+              <% else %>
+                <div class="stars">
+                    <%= render_stars wine, true %>
+                </div>
+              <% end %>
+              <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", wine_comments_path(wine), :title=> "Write a Comment" %>
+            </div>  
+          </div>  
+          <% end %>
+        </div>
+        
+        
+        
+        <div class="span-6 last">
+          <div class="span-6 last">
+            <h2>Save Money</h2>
+          </div>
+
+          <div class="span-6 last">
+            <ul>
+            <% for special in @winery.specials %>
+              <li><%= special.title %><br/>
+              - <em>from</em> <%=h special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h special.end_date.try(:strftime,'%m/%d/%Y') %>
+                <% if user_signed_in? %>
+                  <div class="stars">
+                    <form action="/specials/<%= wine.id %>/rating/" method="post">
+                      <%= render_stars special %>
+                    </form>
+                  </div>
+                <% else %>
+                  <div class="stars">
+                      <%= render_stars special, true %>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+  
+          <hr/>
+
+          <div class="span-6 last">
+            <h2>Places To Go</h2>
+          </div>
+
+          <div class="span-6 last">
+            <ul>
+            <% for event in @winery.events %>
+              <li><%= event.title %><br/>
+              - <%=h event.winery.city %>, <%=h event.winery.state %>
+                <% if user_signed_in? %>
+                  <div class="stars">
+                    <form action="/events/<%= event.id %>/rating/" method="post">
+                      <%= render_stars event %>
+                    </form>
+                  </div>
+                <% else %>
+                  <div class="stars">
+                      <%= render_stars event, true %>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+
+        </div>
+        
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div class="span-8 last">
+    <div class="span-8 last">
+      <h2>Welcome Video</h2>
+    </div>  
+    <div class="span-8 last">
+      <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
+      </iframe>
+    </div>  
+  </div>
+
+</div>

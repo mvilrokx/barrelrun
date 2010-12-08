@@ -1,0 +1,52 @@
+<div id="container">
+   <!-- Shows a card with suit characters. We use the ascii table to display these suit characters. -->
+   <div id="panel" class="panel" onclick="flip(event)">
+      <div id="front" class="front face">
+         <table cellspacing='0' id='top_list'>
+         <caption>Top Wines</caption>
+         <% @wines.each do |wine| %>
+           <tr>
+             <td>
+               <table cellspacing='0'>
+                 <tr>
+                 <% if user_signed_in? %>
+                   <td><%= ratings_for wine, :small => true %></td>
+                 <% else %>
+                   <td><%= ratings_for wine, :static, :small => true %></td>
+                 <% end %>       
+                 </tr>  
+                 <tr>
+                   <td><%=h wine.name %> (<%= number_to_currency(wine.price) %>) </td>
+                 </tr>
+               </table>
+             </td>  
+           </tr>
+         <% end %>
+         </table>
+      </div>   
+      <div id="back" class="back face">
+         <table cellspacing='0' id='top_list'>
+         <caption>Favorite Wines</caption>
+         <% @wines.each do |wine| %>
+           <tr>
+             <td>
+               <table cellspacing='0'>
+                 <tr>
+                 <% if user_signed_in? %>
+                   <td><%= ratings_for wine, :small => true %></td>
+                 <% else %>
+                   <td><%= ratings_for wine, :static, :small => true %></td>
+                 <% end %>       
+                 </tr>  
+                 <tr>
+                   <td><%=h wine.name %> (<%= number_to_currency(wine.price) %>) </td>
+                 </tr>
+               </table>
+             </td>  
+           </tr>
+         <% end %>
+         </table>
+      </div>
+  </div>
+</div>
+

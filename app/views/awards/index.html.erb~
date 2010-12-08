@@ -1,0 +1,3 @@
+<h1>Awards</h1> (<%= link_to 'New Award', new_award_path, :id => 'new_award', :class => 'dialog_form_link' %>)
+
+<%= render :partial => "awards" %>

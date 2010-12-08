@@ -1,0 +1,8 @@
+$('#heart_<%=h @favorable.id %>').toggle();
+// Change Menu
+$('a[href=/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id %>/favorites]').text('Remove From My Favorites');
+$('a[href=/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id %>/favorites]').attr({class: 'remove_as_favorite', 
+                                                          title: 'Remove From My Favorites',
+                                                          href: '/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id%>/favorites/<%= @favorite.id %>'
+                                                        });
+addNotice("<p><%= escape_javascript(flash.delete(:notice)) %></p>");

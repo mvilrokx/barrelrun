@@ -1,0 +1,107 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#   
+#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#   Major.create(:name => 'Daley', :city => cities.first)
+
+
+# db/seeds.rb
+require 'open-uri'
+
+#["Windows", "Linux", "Mac OS X"].each do |os|
+#  OperatingSystem.find_or_create_by_name(os)
+#end
+
+STDOUT.sync = true
+
+wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt"]
+wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt"]
+Winery.delete_all
+#open("db/ListofWineries_AtoG_NapaRegion.txt") do |wineries|
+
+wineryFiles.each do |wineryFile|
+  idx = 0
+  open(wineryFile) do |wineries|
+    print "\nLoading Wineries from file " + wineryFile
+    wineries.read.each_line do |winery|
+      winery_name, address, city, state, zipcode, telephone, website = winery.chomp.strip.split("|")
+      idx = idx + 1
+
+      if website.blank? then
+        website = "www.barrelrun.com"
+      end
+      if telephone.blank? then
+        telephone = "555.555.5555"
+      end
+      begin
+        Winery.create!(:winery_name => winery_name, 
+                       :address => address, 
+                       :city => city, 
+                       :state => state, 
+                       :zipcode => zipcode,
+                       :country => "USA",
+                       :telephone => telephone,
+                       :website_url => "http://" + website,
+                       :username => winery_name,
+                       :email => "jin" + idx.to_s + "@barrelrun.com",
+                       :contact_firstname => "Jin",
+                       :contact_lastname => "Kim",
+                       :password => "s3cr3t",
+                       :confirm_password => "s3cr3t"
+                       )
+        print "."
+      rescue Exception => e
+        if winery_name != "winery name" && address != "address" && city != "city" && zipcode != "zipcode"
+          puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
+        else
+          puts "\nWarning: Please remove the column headers/titles from your file"
+        end  
+      end
+    end
+  end
+end
+puts " "
+
+Wine.delete_all
+#open("db/ListofWines_AtoG_NapaRegion.txt") do |wines|
+#open("db/ListofWines_temeculaValley.txt") do |wines|
+
+wineFiles.each do |wineFile|
+  open(wineFile) do |wines|
+
+    print "\nLoading Wines from file " + wineFile
+    wines.read.each_line do |wine|
+      winery_name, wine_name, price, type, vintage, varietal = wine.chomp.strip.split("|")
+      if !winery_name.blank? then
+        @winery = Winery.find_by_winery_name(winery_name)
+      end
+      if !wine_name.nil? then
+        if !price.blank? then
+          price.slice!(0)
+        end
+        begin
+          @winery.wines.create!(:name => wine_name, 
+                                :price => price, 
+                                :wine_type => type, 
+                                :vintage => vintage, 
+                                :varietal => varietal)
+          print "."
+        rescue Exception => e
+          if winery_name != "winery name" && wine_name != "name" && price != "pricy" && type != "type"
+            puts "\nERROR WITH WINE " + wine_name + " ERROR = " + e.message
+            puts "   price = " + price
+            puts "   type = " + type
+            puts "   vintage = " + vintage
+            puts "   varietal = " + varietal
+          else
+            puts "\nWarning: Please remove the column headers/titles from your file"
+          end
+        end
+      end
+    end
+  end
+end
+puts " "
+

@@ -1,0 +1,12 @@
+       <tr>
+         <td><%=h event.title %></td>
+         <td><%=h event.description %></td>
+         <td><%=h event.place %></td>
+         <td><%=h event.start_date %></td>
+         <td><%=h event.end_date %></td>
+         <td><%=h event.winery_id %></td>
+         <td><%= link_to "Show", event %></td>
+         <td><%= link_to "Edit", edit_event_path(event) %></td>
+         <td><%= link_to "Destroy", event, :confirm => 'Are you sure?', :method => :delete %></td>
+       </tr>
+

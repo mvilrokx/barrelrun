@@ -1,0 +1,2 @@
+$("#upcoming_specials").html("<%= escape_javascript(render :partial=>'home/upcoming_specials', :locals=>{:upcoming_specials=>@specials}) %>");
+starRating.create('#upcoming_specials .stars');

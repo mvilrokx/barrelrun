@@ -1,0 +1,65 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_for @event, :html => {:multipart => true } do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :title %>
+      <span class="div_texbox">
+        <%= f.text_field :title, :required => true, :class => "fillout01" %>
+    	</span>
+      <div class="span-16 last">
+        <%= f.label :description %>
+        <span class="div_texbox" style="height: auto;">            
+          <%= f.text_area :description, :class => "fillout01" %>
+      	</span>
+      </div>
+      <%= f.label :place %>
+      <span class="div_texbox">
+        <%= f.text_field :place, :required => true, :class => "fillout01" %>
+    	</span>
+      <%= f.label :start_date %>
+      <span class="div_texbox">
+        <%= f.text_field :start_date, :required => true, :class => "fillout03 jqueryui_date" %>
+    	</span>
+      <%= f.label :end_date %>
+      <span class="div_texbox">
+        <%= f.text_field :end_date, :required => true, :class => "fillout03 jqueryui_date" %>
+    	</span>
+      <%= f.label :price %>
+      <span class="div_texbox">
+        <%= f.text_field :price, :class => "fillout03" %>
+    	</span>
+      <%= f.label :contact_info_name %>
+      <span class="div_texbox">
+        <%= f.text_field :contact_info_name, :class => "fillout01" %>
+    	</span>
+      <%= f.label :contact_info_phone %>
+      <span class="div_texbox">
+        <%= f.text_field :contact_info_phone, :class => "fillout03" %>
+    	</span>
+      <%= f.label :contact_info_email %>
+      <span class="div_texbox">
+        <%= f.text_field :contact_info_email, :class => "fillout02" %>
+    	</span>
+      <%= f.label :invitation_type %>
+      <span class="div_texbox">
+        <%= f.select (:invitation_type, options_for_select(['Open to the Public', 'RSVP', 'Wine Club With Guest', 'Wine Club Only'], @event.invitation_type), {:class => "fillout01"}) %>
+    	</span>
+
+      <%= f.hidden_field :winery_id %>
+
+      <div id="picture_fields">
+      <% f.fields_for :pictures do |builder| %>
+        <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
+      <% end %>
+      </div>
+
+      <span class="div_texbox"><%= add_child_link "Add Picture?", :pictures %></span>
+
+      <%= new_child_fields_template f, :pictures, {:partial => "shared/picture"} %>
+
+      <span class="div_texbox">            
+        <%= f.submit "Save" %>
+     	</span>
+    <% end %>
+  </fieldset>
+</div>

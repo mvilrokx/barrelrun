@@ -1,0 +1,56 @@
+<% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+  $.jQTouch({
+      icon: 'jqtouch.png',
+      statusBar: 'black-translucent',
+      preloadImages: [
+          'themes/jqt/img/chevron_white.png',
+          'themes/jqt/img/bg_row_select.gif',
+          'themes/jqt/img/back_button_clicked.png',
+          'themes/jqt/img/button_clicked.png'
+          ]
+  });
+  </script>
+<% end %>
+
+<div id="home" class="current">
+  <div class="toolbar">
+      <h1>Barrel Run</h1>
+  </div>
+  <ul id="links" class="rounded">
+    <li class="arrow"><a href="#topWines">Top Wines</a></li>
+    <li class="arrow"><a href="#topWineries">Top Wineries</a></li>
+  </ul>
+</div>
+
+<div id="topWines">
+  <div class="toolbar">
+    <h1>Top Wines</h1>
+    <a class="button cancel" href="#">Back</a>
+  </div>
+  <div class="body">
+    <ul>
+      <% for wine in @wines %>
+      <li class="arrow">
+      <%= wine.name %>
+      </li>
+      <% end %>
+    </ul>
+  </div>    
+</div>
+
+<div id="topWineries">
+  <div class="toolbar">
+    <h1>Top Wineries</h1>
+    <a class="button cancel" href="#">Back</a>
+  </div>
+  <div class="body">
+    <ul>
+      <% for winery in @wineries %>
+      <li class="arrow">
+      <%= winery.winery_name %>
+      </li>
+      <% end %>
+    </ul>   
+  </div>
+</div>

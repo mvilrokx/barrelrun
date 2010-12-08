@@ -1,0 +1,19 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_for @video, :html => {:multipart => true } do |f| %>
+      <%= f.error_messages %>
+
+      <%= f.label :title %>
+      <span class="div_texbox">
+        <%= f.file_field :movie %>
+    	</span>
+      <%= f.hidden_field :videoable_id %>
+      <%= f.hidden_field :videoable_type %>
+
+      <span class="div_texbox">            
+        <%= f.submit "Save" %>
+     	</span>
+
+    <% end %>
+  </fieldset>  
+</div>

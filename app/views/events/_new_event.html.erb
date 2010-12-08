@@ -1,0 +1,36 @@
+<div class="entry_form">
+   <% form_for event, :html => { :multipart => true } do |f| %>
+      <%= f.error_messages %>
+      <fieldset>
+         <legend>New Event</legend>
+         <ol>
+            <li>
+               <%= f.label :title %>
+               <%= f.text_field :title %>
+            </li>
+            <li>
+               <%= f.label :description %>
+               <%= f.text_area :description %>
+            </li>
+            <li>
+               <%= f.label :place %>
+               <%= f.text_area :place %>
+            </li>
+            <li>
+               <%= f.label :start_date %>
+               <%= f.date_select :start_date %>
+            </li>
+            <li>
+               <%= f.label :end_date %>
+               <%= f.date_select :end_date %>
+            </li>
+            <li>
+               <%= f.label :picture, "Attach Picture" %>
+               <%= f.file_field :picture %>
+            </li>
+            <%= f.hidden_field :winery_id %>
+         </ol>
+      </fieldset>   
+      <p><%= f.submit %></p>
+   <% end %>   
+</div>

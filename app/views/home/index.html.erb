@@ -1,0 +1,44 @@
+<div style="background-image:url(images/signup.jpg); background-repeat:no-repeat; background-position: center; width: 950px; padding: 8px 0; text-align: center; font-size: 1.5em;"><%= link_to  image_tag("../images/signup_button.png", :alt=>"signup button", :width=>"109", :height=>"46", :style=>"padding-bottom: 5px; vertical-align: middle;"), new_user_registration_path %> now for free to discover and connect with wineries in real time.</div>
+
+
+
+<%= render :partial=>"map" %>
+
+<div id="content_body" class="container">
+  <div class="span-10 colborder" style="padding-left: 10px;">
+    <div style="background: #EEE; padding: 0 10px;">
+      <h2><img src="images/deal_icon.jpg" width="35" height="40" alt="Barrel of a Deal" style="padding-bottom: 3px; vertical-align: middle;"> <span style="color: red;">Barrel of a Deal</span></h2>
+      <img src="images/barrel_deal_img.jpg" width="358" height="230" alt="Barrel of a Deal image">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span style="font-weight: bold;">&gt;&gt; Details</span>
+    </div>
+    <hr>
+    <div id="upcoming_specials" style="padding-left: 10px;">
+      <%= render :partial=>"upcoming_specials" %>
+    </div>
+    <hr>
+    <div id="upcoming_events" style="padding-left: 10px;">
+      <%= render :partial=>"upcoming_events" %>
+    </div>
+  </div>
+
+  <div class="span-6 colborder">
+    <h2>Featured Wineries</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip.</p>
+    <hr>
+    <h2>Get the app on your mobile phone</h2>
+    <p class="largefont"><img src="images/iphone-4.jpg" width="174" height="131" class="top pull-1">It is free and helps you find great local wineries and so much more<img src="images/btn_getit.jpg" alt="get it now" width="120" height="39"></p>
+    <hr>
+    <h2><img src="images/barrelspeaks_icon.jpg" width="40" height="28" alt="barrel speaks"> Barrel Speaks</h2>
+    <%= render :partial=>"feed" %>    
+  </div>
+
+  <div class="span-7 last">
+      <div id="top_wineries">
+         <%= render :partial=>"top_wineries" %>
+      </div>
+      <hr>
+      <div id="top_wines">
+         <%= render :partial=>"top_wines" %>
+      </div>
+  </div>
+</div>

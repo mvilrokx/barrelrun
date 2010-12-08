@@ -1,0 +1,31 @@
+winery name|address|city|state|zipcode|Telephone|website url
+Baily Vineyard & Winery|33440 La Serena|Temecula|CA|92592|951-676-9463|www.bailywinery.com
+Briar Rose Winery|41720 Calle Cabrillo|Temecula|CA|92592|951-308-1098|www.briarrosewinery.com
+Callaway Vineyard & Winery|32720 Rancho California Road|Temecula|CA|92592|951-676-4001|www.callawaywinery.com
+Churon Winery|33233 Rancho California Road|Temecula|CA|92591|951-694-9071|www.innatchuronwinery.com
+Cougar Vineyard & Winery|39870 De Portola Road|Temecula|CA|92592|951-491-0825|www.cougarvineyards.com
+Danza del Sol Winery|39050 De Portola Road|Temecula|CA|92592|951-302-6363|www.danzadelsol.com
+Doffo Vineyard & Winery|36083 Summitville|Temecula|CA|92592|951-676-6989|www.doffowines.com
+Falkner Winery|40620 Calle Contento|Temecula|CA|92591|951-676-8231|www.falknerwinery.com
+Foot Path / Foote Print Winery|36650 Glen Oaks Road|Temecula|CA|92592|951-265-9951|www.footpathwinery.com
+Frangipani Estate Winery|39750 De Portola Road|Temecula|CA|92592|951-699-8845|www.frangipaniwinery.com
+Hart Winery|41300 Avenida Biona|Temecula|CA|92593|951-676-6300|www.hartfamilywinery.com
+Keyways Vineyards & Winery|37338 De Portola Road|Temecula|CA|92592|951-302-7888|www.keywayswine.com
+Longshadow Ranch Vineyard & Winery|39847 Calle Contento|Temecula|CA|92591|951-587-6221|www.longshadowranchwinery.com
+Lorimar Vineyard & Winery|42031 Main Street|Temecula|CA|92590|951-240-5177|www.lorimarwinery.com
+Maurice Car'rie Vineyard & Winery|34225 Rancho California Road|Temecula|CA|92592|951-676-1711|www.mauricecarriewinery.com
+Miramonte Winery|33410 Rancho California Road|Temecula|CA|92591|951-506-5500|www.miramontewinery.com
+Monte de Oro Winery|35820 Rancho California Road|Temecula|CA|92591|951-491-6551|www.montedeoro.com
+Mount Palomar Winery|33820 Rancho California Road|Temecula|CA|92591|951-676-5047|www.mountpalomar.com
+Oak Mountain Winery|36522 Via Verde|Temecula|CA|92592|951-699-9102|www.oakmountainwinery.com
+Palumbo Family Vineyards & Winery|40150 Barksdale Circle|Temecula|CA|92592|951-676-7900|www.palumbofamilyvineyards.com
+Ponte Family Estate Winery|35053 Rancho California Road|Temecula|CA|92591|951-694-8855|www.pontewinery.com
+Robert Renzoni Vineyards|37350 De Portola Road|Temecula|CA|92592|951-302-8466|www.robertrenzonivineyards.com
+South Coast Winery Resort & Spa|34843 Rancho California Road|Temecula|CA|92591|951-587-9463|www.wineresort.com
+Stuart Cellars|33515 Rancho California Road|Temecula|CA|92591|888-260-0870|www.stuartcellars.com
+Thornton Winery|32575 Rancho California Road|Temecula|CA|92591|951-699-0099|www.thorntonwine.com
+Van Roekel Winery|34567 Rancho California Road|Temecula|CA|92591|951-699-6961|
+Villa di Calabro Winery & Olive Oil Co.|41955 Main Street|Temecula|CA|92590|951-695-4525|
+Vindemia Vineyard & Estate Winery|33133 Vista del Monte|Temecula|CA|92591|951-699-0601|
+Wiens Family Cellars|35055 Via Del Ponte|Temecula|CA|92592|951-694-9892|www.wienscellars.com
+Wilson Creek Winery & Vineyard|35960 Rancho California Road|Temecula|CA|92591|951-699-9463|www.wilsoncreekwinery.com

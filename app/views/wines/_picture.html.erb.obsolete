@@ -1,0 +1,10 @@
+<div class="picture_field div_texbox">
+  <% if !f.object.new_record? %>
+    <%= image_tag f.object.photo.url(:thumb) %>
+  <% else %>  
+      <%= f.file_field :photo %>
+  <% end %>  
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "Remove?", "#", :id => "remove_picture" %>
+</div>
+

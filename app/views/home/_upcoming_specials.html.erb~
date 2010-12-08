@@ -1,0 +1,24 @@
+<div id='top_list'>
+  <h2>Save Money</h2>
+  <ul>
+    <% @specials.each_with_index do |special, idx| %>
+    <li>
+    <%=h special.title %> <br>
+    - <em>from</em> <%=h special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h special.end_date.strftime('%m/%d/%Y') %>
+      <% if user_signed_in? %>
+      <div style="float: right;" class="stars">
+        <form action="/specials/<%= special.id %>/rating/" method="post">
+          <%= render_stars special %>
+        </form>
+      </div>
+      <% else %>
+      <div style="float: right;" class="stars">
+       <form action="/specials/<%= special.id %>/rating/" method="post">
+          <%= render_stars special, true %>
+       </form>
+      </div>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>

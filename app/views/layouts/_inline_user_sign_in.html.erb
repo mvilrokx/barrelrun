@@ -1,0 +1,12 @@
+<div id="signin_menu">
+<% form_for (User.new, :url => {:controller=>'users', :action=>'sign_in'}) do |f| -%>
+  <%= f.error_messages %>
+   <fieldset>
+     <%= f.label :username %> <%= f.text_field :username %><br>
+     <%= f.label :password %> <%= f.password_field :password %><br>
+     <%= f.label :remember_me %> <%= f.check_box :remember_me %><br>
+   </fieldset>
+  <%= f.submit "Sign in" %> or 
+  <%= link_to "Register", new_user_registration_path %>
+<% end -%>
+</div>
