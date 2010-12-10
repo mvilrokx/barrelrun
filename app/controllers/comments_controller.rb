@@ -1,9 +1,15 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index]
 
   def index  
     @commentable = find_commentable
     @comments = @commentable.comments
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml
+      format.js
+      format.json { render :layout => false, :json => @comments }
+    end
   end  
 
   def create
