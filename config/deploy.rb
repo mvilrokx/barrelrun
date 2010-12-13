@@ -46,8 +46,10 @@ end
 
 # optional task to reconfigure databases
 after "deploy:update_code", :configure_database
+
 desc "copy database.yml into the current release path"
 task :configure_database, :roles => :app do
-     db_config = "#{deploy_to}/config/database.yml"
-     run "cp #{db_config} #{release_path}/config/database.yml"
+#     db_config = "#{deploy_to}/config/database.yml"
+#     run "cp #{db_config} #{release_path}/config/database.yml"
+     run "ln -nfs #{shared_patch}/database.yml #{release_path}/config/database.yml"
 end
