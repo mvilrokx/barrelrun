@@ -110,7 +110,7 @@ class WinesController < ApplicationController
 
   # PUT /wines/1
   # PUT /wines/1.xml
-  def update`
+  def update
     @wine = Wine.find(params[:id])
 
     respond_to do |format|

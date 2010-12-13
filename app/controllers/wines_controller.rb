@@ -58,10 +58,6 @@ class WinesController < ApplicationController
   def show
     @wine = Wine.find(params[:id])
     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @wine }
-    end
     rescue
       flash[:notice] = 'You are not authorized to view that wine.'
       redirect_to :action => "index"
