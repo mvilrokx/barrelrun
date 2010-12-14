@@ -73,11 +73,10 @@ $(document).ready(function(){
         map.panTo(latLng);
         if (markersArray) {
             for (i in markersArray) {
-                if (markersArray[i].position.ya == $(this).attr("data-winery-lat") && markersArray[i].position.za == $(this).attr("data-winery-lng")) {
-//                if (markersArray[i].position.sa == $(this).attr("data-winery-lat") && markersArray[i].position.ta == $(this).attr("data-winery-lng")) {
-//                if (markersArray[i].position.ra == $(this).attr("data-winery-lat") && markersArray[i].position.sa == $(this).attr("data-winery-lng")) {
+                if (markersArray[i].position.equals(latLng)) {
                     infoWindow.setContent(markersArray[i].html);
                     infoWindow.open(map,markersArray[i]);
+                    break;
                 };
             };
         };

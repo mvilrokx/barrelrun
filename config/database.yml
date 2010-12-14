@@ -28,7 +28,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: barelrun
+  database: barrelrun
   host: localhost
   username: root
   password: beysenc
