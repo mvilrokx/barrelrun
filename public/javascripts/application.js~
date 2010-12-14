@@ -76,6 +76,7 @@ $(document).ready(function(){
                 if (markersArray[i].position.equals(latLng)) {
                     infoWindow.setContent(markersArray[i].html);
                     infoWindow.open(map,markersArray[i]);
+                    break;
                 };
             };
         };

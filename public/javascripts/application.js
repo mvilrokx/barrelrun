@@ -19,7 +19,6 @@ $('.notice').fadeOut(2000,function(){$(this).remove();});
 /**
 * Controls the action menu on the Home Page portlets
 */
-// attach funtion to document after ensuring DOM is fully loaded
 $(document).ready(function(){
    // observe ANY clicks on the whole doc (webpage)
    $(document).click(function(event){
