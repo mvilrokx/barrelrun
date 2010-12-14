@@ -1,5 +1,5 @@
 # set :user, 'git'
-set :user, 'mark'
+set :user, 'git'
 set :domain, 'mark-server'
 set :application, 'barrelrun'
 
@@ -7,9 +7,9 @@ set :application, 'barrelrun'
 
 # I think it should be this
 # set :repository, "#{user}@#{domain}:#{application}
-#set :repository, "git@#{domain}:#{application}"
+set :repository, "#{user}@#{domain}:#{application}.git"
 # but this is what is in the book, just pick the one that works ...
-set :repository, "#{user}@#{domain}:git/#{application}.git"
+#set :repository, "#{user}@#{domain}:git/#{application}.git"
 set :deploy_to, "/home/#{user}/#{domain}"
 
 # distribute your applications across servers (the instructions below put them
