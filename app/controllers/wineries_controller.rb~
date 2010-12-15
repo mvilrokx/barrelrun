@@ -6,6 +6,7 @@ class WineriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :layout => false, :json => @wineries }
+      format.mobile
     end
   end
   
@@ -39,7 +40,7 @@ class WineriesController < ApplicationController
 
   def rating
     @winery = Winery.find(params[:id])
-    @user_rating = @winery.ratings.find_or_initialize_by_user_id(current_user.user_id)
+    @user_rating = @winery.ratings.find_or_initialize_by_user_id(current_user.id)
     @user_rating.rate = params[:stars]
     if @user_rating.save
       flash[:notice] = "Successfully saved your rating."  

@@ -7,3 +7,5 @@ test:
 production:
   enable_star: 1
   min_infix_len: 1
+  pid_file: /home/mark/mark-server_production/shared/tmp/searchd.pid
+  searchd_file_path: /home/mark/mark-server_production/shared/db/sphinx
