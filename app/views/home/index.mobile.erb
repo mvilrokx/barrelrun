@@ -20,7 +20,27 @@
   <ul id="links" class="rounded">
     <li class="arrow"><a href="#topWines">Top Wines</a></li>
     <li class="arrow"><a href="#topWineries">Top Wineries</a></li>
+    <li class="arrow"><a href="#nearBy">Near By</a></li>
+    <li class="arrow"><a href="#events">Events</a></li>
+    <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
+    <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
+    <li class="arrow"><a href="#specials">Specials</a></li>
   </ul>
+</div>
+
+<div id="dailyDeal">
+       <div class="toolbar">
+         <h1>Daily Deal</h1>
+         <a class="button cancel" href="#">Back</a>
+       </div>
+       <div class="body">
+       <ul>
+       <p>
+         What is
+       </p>   
+      
+       </ul>   
+      </div>
 </div>
 
 <div id="topWines">
@@ -30,11 +50,25 @@
   </div>
   <div class="body">
     <ul>
-      <% for wine in @wines %>
-      <li class="arrow">
-      <%= wine.name %>
-      </li>
-      <% end %>
+	 <% for wines in @wines %>
+	<li class="arrow">
+<table>	
+	<tr>
+		<td width="180">
+        	<% if wines.pictures.length > 0 then %>
+          		<%= image_tag wines.pictures[0].url(:thumb) %>
+        	<% end %>
+		</td>	
+		<td>	
+			<div><%= link_to h(wines.name), wines %> </div>
+			<div><%=h wines.winery.city %>, <%=h wines.winery.state %> </div>
+			<div><%=h wines.description %> </div>
+			<div><%= render_stars wines%> </div>
+		</td>
+	</tr>
+	</table>				
+	</li>
+	<% end %>
     </ul>
   </div>    
 </div>
@@ -45,12 +79,95 @@
     <a class="button cancel" href="#">Back</a>
   </div>
   <div class="body">
-    <ul>
-      <% for winery in @wineries %>
-      <li class="arrow">
-      <%= winery.winery_name %>
-      </li>
-      <% end %>
-    </ul>   
+   	  <ul>
+	    <% for winery in @wineries %>
+	    <li class="arrow">
+			<table>	
+			<tr>
+				<td width="180">
+        			<% if winery.pictures.length > 0 then %>
+          				<%= image_tag winery.pictures[0].url(:thumb) %>
+        			<% end %>
+				</td>	
+			<td>
+	      		<div><%= link_to h(winery.winery_name), winery %></div>
+	      		<div><%= render_stars winery %></div>
+			</td>
+			</tr>
+			</table>
+	    </li>
+	    <% end %>
+      </ul>    
   </div>
 </div>
+
+<div id="nearBy">
+       <div class="toolbar">
+         <h1>Near By</h1>
+         <a class="button cancel" href="#">Back</a>
+       </div>
+       <div class="body">
+       <ul>
+       <p>
+         What is
+       </p>   
+      
+       </ul>   
+      </div>
+</div>
+
+<div id="events">
+       <div class="toolbar">
+         <h1>Events</h1>
+         <a class="button cancel" href="#">Back</a>
+       </div>
+	 <div class="body">
+   	  <ul>
+	    <% for event in @events %>
+	    <li class="arrow">
+	      <%= link_to h(event.title), event %>
+	      <%= render_stars event %>
+	    </li>
+	    <% end %>
+          </ul>   
+      </div>    
+</div>
+
+<div id="wines">
+       <div class="toolbar">
+         <h1>Wines</h1>
+         <a class="button cancel" href="#">Back</a>
+       </div>
+			<ul>
+	 			<% for wines in @wines %>
+				<li class="arrow" href="#wineDetails" >
+				<table>	
+				<tr>	
+				<td width="180"> <%= link_to image_tag("../images/page_find.png", 
+		 :border=>0, :alt=>"Show"), wines, :title=> "Show", :class => 'dialog_form_link' %>
+				</td>
+				<td>
+					<div><%= link_to h(wines.name), wines %> </div>
+					<div><%=h wines.winery.city %>, <%=h wines.winery.state %> </div>
+					<div><%=h wines.description %> </div>
+					<div><%= render_stars wines%> </div>
+					<a href="#wineDetails"></a>
+				</td>
+				</tr>
+				</table>				
+				</li>
+				<% end %>
+    </ul>    
+</div>
+
+<div id="specials">
+       <div class="toolbar">
+         <h1>Specials</h1>
+         <a class="button cancel" href="#">Back</a>
+       </div>
+       <p>
+         More what
+       </p>     
+</div>
+
+

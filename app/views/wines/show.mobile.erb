@@ -1,24 +1,40 @@
-<% content_for :head do %>
-  <script type="text/javascript" charset="utf-8">
-  $.jQTouch({
-      icon: 'jqtouch.png',
-      statusBar: 'black-translucent',
-      preloadImages: [
-          'themes/jqt/img/chevron_white.png',
-          'themes/jqt/img/bg_row_select.gif',
-          'themes/jqt/img/back_button_clicked.png',
-          'themes/jqt/img/button_clicked.png'
-          ]
-  });
-  </script>
-<% end %>
-
 <div id="home" class="current">
+
   <div class="toolbar">
-      <h1>Barrel Run</h1>
+      <h1>Wine Detail</h1>
+      <a class="button cancel" href="\">Back</a>
   </div>
-  <ul id="links" class="rounded">
-    <li class="arrow"><a href="#topWines">Top Wines</a></li>
-    <li class="arrow"><a href="#topWineries">Top Wineries</a></li>
-  </ul>
+
+<table>	
+<tr>
+<h3><%=h @wine.name %></h3>
+<td width="180">
+        <% if @wine.pictures.length > 0 then %>
+          <%= image_tag @wine.pictures[0].url(:thumb) %>
+        <% end %>
+</td>
+<td>
+        <div><strong>Vintage: </strong><%=h @wine.vintage %></div>
+        <div><strong>Type: </strong><%=h @wine.wine_type %></div>
+        <div><strong>Varietal: </strong><%=h @wine.varietal %></div>
+        <div><strong>Price: </strong><%=h number_to_currency(@wine.price) %></div>
+	<div><strong>Rating: </strong>
+	<% if user_signed_in? %>
+            <div class="stars">
+              <form action="/wines/<%= @wine.id %>/rating/" method="post">
+                <%= render_stars @wine %>
+              </form>
+            </div>
+          <% else %>
+            <div class="stars">
+                <%= render_stars @wine, true %>
+            </div>
+          <% end %>
+	</div>
+</td>
+</tr>
+</table>
+        <div class="span-9 last"style="height:50px; overflow: auto; margin: 10px 0px;">
+          <%=h @wine.description %> </div>	
 </div>
+

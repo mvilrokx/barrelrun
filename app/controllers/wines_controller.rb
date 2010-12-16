@@ -43,6 +43,7 @@ class WinesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @wines }
       format.js
+      format.mobile # show.mobile.erb
 #      format.json  { render :layout => false, :json => @wines }
       format.json  { render :layout => false, 
                             :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
@@ -58,6 +59,9 @@ class WinesController < ApplicationController
   def show
     @wine = Wine.find(params[:id])
     
+      respond_to do |format|
+      format.mobile # show.mobile.erb
+    end
     rescue
       flash[:notice] = 'You are not authorized to view that wine.'
       redirect_to :action => "index"
