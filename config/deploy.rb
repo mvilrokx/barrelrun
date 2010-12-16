@@ -1,9 +1,8 @@
-require 'vendor/plugins/thinking-sphinx/recipes/thinking_sphinx'
-
 # set :user, 'git'
 set :user, 'mark'
 set :domain, 'mark-server'
 set :application, 'barrelrun'
+set :rake, '/var/lib/gems/1.8/bin/rake'
 
 # file paths
 

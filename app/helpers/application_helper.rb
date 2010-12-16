@@ -65,7 +65,6 @@ module ApplicationHelper
   end
 
   def render_stars_from_rate (rating = 0)
-    print "entering render_stars_from_rate!!!!!!!!!!!!!!!!!!!!!"
     (1..10).map do |i|
       if rating.round == i
         radio_button_tag "rating", i, true, :disabled => read_only
@@ -73,7 +72,13 @@ module ApplicationHelper
         radio_button_tag "rating", i, false, :disabled => read_only
       end
     end
-    print "leaving render_stars_from_rate!!!!!!!!!!!!!!!!!!!!!"
+  end
+
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_asc_or_desc}" : nil
+    direction = column == sort_column && sort_asc_or_desc == "asc" ? "desc" : "asc"
+    link_to title, {:sort => column, :asc_or_desc => direction}, {:class => css_class}
   end
 
 end
