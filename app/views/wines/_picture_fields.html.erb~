@@ -1,9 +1,0 @@
-<div class="span-16 last">
-<span class="div_texbox">            
-  <div class="picture_field">
-    <%= image_tag f.object.photo.url(:thumb) %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "Remove Picture?", "#", :id => "remove_picture" %>
-  </div>
-</span>
-</div>

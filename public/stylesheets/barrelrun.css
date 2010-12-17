@@ -757,3 +757,17 @@ div#top_list li:hover {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+div.sort .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+div.sort .asc {
+  background-image: url(../images/bullet_arrow_up.png);
+}
+
+div.sort .desc {
+  background-image: url(../images/bullet_arrow_down.png);
+}

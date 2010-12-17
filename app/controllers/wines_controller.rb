@@ -1,6 +1,8 @@
 class WinesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rate, :all_wines]
 
+  helper_method :sort_column, :sort_asc_or_desc
+  
   def rate
     @wine = Wine.find(params[:id])
     @wine.rate(params[:stars], current_user, params[:dimension])
@@ -57,7 +59,7 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.xml
   def show
-    @wine = Wine.find(params[:id])
+    @wine = Wine.find(params[:id], :include => :comments, :order => sort_column + " " + sort_asc_or_desc)
     
       respond_to do |format|
       format.mobile # show.mobile.erb
@@ -153,5 +155,15 @@ class WinesController < ApplicationController
   rescue
       flash[:notice] = 'You are not authorized to delete that wine.'
       redirect_to :action => "index"
+  end
+  
+  private
+
+  def sort_column
+    %w[comments.created_at comments.average_rating].include?(params[:sort]) ? params[:sort] : "comments.created_at"
+  end
+  
+  def sort_asc_or_desc
+    %w[asc desc].include?(params[:asc_or_desc]) ? params[:asc_or_desc] : "desc"
   end
 end

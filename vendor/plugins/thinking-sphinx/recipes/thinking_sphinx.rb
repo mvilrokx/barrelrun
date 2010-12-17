@@ -1,4 +1,3 @@
-Capistrano::Configuration.instance(:must_exist).load do
   namespace :thinking_sphinx do
     namespace :install do
       desc <<-DESC
@@ -97,4 +96,3 @@ DESC
       end
     end
   end
-end
