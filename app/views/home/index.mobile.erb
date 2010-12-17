@@ -24,23 +24,8 @@
     <li class="arrow"><a href="#events">Events</a></li>
     <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
     <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
-    <li class="arrow"><a href="#specials">Specials</a></li>
+    <li class="arrow"><%= link_to h("Specials"), specials_path %></li>
   </ul>
-</div>
-
-<div id="dailyDeal">
-       <div class="toolbar">
-         <h1>Daily Deal</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-       <ul>
-       <p>
-         What is
-       </p>   
-      
-       </ul>   
-      </div>
 </div>
 
 <div id="topWines">
@@ -91,6 +76,7 @@
 				</td>	
 			<td>
 	      		<div><%= link_to h(winery.winery_name), winery %></div>
+          		<div><%=h winery.city %>, <%=h winery.state %></div>
 	      		<div><%= render_stars winery %></div>
 			</td>
 			</tr>
@@ -126,6 +112,7 @@
 	    <% for event in @events %>
 	    <li class="arrow">
 	      <%= link_to h(event.title), event %>
+	      <%=h event.winery.city %>, <%=h event.winery.state %>
 	      <%= render_stars event %>
 	    </li>
 	    <% end %>
@@ -165,9 +152,25 @@
          <h1>Specials</h1>
          <a class="button cancel" href="#">Back</a>
        </div>
-       <p>
-         More what
-       </p>     
+<div class="body">
+       <ul>
+       	<% for specials in @specials %>
+        <li class="arrow">
+           <table>    
+           <tr> 
+        	<% if specials.pictures.length > 0 then %>
+          		<%= image_tag specials.pictures[0].url(:thumb) %>
+        	<% end %>
+            <td>
+            	<div><%= link_to h(specials.name), specials %> </div>
+            	<div><%=h specials.description %> </div>
+            </td>
+            </tr>
+             </table>                     
+         </li>
+        <% end %>
+    </ul>  
+</div>       
 </div>
 
 
