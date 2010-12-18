@@ -1,9 +1,9 @@
 // Show heart
 $('#heart_<%=h @favorable.id %>').toggle();
-// Change Menu
-$('a[href=/events/<%= @favorable.id %>/favorites/<%= params[:id] %>]').text('Add To My Favorites')
-$('a[href=/events/<%= @favorable.id %>/favorites/<%= params[:id] %>]').attr({class: 'add_as_favorite', 
-                                                                            title: 'Add To My Favorites',
-                                                                            href: '/events/<%= @favorable.id%>/favorites'
-                                                                           })
-addNotice("<p><%= escape_javascript(flash.delete(:notice)) %></p>");                                                                           
+// Change Links
+$('a[href=/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id %>/favorites/<%= params[:id] %>]').text('Add To My Favorites');
+$('a[href=/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id %>/favorites/<%= params[:id] %>]').attr({class: 'add_as_favorite', 
+                                                          title: 'Add To My Favorites',
+                                                          href: '/<%= @favorable.class.name.downcase.pluralize %>/<%= @favorable.id %>/favorites'
+                                                        });
+addNotice("<p><%= escape_javascript(flash.delete(:notice)) %></p>");

@@ -176,6 +176,7 @@ $('.dialog_form_link').live('click', function() {
         .load($(this).attr('href') + ' .entry_form', function(){
             starRating.create('.dialog .stars');
             $('.jqueryui_date').datepicker();
+            $('div.comments').hide();
             $(this).dialog({
                 modal: true,
 //                title: $(this).text(),
@@ -373,6 +374,23 @@ var starRating = {
 
 
 /**
+* Submit comments
+*/
+$('a.write_comment').live('click', function() {
+  $('div.comments').slideToggle();
+  $('#comment_content').val("");
+  return false;
+});
+
+$('#new_comment').live('submit', function(){
+  $.post($(this).attr('action'), $(this).serialize(), null, "script");
+  $('div.comments').slideToggle();
+  $('#comment_content').val("");
+  return false;
+});
+
+
+/**
 * Hijack "Add as Favorite" link
 */
 $('.add_as_favorite').live('click', function() {
@@ -401,6 +419,11 @@ $(document).ready(function(){
         return false;
     });
 });
+
+
+
+
+
 
 /**
 * JQUery Plugin Star Rating System

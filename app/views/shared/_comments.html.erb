@@ -1,0 +1,17 @@
+<div class="span-17 last" style="overflow:auto; height:120px;">
+  <% commentable.comments.each do |comment| %>
+  <div class="span-16 last comment_line">
+    <div class="span-2 colborder">
+        <%=h comment.user.username %>
+    </div>
+    <div class="span-13 last">
+      <div class="span-13 last">
+        <%=h comment.created_at.strftime('%m/%d/%Y') %>
+      </div>
+      <div class="span-13 last">
+        <%=h comment.content %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

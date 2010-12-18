@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def index  
     @commentable = find_commentable
-    @comments = @commentable.comments
+    @comments = @commentable.comments.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml
@@ -19,9 +19,10 @@ class CommentsController < ApplicationController
     if @comment.save  
       flash[:notice] = "Successfully saved comment."  
     #     redirect_to :id => nil
-      redirect_to root_url
+#      redirect_to root_url
     else
-      render :action => 'new'  
+      flash[:notice] = "Could not save comment, please try again later."  
+#      render :action => 'new'  
     end
   end
 

@@ -26,15 +26,19 @@
             </div>
           <% end %>
         </div>
+
         <div class="span-9 last">
-          <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", wine_comments_path(@wine), :title=> "Write a Comment" %>
+        <% if @wine.favorites.find_by_user_id(current_user) %>
+          <a href="/wines/<%= @wine.id%>/favorites/<%= @wine.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a><
+        <% else %>
+          <a href="/wines/<%= @wine.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+        <% end %>
         </div>
-        <div class="span-9 last">
-          Add as Favorite
-        </div>
+
         <div class="span-9 last">
           Share
         </div>
+
         <div class="span-9 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
           <%=h @wine.description %>
         </div>
@@ -55,48 +59,19 @@
       <h3>Comments</h3>
     </div>
     <div class="span-14 last">
-        <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')} Write a Comment", wine_comments_path(@wine), :title=> "Write a Comment", :class=>"inline_comment" %>
+        <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')} Write a new Comment", wine_comments_path(@wine), :title=> "Write a new Comment", :class=>"write_comment" %>
     </div>
   </div>
-  <div class="span-17 last sort">
-    Sort by: <%= sortable "comments.created_at", "Date" %> | <%= sortable "comments.created_at", "Rating"  %>
-  </div>
 
-  <div class="span-17 last">
+  <div class="span-16 last comments">
   <% form_for [@wine, Comment.new] do |f| %>  
     <%= f.error_messages %>
-    <%= f.text_area :content, :rows => 4, :style=>"height: 100%; width: 100%;"  %>
+    <%= f.text_area :content, :rows => 3, :style=>"height: 100%; width: 100%;"  %>
     <%= f.submit "Save Comment" %>
   <% end %>
   </div>
 
-  <div class="span-17 last style="overflow:auto;height:80px;"">
-    <% @wine.comments.each do |comment| %>
-      <div class="span-2">
-          <%=h comment.user.username %>
-      </div>
-      <div class="span-15 last">
-        <div class="span-15 last">
-          <div class="stars span-3">
-            <form action="/wines/<%= @wine.id %>/rating/" method="post">
-              <% @user_rating = @wine.ratings.find_by_user_id(comment.user.id) %>
-              <% if @user_rating then %>
-                <%= render_stars(nil, true, @user_rating.rate) %>
-              <% else %>
-                <%= render_stars(nil, true, 0) %>                  
-              <% end %>
-            </form>
-          </div>
-          <div class="span-12 last">
-            <%=h comment.created_at.strftime('%m/%d/%Y') %>
-          </div>
-        </div>
-        <div class="span-15 last">
-            <%=h comment.content %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @wine} %></div>
 
 </div>
 
