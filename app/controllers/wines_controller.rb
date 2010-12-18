@@ -61,8 +61,9 @@ class WinesController < ApplicationController
   def show
     @wine = Wine.find(params[:id], :include => :comments, :order => sort_column + " " + sort_asc_or_desc)
     
-      respond_to do |format|
+    respond_to do |format|
       format.mobile # show.mobile.erb
+      format.html # index.html.erb
     end
     rescue
       flash[:notice] = 'You are not authorized to view that wine.'
