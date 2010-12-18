@@ -6,6 +6,7 @@ class WineriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :layout => false, :json => @wineries }
+      format.mobile # show.mobile.erb
     end
   end
   
@@ -21,6 +22,7 @@ class WineriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @winery }
+	  format.mobile # show.mobile.erb
     end
   end
 
