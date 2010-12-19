@@ -12,6 +12,7 @@
       <div class="span-9 last">
         <div class="span-9 last">
           <h3><%=h @wine.name %></h3>
+          <h4>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></h4>
         </div>
         <div class="span-9 append-bottom last">
           <% if user_signed_in? %>
@@ -27,17 +28,19 @@
           <% end %>
         </div>
 
-        <div class="span-9 last">
-        <% if @wine.favorites.find_by_user_id(current_user) %>
-          <a href="/wines/<%= @wine.id%>/favorites/<%= @wine.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a><
-        <% else %>
-          <a href="/wines/<%= @wine.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
-        <% end %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="span-9 last">
+          <% if @wine.favorites.find_by_user_id(current_user) %>
+            <a href="/wines/<%= @wine.id%>/favorites/<%= @wine.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
+          <% else %>
+            <a href="/wines/<%= @wine.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+          <% end %>
+          </div>
 
-        <div class="span-9 last">
-          Share
-        </div>
+          <div class="span-9 last">
+            Share
+          </div>
+        <% end %>
 
         <div class="span-9 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
           <%=h @wine.description %>
@@ -59,7 +62,11 @@
       <h3>Comments</h3>
     </div>
     <div class="span-14 last">
-        <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')} Write a new Comment", wine_comments_path(@wine), :title=> "Write a new Comment", :class=>"write_comment" %>
+    <% if user_signed_in? %>
+      <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')} Write a new Comment", wine_comments_path(@wine), :title=> "Write a new Comment", :class=>"write_comment" %>
+    <% else %>
+      <%= link_to "Register", new_user_registration_path %> or <%= link_to  content_tag(:span, 'Login'), new_user_session_path %> to add comments!
+    <% end %>
     </div>
   </div>
 
