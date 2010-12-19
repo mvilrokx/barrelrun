@@ -7,16 +7,13 @@
   
   <div class="body">
        <ul>
-       	<% for specials in @specials %>
+       	<% for special in @specials %>
         <li class="arrow">
            <table>    
            <tr> 
-        	<% if specials.pictures.length > 0 then %>
-          		<%= image_tag specials.pictures[0].url(:thumb) %>
-        	<% end %>
             <td>
-            	<div><%= link_to h(specials.name), specials %> </div>
-            	<div><%=h specials.description %> </div>
+            	<div><%= link_to h(special.title), special %> </div>
+            	<div><%=h special.description %> </div>
             </td>
             </tr>
              </table>                     

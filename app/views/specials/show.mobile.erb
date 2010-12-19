@@ -1,27 +1,26 @@
 <div id="home" class="current">
 
   <div class="toolbar">
-      <h1>Specials</h1>
+      <h1>Special</h1>
       <a class="button cancel" href="\">Back</a>
   </div>
   
   <div class="body">
-       <ul>
-       	<% for specials in @specials %>
-        <li class="arrow">
-           <table>    
-           <tr> 
-        	<% if specials.pictures.length > 0 then %>
-          		<%= image_tag specials.pictures[0].url(:thumb) %>
-        	<% end %>
-            <td>
-            	<div><%= link_to h(specials.name), specials %> </div>
-            	<div><%=h specials.description %> </div>
-            </td>
-            </tr>
-             </table>                     
-         </li>
-        <% end %>
+       <div><%= @special.title %><br/>
+              <em>from</em> <%=h @special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h @special.end_date.try(:strftime,'%m/%d/%Y') %>
+                  <div><%=h @special.description %> </div>
+                <% if user_signed_in? %>
+                  <div class="stars">
+                    <form action="/specials/<%= wine.id %>/rating/" method="post">
+                      <%= render_stars @special %>
+                    </form>
+                  </div>
+                <% else %>
+                  <div class="stars">
+                      <%= render_stars @special, true %>
+                  </div>
+                <% end %>
+       </div>
     </ul>  
 </div>   
   
