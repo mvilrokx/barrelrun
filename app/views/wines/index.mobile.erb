@@ -16,7 +16,18 @@
             	<div><%= link_to h(wines.name), wines %> </div>
             	<div><%=h wines.winery.city %>, <%=h wines.winery.state %> </div>
             	<div><%=h wines.description %> </div>
-            	<div><%= render_stars wines%> </div>
+	  <% if user_signed_in? %>
+            <div class="stars">
+              <form action="/wines/<%= @wine.id %>/rating/" method="post">
+                <%= render_stars wines %>
+              </form>
+            </div>
+          <% else %>
+            <div class="stars">
+                <%= render_stars wines, true %>
+            </div>
+          <% end %>
+	</div>
             </td>
             </tr>
              </table>                     
