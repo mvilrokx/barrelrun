@@ -12,7 +12,7 @@
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
-          <% form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put } do |f| -%>
+          <% form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true } do |f| -%>
             <%= f.error_messages %>
             <%= f.label :username %>
             <span class="div_texbox">
@@ -41,7 +41,7 @@
           	</span>
             <%= f.label :email %>
             <span class="div_texbox">
-              <%= tag(:input, {id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"}) %>
+              <%= tag(:input, {object_id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"}) %>
           	</span>
             <%= f.label :birthdate %>
             <span class="div_texbox">
@@ -76,6 +76,18 @@
               <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
           	</span>
 
+            <div id="picture_fields">
+            <% f.fields_for :picture do |builder| %>
+              <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
+            <% end %>
+            </div>
+
+            <span class="div_texbox"><%= add_child_link "Add Picture?", :picture %></span>
+
+            <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
+
+            <hr/>
+
             <%= f.label :current_password %>
             <span class="div_texbox">
               <%= f.password_field :current_password, :required => true, :class => "fillout01" %> <i>(for confirmation)</i>
@@ -87,6 +99,9 @@
           <% end -%>
         </fieldset>
       <%= render :partial => "shared/devise_links" %>
+      <div id="jstemplates">
+        <%= yield :jstemplates %>
+      </div>
       </div>
     </div>
   </div>

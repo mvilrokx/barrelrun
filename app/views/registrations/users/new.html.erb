@@ -81,13 +81,28 @@
             <span class="div_texbox">
               <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
           	</span>
+
+            <div id="picture_fields">
+            <% f.fields_for :picture do |builder| %>
+              <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
+            <% end %>
+            </div>
+
+            <span class="div_texbox"><%= add_child_link "Add Picture?", :picture %></span>
+
+            <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
+
             <span class="div_texbox">
               <%= f.submit "Sign up" %>
           	</span>
           <% end -%>
         </fieldset>
       <%= render :partial => "shared/devise_links" %>
+      <div id="jstemplates">
+        <%= yield :jstemplates %>
+      </div>
       </div>
     </div>
   </div>
 </div>
+
