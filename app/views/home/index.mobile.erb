@@ -10,12 +10,28 @@
           'themes/jqt/img/button_clicked.png'
           ]
   });
+
   </script>
 <% end %>
 
 <div id="home" class="current">
   <div class="toolbar">
       <h1>Barrel Run</h1>
+
+      <% if user_signed_in? %>
+      <div class="whiteButton" id="signed_in">
+        <%= link_to "Signed in as " + current_user.username, edit_user_registration_path %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      </div>
+      <% elsif winery_signed_in? %>
+      <div class="whiteButton" id="signed_in">
+        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        <%= link_to "Sign Out", destroy_winery_session_path %>
+      </div>
+      <% else %>
+      <a class="button button add slideup" <%= link_to h("Login"), new_user_session_path %> </a>
+      <% end %>
+
   </div>
   <ul id="links" class="rounded">
     <li class="arrow"><a href="#topWines">Top Wines</a></li>
@@ -108,18 +124,17 @@
 </div>
 
 <div id="nearBy">
-       <div class="toolbar">
+	<div class="toolbar">
          <h1>Near By</h1>
          <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-       <ul>
-       <p>
-         What is
-       </p>   
-      
-       </ul>   
-      </div>
+    </div>
+    <div class="body">
+		<div class="colborder">
+      		<div>
+        		<img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:S|<%= 38.3034 %>,<%= -122.2967 %>&sensor=false"/>
+	 		</div>
+		</div>    
+    </div>
 </div>
 
 <div id="events">
@@ -166,5 +181,7 @@
 				<% end %>
     </ul>    
 </div>
+
+
 
 
