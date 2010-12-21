@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
    
   has_many :comments, :as => :commentable, :dependent => :delete_all
   has_many :favorites, :as => :favorable, :dependent => :delete_all
+ 	has_one :picture, :as => :pictureable, :dependent => :destroy
+  accepts_nested_attributes_for :picture
 
   validates_presence_of :username, :email, :firstname, :lastname, :lat, :lng 
   validates_length_of :username, :in => 6..19
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, 
                  :firstname, :lastname, :username, :birthdate,
                  :telephone, :address, :address2, :address3,
-                 :city, :state, :zipcode, :country
+                 :city, :state, :zipcode, :country, :picture_attributes
   ajaxful_rater
 
   # Virtual attribute for GeoCoding
@@ -31,11 +33,19 @@ class User < ActiveRecord::Base
 
   before_validation :geocode_address
 
-  private
-  def geocode_address
-   geo = Geokit::Geocoders::MultiGeocoder.geocode(complete_address)
-   errors.add(:complete_address, "Could not Geocode address") if !geo.success
-   self.lat, self.lng = geo.lat,geo.lng if geo.success
-  end
+  Max_Attachments = 1
+  Max_Attachment_Size = 5.megabyte
 
+  private
+
+    def geocode_address
+     geo = Geokit::Geocoders::MultiGeocoder.geocode(complete_address)
+     errors.add(:complete_address, "Could not Geocode address") if !geo.success
+     self.lat, self.lng = geo.lat,geo.lng if geo.success
+    end
+
+  	def validate_attachments
+     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
+    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+ 	  end
 end

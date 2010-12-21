@@ -1,0 +1,3 @@
+[submodule "juggernaut"]
+	path = juggernaut
+	url = git://github.com/maccman/juggernaut.git
