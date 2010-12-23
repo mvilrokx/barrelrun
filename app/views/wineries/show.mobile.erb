@@ -42,10 +42,9 @@
 			</div>
 
   <ul id="links" class="rounded">
-    <li class="arrow"><a href="#rateAndComment">Rate and Comment</a></li>
-    <li class="arrow"><a href="#viewUserComments">View User Comments</a></li>
+    <li class="arrow"><%= link_to h("View and Enter Comments"), winery_comments_path(@winery) %></li>
     <li class="arrow"><a href="#welcomeVideoAndMore">Welcome Video and More</a></li>
-    <li class="arrow"><a href="#pictures">Pictures</a></li>
+    <li class="arrow"><%= link_to h("Pictures"), pictures_path(@winery) %></li>
     <li class="arrow"><a href="#events">Events</a></li>
     <li class="arrow"><a href="#specials">Specials</a></li>
     <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
@@ -73,12 +72,8 @@
          <a class="button cancel" href="#">Back</a>
        </div>
        <div class="body">
-       <ul>
-       <p>
-         ?????????????
-       </p>   
-      
-       </ul>   
+
+	</div>   
       </div>
 </div>
 

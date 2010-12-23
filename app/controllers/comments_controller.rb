@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       format.html # index.html.erb
       format.xml
       format.js
+      format.mobile
       format.json { render :layout => false, :json => @comments }
     end
   end  
