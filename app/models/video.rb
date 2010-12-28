@@ -14,7 +14,9 @@ class Video < ActiveRecord::Base
   @@per_page = 10
 
 #   validates_attachment_size :photo, :less_than => 5.megabytes  
-#   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']     
+#   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_presence :movie
+
 	def url(*args)
 		movie.url(*args)
 	end

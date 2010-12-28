@@ -18,11 +18,11 @@
     	</span>
       <%= f.label :start_date %>
       <span class="div_texbox">
-        <%= f.text_field :start_date, :required => true, :class => "fillout03 jqueryui_date" %>
+        <%= f.text_field :start_date, :required => true, :class => "fillout03 jqueryui_date", :value => @event.try(:start_date).try(:strftime,'%m/%d/%Y') %>
     	</span>
       <%= f.label :end_date %>
       <span class="div_texbox">
-        <%= f.text_field :end_date, :required => true, :class => "fillout03 jqueryui_date" %>
+        <%= f.text_field :end_date, :required => true, :class => "fillout03 jqueryui_date", :value => @event.try(:end_date).try(:strftime,'%m/%d/%Y')  %>
     	</span>
       <%= f.label :price %>
       <span class="div_texbox">

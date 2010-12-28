@@ -4,7 +4,7 @@ class Award < ActiveRecord::Base
    
    	belongs_to :wine
 
-	  validates_presence_of :title
+	  validates_presence_of :title, :wine
 
 #    attr_accessible :title, :description, :winery_id
 
