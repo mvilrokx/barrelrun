@@ -176,6 +176,14 @@ $('.dialog_form_link').live('click', function() {
         .load($(this).attr('href') + ' .entry_form', function(){
             starRating.create('.dialog .stars');
             $('.jqueryui_date').datepicker();
+            $('#wine_varietal').autocomplete({
+              source: "/wines/distinct_varietals.json",
+              minLength: 1
+            });
+            $('#wine_wine_type').autocomplete({
+              source: "/wines/distinct_wine_types.json",
+              minLength: 1
+            });
             $('div.comments').hide();
             $(this).dialog({
                 modal: true,
@@ -427,9 +435,9 @@ $(document).ready(function(){
 
 /**
 * JQUery Plugin Star Rating System
-*/
+
 $(document).ready(function(){
     $(".star_ratings").stars();
 });
-
+*/
 

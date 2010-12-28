@@ -10,8 +10,8 @@
      return '<%= form_authenticity_token if protect_against_forgery? -%>';
    }
   //--></script>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js' %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js' %>
   <%= javascript_include_tag 'jquery.tools.min.js' %>
   <%= javascript_include_tag 'flowplayer-3.2.4.min.js' %>
   <%= javascript_include_tag 'jwplayer.js' %>
@@ -25,7 +25,7 @@
       <div class="span-8 prepend-top" id="company_logo">
         <%= link_to image_tag("../images/barrelrun_logo.png", :border=>0), root_path %>
       </div>
-      <% form_tag ({:action => "all_objects_search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+      <% form_tag({:action => "all_objects_search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
           <div class="span-8">
             <label>Enter Winery, Wine or Region</label><br>
@@ -41,12 +41,12 @@
         </div>
       <% end %>
       <% if user_signed_in? %>
-      <div class="span-7 pull-7 last" id="signed_in">
+      <div class="span-8 pull-8 last" id="signed_in">
         <%= link_to "Signed in as " + current_user.username, edit_user_registration_path %>
         <%= link_to "Sign Out", destroy_user_session_path %>
       </div>
       <% elsif winery_signed_in? %>
-      <div class="span-7 pull-7 last" id="signed_in">
+      <div class="span-8 pull-8 last" id="signed_in">
         <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
         <%= link_to "Sign Out", destroy_winery_session_path %>
       </div>

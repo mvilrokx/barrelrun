@@ -14,7 +14,7 @@
           </div>
           <% form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true } do |f| -%>
             <%= f.error_messages %>
-            <%= f.label :username %>
+            <%= f.label :username, 'User Name' %>
             <span class="div_texbox">
               <%= f.text_field :username, :disabled => "disabled", :class => "fillout01" %> <i>(cannot be changed)</i>
           	</span>         	
@@ -31,11 +31,11 @@
             <div class="subheading">
               <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </div>
-            <%= f.label :firstname %>
+            <%= f.label :firstname, "First Name" %>
             <span class="div_texbox">
               <%= f.text_field :firstname, :class => "fillout03" %>
           	</span>
-            <%= f.label :lastname %>
+            <%= f.label :lastname, "Last Name" %>
             <span class="div_texbox">
               <%= f.text_field :lastname, :class => "fillout03" %>
           	</span>

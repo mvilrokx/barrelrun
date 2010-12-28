@@ -158,6 +158,26 @@ class WinesController < ApplicationController
       redirect_to :action => "index"
   end
   
+  def distinct_varietals
+#    @distinct_varietals = Wine.connection.select_values('select distinct(varietal) from wines')
+        
+    @varietals = Wine.distinct_varietals.all(:conditions => ["varietal like ?","%#{params[:term]}%"])
+    @varietals_hash = []
+    @varietals.each do |varietal|
+      @varietals_hash << {"label" => varietal.varietal}
+    end
+    render :json => @varietals_hash
+  end
+
+  def distinct_wine_types
+    @wine_types = Wine.distinct_wine_types.all(:conditions => ["wine_type like ?","%#{params[:term]}%"])
+    @wine_types_hash = []
+    @wine_types.each do |wine_type|
+      @wine_types_hash << {"label" => wine_type.wine_type}
+    end
+    render :json => @wine_types_hash
+  end
+
   private
 
   def sort_column

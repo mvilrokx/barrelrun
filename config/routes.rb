@@ -5,9 +5,14 @@ ActionController::Routing::Routes.draw do |map|
   map.devise_for :wineries
   map.devise_for :users
 
-  map.resources :wines
-  map.resources :events
-  map.resources :specials
+  map.resources :wines, :member => {:rating => :post}, 
+                        :collection => {:distinct_varietals => :get,
+                                        :distinct_wine_types => :get
+                                        }
+  map.resources :wineries, :member => {:rating => :post}
+  map.resources :events, :member => {:rating => :post}
+  map.resources :specials, :member => {:rating => :post}
+
   map.resources :favorites
   map.resources :awards
   map.resources :pictures
@@ -16,13 +21,6 @@ ActionController::Routing::Routes.draw do |map|
 
   #MV: Added for Unobtrusive Destroy Link
   # map.resources :wines, :member => { :delete => :get }
-  
-  #MV: Added for Star Rating System
-  map.resources :wines, :member => {:rate => :post, :rating => :post}
-  map.resources :wineries, :member => {:rate => :post, :rating => :post}
-  map.resources :events, :member => {:rate => :post, :rating => :post}
-  map.resources :specials, :member => {:rate => :post, :rating => :post}
-
   
   #MV: Added for adding comments
   map.resources :wines, :has_many => :comments  
@@ -88,10 +86,10 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   
-  map.connect 'home/top_wines', :action=>'top_wines',:controller=>'home'
-  map.connect 'home/top_wineries', :action=>'top_wineries',:controller=>'home'
-  map.connect 'home/upcoming_events', :action=>'upcoming_events',:controller=>'home'
-  map.connect 'home/upcoming_specials', :action=>'upcoming_specials',:controller=>'home'
+  map.connect 'home/top_wines.:format', :action=>'top_wines',:controller=>'home'
+  map.connect 'home/top_wineries.:format', :action=>'top_wineries',:controller=>'home'
+  map.connect 'home/upcoming_events.:format', :action=>'upcoming_events',:controller=>'home'
+  map.connect 'home/upcoming_specials.:format', :action=>'upcoming_specials',:controller=>'home'
   map.connect 'home/local_wineries.:format', :action=>'local_wineries',:controller=>'home'
   
   map.connect ':controller/:action/:id'

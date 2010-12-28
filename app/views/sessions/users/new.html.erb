@@ -10,7 +10,7 @@
         <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
         <%= f.error_messages %>
         <fieldset>
-          <%= f.label :username %>
+          <%= f.label :username, "User Name" %>
           <span class="div_texbox">
             <%= f.text_field :username, :class => "fillout01" %>
         	</span>         	

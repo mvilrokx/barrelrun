@@ -1,5 +1,6 @@
+<% if !user_signed_in? and !winery_signed_in?%>
 <div style="background-image:url(images/signup.jpg); background-repeat:no-repeat; background-position: center; width: 950px; padding: 8px 0; text-align: center; font-size: 1.5em;"><%= link_to  image_tag("../images/signup_button.png", :alt=>"signup button", :width=>"109", :height=>"46", :style=>"padding-bottom: 5px; vertical-align: middle;"), new_user_registration_path %> now for free to discover and connect with wineries in real time.</div>
-
+<% end %>
 
 
 <%= render :partial=>"map" %>

@@ -37,7 +37,7 @@ class Winery < ActiveRecord::Base
 #  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
 
   validates_presence_of :lat, :lng
-  acts_as_mappable :auto_geocode => {:field=>:complete_address}
+  acts_as_mappable :auto_geocode => {:field=>:complete_address, :error_message=>'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
   named_scope :top_wineries, :order => "average_rating DESC", 
                              :limit => 10, 

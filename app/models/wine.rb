@@ -13,7 +13,7 @@ class Wine < ActiveRecord::Base
  
 #  	before_validation :clear_picture
 
-  validates_presence_of :name
+  validates_presence_of :name, :vintage, :varietal, :wine_type
  	validates_numericality_of :price, :vintage, :allow_blank => true
  	validate :price_must_be_at_least_a_cent, :validate_attachments
  	validates_associated :favorites
@@ -32,6 +32,11 @@ class Wine < ActiveRecord::Base
                           :limit => 10,
                           :include => {:comments => :user}
    
+  named_scope :distinct_wine_types, :select => "distinct wine_type",
+                                   :order => "wine_type"
+  named_scope :distinct_varietals, :select => "distinct varietal",
+                                   :order => "varietal"
+
   # ThinkingSphinx setup
   define_index do
     indexes :name
