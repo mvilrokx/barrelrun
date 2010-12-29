@@ -9,17 +9,6 @@
        <div><%= @special.title %><br/>
               <em>from</em> <%=h @special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h @special.end_date.try(:strftime,'%m/%d/%Y') %>
                   <div><%=h @special.description %> </div>
-                <% if user_signed_in? %>
-                  <div class="stars">
-                    <form action="/specials/<%= wine.id %>/rating/" method="post">
-                      <%= render_stars @special %>
-                    </form>
-                  </div>
-                <% else %>
-                  <div class="stars">
-                      <%= render_stars @special, true %>
-                  </div>
-                <% end %>
        </div>
     </ul>  
 </div>   
