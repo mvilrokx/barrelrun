@@ -6,6 +6,7 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  # Method used to determine which tab is active
   def link_with_active(text, url)
     if url == "/" then
        if request.request_uri == "/" then

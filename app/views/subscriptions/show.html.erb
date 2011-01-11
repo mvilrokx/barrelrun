@@ -1,0 +1,76 @@
+<% title "Current Subscription" %>
+
+  <div class="push-3 span-18 last sub_nav">
+    <ul>
+      <li><%= link_with_active 'Winery', edit_winery_registration_path %></li>
+      <li><%= link_with_active 'Credit Cards', credit_cards_path %></li>
+      <li><%= link_with_active 'Subscription Information', subscriptions_path%></li>
+    </ul>
+  </div>
+
+<p>
+  <strong>Plan Level:</strong>
+  <%=h @subscription.plan_id %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%=h @subscription.status %>
+</p>
+<p>
+  <strong>Credit Card:</strong>
+  <%=h @subscription.credit_card %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%=h @subscription.price %>
+</p>
+<p>
+  <strong>Balance:</strong>
+  <%=h @subscription.balance %>
+</p>
+<p>
+  <strong>billing_day_of_month:</strong>
+  <%=h @subscription.billing_day_of_month %>
+</p>
+<p>
+  <strong>billing_period_start_date:</strong>
+  <%=h @subscription.billing_period_start_date %>
+</p>
+<p>
+  <strong>billing_period_end_date:</strong>
+  <%=h @subscription.billing_period_end_date %>
+</p>
+<p>
+  <strong>first_billing_date:</strong>
+  <%=h @subscription.first_billing_date %>
+</p>
+<p>
+  <strong>never_expires:</strong>
+  <%=h @subscription.never_expires %>
+</p>
+<p>
+  <strong>next_billing_date:</strong>
+  <%=h @subscription.next_billing_date %>
+</p>
+<p>
+  <strong>number_of_billing_cycles:</strong>
+  <%=h @subscription.number_of_billing_cycles %>
+</p>
+<p>
+  <strong>next_billing_period_amount:</strong>
+  <%=h @subscription.next_billing_period_amount %>
+</p>
+<p>
+  <strong>paid_through_date:</strong>
+  <%=h @subscription.paid_through_date %>
+</p>
+
+
+
+
+<p>
+  <%= link_to "Edit", edit_subscription_path(@subscription) %> |
+  <%= link_to "Destroy", @subscription, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", subscriptions_path %>
+</p>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
  	has_one :picture, :as => :pictureable, :dependent => :destroy
   accepts_nested_attributes_for :picture
 
-  validates_presence_of :username, :email, :firstname, :lastname, :lat, :lng 
+  validates_presence_of :username, :email, :first_name, :last_name, :lat, :lng 
   validates_length_of :username, :in => 6..19
   validates_uniqueness_of :telephone, :allow_nil => true, :allow_blank => true
 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, 
-                 :firstname, :lastname, :username, :birthdate,
+                 :first_name, :last_name, :username, :birthdate,
                  :telephone, :address, :address2, :address3,
                  :city, :state, :zipcode, :country, :picture_attributes
   ajaxful_rater

@@ -21,3 +21,9 @@ config.action_mailer.delivery_method = :sendmail
 
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+config.after_initialize do
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "wj6wnxrgdvh5v5rx"
+  Braintree::Configuration.public_key = "cdcsdmnwsfdtmf2j"
+  Braintree::Configuration.private_key = "6k4b8m868p44dqpt"
+end

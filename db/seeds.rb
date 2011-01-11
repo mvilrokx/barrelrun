@@ -46,8 +46,8 @@ wineryFiles.each do |wineryFile|
                        :website_url => "http://" + website,
                        :username => winery_name,
                        :email => "jin" + idx.to_s + "@barrelrun.com",
-                       :contact_firstname => "Jin",
-                       :contact_lastname => "Kim",
+                       :contact_first_name => "Jin",
+                       :contact_last_name => "Kim",
                        :password => "s3cr3t",
                        :confirm_password => "s3cr3t"
                        )

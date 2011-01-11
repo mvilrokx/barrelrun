@@ -1,0 +1,23 @@
+<div class="push-3 span-18 last sub_nav">
+  <ul>
+    <li><%= link_with_active 'Winery', edit_winery_registration_path %></li>
+    <li><%= link_with_active 'Credit Cards', credit_cards_path %></li>
+    <li><%= link_with_active 'Subscription Information', subscriptions_path%></li>
+  </ul>
+</div>
+
+<% title "Credit Card List" %>
+
+<div class="prepend-top push-1 prepend-1 span-20 append-1 main last box">
+  
+  <div class="span-5">
+    <h2>Credit Card List</h2>
+  </div>  
+  <div class="span-4 last">
+    <%= link_to 'Add New Credit Card', new_credit_card_path, :id => 'new_credit_card', :class => 'dialog_form_link large' %>
+  </div>
+  <hr/>
+
+  <%= render :partial => "credit_cards" %>
+  
+</div>

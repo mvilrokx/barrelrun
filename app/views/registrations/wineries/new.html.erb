@@ -31,7 +31,7 @@
           	</span>
             <%= f.label :password_confirmation %>
             <span class="div_texbox">
-              <%= f.password_field :password_confirmation, :required => true, :class => "fillout01" %>
+              <%= f.password_field :password_confirmation , :class => "fillout01" %>
           	</span>
           	<hr>
           <div class="subheading">
@@ -49,13 +49,13 @@
             <span class="div_texbox">
               <%= f.text_field :owner_gm_email, :class => "fillout02" %>
           	</span>
-            <%= f.label :contact_firstname %>
+            <%= f.label :contact_first_name%>
             <span class="div_texbox">
-              <%= f.text_field :contact_firstname, :class => "fillout03" %>
+              <%= f.text_field :contact_first_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :contact_lastname %>
+            <%= f.label :contact_last_name %>
             <span class="div_texbox">
-              <%= f.text_field :contact_lastname, :class => "fillout03" %>
+              <%= f.text_field :contact_last_name, :required => true, :class => "fillout03" %>
           	</span>
             <%= f.label :telephone %>
             <span class="div_texbox">
@@ -75,15 +75,15 @@
           	</span>
             <%= f.label :city %>
             <span class="div_texbox">
-              <%= f.text_field :city, :class => "fillout03" %>
+              <%= f.text_field :city, :required => true, :class => "fillout03" %>
           	</span>
             <%= f.label :state %>
             <span class="div_texbox">
-              <%= f.text_field :state, :class => "fillout04" %>
+              <%= f.text_field :state, :required => true, :class => "fillout04" %>
           	</span>
             <%= f.label :zipcode %>
             <span class="div_texbox">
-              <%= f.text_field :zipcode, :class => "fillout04" %>
+              <%= f.text_field :zipcode, :required => true, :class => "fillout04" %>
           	</span>
             <%= f.label :country %>
             <span class="div_texbox">

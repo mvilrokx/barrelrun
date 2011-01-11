@@ -6,7 +6,7 @@
       <span class="div_texbox">
         <%= f.collection_select(:wine_id, current_winery.wines.all, :id, :name, options ={:prompt => "-Select a Wine"}, :class =>"fillout01") %>
     	</span>
-      <%= f.label :title %>
+      <%= f.label :title, "Award" %>
       <span class="div_texbox">
         <%= f.text_field :title, :required => true, :class => "fillout01" %>
     	</span>

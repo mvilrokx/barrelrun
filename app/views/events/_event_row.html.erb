@@ -2,8 +2,8 @@
   <td><%=h event.title %></td>
   <td><%=h event.description %></td>
   <td><%=h event.place %></td>
-  <td><%=h event.start_date %></td>
-  <td><%=h event.end_date %></td>
+  <td><%=h event.start_date.try(:strftime,'%m/%d/%Y') %></td>
+  <td><%=h event.end_date.try(:strftime,'%m/%d/%Y') %></td>
   <td><%=h event.price %></td>
   <td><%=h event.contact_info_name %></td>
   <td><%=h event.contact_info_phone %></td>

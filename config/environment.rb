@@ -26,6 +26,7 @@ Rails::Initializer.run do |config|
     config.gem('will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org')
     config.gem('thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.20')
     config.gem 'juggernaut', :version => '2.0.0'
+    config.gem 'braintree', :version => '2.6.2'
     
   #    config.gem 'haml'
     

@@ -1,0 +1,12 @@
+<% title "Credit Card" %>
+
+<p>
+  <strong>Token:</strong>
+  <%=h @credit_card.token %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_credit_card_path(@credit_card) %> |
+  <%= link_to "Destroy", @credit_card, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", credit_cards_path %>
+</p>

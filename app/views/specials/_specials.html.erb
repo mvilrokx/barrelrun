@@ -21,8 +21,8 @@
     <tr>
       <td><%=h special.title %></td>
       <td><%=h special.description %></td>
-      <td><%=h special.start_date %></td>
-      <td><%=h special.end_date %></td>
+      <td><%=h special.start_date.try(:strftime,'%m/%d/%Y') %></td>
+      <td><%=h special.end_date.try(:strftime,'%m/%d/%Y') %></td>
     <% if special.pictures.length > 0 then %>
     <td><%= image_tag special.pictures[0].url(:thumb) %></td>
     <% else %>

@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
 #  map.resources :ratings
 
 
@@ -17,7 +18,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :awards
   map.resources :pictures
   map.resources :videos
-  
+  map.resources :credit_cards
+  map.resources :subscriptions
+ 
 
   #MV: Added for Unobtrusive Destroy Link
   # map.resources :wines, :member => { :delete => :get }
@@ -39,6 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :specials, :has_many => :ratings
   map.resources :wines, :has_many => :ratings
   map.resources :wineries, :has_many => :ratings
+  map.resources :wineries, :has_many => :credit_cards
   map.resources :events, :has_many => :ratings
 
 

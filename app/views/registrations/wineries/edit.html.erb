@@ -1,6 +1,13 @@
 <% title("Edit " + resource_name.to_s.humanize) %>
 
 <div class="container">
+  <div class="push-3 span-18 last sub_nav">
+    <ul>
+      <li><%= link_with_active 'Winery', edit_winery_registration_path %></li>
+      <li><%= link_with_active 'Credit Cards', credit_cards_path %></li>
+      <li><%= link_with_active 'Subscription Information', subscriptions_path%></li>
+    </ul>
+  </div>
   <hr class="space">
   <div class="push-3 span-18 last main">
     <hr class="space">
@@ -42,13 +49,13 @@
             <span class="div_texbox">
               <%= f.text_field :owner_gm_email, :class => "fillout02" %>
           	</span>
-            <%= f.label :contact_firstname %>
+            <%= f.label :contact_first_name %>
             <span class="div_texbox">
-              <%= f.text_field :contact_firstname, :class => "fillout03" %>
+              <%= f.text_field :contact_first_name, :class => "fillout03" %>
           	</span>
-            <%= f.label :contact_lastname %>
+            <%= f.label :contact_last_name %>
             <span class="div_texbox">
-              <%= f.text_field :contact_lastname, :class => "fillout03" %>
+              <%= f.text_field :contact_last_name, :class => "fillout03" %>
           	</span>
             <%= f.label :telephone %>
             <span class="div_texbox">

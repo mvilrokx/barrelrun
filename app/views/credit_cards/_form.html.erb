@@ -1,0 +1,26 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_for @credit_card, :html => {:autocomplete => "off"} do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :card_number %>
+      <span class="div_texbox">
+        <%= f.text_field :card_number, :required => true, :class => "fillout01" %>
+    	</span>
+      <%= f.label :card_verification_value %>
+      <span class="div_texbox">
+        <%= f.text_field :card_verification_value, :required => true, :class => "fillout01" %>
+    	</span>
+      <%= f.label :expiration_date %>
+      <span class="div_texbox">
+        <%= f.date_select :expiration_date, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+    	</span>
+      <span class="div_texbox">            
+        <%= f.submit "Save" %>
+     	</span>
+    <% end %>
+  </fieldset>
+</div>
+<hr/>
+<a href="https://www.braintreegateway.com/merchants/YOUR_MERCHANT_ID/verified" target="_blank">
+<img src="https://braintree-badges.s3.amazonaws.com/08.png" border="0"/>
+</a>

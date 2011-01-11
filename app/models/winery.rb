@@ -1,6 +1,8 @@
 class Winery < ActiveRecord::Base
-  validates_presence_of :username, :email, :winery_name, :contact_firstname, 
-                        :contact_lastname, :telephone, :website_url
+  validates_uniqueness_of :username
+  validates_presence_of :username, :email, :winery_name, :contact_first_name, 
+                        :contact_last_name, :telephone, :website_url, :city, 
+                        :state, :zipcode
 
   has_many :comments, :as => :commentable, :dependent => :delete_all
   has_many :favorites, :as => :favorable, :dependent => :delete_all
@@ -11,8 +13,13 @@ class Winery < ActiveRecord::Base
   has_many :ratings, :as => :rateable, :dependent => :delete_all
  	has_many :pictures, :as => :pictureable, :dependent => :delete_all
  	has_many :videos, :as => :videoable, :dependent => :delete_all
+  has_many :credit_cards, :as => :creditable, :dependent => :delete_all
+  has_one  :subscription, :dependent => :delete
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
+
+  after_create :store_customer_in_vault
+  before_destroy :destroy_customer_in_vault
 
   def complete_address
     [address, city, state, zipcode, country].join(', ')
@@ -30,13 +37,13 @@ class Winery < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :username,  
                  :winery_name, :owner_gm_name, :owner_gm_email,
-                 :contact_firstname, :contact_lastname,
+                 :contact_first_name, :contact_last_name,
                  :telephone, :address, :address2, :address3,
                  :city, :state, :zipcode, :country, :website_url
 
 #  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
 
-  validates_presence_of :lat, :lng
+#  validates_presence_of :lat, :lng
   acts_as_mappable :auto_geocode => {:field=>:complete_address, :error_message=>'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
   named_scope :top_wineries, :order => "average_rating DESC", 
@@ -63,6 +70,25 @@ class Winery < ActiveRecord::Base
     	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
  	  end
 
+  	def store_customer_in_vault
+      result = Braintree::Customer.create(
+        :id => username
+      )
+      unless result.success?
+        result.errors.each do |error|
+          errors.add_to_base error.message
+        end
+      end
+ 	  end
+
+  	def destroy_customer_in_vault
+      result = Braintree::Customer.delete(username)
+      unless result.success?
+        result.errors.each do |error|
+          errors.add_to_base error.message
+        end
+      end
+ 	  end
 # Added to be able to RATE a winery (which is a devise user) but doesn't seem to work either'
 #  protected
 #    def password_required?

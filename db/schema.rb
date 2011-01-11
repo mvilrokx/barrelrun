@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201051504) do
+ActiveRecord::Schema.define(:version => 20110110062146) do
 
   create_table "awards", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(:version => 20101201051504) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "credit_cards", :force => true do |t|
+    t.string   "token"
+    t.date     "expiration_date"
+    t.integer  "creditable_id"
+    t.string   "creditable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,6 +115,14 @@ ActiveRecord::Schema.define(:version => 20101201051504) do
     t.decimal  "average_rating",       :precision => 4, :scale => 2
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.string   "plan_id"
+    t.integer  "winery_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
@@ -124,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20101201051504) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "first_name"
+    t.string   "last_name"
     t.date     "birthdate"
     t.string   "telephone"
     t.string   "address"
@@ -180,8 +197,8 @@ ActiveRecord::Schema.define(:version => 20101201051504) do
     t.string   "winery_name"
     t.string   "owner_gm_name"
     t.string   "owner_gm_email"
-    t.string   "contact_firstname"
-    t.string   "contact_lastname"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
     t.string   "telephone"
     t.string   "address"
     t.string   "address2"
