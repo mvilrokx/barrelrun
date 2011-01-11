@@ -26,7 +26,7 @@ class Subscription < ActiveRecord::Base
       self.billing_period_end_date = braintree_subscription_data.billing_period_end_date
       self.first_billing_date = braintree_subscription_data.first_billing_date
       if braintree_subscription_data.never_expires?
-        self.never_expires = "true"
+        self.never_expires = "True"
       else
         self.never_expires = "false"
       end
