@@ -34,7 +34,7 @@
     <li class="arrow"><a href="#topWines">Top Wines</a></li>
     <li class="arrow"><a href="#topWineries">Top Wineries</a></li>
     <li class="arrow"><a href="#nearBy">Near By</a></li>
-    <li class="arrow"><a href="#events">Events</a></li>
+    <li class="arrow"><%= link_to h("Events"), events_path %></li>
     <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
     <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
     <li class="arrow"><%= link_to h("Specials"), specials_path %></li>
@@ -134,52 +134,6 @@
 	      </div>    
     </div>
 </div>
-
-<div id="events">
-       <div class="toolbar">
-         <h1>Events</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-	 <div class="body">
-   	  <ul>
-	    <% for event in @events %>
-	    <li class="arrow">
-	      <%= link_to h(event.title), event %>
-	      <%=h event.winery.city %>, <%=h event.winery.state %>
-	      <%= render_stars event %>
-	    </li>
-	    <% end %>
-          </ul>   
-      </div>    
-</div>
-
-<div id="wines">
-       <div class="toolbar">
-         <h1>Wines</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-			<ul>
-	 			<% for wines in @wines %>
-				<li class="arrow" href="#wineDetails" >
-				<table>	
-				<tr>	
-				<td width="180"> <%= link_to image_tag("../images/page_find.png", 
-		 :border=>0, :alt=>"Show"), wines, :title=> "Show", :class => 'dialog_form_link' %>
-				</td>
-				<td>
-					<div><%= link_to h(wines.name), wines %> </div>
-					<div><%=h wines.winery.city %>, <%=h wines.winery.state %> </div>
-					<div><%=h wines.description %> </div>
-					<div><%= render_stars wines%> </div>
-					<a href="#wineDetails"></a>
-				</td>
-				</tr>
-				</table>				
-				</li>
-				<% end %>
-    </ul>    
-</div>
-
 
 
 

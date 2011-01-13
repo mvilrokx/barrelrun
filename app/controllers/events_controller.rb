@@ -44,6 +44,7 @@ class EventsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @events }
       format.js
+      format.mobile
     end
   end
 
