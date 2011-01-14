@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_filter :authenticate_winery!, :except => [:show]
+  before_filter :verify_winery_subscription
 
   def show
     @video = Video.find(params[:id])

@@ -1,9 +1,10 @@
 class WinesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rate, :all_wines]
+  before_filter :verify_winery_subscription
 
   helper_method :sort_column, :sort_asc_or_desc
   
-  def rate
+  def ratecurrent_winery
     @wine = Wine.find(params[:id])
     @wine.rate(params[:stars], current_user, params[:dimension])
     render :update do |page|

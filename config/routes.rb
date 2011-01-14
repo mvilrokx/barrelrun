@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pictures
   map.resources :videos
   map.resources :credit_cards
-  map.resources :subscriptions
+  map.resources :subscriptions, :member => {:make_default => :post}
  
 
   #MV: Added for Unobtrusive Destroy Link

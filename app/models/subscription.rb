@@ -28,7 +28,7 @@ class Subscription < ActiveRecord::Base
       if braintree_subscription_data.never_expires?
         self.never_expires = "True"
       else
-        self.never_expires = "false"
+        self.never_expires = "False"
       end
       self.next_billing_date = braintree_subscription_data.next_billing_date
       self.number_of_billing_cycles = braintree_subscription_data.number_of_billing_cycles
@@ -42,18 +42,32 @@ class Subscription < ActiveRecord::Base
     def update_subscription_in_vault
       result = Braintree::Subscription.update(
         id,
+        :payment_method_token => credit_card,
         :plan_id => plan_id
       )
+      unless result.success?
+        result.errors.each do |error|
+          errors.add_to_base error.message
+        end
+        return false # don't update record
+      end
     end
 
     def create_subscription_in_vault
-      winery = Winery.find(winery_id)
-      puts "winery.credit_cards[0].token = " + winery.credit_cards[0].token
+#      winery = Winery.find(winery_id)
+#      puts "winery.credit_cards[0].token = " + winery.credit_cards[0].token
       result = Braintree::Subscription.create(
         :id => id.to_s,
-        :payment_method_token => winery.credit_cards[0].token,
+        :payment_method_token => credit_card, #winery.credit_cards[0].token,
         :plan_id => plan_id
       )
+      unless result.success?
+        result.errors.each do |error|
+          errors.add_to_base error.message
+        end
+        return false # don't create a new record
+      end
+
     end
 
     def cancel_subscription_in_vault

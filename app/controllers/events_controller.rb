@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :index, :rating, :show]
+  before_filter :verify_winery_subscription
   
   def rate
     @event = Event.find(params[:id])

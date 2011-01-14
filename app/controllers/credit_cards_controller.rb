@@ -46,4 +46,16 @@ class CreditCardsController < ApplicationController
     flash[:notice] = "Successfully destroyed credit card."
     redirect_to credit_cards_url
   end
+
+  def make_default
+    result = Braintree::CreditCard.update(
+      params[:token],
+      :options => {
+        :make_default => true
+      }
+    )
+    redirect_to credit_cards_url
+  end
+
+
 end

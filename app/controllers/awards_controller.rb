@@ -1,4 +1,6 @@
 class AwardsController < ApplicationController
+  before_filter :verify_winery_subscription
+
   def index
 #    @awards = Award.all
     @awards = current_winery.awards.paginate(:page => params[:page])

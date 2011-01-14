@@ -1,5 +1,6 @@
 class SpecialsController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :rating, :index, :show]
+  before_filter :verify_winery_subscription
 
   def rate
     @special = Special.find(params[:id])
