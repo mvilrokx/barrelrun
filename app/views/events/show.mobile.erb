@@ -1,0 +1,39 @@
+<div id="home" class="current">
+  <div class="toolbar">
+      <h1>Event</h1>
+      <a class="button cancel" <%= link_to h("Back"), specials_path %></a>
+  </div>
+
+  <p>
+    <strong>Title:</strong>
+    <%=h @event.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%=h @event.description %>
+  </p>
+  <p>
+    <strong>Place:</strong>
+    <%=h @event.place %>
+  </p>
+  <p>
+    <strong>Start Date:</strong>
+    <%=h @event.start_date %>
+  </p>
+  <p>
+    <strong>End Date:</strong>
+    <%=h @event.end_date %>
+  </p>
+  <p>
+    <strong>Winery:</strong>
+    <%=h @event.winery_id %>
+  </p>
+
+  <% if @event.pictures.length > 0 then %>
+    <% for picture in @event.pictures %>
+  <p>
+      <%= image_tag picture.url(:large) %>  
+  </p>
+    <% end %>
+  <% end %>
+</div>
