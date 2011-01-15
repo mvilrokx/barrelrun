@@ -1,7 +1,7 @@
 <div id='top_list'>
   <h2>Top 10 Wines</h2>
   <ol>
-    <% @wines.each_with_index do |wine, idx| %>
+    <% wines.each_with_index do |wine, idx| %>
       <% if idx == 0 then %>
     <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
       <% else %>

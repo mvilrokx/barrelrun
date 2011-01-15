@@ -1,6 +1,6 @@
 class WinesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rate, :all_wines]
-  before_filter :verify_winery_subscription
+  before_filter :verify_winery_subscription, :except => [:rate, :all_wines, :show]
 
   helper_method :sort_column, :sort_asc_or_desc
   

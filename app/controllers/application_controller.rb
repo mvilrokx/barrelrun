@@ -31,12 +31,13 @@ class ApplicationController < ActionController::Base
     end
     
     def set_subscription
-      if session[:subscription].blank?
-#      if session[:subscription] == 0
-        if Subscription.exists?(:winery_id => current_winery.id)
-          session[:subscription] = 1
-        else
-          session[:subscription] = 0
+      if winery_signed_in?
+        if session[:subscription].blank?
+          if Subscription.exists?(:winery_id => current_winery.id)
+            session[:subscription] = 1
+          else
+            session[:subscription] = 0
+          end
         end
       end
     end

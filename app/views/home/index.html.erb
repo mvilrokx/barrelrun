@@ -39,7 +39,7 @@
       </div>
       <hr>
       <div id="top_wines">
-         <%= render :partial=>"top_wines" %>
+         <%= render :partial=>"top_wines", :locals => {:wines => @wines} %>
       </div>
   </div>
 </div>

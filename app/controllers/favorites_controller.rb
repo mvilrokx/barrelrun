@@ -6,6 +6,13 @@ class FavoritesController < ApplicationController
 #    @favorites = @favorable.favorites
 #    @favorites = current_user.favorites
     @favorites = Favorite.find_all_by_user_id(current_user.id)
+    @favorites = @favorites.group_by(&:favorable_type)
+    @favorites.each do |type, objects|
+      if type == 'Wine'
+        @wines = Wine.find(objects.map {|wine| wine.favorable_id})
+      end
+    end
+
   end
    
   def create

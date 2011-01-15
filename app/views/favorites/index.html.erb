@@ -1,10 +1,8 @@
 <h1>Favorites</h1>  
   
-<ul id="favorites">
-  <% @favorites.each do |favorite| %>  
-    <li><%= favorite.favorable_type %>, <%= favorite.user_id %>, <%= favorite.favorable_id %></li>  
-  <% end %>  
-</ul>  
+  <div id="top_wines">
+    <%= render :partial=>"home/top_wines", :locals => {:wines => @wines} %>
+  </div>
 
 <h2>New Favorite</h2>  
 <% form_for [@favorable, Favorite.new] do |form| %>

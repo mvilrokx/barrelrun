@@ -710,7 +710,9 @@ div#site_map td {
     top: 50px;
     right: 0px; 
     z-index:10;
+    border: 7px solid rgb(0,0,0); /*IE */
     border: 7px solid rgba(0,0,0,0.4);
+    background-color: rgb(200,0,0);  /*IE */
     background-color: rgba(200,0,0,0.9);
  /*    text-align:left; */
     padding:12px;
