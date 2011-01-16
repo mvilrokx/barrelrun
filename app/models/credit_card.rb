@@ -56,9 +56,7 @@ class CreditCard < ActiveRecord::Base
         :expiration_month => expiration_date.month,
         :expiration_year => expiration_date.year
       )
-      if result.success?
-        self.token = result.credit_card.token
-      else
+      unless result.success?
         result.errors.each do |error|
           errors.add_to_base error.message
         end
@@ -68,14 +66,6 @@ class CreditCard < ActiveRecord::Base
 
     def destroy_credit_card_in_vault
       result = Braintree::CreditCard.find(token).delete
-      if result.success?
-        self.token = result.credit_card.token
-      else
-        result.errors.each do |error|
-          errors.add_to_base error.message
-        end
-        return false # don't delete record
-      end
     end
 
 end
