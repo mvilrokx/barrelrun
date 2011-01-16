@@ -1,8 +1,8 @@
 class Winery < ActiveRecord::Base
   validates_uniqueness_of :username
-  validates_presence_of :username, :email, :winery_name, :contact_first_name, 
-                        :contact_last_name, :telephone, :website_url, :city, 
-                        :state, :zipcode
+  validates_presence_of :username, :winery_name, :contact_first_name, 
+                        :contact_last_name, :telephone, :city, 
+                        :state, :zipcode, :website_url
 
   has_many :comments, :as => :commentable, :dependent => :delete_all
   has_many :favorites, :as => :favorable, :dependent => :delete_all

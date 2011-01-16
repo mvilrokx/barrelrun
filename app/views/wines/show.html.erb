@@ -1,20 +1,33 @@
 <div class="span-17 entry_form last">
   <div class="span-17 last">
     <div class="span-12 colborder">
-      <div class="span-3">
-        <% if @wine.pictures.length > 0 then %>
-          <%= image_tag @wine.pictures[0].url(:thumb) %>
-        <% else %>
-          <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'110x110' %>        
-        <% end %>
+
+      <div class="span-6">
+        <div class="span-6 last">
+          <% if @wine.pictures.length > 0 then %>
+            <%= image_tag @wine.pictures[@pic_idx.to_i].url(:small), :border=>0, :alt=>@wine.name, :size=>'200x200' %>
+          <% else %>
+            <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>        
+          <% end %>
+        </div>
+
+        <div class="span-5 last" style="overflow: auto;">
+          <div style="width: <%= @wine.pictures.length*60 %>px;">
+            <ul>
+            <% @wine.pictures.each_with_index do |pic, idx| -%>
+              <li style="display: inline;"><%= link_to image_tag (pic.url(:small), :border=>0, :size=>'50x50'),{:pic_idx=>idx} %></li>
+            <% end -%>
+            <ul>
+        </div>
+        </div>
       </div>
 
-      <div class="span-9 last">
-        <div class="span-9 last">
+      <div class="span-6 last">
+        <div class="span-6 last">
           <h3><%=h @wine.name %></h3>
           <h4>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></h4>
         </div>
-        <div class="span-9 append-bottom last">
+        <div class="span-6 append-bottom last">
           <% if user_signed_in? %>
             <div class="stars">
               <form action="/wines/<%= @wine.id %>/rating/" method="post">
@@ -29,7 +42,7 @@
         </div>
 
         <% if user_signed_in? %>
-          <div class="span-9 last">
+          <div class="span-6 last">
           <% if @wine.favorites.find_by_user_id(current_user) %>
             <a href="/wines/<%= @wine.id%>/favorites/<%= @wine.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
           <% else %>
@@ -37,22 +50,22 @@
           <% end %>
           </div>
 
-          <div class="span-9 last">
+          <div class="span-6 last">
             Share
           </div>
         <% end %>
 
-        <div class="span-9 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
+        <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
           <%=h @wine.description %>
         </div>
       </div>
     </div>
-    <div class="span-4 last">
-      <ul>
-        <li><strong>Vintage: </strong><%=h @wine.vintage %></li>
-        <li><strong>Type: </strong><%=h @wine.wine_type %></li>
-        <li><strong>Varietal: </strong><%=h @wine.varietal %></li>
-        <li><strong>Price: </strong><%=h number_to_currency(@wine.price) %></li>
+    <div class="span-4 last" style="font-size: 22px;">
+      <ul style="list-style: none; margin: 0px; padding: 0px;" >
+        <li>Vintage: <strong><%=h @wine.vintage %></strong></li>
+        <li>Type: <strong><%=h @wine.wine_type %></strong></li>
+        <li>Varietal: <strong><%=h @wine.varietal %></strong></li>
+        <li>Price: <strong><%=h number_to_currency(@wine.price) %></strong></li>
       </ul>
     </div>
     <hr/>

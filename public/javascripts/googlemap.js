@@ -89,11 +89,8 @@ function infoWindowContent(winery) {
                 winery.city + ', ' + winery.state + ' ' + winery.zipcode + '<br>' +
                 winery.country + '<br>' +
             '</div>' +
-            '<div class="span-2 prepend-1" >' +        
-                '<a target=_blank href="' + winery.website_url + '">Website</a> ' +
-            '</div>' +
-            '<div class="span-3 last" >' +        
-                '<a href="/wineries/' + winery.id + '">More details ... </a>' +
+            '<div class="span-5 prepend-1 last" >' +        
+                '<a href="/wineries/' + winery.id + '">View winery details ... </a>' +
             '</div>' +
         '</div>';
 

@@ -4,10 +4,12 @@ class Picture < ActiveRecord::Base
 #   belongs_to :event
 
 	has_attached_file :photo,
-                    :styles => {:micro => "50x50>",
-                                :thumb => "100x100>",
-                                :small => "300x300>",
-                                :large => "600x600>"
+                    :styles => {:micro  => "50x50>",
+                                :thumb  => "100x100>",
+                                :small  => "200x200>",
+                                :medium => "300x300>",
+                                :large  => "600x600>",
+                                :xlarge => "1200x1200>"
                                },
                     :url => "/assets/pictures/:class/:id/:style/:basename.:extension",  
                     :path => ":rails_root/public/assets/pictures/:class/:id/:style/:basename.:extension"  

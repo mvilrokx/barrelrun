@@ -364,10 +364,10 @@ var starRating = {
       // prevent default link click
       e.preventDefault();
       $.post($(this).attr('href'), {stars: $star.text() }, function(){
-        $('#top_wines').load('home/top_wines', function(){
+//        $('#top_wines').load('home/top_wines', function(){
 //        $(this).closest('#top_list').parent().load('home/top_wines', function(){
-            starRating.create('#top_wines .stars');
-          });
+//            starRating.create('#top_wines .stars');
+//          });
         },
         "script");
     }).hover(function() {

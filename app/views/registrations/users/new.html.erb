@@ -39,11 +39,11 @@
             </div>
             <%= f.label :first_name %>
             <span class="div_texbox">
-              <%= f.text_field :first_name, :class => "fillout03" %>
+              <%= f.text_field :first_name, :required => true, :class => "fillout03" %>
           	</span>
             <%= f.label :last_name %>
             <span class="div_texbox">
-              <%= f.text_field :last_name, :class => "fillout03" %>
+              <%= f.text_field :last_name, :required => true, :class => "fillout03" %>
           	</span>
             <%= f.label :email %>
             <span class="div_texbox">
@@ -79,7 +79,7 @@
           	</span>
             <%= f.label :telephone %>
             <span class="div_texbox">
-              <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
+              <%= f.text_field :telephone, :class => "fillout03" %>
           	</span>
 
             <div id="picture_fields">
@@ -88,7 +88,7 @@
             <% end %>
             </div>
 
-            <span class="div_texbox"><%= add_child_link "Add Picture?", :picture %></span>
+            <span class="div_texbox"><%= add_child_link "Add Avatar?", :picture %></span>
 
             <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
 

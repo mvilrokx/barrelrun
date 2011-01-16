@@ -1,21 +1,21 @@
 class WinesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rate, :all_wines]
-  before_filter :verify_winery_subscription, :except => [:rate, :all_wines, :show]
+  before_filter :verify_winery_subscription, :except => [:rating, :all_wines, :show]
 
   helper_method :sort_column, :sort_asc_or_desc
   
-  def ratecurrent_winery
-    @wine = Wine.find(params[:id])
-    @wine.rate(params[:stars], current_user, params[:dimension])
-    render :update do |page|
-      page.replace_html @wine.wrapper_dom_id(params), ratings_for(@wine, params.merge(:wrap => false))
-      page.visual_effect :highlight, @wine.wrapper_dom_id(params)
-      # Update Top Wines list with new result everytime user updates rating
-      @wines = Wine.all(:order => "rating_average DESC")
-      page.replace_html 'top_wines', :partial => 'home/top_wines',
-                                     :locals => {:top_wines=>@wines }   
-    end
-  end
+#  def ratecurrent_winery
+#    @wine = Wine.find(params[:id])
+#    @wine.rate(params[:stars], current_user, params[:dimension])
+#    render :update do |page|
+#      page.replace_html @wine.wrapper_dom_id(params), ratings_for(@wine, params.merge(:wrap => false))
+#      page.visual_effect :highlight, @wine.wrapper_dom_id(params)
+#      # Update Top Wines list with new result everytime user updates rating
+#      @wines = Wine.all(:order => "rating_average DESC")
+#      page.replace_html 'top_wines', :partial => 'home/top_wines',
+#                                     :locals => {:top_wines=>@wines }   
+#    end
+#  end
 
   def rating
     @wine = Wine.find(params[:id])
@@ -24,11 +24,12 @@ class WinesController < ApplicationController
     if @user_rating.save
       flash[:notice] = "Successfully saved your rating."
     end
+
     @wines = Wine.top_wines.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml
-      format.js
+      format.js 
     end
    
   end
@@ -61,12 +62,17 @@ class WinesController < ApplicationController
   # GET /wines/1.xml
   def show
     @wine = Wine.find(params[:id], :include => :comments, :order => sort_column + " " + sort_asc_or_desc)
-    
+#    if param[:pic_idx]
+    @pic_idx = params[:pic_idx]||0
+#    else
+#      @pic_idx = 0
+#    end
     respond_to do |format|
       format.mobile # show.mobile.erb
       format.html # index.html.erb
     end
-    rescue
+    rescue Exception => exc
+      logger.error("#{exc.message}")
       flash[:notice] = 'You are not authorized to view that wine.'
       redirect_to :action => "index"
   end

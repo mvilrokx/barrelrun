@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
  	has_one :picture, :as => :pictureable, :dependent => :destroy
   accepts_nested_attributes_for :picture
 
-  validates_presence_of :username, :email, :first_name, :last_name, :lat, :lng 
+  validates_presence_of :username, :first_name, :last_name
   validates_length_of :username, :in => 6..19
   validates_uniqueness_of :telephone, :allow_nil => true, :allow_blank => true
 

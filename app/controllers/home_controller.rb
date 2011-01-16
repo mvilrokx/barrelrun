@@ -96,7 +96,7 @@ class HomeController < ApplicationController
       respond_to do |format|
          format.html { render :partial=>"home/top_wines", :locals=>{:top_wines=>@wines} }
          format.json { render :layout => false, :json => @wines }
-         format.js
+         format.js { render :layout => false, :wines => @wines }
       end
   end
 

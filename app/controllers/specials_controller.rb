@@ -1,19 +1,19 @@
 class SpecialsController < ApplicationController
-  before_filter :authenticate_winery!, :except => [:rate, :rating, :index, :show]
-  before_filter :verify_winery_subscription
+  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
+  before_filter :verify_winery_subscription, :except => [:rating, :all_wines, :show]
 
-  def rate
-    @special = Special.find(params[:id])
-    @special.rate(params[:stars], current_user, params[:dimension])
-    render :update do |page|
-      page.replace_html @special.wrapper_dom_id(params), ratings_for(@special, params.merge(:wrap => false))
-      page.visual_effect :highlight, @special.wrapper_dom_id(params)
-      # Update Upcoming Specials list with new result everytime user updates rating
-#      @specials = Special.all(:order => "start_date DESC")
-#      page.replace_html 'upcoming_specials', :partial => 'home/upcoming_specials',
-#                                             :locals => {:upcoming_specials=>@specials }   
-    end
-  end
+#  def rate
+#    @special = Special.find(params[:id])
+#    @special.rate(params[:stars], current_user, params[:dimension])
+#    render :update do |page|
+#      page.replace_html @special.wrapper_dom_id(params), ratings_for(@special, params.merge(:wrap => false))
+#      page.visual_effect :highlight, @special.wrapper_dom_id(params)
+#      # Update Upcoming Specials list with new result everytime user updates rating
+##      @specials = Special.all(:order => "start_date DESC")
+##      page.replace_html 'upcoming_specials', :partial => 'home/upcoming_specials',
+##                                             :locals => {:upcoming_specials=>@specials }   
+#    end
+#  end
 
   def rating
     @special = Special.find(params[:id])

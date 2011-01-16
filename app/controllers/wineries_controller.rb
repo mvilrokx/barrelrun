@@ -26,18 +26,18 @@ class WineriesController < ApplicationController
     end
   end
 
-  def rate
-    @winery = Winery.find(params[:id])
-    @winery.rate(params[:stars], current_user, params[:dimension])
-    render :update do |page|
-      page.replace_html @winery.wrapper_dom_id(params), ratings_for(@winery, params.merge(:wrap => false))
-      page.visual_effect :highlight, @winery.wrapper_dom_id(params)
-      # Update Top Wineries list with new result everytime user updates rating
-      @wineries = Winery.all(:order => "rating_average DESC")
-      page.replace_html 'top_wineries', :partial => 'home/top_wineries',
-                                        :locals => {:top_wineries=>@wineries }   
-    end
-  end
+#  def rate
+#    @winery = Winery.find(params[:id])
+#    @winery.rate(params[:stars], current_user, params[:dimension])
+#    render :update do |page|
+#      page.replace_html @winery.wrapper_dom_id(params), ratings_for(@winery, params.merge(:wrap => false))
+#      page.visual_effect :highlight, @winery.wrapper_dom_id(params)
+#      # Update Top Wineries list with new result everytime user updates rating
+#      @wineries = Winery.all(:order => "rating_average DESC")
+#      page.replace_html 'top_wineries', :partial => 'home/top_wineries',
+#                                        :locals => {:top_wineries=>@wineries }   
+#    end
+#  end
 
   def rating
     @winery = Winery.find(params[:id])
@@ -55,7 +55,7 @@ class WineriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml
-      format.js
+      format.js {render :layout => false}
     end
    
   end
