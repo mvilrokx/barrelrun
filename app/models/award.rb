@@ -1,5 +1,5 @@
 class Award < ActiveRecord::Base
-   	has_many :pictures, :as => :pictureable, :dependent => :delete_all
+   	has_many :pictures, :as => :pictureable, :dependent => :destroy
 	  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
    
    	belongs_to :wine

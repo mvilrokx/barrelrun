@@ -53,9 +53,10 @@ module ApplicationHelper
       else
         rating = rate
       end
-      (1..10).map do |i|
+#      (1..10).map do |i|
+      [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map do |i|
 #        if object_to_rate.average_rating
-          if rating.round == i
+          if ((rating*2).round)/2 == i
             radio_button_tag "rating", i, true, :disabled => read_only
           else    
             radio_button_tag "rating", i, false, :disabled => read_only
@@ -65,15 +66,15 @@ module ApplicationHelper
 #    end
   end
 
-  def render_stars_from_rate (rating = 0)
-    (1..10).map do |i|
-      if rating.round == i
-        radio_button_tag "rating", i, true, :disabled => read_only
-      else    
-        radio_button_tag "rating", i, false, :disabled => read_only
-      end
-    end
-  end
+#  def render_stars_from_rate (rating = 0)
+#    (1..10).map do |i|
+#      if rating.round == i
+#        radio_button_tag "rating", i, true, :disabled => read_only
+#      else    
+#        radio_button_tag "rating", i, false, :disabled => read_only
+#      end
+#    end
+#  end
 
   def sortable(column, title = nil)
     title ||= column.titleize

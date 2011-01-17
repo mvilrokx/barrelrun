@@ -110,7 +110,7 @@ class WinesController < ApplicationController
         flash[:notice] = 'Wine was successfully created.'
         format.html {redirect_to wines_url}
         format.xml  { render :xml => @wine, :status => :created, :location => @wine }
-        Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new wine called " + @wine.name.to_s)
+        Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new wine called " + @wine.name.to_s) rescue nil
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @wine.errors, :status => :unprocessable_entity }

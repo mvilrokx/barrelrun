@@ -65,8 +65,9 @@ $(document).ready(function(){
 /**
 * Map It functionality
 */
-$(document).ready(function(){
-    $('.map-wine').click(function(e) {
+ /* $(document).ready(function(){
+    $('.map-wine').click(function(e) { */
+$('.map-wine').live('click', function() {
 /*    $('.map-wine').hover(function(e) { */
         var latLng = new google.maps.LatLng($(this).attr("data-winery-lat"), $(this).attr("data-winery-lng"));
         map.panTo(latLng);
@@ -80,7 +81,7 @@ $(document).ready(function(){
             };
         };
             
-    });
+   /* }); */
 });
 
 

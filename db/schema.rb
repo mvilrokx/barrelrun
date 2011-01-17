@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110110062146) do
+ActiveRecord::Schema.define(:version => 20110117020306) do
 
   create_table "awards", :force => true do |t|
     t.string   "title"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20110110062146) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.integer  "average_rating"
+    t.decimal  "average_rating",       :precision => 4, :scale => 2
     t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
     t.string   "contact_info_name"
     t.string   "contact_info_phone"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(:version => 20110110062146) do
     t.decimal  "rating_average",                      :precision => 6, :scale => 2, :default => 0.0
     t.float    "lat"
     t.float    "lng"
-    t.integer  "average_rating"
+    t.decimal  "average_rating",                      :precision => 4, :scale => 2
   end
 
   add_index "wineries", ["confirmation_token"], :name => "index_wineries_on_confirmation_token", :unique => true
@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(:version => 20110110062146) do
     t.string   "wine_type"
     t.string   "varietal"
     t.integer  "vintage"
-    t.integer  "average_rating"
+    t.decimal  "average_rating",       :precision => 4, :scale => 2
   end
 
 end

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
    
-  has_many :comments, :as => :commentable, :dependent => :delete_all
-  has_many :favorites, :as => :favorable, :dependent => :delete_all
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :favorites, :as => :favorable, :dependent => :destroy
  	has_one :picture, :as => :pictureable, :dependent => :destroy
   accepts_nested_attributes_for :picture
 

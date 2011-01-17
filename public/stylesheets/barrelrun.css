@@ -676,28 +676,44 @@ div#site_map td {
 
 /* Custome build star rating system */
 .stars div a {
-  background: transparent url(../images/sprite_rate_barrelrun.png) 0 0 no-repeat;
+/*  background: transparent url(../images/sprite_rate_barrelrun.png) 0 0 no-repeat; */ /*stars */
+  background: transparent url(../images/barrel_rate.png) 0 0 no-repeat; /* barrels */
   display: inline-block;
   height: 18px;
-  width: 9px;
+  width: 9px; /*stars */
+/*  height: 23px;
+  width: 12px; */ 
   text-indent: -999em;
   overflow: hidden;
 }
 
 .stars a.rating-right {
-  background-position: 0 -18px;
+  background-position: 0 -18px; /*stars */
+/*   background-position: 0 -23px;*/ 
   padding-right: 1px;
 }
 
-.stars a.rating-over { background-position: 0 -35px; }
-.stars a.rating-over.rating { background-position: 0 -35px; }
+/* .stars a.rating-over { background-position: 0 -35px; }
+.stars a.rating-over.rating { background-position: 0 -35px; } */ /*stars */
+/* .stars a.rating-over { background-position: 0 -46px; }
+.stars a.rating-over.rating { background-position: 0 -46px; } */
+.stars a.rating-over { background-position: 0 -36px; }
+.stars a.rating-over.rating { background-position: 0 -36px; } /*stars */
 
-.stars a.rating-over.rating-right { background-position: 0 -52px; }
-.stars a.rating-over.rating-right.rating { background-position: 0 -52px; }
+/* .stars a.rating-over.rating-right { background-position: 0 -52px; }
+.stars a.rating-over.rating-right.rating { background-position: 0 -52px; } */ /*stars */
+/* .stars a.rating-over.rating-right { background-position: 0 -69px; }
+.stars a.rating-over.rating-right.rating { background-position: 0 -69px; } */
+.stars a.rating-over.rating-right { background-position: 0 -54px; }
+.stars a.rating-over.rating-right.rating { background-position: 0 -54px; } /*stars */
 
-.stars a.rating { background-position: 0 -69px; }
+/* .stars a.rating { background-position: 0 -69px; } */ /*stars */
+/* .stars a.rating { background-position: 0 -92px; } */ 
+.stars a.rating { background-position: 0 -72px; } /*stars */
 
-.stars a.rating.rating-right { background-position: 0 -87px; }
+/* .stars a.rating.rating-right { background-position: 0 -87px; } */ /*stars */
+/* .stars a.rating.rating-right { background-position: 0 -115px; } */
+.stars a.rating.rating-right { background-position: 0 -90px; } /*stars */
 
 
 #signin_menu {

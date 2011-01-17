@@ -1,11 +1,11 @@
 class Wine < ActiveRecord::Base
 
- 	has_many :comments, :as => :commentable, :dependent => :delete_all, :order => "created_at DESC"
- 	has_many :favorites, :as => :favorable, :dependent => :delete_all
+ 	has_many :comments, :as => :commentable, :dependent => :destroy, :order => "created_at DESC"
+ 	has_many :favorites, :as => :favorable, :dependent => :destroy
 #    accepts_nested_attributes_for :favorites, :allow_destroy => true
- 	has_many :pictures, :as => :pictureable, :dependent => :delete_all
-  has_many :ratings, :as => :rateable, :dependent => :delete_all
-  has_many :awards, :dependent => :delete_all
+ 	has_many :pictures, :as => :pictureable, :dependent => :destroy
+  has_many :ratings, :as => :rateable, :dependent => :destroy
+  has_many :awards, :dependent => :destroy
 
   accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
  
