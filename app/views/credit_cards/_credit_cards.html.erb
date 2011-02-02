@@ -8,29 +8,31 @@
     </div>
   </div>
 
-  <table style="background: white;">
-    <tr>
-      <th>Card Number</th>
-      <th>Prefered Payment Method</th>
-      <th>Type</th>
-      <th>Expiration Date</th>
-      <th colspan=3>Action</th>
-    </tr>
-  <% for credit_card in @credit_cards %>
-    <tr>
-      <td><%=h credit_card.card_number %></td>
+  <div style="overflow: auto;">
+    <table style="background: white;">
+      <tr>
+        <th>Card Number</th>
+        <th>Prefered Payment Method</th>
+        <th>Type</th>
+        <th>Expiration Date</th>
+        <th colspan=3>Action</th>
+      </tr>
+    <% for credit_card in @credit_cards %>
+      <tr>
+        <td><%=h credit_card.card_number %></td>
 
-      <td><%= credit_card.default == "Yes" ? "Yes" : link_to ("No", { :action => "make_default", :token => credit_card.token }, :method => :post, :title => "Click to make Prefered Payment Method") %></td>
+        <td><%= credit_card.default == "Yes" ? "Yes" : link_to ("No", { :action => "make_default", :token => credit_card.token }, :method => :post, :title => "Click to make Prefered Payment Method") %></td>
 
 
-      <td><%=h credit_card.card_type %></td>
-      <td><%=h credit_card.expiration_date.try(:strftime,'%m/%Y') %></td>
-      <td><%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), credit_card, :title=> "Show", :class => 'dialog_form_link' %></td>
-      <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_credit_card_path(credit_card), :title=> "Edit", :class => 'dialog_form_link' %></td>
-      <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), credit_card, :title=> "Delete", :class => 'delete' %></td>
-    </tr>
-  <% end %>
-  </table>
+        <td><%=h credit_card.card_type %></td>
+        <td><%=h credit_card.expiration_date.try(:strftime,'%m/%Y') %></td>
+        <td><%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), credit_card, :title=> "Show", :class => 'dialog_form_link' %></td>
+        <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_credit_card_path(credit_card), :title=> "Edit", :class => 'dialog_form_link' %></td>
+        <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), credit_card, :title=> "Delete", :class => 'delete' %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 
   <div class="pagination">
     <div class="span-13">

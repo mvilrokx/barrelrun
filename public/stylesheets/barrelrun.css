@@ -522,6 +522,9 @@ div.sub_nav ul li a#selected_main_tab:hover {
 }
 
 
+div#content {
+    min-height: 600px;
+}
 
 
 
@@ -677,7 +680,7 @@ div#site_map td {
 /* Custome build star rating system */
 .stars div a {
 /*  background: transparent url(../images/sprite_rate_barrelrun.png) 0 0 no-repeat; */ /*stars */
-  background: transparent url(../images/barrel_rate.png) 0 0 no-repeat; /* barrels */
+  background: transparent url(../images/barrel_rate1.png) 0 0 no-repeat; /* barrels */
   display: inline-block;
   height: 18px;
   width: 9px; /*stars */

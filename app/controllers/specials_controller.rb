@@ -1,6 +1,6 @@
 class SpecialsController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rating, :index, :show]
-  before_filter :verify_winery_subscription, :except => [:rating, :all_wines, :show]
+  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
 
 #  def rate
 #    @special = Special.find(params[:id])
@@ -39,7 +39,7 @@ class SpecialsController < ApplicationController
     if  current_winery
       @specials = current_winery.specials.paginate(:page => params[:page], :order => "created_at DESC")
     else  
-      @specials = Special.all
+      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
     end
 #    @event = Event.new(:winery_id => current_winery.id)
 #    1.times {@event.pictures.build}

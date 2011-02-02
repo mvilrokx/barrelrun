@@ -35,11 +35,15 @@
 
   <div class="span-7 last">
       <div id="top_wineries">
-         <%= render :partial=>"top_wineries" %>
+         <%= render :partial=>"shared/object_list", :locals => {:object_list => @wineries,
+                                                                :ordered_list => true, 
+                                                                :list_header => "Top 10 Wineries" } %>
       </div>
       <hr>
       <div id="top_wines">
-         <%= render :partial=>"top_wines", :locals => {:wines => @wines} %>
+         <%= render :partial=>"favorites/wine_list", :locals => {:wines => @wines, 
+                                                                 :ordered_list => true, 
+                                                                 :list_header => "Top 10 Wines"} %>
       </div>
   </div>
 </div>

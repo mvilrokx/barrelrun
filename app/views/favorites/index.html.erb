@@ -1,13 +1,11 @@
-<h1>Favorites</h1>  
-  
-  <div id="top_wines">
-    <%= render :partial=>"home/top_wines", :locals => {:wines => @wines} %>
+<hr class="space"/>
+<div class="push-1 span-22 last">
+  <div class="span-7 last colborder">
+    <div id="fav_special_list"><%= image_tag("ajax-loader.gif", :alt => "Loading") %>&nbsp;&nbsp;&nbsp;Loading...</div>
+    <div id="fav_event_list"><%= image_tag("ajax-loader.gif", :alt => "Loading") %>&nbsp;&nbsp;&nbsp;Loading...</div>
   </div>
-
-<h2>New Favorite</h2>  
-<% form_for [@favorable, Favorite.new] do |form| %>
-  <%= form.error_messages %>
-  <ol class="formList">
-    <li><%= submit_tag "Add As Favorite" %></li>  
-  </ol>  
-<% end %>
+  <div class="span-7 last colborder">
+    <div id="fav_winery_list"><%= image_tag("ajax-loader.gif", :alt => "Loading") %>&nbsp;&nbsp;&nbsp;Loading...</div>
+    <div id="fav_wine_list"><%= image_tag("ajax-loader.gif", :alt => "Loading") %>&nbsp;&nbsp;&nbsp;Loading...</div>
+  </div>
+</div>

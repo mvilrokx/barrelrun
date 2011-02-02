@@ -1,11 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.upcoming_events.all
-    @specials = Special.upcoming_specials.all
-    @wines = Wine.top_wines.all
-    @wineries = Winery.top_wineries.all # all(:order => "rating_average DESC", :limit => 10)
-#    @wineries = Winery.all(:order => "average_rating DESC", :limit => 10)
-#      @wineries = @wineries.sort_by(&:average_rating)
+    @events = Event.upcoming_events.all.paginate(:page => params[:page])
+    @specials = Special.upcoming_specials.all.paginate(:page => params[:page])
+    @wines = Wine.top_wines.all.paginate(:page => params[:page])
+    @wineries = Winery.top_wineries.all.paginate(:page => params[:page])
   end
 
   def all_objects_search
@@ -73,6 +71,7 @@ class HomeController < ApplicationController
       end
   end
   
+  # None of these are used by Web I believe, they are used as APIs by iPhone app
   def upcoming_events
       @events = Event.upcoming_events.all
       respond_to do |format|

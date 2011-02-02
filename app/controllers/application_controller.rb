@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   before_filter :prepare_for_mobile, :set_subscription
+  after_filter :flash_to_headers
   
   def verify_winery_subscription
     unless session[:subscription] == 1
-      flash[:alert]  = "You have not choosen a subscription level yet."
+      flash[:alert]  = "You have not chosen a subscription level yet."
       redirect_to subscriptions_path
     end
   end
@@ -40,6 +41,24 @@ class ApplicationController < ActionController::Base
           end
         end
       end
+    end
+
+    def rate (object_type, id, rating)
+      object = object_type.classify.constantize.find(id)
+      user_rating = object.ratings.find_or_initialize_by_user_id(current_user.id)
+      user_rating.rate = rating
+      if user_rating.save
+        flash[:notice] = "Successfully saved your " + object_type + " rating."
+      end
+    end
+
+    def flash_to_headers
+      return unless request.xhr?
+#      response.headers['X-Message'] = flash[:error]  unless flash[:error].blank?
+      response.headers['X-Message'] = flash[:notice]  unless flash[:notice].blank?
+      # repeat for other flash types...
+
+      flash.discard  # don't want the flash to appear when you reload page
     end
 
   # Scrub sensitive parameters from your log

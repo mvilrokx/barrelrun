@@ -1,8 +1,17 @@
 class User < ActiveRecord::Base
    
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :favorites, :as => :favorable, :dependent => :destroy
+  
+  has_many :favorites
+  has_many :favorite_wines, :through => :favorites, :source => :favorable, :source_type => 'Wine'
+  has_many :favorite_wineries, :through => :favorites, :source => :favorable, :source_type => 'Winery'
+  has_many :favorite_events, :through => :favorites, :source => :favorable, :source_type => 'Event'
+  has_many :favorite_specials, :through => :favorites, :source => :favorable, :source_type => 'Special'
+#  has_many :favorite_users, :through => :favorites, :source => :favorable, :source_type => 'User'
+  
  	has_one :picture, :as => :pictureable, :dependent => :destroy
+#  has_many :favorites, :as => :favorable, :dependent => :destroy
+ 	
   accepts_nested_attributes_for :picture
 
   validates_presence_of :username, :first_name, :last_name
@@ -22,7 +31,7 @@ class User < ActiveRecord::Base
                  :first_name, :last_name, :username, :birthdate,
                  :telephone, :address, :address2, :address3,
                  :city, :state, :zipcode, :country, :picture_attributes
-  ajaxful_rater
+  # ajaxful_rater
 
   # Virtual attribute for GeoCoding
   def complete_address

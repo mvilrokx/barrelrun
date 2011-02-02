@@ -10,11 +10,19 @@ ActionController::Routing::Routes.draw do |map|
                         :collection => {:distinct_varietals => :get,
                                         :distinct_wine_types => :get
                                         }
-  map.resources :wineries, :member => {:rating => :post}
+  map.resources :wineries, :member => {:rating => :post},
+                :has_many => [:wines, :comments, :favorites, :ratings, :credit_cards]
+                
   map.resources :events, :member => {:rating => :post}
   map.resources :specials, :member => {:rating => :post}
 
-  map.resources :favorites
+  map.resources :favorites, :collection => {:favorite_wines => :get,
+                                            :favorite_wineries => :get,
+                                            :favorite_events => :get,
+                                            :favorite_specials => :get}
+
+  map.connect 'favorites/:favorable_type/:favorable_id/rate', :controller => 'favorites', :action => 'rate_it'
+
   map.resources :awards
   map.resources :pictures
   map.resources :videos
@@ -27,22 +35,30 @@ ActionController::Routing::Routes.draw do |map|
   
   #MV: Added for adding comments
   map.resources :wines, :has_many => :comments  
-  map.resources :wineries, :has_many => :comments  
-  map.resources :users, :has_many => :comments  
-  map.resources :events, :has_many => :comments  
+
+  map.resources :users do |user|
+    user.resources :comments
+    user.resources :wines, :only => [:index], :as => 'favorite_wines'
+    user.resources :wineries, :only => [:index], :as => 'favorite_wineries'
+    user.resources :events, :only => [:index], :as => 'favorite_events'
+    user.resources :specials, :only => [:index], :as => 'favorite_specials'
+    user.resources :users, :only => [:index], :as => 'favorite_users'
+  end
+
+ map.resources :events, :has_many => :comments  
   map.resources :specials, :has_many => :comments  
   
   #MV: Added for adding favorites
   map.resources :wines, :has_many => :favorites
-  map.resources :wineries, :has_many => :favorites  
+#  map.resources :wineries, :has_many => :favorites  
   map.resources :users, :has_many => :favorites  
   map.resources :events, :has_many => :favorites  
   map.resources :specials, :has_many => :favorites
     
   map.resources :specials, :has_many => :ratings
   map.resources :wines, :has_many => :ratings
-  map.resources :wineries, :has_many => :ratings
-  map.resources :wineries, :has_many => :credit_cards
+#  map.resources :wineries, :has_many => :ratings
+#  map.resources :wineries, :has_many => :credit_cards
   map.resources :events, :has_many => :ratings
 
 

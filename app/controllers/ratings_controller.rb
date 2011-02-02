@@ -67,7 +67,7 @@ class RatingsController < ApplicationController
           return $1.classify.constantize.find(value)
        end  
     end  
-    nil  
+    nil
   end  
 
 end

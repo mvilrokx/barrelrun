@@ -63,11 +63,13 @@
           	</span>
             <%= f.label :email %>
             <span class="div_texbox">
-              <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"}) %>
+              <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :required => true, 
+                               :type => :email, :placeholder => 'e.g. user@domain.com', 
+                               :value => f.object.email, :class => "fillout02"}) %>
           	</span>
             <%= f.label :address %>
             <span class="div_texbox">
-              <%= f.text_field :address, :class => "fillout01" %>
+              <%= f.text_field :address, :required => true, :class => "fillout01" %>
           	</span>
             <%= f.label :address2 %>
             <span class="div_texbox">

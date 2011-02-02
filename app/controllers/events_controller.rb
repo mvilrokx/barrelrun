@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :index, :rating, :show]
-  before_filter :verify_winery_subscription
+  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
   
   def rate
     @event = Event.find(params[:id])
@@ -33,10 +33,10 @@ class EventsController < ApplicationController
 
   def index
 #    @events = Event.all
-    if  current_winery
+    if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
     else  
-      @events = Event.all
+      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
     end
 
 #    @event = Event.new(:winery_id => current_winery.id)

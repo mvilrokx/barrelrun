@@ -28,22 +28,33 @@
 
       <%= f.label :wine_type %>
       <span class="div_texbox">            
-        <%= f.text_field :wine_type, :class => "fillout03" %>
+        <%= f.text_field :wine_type, :required => true, :class => "fillout03" %>
     	</span>
 
       <%= f.label :vintage %>
       <span class="div_texbox">            
-        <%= f.text_field :vintage, :class => "fillout04" %>
+        <%= f.text_field :vintage, :required => true, :class => "fillout04" %>
     	</span>
 
       <%= f.label :varietal %>
       <span class="div_texbox">            
-        <%= f.text_field :varietal, :class => "fillout02" %>
+        <%= f.text_field :varietal, :required => true, :class => "fillout02" %>
+    	</span>
+
+      <% if @wine.tasting_notes? %>
+        <%= f.label :tasting_notes, "Delete Tasting Notes?" %>
+        <span class="div_texbox">
+          <%= f.check_box :delete_tasting_notes %>(<%= @wine.tasting_notes_file_name %>)
+      	</span>
+      <% end %>
+      <%= f.label :tasting_notes %>
+      <span class="div_texbox">
+        <%= f.file_field :tasting_notes, :class => "fillout01" %>
     	</span>
 
       <%= f.label :price %>
       <span class="div_texbox">            
-        <%= f.text_field :price, :class => "fillout04" %>
+        <%= f.text_field :price, :required => true, :class => "fillout04" %>
     	</span>
 
       <div id="picture_fields">

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117020306) do
+ActiveRecord::Schema.define(:version => 20110120044907) do
 
   create_table "awards", :force => true do |t|
     t.string   "title"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20110117020306) do
     t.integer  "user_id"
     t.integer  "rateable_id"
     t.string   "rateable_type"
-    t.integer  "rate"
+    t.decimal  "rate",          :precision => 4, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -223,8 +223,8 @@ ActiveRecord::Schema.define(:version => 20110117020306) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "rating_average",       :precision => 6, :scale => 2, :default => 0.0
+    t.decimal  "price",                      :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "rating_average",             :precision => 6, :scale => 2, :default => 0.0
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -233,7 +233,11 @@ ActiveRecord::Schema.define(:version => 20110117020306) do
     t.string   "wine_type"
     t.string   "varietal"
     t.integer  "vintage"
-    t.decimal  "average_rating",       :precision => 4, :scale => 2
+    t.decimal  "average_rating",             :precision => 4, :scale => 2
+    t.string   "tasting_notes_file_name"
+    t.string   "tasting_notes_content_type"
+    t.integer  "tasting_notes_file_size"
+    t.datetime "tasting_notes_updated_at"
   end
 
 end

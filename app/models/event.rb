@@ -54,6 +54,11 @@ class Event < ActiveRecord::Base
 #   def clear_picture
 #      self.picture = nil if delete_picture?
 #   end
+
+  def name
+    title
+  end
+
  	protected
       
   	def validate_attachments

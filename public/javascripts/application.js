@@ -172,37 +172,44 @@ $.fn.center = function () {
 * opening modal Dialog
 */
 $('.dialog_form_link').live('click', function() {
+    var link = "http://www.barrelrun.com" + $(this).attr('href'); 
     var $dialog = $('<div class="dialog"></div>')
         .appendTo('body')
-        .load($(this).attr('href') + ' .entry_form', function(){
-            starRating.create('.dialog .stars');
-            $('.jqueryui_date').datepicker();
-            $('#wine_varietal').autocomplete({
-              source: "/wines/distinct_varietals.json",
-              minLength: 1
-            });
-            $('#wine_wine_type').autocomplete({
-              source: "/wines/distinct_wine_types.json",
-              minLength: 1
-            });
-            $('div.comments').hide();
-            $(this).dialog({
-                modal: true,
-//                title: $(this).text(),
-//                autoOpen: false,
-                width: 'auto',
-                height: 'auto',
-                position: 'center',               
-                show: {effect: 'blind', 
-                       duration: 250
-                },
-                hide: {effect: 'blind', duration: 250},
-                close: function(ev, ui) { $('div.dialog').remove(); }
-            });
+        .load($(this).attr('href') + ' .entry_form', function(response, status, xhr){
+            if (status == "error") {
+                var msg = "Sorry but there was an error: ";
+                addNotice("<p>" + msg + xhr.status + " " + xhr.statusText + "</p>")
+            } else {
+                starRating.create('.dialog .stars');
+                addthis.button("#atbutton", {}, {url: link, title: "Barrelrun"});
+                
+                $('.images').galleria();
+                $('.jqueryui_date').datepicker();
+                $('#wine_varietal').autocomplete({
+                  source: "/wines/distinct_varietals.json",
+                  minLength: 1
+                });
+                $('#wine_wine_type').autocomplete({
+                  source: "/wines/distinct_wine_types.json",
+                  minLength: 1
+                });
+                $('div.comments').hide();
+                $(this).dialog({
+                    modal: true,
+    //                title: $(this).text(),
+    //                autoOpen: false,
+                    width: 'auto',
+                    height: 'auto',
+                    position: 'center',               
+                    show: {effect: 'blind', 
+                           duration: 250
+                    },
+                    hide: {effect: 'blind', duration: 250},
+                    close: function(ev, ui) { $('div.dialog').remove(); }
+                });
+            }
         });
-        
 //    $dialog.dialog('open');
-
     // prevent the default action, e.g., following a link
     return false;
 });
@@ -296,14 +303,37 @@ $(document).ready(function(){
 /**
 * AJAX Pagination
 */
+//$(document).ready(function(){
+//  $(".pagination a").live("click", function() {
+////    $(".pagination").html("Page is loading...");
+//    $.getScript(this.href);
+//    return false;
+//  });
+//});
+
+$(document).ajaxError(function(event, request) {
+  var msg = request.getResponseHeader('X-Message');
+  if (msg) addNotice('<p>' + msg + '</p>');
+});
+
+$(document).ajaxSuccess(function(event, request) {
+  var msg = request.getResponseHeader('X-Message');
+  if (msg) addNotice('<p>' + msg + '</p>');
+});
+
+/**
+* AJAX Pagination on Lists
+*/
 $(document).ready(function(){
   $(".pagination a").live("click", function() {
-//    $(".pagination").html("Page is loading...");
-    $.getScript(this.href);
+    $list = $(this).closest('div.list').parent();
+    $.get($(this).attr('href'), function(data){
+      $list.html(data);
+      starRating.create('.stars', $list);
+    });
     return false;
   });
 });
-
 
 
 /**
@@ -315,9 +345,12 @@ $(document).ready(function(){
 
 // The widget
 var starRating = {
-  create: function(selector) {
+  create: function(selector, dom_element) {
     // loop over every element matching the selector
-    $(selector).each(function() {
+    if (!dom_element) {
+      dom_element = $(document);
+    };
+    $(dom_element).find(selector).each(function() {
       var $list = $('<div></div>');
       // loop over every radio button in each container
       $(this)
@@ -364,13 +397,25 @@ var starRating = {
       
       // prevent default link click
       e.preventDefault();
-      $.post($(this).attr('href'), {stars: $star.text() }, function(){
+      
+      $list = $(this).closest('div.list').parent();
+      
+      $.post($(this).attr('href'), {stars: $star.text() }, function(data){
+// THIS WILL WORK FOR RATING FAVORITES, NEED TO GET IT WORKING FOR RATING WINES ETC.
+
+            
+          $list.html(data);
+          starRating.create('.stars', $list);
+// THIS WILL WORK FOR RATING FAVORITES, NEED TO GET IT WORKING FOR RATING WINES ETC.
+          
+          
 //        $('#top_wines').load('home/top_wines', function(){
 //        $(this).closest('#top_list').parent().load('home/top_wines', function(){
 //            starRating.create('#top_wines .stars');
 //          });
         },
-        "script");
+        "html");
+//        "script");
     }).hover(function() {
       // Handle star mouse over
       $(this).prevAll().andSelf().addClass('rating-over');
@@ -430,6 +475,23 @@ $(document).ready(function(){
 });
 
 
+/**
+* Load Favorites Dynamically
+*/
+$(document).ready(function(){
+    $('#fav_wine_list').load('favorites/favorite_wines', function(){
+        starRating.create('#fav_wine_list .stars');
+    });
+    $('#fav_winery_list').load('favorites/favorite_wineries', function(){
+        starRating.create('#fav_winery_list .stars');
+    });
+    $('#fav_special_list').load('favorites/favorite_specials', function(){
+        starRating.create('#fav_special_list .stars');
+    });
+    $('#fav_event_list').load('favorites/favorite_events', function(){
+        starRating.create('#fav_event_list .stars');
+    });
+});
 
 
 

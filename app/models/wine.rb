@@ -13,11 +13,12 @@ class Wine < ActiveRecord::Base
  
 #  	before_validation :clear_picture
 
-  validates_presence_of :name, :vintage, :varietal, :wine_type
+  validates_presence_of :name, :wine_type, :vintage, :varietal
  	validates_numericality_of :price, :vintage, :allow_blank => true
  	validate :price_must_be_at_least_a_cent, :validate_attachments
  	validates_associated :favorites
 
+  before_validation :clear_tasting_notes
   #Controls the number of wines you see per page (pagination)
   cattr_reader :per_page
   @@per_page = 10
@@ -47,6 +48,10 @@ class Wine < ActiveRecord::Base
     has vintage, average_rating, :facet => true
   end
   
+  has_attached_file :tasting_notes
+
+  validates_attachment_content_type :tasting_notes, :content_type => ['application/pdf', 'application/msword']     
+
 #   	has_attached_file :picture, 
 #                      :styles => {:thumb => "100x100>",
 #                                  :small => "300x300>",
@@ -58,18 +63,18 @@ class Wine < ActiveRecord::Base
 #   validates_attachment_size :photo, :less_than => 5.megabytes  
 #   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']     
    
-#  def delete_picture=(value)
-#    @delete_picture = !value.to_i.zero?
-#  end
+  def delete_tasting_notes=(value)
+    @delete_tasting_notes = !value.to_i.zero?
+  end
   
-#   def delete_picture
-#     !!@delete_picture
-#   end
-#   alias_method :delete_picture?, :delete_picture
+   def delete_tasting_notes
+     !!@delete_tasting_notes
+   end
+   alias_method :delete_tasting_notes?, :delete_tasting_notes
   
-#   def clear_picture
-#      self.picture = nil if delete_picture?
-#   end
+   def clear_tasting_notes
+      self.tasting_notes.destroy if delete_tasting_notes?
+   end
   
  	protected
    	def price_must_be_at_least_a_cent

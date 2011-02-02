@@ -1,0 +1,33 @@
+<% ordered_list ||= false %>
+
+<div id='list'>
+  <h2><%= defined?(list_header) ? list_header : "Wines" %></h2>
+  <%= ordered_list ? "<ol>" : "<ul>" %>
+    <% wines.each_with_index do |wine, idx| %>
+      <% if ordered_list && idx == 0 then %>
+    <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
+      <% else %>
+    <li>
+      <% end %>
+      <%= link_to wine.name + '<br>-' + wine.winery.city + ',' + wine.winery.state, wine, :title=> "Show", :class => 'dialog_form_link' %>
+      <% if user_signed_in? %>
+        <div style="float: right;" class="stars">
+          <form action="/favorites/Wine/<%= wine.id %>/rate" method="post">
+            <%= render_stars wine %>
+          </form>
+        </div>
+      <% else %>
+        <div style="float: right;" class="stars">
+          <form action="/favorites/Wine/<%= wine.id %>/rate" method="post">
+            <%= render_stars wine, true %>
+          </form>
+        </div>
+      <% end %>
+    </li>
+    <% end %>
+  <%= ordered_list ? "</ol>" : "</ul>" %>
+</div>
+
+<div>
+  <%= will_paginate wines, :container => false %>
+</div>

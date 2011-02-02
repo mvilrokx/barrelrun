@@ -7,7 +7,6 @@ class Winery < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :favorites, :as => :favorable, :dependent => :destroy
   has_many :wines, :dependent => :destroy
-  has_many :awards, :through => :wines
   has_many :events, :dependent => :destroy
   has_many :specials, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
@@ -15,6 +14,7 @@ class Winery < ActiveRecord::Base
  	has_many :videos, :as => :videoable, :dependent => :destroy
   has_many :credit_cards, :as => :creditable, :dependent => :destroy
   has_one  :subscription, :dependent => :destroy
+  has_many :awards, :through => :wines
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 

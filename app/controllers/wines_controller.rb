@@ -1,6 +1,7 @@
 class WinesController < ApplicationController
-#  before_filter :authenticate_winery!, :except => [:rate, :all_wines]
-  before_filter :verify_winery_subscription, :except => [:rating, :all_wines, :show]
+  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
+  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
+  before_filter :find_user_or_winery
 
   helper_method :sort_column, :sort_asc_or_desc
   
@@ -18,55 +19,48 @@ class WinesController < ApplicationController
 #  end
 
   def rating
-    @wine = Wine.find(params[:id])
-    @user_rating = @wine.ratings.find_or_initialize_by_user_id(current_user.id)
-    @user_rating.rate = params[:stars]
-    if @user_rating.save
-      flash[:notice] = "Successfully saved your rating."
-    end
+    rate ("Wine", params[:id], params[:stars])
+    top_wines
+  end
 
+  def top_wines
     @wines = Wine.top_wines.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml
-      format.js 
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines, 
+                                                                       :ordered_list => true, 
+                                                                       :list_header => "Top 10 Wines" } }
+      format.json { render :layout => false, :json => @wines }
+#      format.js { render :layout => false, :wines => @wines }
     end
-   
   end
 
-  # GET /wines
-  # GET /wines.xml
   def index
-    if  current_winery
+    if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :order => "created_at DESC")
     else  
-      @wines = Wine.all
+      @wines = Wine.all.paginate(:page => params[:page], :order => "created_at DESC")
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @wines }
-      format.js
-      format.mobile # show.mobile.erb
-#      format.json  { render :layout => false, :json => @wines }
-      format.json  { render :layout => false, 
-                            :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
-                                                                  :winery => {:only => :winery_name} 
-                                                                }
-                                                    ) 
-                   }
+
+    if request.xml_http_request?
+      render :partial => "wines", :layout => false
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.js # index.js.erb
+        format.mobile # index.mobile.erb
+        format.json { render :layout => false, 
+                             :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
+                                                                   :winery => {:only => :winery_name}  } )
+                    }
+      end
     end
+    
   end
 
-  # GET /wines/1
-  # GET /wines/1.xml
   def show
     @wine = Wine.find(params[:id], :include => :comments, :order => sort_column + " " + sort_asc_or_desc)
-#    if param[:pic_idx]
     @pic_idx = params[:pic_idx]||0
-#    else
-#      @pic_idx = 0
-#    end
     respond_to do |format|
       format.mobile # show.mobile.erb
       format.html # index.html.erb
@@ -77,12 +71,8 @@ class WinesController < ApplicationController
       redirect_to :action => "index"
   end
 
-  # GET /wines/new
-  # GET /wines/new.xml
   def new
     @wine = Wine.new(:winery_id => current_winery.id)
-#    1.times {@wine.pictures.build}
-#    @wine.winery = current_winery
 
     respond_to do |format|
       format.html # new.html.erb
@@ -93,8 +83,8 @@ class WinesController < ApplicationController
   # GET /wines/1/edit
   def edit
     @wine = current_winery.wines.find(params[:id])
-#    3.times {@wine.pictures.build}
-  rescue
+  rescue Exception => exc
+      logger.error("#{exc.message}")
       flash[:notice] = 'You are not authorized to edit that wine.'
       redirect_to :action => "index"
   end
@@ -133,7 +123,8 @@ class WinesController < ApplicationController
         format.xml  { render :xml => @wine.errors, :status => :unprocessable_entity }
       end
     end
-  rescue
+  rescue Exception => exc
+      logger.error("#{exc.message}")
       flash[:notice] = 'You are not authorized to update that wine.'
       redirect_to :action => "index"
   end
@@ -150,7 +141,8 @@ class WinesController < ApplicationController
       format.html { redirect_to(wines_url) }
       format.xml  { head :ok }
     end
-  rescue
+  rescue Exception => exc
+      logger.error("#{exc.message}")
       flash[:notice] = 'You are not authorized to delete that wine.'
       redirect_to :action => "index"
   end
@@ -160,7 +152,8 @@ class WinesController < ApplicationController
     respond_to do |format|
       format.html # delete.html.erb
     end
-  rescue
+  rescue Exception => exc
+      logger.error("#{exc.message}")
       flash[:notice] = 'You are not authorized to delete that wine.'
       redirect_to :action => "index"
   end
@@ -193,5 +186,10 @@ class WinesController < ApplicationController
   
   def sort_asc_or_desc
     %w[asc desc].include?(params[:asc_or_desc]) ? params[:asc_or_desc] : "desc"
+  end
+  
+  def find_user_or_winery
+    @winery = Winery.find_by_id(params[:winery_id])
+    @user = User.find_by_id(params[:user_id])
   end
 end
