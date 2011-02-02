@@ -1,12 +1,12 @@
-<div id="home" class="current">
+<div id="topWines">
   <div class="toolbar">
-    <h1>Wines</h1>
-      <a href="/">Back</a>
+    <h1>Top Wines 2</h1>
+    <a class="button cancel" href="#">Back</a>
   </div>
   <div class="body">
-       <ul>
-       	<% for wine in @wines %>
-        <li class="arrow">
+    <ul>
+	 <% for wine in @wines %>
+	<li class="arrow">
 <table>	
 	<tr>
 		<td width="60">
@@ -31,9 +31,9 @@
           <% end %>
 		</td>
 	</tr>
-	</table>                    
-         </li>
-        <% end %>
-    </ul>  
-</div>   
+	</table>				
+	</li>
+	<% end %>
+    </ul>
+  </div>    
 </div>

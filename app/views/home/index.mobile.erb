@@ -19,26 +19,28 @@
       <h1>Barrel Run</h1>
 
       <% if user_signed_in? %>
-      <a class="button" id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
+      <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
       <% elsif winery_signed_in? %>
-      <div class="whiteButton" id="signed_in">
+      <div id="signed_in">
         <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
         <%= link_to "Sign Out", destroy_winery_session_path %>
       </div>
       <% else %>
-      <a class="button" <%= link_to h("Login"), new_user_session_path %> </a>
+      <a <%= link_to h("Login"), new_user_session_path %> </a>
       <% end %>
 
   </div>
   <ul id="links" class="rounded">
-    <li class="arrow"><a href="#topWines">Top Wines</a></li>
-    <li class="arrow"><a href="#topWineries">Top Wineries</a></li>
+    <li class="arrow"><a href="/home/top_wines">Top Wines</a></li>
+    <li class="arrow"><a href="/home/top_wineries">Top Wineries</a></li>
     <li class="arrow"><a href="#nearBy">Near By</a></li>
     <li class="arrow"><%= link_to h("Events"), events_path %></li>
     <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
     <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
     <li class="arrow"><%= link_to h("Specials"), specials_path %></li>
   </ul>
+
+
 </div>
 
 <div id="topWines">
@@ -52,7 +54,7 @@
 	<li class="arrow">
 <table>	
 	<tr>
-		<td width="180">
+		<td width="60">
         	<% if wine.pictures.length > 0 then %>
           		<%= image_tag wine.pictures[0].url(:thumb) %>
         	<% end %>

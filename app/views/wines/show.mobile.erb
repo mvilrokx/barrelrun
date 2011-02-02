@@ -1,14 +1,13 @@
 <div id="home" class="current">
   <div class="toolbar">
       <h1>Wine Detail</h1> 
-      <a class="button cancel" <%= link_to h("Back"), wines_path %></a>   
-
+        	<a <%= link_to h("Back"), wines_path %></a> 
   </div>
 
 <table>	
 <tr>
 <h3><%=h @wine.name %></h3>
-<td width="180">
+<td width="60">
         <% if @wine.pictures.length > 0 then %>
           <%= image_tag @wine.pictures[0].url(:thumb) %>
         <% end %>

@@ -96,6 +96,7 @@ class HomeController < ApplicationController
          format.html { render :partial=>"home/top_wines", :locals=>{:top_wines=>@wines} }
          format.json { render :layout => false, :json => @wines }
          format.js { render :layout => false, :wines => @wines }
+         format.mobile { render :mobile=>"home/top_wines", :locals=>{:top_wines=>@wines} }
       end
   end
 
@@ -106,6 +107,7 @@ class HomeController < ApplicationController
       format.html { render :partial=>"home/top_wineries", :locals=>{:top_wineries=>@wineries} }
       format.json { render :layout => false, :json => @wineries }
       format.js
+      format.mobile { render :mobile=>"home/top_wineries", :locals=>{:top_wineries=>@wineries} }
     end
   end
 
