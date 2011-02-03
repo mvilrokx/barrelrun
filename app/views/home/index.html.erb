@@ -14,11 +14,13 @@
     </div>
     <hr>
     <div id="upcoming_specials" style="padding-left: 10px;">
-      <%= render :partial=>"upcoming_specials" %>
+      <%= render :partial=>"shared/object_list", :locals => {:object_list => @specials,
+                                                             :list_header => "Save Money" } %>
     </div>
     <hr>
     <div id="upcoming_events" style="padding-left: 10px;">
-      <%= render :partial=>"upcoming_events" %>
+      <%= render :partial=>"shared/object_list", :locals => {:object_list => @events,
+                                                             :list_header => "Places to Go" } %>
     </div>
   </div>
 

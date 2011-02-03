@@ -20,7 +20,6 @@
       <span class="div_texbox">
         <%= f.text_field :end_date, :required => true, :class => "fillout03 jqueryui_date", :value => @special.try(:end_date).try(:strftime,'%m/%d/%Y')  %>
     	</span>
-      <%= f.hidden_field :winery_id %>
 
       <div id="picture_fields">
       <% f.fields_for :pictures do |builder| %>

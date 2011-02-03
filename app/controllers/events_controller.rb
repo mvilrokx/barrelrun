@@ -1,110 +1,81 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_winery!, :except => [:rate, :index, :rating, :show]
-  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
+  before_filter :authenticate_winery!, :except => [:index, :rating, :show]
+  before_filter :verify_winery_subscription, :except => [:index, :rating, :show]
   
-  def rate
-    @event = Event.find(params[:id])
-    @event.rate(params[:stars], current_user, params[:dimension])
-    render :update do |page|
-      page.replace_html @event.wrapper_dom_id(params), ratings_for(@event, params.merge(:wrap => false))
-      page.visual_effect :highlight, @event.wrapper_dom_id(params)
-      # Update Upcoming Events list with new result everytime user updates rating
-#      @events = Event.all(:order => "rating_average DESC", :include => :comments)
-#      page.replace_html 'upcoming_events', :partial => 'home/upcoming_events',
-#                                           :locals => {:upcoming_events=>@events }   
-    end
-  end
-
   def rating
-    @event = Event.find(params[:id])
-    @user_rating = @event.ratings.find_or_initialize_by_user_id(current_user.id)
-    @user_rating.rate = params[:stars]
-    if @user_rating.save
-      flash[:notice] = "Successfully saved your rating."
-    end
-    @events = Event.upcoming_events.all
+    rate("Event", params[:id], params[:stars])
+    upcoming_events
+  end
+  
+  def upcoming_events
+    @events = Events.upcoming_events.all.paginate(:page => params[:page])
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml
-      format.js
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events, 
+                                                                       :list_header => "Places to Go" } }
+      format.json { render :layout => false, :json => @events }
     end
- 
   end
 
   def index
-#    @events = Event.all
     if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
     else  
       @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
     end
 
-#    @event = Event.new(:winery_id => current_winery.id)
-#    1.times {@event.pictures.build}
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-      format.js
-      format.mobile
+    if request.xml_http_request?
+      render :partial => "events", :layout => false
+    else
+      respond_to do |format|
+        format.html
+        format.js
+        format.mobile
+      end
     end
   end
 
   def show
-#    @event = Event.find(params[:id])
-    @event = Event.find(params[:id])
-    rescue
-      flash[:alert] = 'You are not authorized to view that event.'
+    @event = Event.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures])
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to show this event.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to show event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
   
   def new
-    @event = Event.new(:winery_id => current_winery.id)
-#    3.times {@event.pictures.build}
+    @event = current_winery.events.new
   end
   
   def create
-    @event = Event.new(params[:event])
-#    @event = Event.create!(params[:event])
-#    @event.winery = current_winery
+    @event = current_winery.events.new(params[:event])
     if @event.save
-      flash[:notice] = "Successfully created event."
-       @events = current_winery.events
-#      redirect_to @event
-#      redirect_to events_url
-      respond_to do |format|
-         format.html {redirect_to events_url}
-         format.js
-       end  
+      flash[:notice] = 'Successfully created event.'
+      Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new event called " + @event.name.to_s) rescue nil
+      redirect_to events_url
     else
-      render :action => 'new'
+      render :action => "new"
     end
   end
   
   def edit
-#    @event = Event.find(params[:id])
     @event = current_winery.events.find(params[:id])
-#    3.times { @event.pictures.build }
-#    render :update do |page|
-#        page.replace_html 'entry_form', :partial => 'new_event',
-#                                        :locals => {:event=>@event }
-#    end                                        
-  rescue Exception => e
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to edit this event.  We have been notified about this and will try to resolve the issue ASAP.'
       logger.error("Error when trying to edit event #{params[:id]}.  Error message = " + e.message)
-      flash[:alert] = 'You are not authorized to edit that event.'
       redirect_to :action => "index"
   end
   
   def update
-    @event = Event.find(params[:id])
-#    @event = current_winery.event.find(params[:id])
+    @event = current_winery.events.find(params[:id])
     if @event.update_attributes(params[:event])
       flash[:notice] = "Successfully updated event."
       redirect_to events_url
     else
       render :action => 'edit'
     end
-  rescue
-      flash[:alert] = 'You are not authorized to update that event.'
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to edit this event.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to edit event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
   
@@ -113,9 +84,9 @@ class EventsController < ApplicationController
     @event.destroy
     flash[:notice] = "Successfully destroyed event."
     redirect_to events_url
-  rescue Exception => e
-    flash[:alert] =  'You are not authorized to delete that event.'
-    logger.error("Error when trying to destroy event #{params[:id]}.  Error message = " + e.message)
-    redirect_to :action => "index"
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to delete this event.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to delete event #{params[:id]}.  Error message = " + e.message)
+      redirect_to :action => "index"
   end
 end

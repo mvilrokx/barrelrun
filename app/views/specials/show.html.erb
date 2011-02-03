@@ -1,33 +1,52 @@
-<div class="entry_form">
-  <% title "Special" %>
+<div class="span-17 entry_form last">
+  <div class="span-17 last">
+    <div class="span-12 colborder">
 
-  <p>
-    <strong>Title:</strong>
-    <%=h @special.title %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%=h @special.description %>
-  </p>
-  <p>
-    <strong>Start Date:</strong>
-    <%=h @special.start_date %>
-  </p>
-  <p>
-    <strong>End Date:</strong>
-    <%=h @special.end_date %>
-  </p>
+      <%= render :partial => "shared/picture_gallery", :locals => {:object => @special} %>
 
-  <% if @special.pictures.length > 0 then %>
-    <% for picture in @special.pictures %>
-  <p>
-      <%= image_tag picture.url(:large) %>  
-  </p>
-    <% end %>
-  <% end %>
+      <div class="span-6 last">
+        <div class="span-6 last">
+          <h3><%=h @special.name %></h3>
+          <h4>Offered by <%= link_to @special.winery.winery_name, @special.winery %></h4>
+        </div>
+        
+        <%= render :partial => "shared/star_rating", :locals => {:object => @special, :action => rating_special_path(@special)} %>
+
+        <% if user_signed_in? %>
+          <div class="span-6 append-bottom last">
+          <% if @special.favorites.find_by_user_id(current_user) %>
+            <a href="/specials/<%= @special.id%>/favorites/<%= @special.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
+          <% else %>
+            <a href="/specials/<%= @special.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+          <% end %>
+          </div>
+        <% end %>
+
+        <div class="span-6 last">
+        	<a id="atbutton"></a>
+        	<a class="addthis_button"></a>
+        </div>
+        	
+        <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
+          <%=h @special.description %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="span-4 last" style="font-size: 22px;">
+      <ul style="list-style: none; margin: 0px; padding: 0px;" >
+        <li>Start: <strong><%=h @special.start_date.try(:strftime,'%m/%d/%Y') %></strong></li>
+        <li>End: <strong><%=h @special.end_date.try(:strftime,'%m/%d/%Y') %></strong></li>
+      </ul>
+    </div>
+
+  </div>
+  
+  <%= render :partial => "shared/comments_header", :locals => {:path => special_comments_path(@special)} %>
+  <%= render :partial => "shared/comment_form", :locals => {:object => @special} %>
+  <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @special} %></div>
+
 </div>
-<p>
-  <%= link_to "Edit", edit_special_path(@special) %> |
-  <%= link_to "Destroy", @special, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", specials_path %>
-</p>
+
+<%= link_to 'Edit', edit_special_path(@special) %> |
+<%= link_to 'Back', specials_path %>

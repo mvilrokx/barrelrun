@@ -1,7 +1,6 @@
 class WinesController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rating, :index, :show]
   before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
-  before_filter :find_user_or_winery
 
   helper_method :sort_column, :sort_asc_or_desc
   
@@ -19,7 +18,7 @@ class WinesController < ApplicationController
 #  end
 
   def rating
-    rate ("Wine", params[:id], params[:stars])
+    rate("Wine", params[:id], params[:stars])
     top_wines
   end
 
@@ -30,67 +29,46 @@ class WinesController < ApplicationController
                                                                        :ordered_list => true, 
                                                                        :list_header => "Top 10 Wines" } }
       format.json { render :layout => false, :json => @wines }
-#      format.js { render :layout => false, :wines => @wines }
     end
   end
 
   def index
     if current_winery
-      @wines = current_winery.wines.paginate(:page => params[:page], :order => "created_at DESC")
+      @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else  
-      @wines = Wine.all.paginate(:page => params[:page], :order => "created_at DESC")
+      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
     end
-
 
     if request.xml_http_request?
       render :partial => "wines", :layout => false
     else
       respond_to do |format|
-        format.html # index.html.erb
-        format.js # index.js.erb
-        format.mobile # index.mobile.erb
+        format.html
+        format.mobile
         format.json { render :layout => false, 
                              :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
                                                                    :winery => {:only => :winery_name}  } )
                     }
       end
     end
-    
   end
 
   def show
-    @wine = Wine.find(params[:id], :include => :comments, :order => sort_column + " " + sort_asc_or_desc)
-    @pic_idx = params[:pic_idx]||0
+    @wine = Wine.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures], :order => sort_column + " " + sort_asc_or_desc)
     respond_to do |format|
-      format.mobile # show.mobile.erb
-      format.html # index.html.erb
+      format.mobile
+      format.html
     end
-    rescue Exception => exc
-      logger.error("#{exc.message}")
-      flash[:notice] = 'You are not authorized to view that wine.'
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to show this wine.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to show wine #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
 
   def new
-    @wine = Wine.new(:winery_id => current_winery.id)
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @wine }
-    end
+    @wine = Wine.new
   end
 
-  # GET /wines/1/edit
-  def edit
-    @wine = current_winery.wines.find(params[:id])
-  rescue Exception => exc
-      logger.error("#{exc.message}")
-      flash[:notice] = 'You are not authorized to edit that wine.'
-      redirect_to :action => "index"
-  end
-
-  # POST /wines
-  # POST /wines.xml
   def create
     @wine = Wine.new(params[:wine])
     @wine.winery = current_winery
@@ -99,38 +77,40 @@ class WinesController < ApplicationController
       if @wine.save
         flash[:notice] = 'Wine was successfully created.'
         format.html {redirect_to wines_url}
-        format.xml  { render :xml => @wine, :status => :created, :location => @wine }
         Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new wine called " + @wine.name.to_s) rescue nil
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @wine.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /wines/1
-  # PUT /wines/1.xml
+  def edit
+    @wine = current_winery.wines.find(params[:id])
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to edit this wine.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to edit wine #{params[:id]}.  Error message = " + e.message)
+      redirect_to :action => "index"
+  end
+
   def update
-    @wine = Wine.find(params[:id])
+    @wine = current_winery.wines.find(params[:id])
 
     respond_to do |format|
       if @wine.update_attributes(params[:wine])
         flash[:notice] = 'Wine was successfully updated.'
         format.html { redirect_to wines_url }
-        format.xml  { head :ok }
+#        format.xml  { head :ok }
     else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @wine.errors, :status => :unprocessable_entity }
+#        format.xml  { render :xml => @wine.errors, :status => :unprocessable_entity }
       end
     end
-  rescue Exception => exc
-      logger.error("#{exc.message}")
-      flash[:notice] = 'You are not authorized to update that wine.'
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to edit this wine.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to edit wine #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
 
-  # DELETE /wines/1
-  # DELETE /wines/1.xml
   def destroy
     @wine = current_winery.wines.find(params[:id])
     redirect_to(wines_url) and return if params[:cancel]
@@ -139,24 +119,24 @@ class WinesController < ApplicationController
     respond_to do |format|
       flash[:notice] = 'Wine was successfully deleted.'
       format.html { redirect_to(wines_url) }
-      format.xml  { head :ok }
+#      format.xml  { head :ok }
     end
-  rescue Exception => exc
-      logger.error("#{exc.message}")
-      flash[:notice] = 'You are not authorized to delete that wine.'
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to delete this wine.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to delete wine #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
 
-  def delete
-    @wine = current_winery.wines.find(params[:id])
-    respond_to do |format|
-      format.html # delete.html.erb
-    end
-  rescue Exception => exc
-      logger.error("#{exc.message}")
-      flash[:notice] = 'You are not authorized to delete that wine.'
-      redirect_to :action => "index"
-  end
+#  def delete
+#    @wine = current_winery.wines.find(params[:id])
+#    respond_to do |format|
+#      format.html # delete.html.erb
+#    end
+#    rescue Exception => e
+#      flash[:notice] =  'An error occured while trying to delete this wine.  We have been notified about this and will try to resolve the issue ASAP.'
+#      logger.error("Error when trying to delete wine #{params[:id]}.  Error message = " + e.message)
+#      redirect_to :action => "index"
+#  end
   
   def distinct_varietals
 #    @distinct_varietals = Wine.connection.select_values('select distinct(varietal) from wines')
@@ -188,8 +168,4 @@ class WinesController < ApplicationController
     %w[asc desc].include?(params[:asc_or_desc]) ? params[:asc_or_desc] : "desc"
   end
   
-  def find_user_or_winery
-    @winery = Winery.find_by_id(params[:winery_id])
-    @user = User.find_by_id(params[:user_id])
-  end
 end

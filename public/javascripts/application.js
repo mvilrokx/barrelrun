@@ -166,6 +166,9 @@ $.fn.center = function () {
     return this;
 }
 
+$(document).ready(function(){
+  $('.gallery_images').galleria();
+});
 
 
 /**
@@ -183,7 +186,7 @@ $('.dialog_form_link').live('click', function() {
                 starRating.create('.dialog .stars');
                 addthis.button("#atbutton", {}, {url: link, title: "Barrelrun"});
                 
-                $('.images').galleria();
+                $('.gallery_images').galleria();
                 $('.jqueryui_date').datepicker();
                 $('#wine_varietal').autocomplete({
                   source: "/wines/distinct_varietals.json",
@@ -402,13 +405,9 @@ var starRating = {
       
       $.post($(this).attr('href'), {stars: $star.text() }, function(data){
 // THIS WILL WORK FOR RATING FAVORITES, NEED TO GET IT WORKING FOR RATING WINES ETC.
-
-            
           $list.html(data);
           starRating.create('.stars', $list);
 // THIS WILL WORK FOR RATING FAVORITES, NEED TO GET IT WORKING FOR RATING WINES ETC.
-          
-          
 //        $('#top_wines').load('home/top_wines', function(){
 //        $(this).closest('#top_list').parent().load('home/top_wines', function(){
 //            starRating.create('#top_wines .stars');

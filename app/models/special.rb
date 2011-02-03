@@ -2,6 +2,7 @@ class Special < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :pictures, :as => :pictureable, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
+ 	has_many :favorites, :as => :favorable, :dependent => :destroy
 
   accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 

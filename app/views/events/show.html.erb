@@ -1,41 +1,52 @@
-<div class="entry_form">
-  <% title "Event" %>
+<div class="span-17 entry_form last">
+  <div class="span-17 last">
+    <div class="span-12 colborder">
 
-  <p>
-    <strong>Title:</strong>
-    <%=h @event.title %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%=h @event.description %>
-  </p>
-  <p>
-    <strong>Place:</strong>
-    <%=h @event.place %>
-  </p>
-  <p>
-    <strong>Start Date:</strong>
-    <%=h @event.start_date %>
-  </p>
-  <p>
-    <strong>End Date:</strong>
-    <%=h @event.end_date %>
-  </p>
-  <p>
-    <strong>Winery:</strong>
-    <%=h @event.winery_id %>
-  </p>
+      <%= render :partial => "shared/picture_gallery", :locals => {:object => @event} %>
 
-  <% if @event.pictures.length > 0 then %>
-    <% for picture in @event.pictures %>
-  <p>
-      <%= image_tag picture.url(:large) %>  
-  </p>
-    <% end %>
-  <% end %>
+      <div class="span-6 last">
+        <div class="span-6 last">
+          <h3><%=h @event.name %></h3>
+          <h4>Offered by <%= link_to @event.winery.winery_name, @event.winery %></h4>
+        </div>
+        
+        <%= render :partial => "shared/star_rating", :locals => {:object => @event, :action => rating_event_path(@event)} %>
+
+        <% if user_signed_in? %>
+          <div class="span-6 append-bottom last">
+          <% if @event.favorites.find_by_user_id(current_user) %>
+            <a href="/events/<%= @event.id%>/favorites/<%= @event.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
+          <% else %>
+            <a href="/events/<%= @event.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+          <% end %>
+          </div>
+        <% end %>
+
+        <div class="span-6 last">
+        	<a id="atbutton"></a>
+        	<a class="addthis_button"></a>
+        </div>
+        	
+        <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
+          <%=h @event.description %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="span-4 last" style="font-size: 22px;">
+      <ul style="list-style: none; margin: 0px; padding: 0px;" >
+        <li>Start: <strong><%=h @event.start_date.try(:strftime,'%m/%d/%Y')  %></strong></li>
+        <li>End: <strong><%=h @event.end_date.try(:strftime,'%m/%d/%Y') %></strong></li>
+      </ul>
+    </div>
+
+  </div>
+  
+  <%= render :partial => "shared/comments_header", :locals => {:path => event_comments_path(@event)} %>
+  <%= render :partial => "shared/comment_form", :locals => {:object => @event} %>
+  <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @event} %></div>
+
 </div>
-<p>
-  <%= link_to "Edit", edit_event_path(@event) %> |
-  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", events_path %>
-</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

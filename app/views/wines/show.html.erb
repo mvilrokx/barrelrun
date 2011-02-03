@@ -1,48 +1,16 @@
-<script>
-$(document).ready(function(){
-  $('.images').galleria();
-});
-</script>
-
-
-
 <div class="span-17 entry_form last">
   <div class="span-17 last">
     <div class="span-12 colborder">
 
-      <div class="span-6">
-        <div class="span-6 last">
-          <% if @wine.pictures.length > 0 then %>
-            <div class="images" style="height: 278px;">
-              <% @wine.pictures.each_with_index do |pic, idx| -%>
-                <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:small), :title=> "Picture Gallery" %>
-              <% end -%>
-            </div>
-          <% else %>
-            <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>        
-          <% end %>
-        </div>
-      </div>
-
+      <%= render :partial => "shared/picture_gallery", :locals => {:object => @wine} %>
 
       <div class="span-6 last">
         <div class="span-6 last">
           <h3><%=h @wine.name %></h3>
           <h4>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></h4>
         </div>
-        <div class="span-6 append-bottom last">
-          <% if user_signed_in? %>
-            <div class="stars">
-              <form action="/wines/<%= @wine.id %>/rating/" method="post">
-                <%= render_stars @wine %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars @wine, true %>
-            </div>
-          <% end %>
-        </div>
+
+        <%= render :partial => "shared/star_rating", :locals => {:object => @wine, :action => rating_wine_path(@wine)} %>
 
         <% if user_signed_in? %>
           <div class="span-6 append-bottom last">
@@ -64,6 +32,7 @@ $(document).ready(function(){
         </div>
       </div>
     </div>
+    
     <div class="span-4 last" style="font-size: 22px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
         <li>Vintage: <strong><%=h @wine.vintage %></strong></li>
@@ -72,37 +41,19 @@ $(document).ready(function(){
         <li>Price: <strong><%=h number_to_currency(@wine.price) %></strong></li>
       </ul>
     </div>
+
     <% if @wine.tasting_notes? %>
       <%= link_to "Download Tasting Notes", @wine.tasting_notes.url %>
     <% end %>
-
     <hr/>
-  </div>
-  <div class="span-17 last">
-    <div class="span-3">
-      <h3>Comments</h3>
-    </div>
-    <div class="span-14 last">
-    <% if user_signed_in? %>
-      <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')} Write a new Comment", wine_comments_path(@wine), :title=> "Write a new Comment", :class=>"write_comment" %>
-    <% else %>
-      <%= link_to "Register", new_user_registration_path %> or <%= link_to  content_tag(:span, 'Login'), new_user_session_path %> to add comments!
-    <% end %>
-    </div>
-  </div>
 
-  <div class="span-16 last comments">
-  <% form_for [@wine, Comment.new] do |f| %>  
-    <%= f.error_messages %>
-    <%= f.text_area :content, :rows => 3, :style=>"height: 100%; width: 100%;"  %>
-    <%= f.submit "Save Comment" %>
-  <% end %>
   </div>
-
+  
+  <%= render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)} %>
+  <%= render :partial => "shared/comment_form", :locals => {:object => @wine} %>
   <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @wine} %></div>
 
 </div>
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
 <%= link_to 'Back', wines_path %>
-

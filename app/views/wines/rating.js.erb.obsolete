@@ -1,0 +1,4 @@
+$("#top_wines").html("<%= escape_javascript(render :partial=>"home/top_wines", :locals=>{:wines=>@wines}) %>");
+starRating.create('#top_wines .stars');
+addNotice("<p><%= escape_javascript(flash.delete(:notice)) %></p>");
+alert("IN JS.ERB");

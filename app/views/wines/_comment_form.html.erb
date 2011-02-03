@@ -1,0 +1,8 @@
+<div class="span-16 last comments">
+<% form_for [object, Comment.new] do |f| %>  
+  <%= f.error_messages %>
+  <%= f.text_area :content, :rows => 3, :style=>"height: 100%; width: 100%;"  %>
+  <%= f.submit "Save Comment" %>
+<% end %>
+</div>
+

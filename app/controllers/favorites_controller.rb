@@ -75,36 +75,22 @@ class FavoritesController < ApplicationController
   end
 
   def favorite_events
-    @favorite_events = current_user.favorite_events.paginate(:page => params[:page], :order => "average_rating DESC")
+    @favorite_events = current_user.favorite_events.paginate(:page => params[:page],
+                                                             :conditions => ["end_date >= :today", {:today => Date.today}],  
+                                                             :order => "start_date DESC")
     respond_to do |format|
       format.html { render :partial=>"favorites_list", :object => @favorite_events }
- #     format.html { render :partial=>"events_list", :locals=>{:events=>@favorite_events} }
     end
   end
 
   def favorite_specials
-    @favorite_specials = current_user.favorite_specials.paginate(:page => params[:page], :order => "average_rating DESC")
+    @favorite_specials = current_user.favorite_specials.paginate(:page => params[:page],
+                                                             :conditions => ["end_date >= :today", {:today => Date.today}],  
+                                                             :order => "start_date DESC")
     respond_to do |format|
       format.html { render :partial=>"favorites_list", :object => @favorite_specials }
-#      format.html { render :partial=>"specials_list", :locals=>{:events=>@favorite_specials} }
     end
   end
-
-#  def rating
-#    favorite = Favorite.find(params[:id])
-##    favorite = Favorite.find(favorable_type = "Wine" and favorable_id = params[:id])
-#    rate(favorite.favorable_type, favorite.favorable_id, params[:stars])
-#    if favorite.favorable_type == "Wine"
-#      render :action => favorite_wines
-#    end
-
-##    @wines = Wine.top_wines.all
-##    respond_to do |format|
-##      format.html # index.html.erb
-##      format.xml
-##      format.js
-##    end
-#  end
 
   private
   
