@@ -43,85 +43,6 @@
 
 </div>
 
-<div id="topWines">
-  <div class="toolbar">
-    <h1>Top Wines</h1>
-    <a class="button cancel" href="#">Back</a>
-  </div>
-  <div class="body">
-    <ul>
-	 <% for wine in @wines %>
-	<li class="arrow">
-<table>	
-	<tr>
-		<td width="60">
-        	<% if wine.pictures.length > 0 then %>
-          		<%= image_tag wine.pictures[0].url(:thumb) %>
-        	<% end %>
-		</td>	
-		<td>	
-			<div><%= link_to h(wine.name), wine %> </div>
-			<div><%=h wine.winery.city %>, <%=h wine.winery.state %> </div>
-			<div><%=h wine.description %> </div>
-	  <% if user_signed_in? %>
-            <div class="stars">
-              <form action="/wines/<%= @wines.id %>/rating/" method="post">
-                <%= render_stars wine %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars wine, true %>
-            </div>
-          <% end %>
-		</td>
-	</tr>
-	</table>				
-	</li>
-	<% end %>
-    </ul>
-  </div>    
-</div>
-
-<div id="topWineries">
-  <div class="toolbar">
-    <h1>Top Wineries</h1>
-    <a class="button cancel" href="#">Back</a>
-  </div>
-  <div class="body">
-   	  <ul>
-	    <% for winery in @wineries %>
-	    <li class="arrow">
-			<table>	
-			<tr>
-				<td width="180">
-        			<% if winery.pictures.length > 0 then %>
-          				<%= image_tag winery.pictures[0].url(:thumb) %>
-        			<% end %>
-				</td>	
-			<td>
-	      		<div><%= link_to h(winery.winery_name), winery %></div>
-          		<div><%=h winery.city %>, <%=h winery.state %></div>
-	<% if user_signed_in? %>
-            <div class="stars">
-              <form action="/winery/<%= @wineries.id %>/rating/" method="post">
-                <%= render_stars winery %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars winery, true %>
-            </div>
-          <% end %>
-			</td>
-			</tr>
-			</table>
-	    </li>
-	    <% end %>
-      </ul>    
-  </div>
-</div>
-
 <div id="nearBy">
 	<div class="toolbar">
          <h1>Near By</h1>
@@ -131,7 +52,7 @@
 		<div class="colborder">
       		<div>
 		          <div id="map"></div>
-     		
+
 			</div>
 	      </div>    
     </div>

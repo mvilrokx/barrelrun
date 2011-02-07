@@ -128,8 +128,9 @@
        <div class="body">
          <ul>
             <% for event in @winery.events %>
-              <li><%= event.title %><br/>
-              <%=h event.winery.city %>, <%=h event.winery.state %>
+              <li>
+            	<div><%= link_to h(event.title), event %> </div>
+            	<div><%= link_to h(event.description), event %> </div>
                 <% if user_signed_in? %>
                   <div class="stars">
                     <form action="/events/<%= event.id %>/rating/" method="post">
@@ -153,13 +154,14 @@
          <a class="button cancel" href="#">Back</a>
        </div>
        <div class="body">
-						<ul>
-            	<% for special in @winery.specials %>
-              <li><%= special.title %><br/>
-              - <em>from</em> <%=h special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h special.end_date.try(:strftime,'%m/%d/%Y') %>
+		<ul>
+        <% for special in @winery.specials %>
+              <li>
+            	<div><%= link_to h(special.title), special %> </div>
+            	<div><%= link_to h(special.description), special %> </div>
                 <% if user_signed_in? %>
                   <div class="stars">
-                    <form action="/specials/<%= wine.id %>/rating/" method="post">
+                    <form action="/specials/<%= special.id %>/rating/" method="post">
                       <%= render_stars special %>
                     </form>
                   </div>
