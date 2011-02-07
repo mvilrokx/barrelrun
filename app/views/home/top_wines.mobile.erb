@@ -1,7 +1,7 @@
 <div id="topWines">
   <div class="toolbar">
-    <h1>Top Wines 2</h1>
-    <a class="button cancel" href="#">Back</a>
+    <h1>Top Wines</h1>
+    <a  href="/">Back</a>
   </div>
   <div class="body">
     <ul>
@@ -16,8 +16,8 @@
 		</td>	
 		<td>	
 			<div><%= link_to h(wine.name), wine %> </div>
-			<div><%=h wine.winery.city %>, <%=h wine.winery.state %> </div>
-			<div><%=h wine.description %> </div>
+			<div><%= link_to h(wine.winery.city + ", " + wine.winery.state), wine %> </div>
+			<div><%= link_to h(wine.description), wine %> </div>
 	  <% if user_signed_in? %>
             <div class="stars">
               <form action="/wines/<%= @wines.id %>/rating/" method="post">
