@@ -9,15 +9,9 @@
 	<li class="arrow">
 <table>	
 	<tr>
-		<td width="60">
-        	<% if wine.pictures.length > 0 then %>
-          		<%= image_tag wine.pictures[0].url(:thumb) %>
-        	<% end %>
-		</td>	
 		<td>	
 			<div><%= link_to h(wine.name), wine %> </div>
 			<div><%= link_to h(wine.winery.city + ", " + wine.winery.state), wine %> </div>
-			<div><%= link_to h(wine.description), wine %> </div>
 	  <% if user_signed_in? %>
             <div class="stars">
               <form action="/wines/<%= @wines.id %>/rating/" method="post">
