@@ -9,6 +9,7 @@
        <div><%= @special.title %><br/>
               <em>from</em> <%=h @special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h @special.end_date.try(:strftime,'%m/%d/%Y') %>
                   <div><%=h @special.description %> </div>
+        <div><%= link_to h("View and Enter Comments"), special_comments_path(@special) %></div>
        </div>
     </ul>  
 </div>   
