@@ -1,12 +1,14 @@
 class WineriesController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :rating, :index, :show]
+
   
+
   def index
     @wineries = Winery.all;
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :layout => false, :json => @wineries }
-      format.mobile # show.mobile.erb
+      format.mobile
     end
   end
   
@@ -20,7 +22,7 @@ class WineriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @winery }
-  	  format.mobile # show.mobile.erb
+      format.mobile
     end
   end
 
