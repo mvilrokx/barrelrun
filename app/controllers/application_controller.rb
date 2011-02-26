@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :prepare_for_mobile, :set_subscription
   after_filter :flash_to_headers
-  
+
   def verify_winery_subscription
     unless session[:subscription] == 1
       flash[:alert]  = "You have not chosen a subscription level yet."

@@ -1,7 +1,7 @@
 <div id="topWineries">
   <div class="toolbar">
-    <h1>Top Wineries 2</h1>
-    <a class="button cancel" href="#">Back</a>
+    <h1>Top Wineries</h1>
+    <a  href="/">Back</a>
   </div>
   <div class="body">
    	  <ul>
@@ -9,14 +9,9 @@
 	    <li class="arrow">
 			<table>	
 			<tr>
-				<td width="180">
-        			<% if winery.pictures.length > 0 then %>
-          				<%= image_tag winery.pictures[0].url(:thumb) %>
-        			<% end %>
-				</td>	
 			<td>
 	      		<div><%= link_to h(winery.winery_name), winery %></div>
-          		<div><%=h winery.city %>, <%=h winery.state %></div>
+          		<div><%= link_to h(winery.city + ", " + winery.state),  winery%></div>
 	<% if user_signed_in? %>
             <div class="stars">
               <form action="/winery/<%= @wineries.id %>/rating/" method="post">

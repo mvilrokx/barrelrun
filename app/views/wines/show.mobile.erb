@@ -17,6 +17,8 @@
         <div><strong>Type: </strong><%=h @wine.wine_type %></div>
         <div><strong>Varietal: </strong><%=h @wine.varietal %></div>
         <div><strong>Price: </strong><%=h number_to_currency(@wine.price) %></div>
+        <div>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></div>
+        <div><%= link_to h("View and Enter Comments"), wine_comments_path(@wine) %></div>
 	<div><strong>Rating: </strong>
 	<% if user_signed_in? %>
             <div class="stars">

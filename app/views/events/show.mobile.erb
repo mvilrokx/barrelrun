@@ -4,6 +4,18 @@
       <a  <%= link_to h("Back"), events_path %></a>
   </div>
 
+<table>
+	<tr> 
+		<td width="60" >
+			<% if @event.pictures.length > 0 then %>
+    			<% for picture in @event.pictures %>
+  				<p>
+      				<%= image_tag picture.url(:thumb) %>  
+  				</p>
+    		<% end %>
+  			<% end %>
+		</td>	
+        <td>
   <p>
     <strong>Title:</strong>
     <%=h @event.title %>
@@ -28,12 +40,9 @@
     <strong>Winery:</strong>
     <%=h @event.winery_id %>
   </p>
-
-  <% if @event.pictures.length > 0 then %>
-    <% for picture in @event.pictures %>
-  <p>
-      <%= image_tag picture.url(:large) %>  
-  </p>
-    <% end %>
-  <% end %>
+        <div><%= link_to h("View and Enter Comments"), event_comments_path(@event) %></div>
+</td>
+</tr>
+  
+</table> 
 </div>

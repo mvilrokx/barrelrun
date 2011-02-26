@@ -6,6 +6,12 @@ class HomeController < ApplicationController
     @wineries = Winery.top_wineries.all.paginate(:page => params[:page])
   end
 
+
+def set_from_page(page_name)
+#session[:from_page] = "/home/top_wineries"
+session[:from_page] = "/home/#topWineries"
+end
+
   def all_objects_search
     with_params = params.select{|k,v| k=='vintage'||k=='average_rating'}
     with_params = Hash[*with_params.flatten]
@@ -101,6 +107,7 @@ class HomeController < ApplicationController
   end
 
   def top_wineries
+    set_from_page("test")
     @wineries = Winery.top_wineries.all # Winery.all(:order => "rating_average DESC", :limit => 10, :include => {:comments => :user})
 #    @wineries = Winery.all(:order => "average_rating DESC", :limit => 10)
     respond_to do |format|

@@ -11,14 +11,15 @@
       <li class="arrow" href="#wineDetails" >
       <table>    
       <tr> 
-      <td width="180"> <%= link_to image_tag("../images/page_find.png",
-             :border=>0, :alt=>"Show"), winery, :title=> "Show", :class => 'dialog_form_link' %>
-      </td>
+		<td width="60">
+        			<% if winery.pictures.length > 0 then %>
+          				<%= image_tag winery.pictures[0].url(:thumb) %>
+        			<% end %>
+				</td>	
       <td>
             <div><%= link_to h(winery.winery_name), winery %> </div>
-            <div><%=h winery.city %>, <%=h winery.state %> </div>
-
-	<% if user_signed_in? %>
+            <div><%= link_to h(winery.city + ", " + winery.state), winery %> </div>
+			<% if user_signed_in? %>
             <div class="stars">
               <form action="/winery/<%= @wineries.id %>/rating/" method="post">
                 <%= render_stars winery %>

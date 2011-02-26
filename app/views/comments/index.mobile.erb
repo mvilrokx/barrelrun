@@ -1,26 +1,24 @@
 <div id="home" class="current">
 	<div class="toolbar">
     	<h1>Comments</h1>
-    	<a class="button cancel" href="/">Back</a>
+		<a <%= link_to h("Back"), wineries_path%></a>
 	</div>
-
+	<div class="entry_form">
+  		<% form_for [@commentable, Comment.new] do |f| %>  
+    	<%= f.error_messages %>
+    	<fieldset>
+      		<ol>
+        	<li>
+        	<%= f.label :content, "Comment" %>  
+        	<%= f.text_area :content, :rows => 5 %>  
+      		</li>  
+      		<li><%= f.submit %></li>  
+    		</ol> 
 	<ul id="comments">
   		<% @comments.each do |comment| %>  
     		<li><%= comment.content %></li>  
   		<% end %>  
 	</ul>  
-
-	<div class="entry_form">
-  		<% form_for [@commentable, Comment.new] do |f| %>  
-    	<%= f.error_messages %>
-    	<fieldset>
-      	<ol>
-        <li>
-        	<%= f.label :content, "Comment" %>  
-        	<%= f.text_area :content, :rows => 5 %>  
-      	</li>  
-      	<li><%= f.submit %></li>  
-    	</ol>  
  		<% end %>
 	</div>
 </div>
