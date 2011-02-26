@@ -15,6 +15,9 @@ class Special < ActiveRecord::Base
   #Controls the number of wines you see per page (pagination)
   cattr_reader :per_page
   @@per_page = 10
+  #Controls the size of Top List
+  cattr_reader :top_list_size
+  @@top_list_size = 10
 
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
@@ -24,10 +27,17 @@ class Special < ActiveRecord::Base
   validates_presence_of :title
   validate :validate_attachments
 
-  named_scope :upcoming_specials, :conditions => ["end_date >= :today", {:today => Date.today}], 
-                          :order => "start_date DESC", 
-                          :limit => 10, 
-                          :include => {:comments => :user}
+  named_scope :upcoming_specials, lambda { |top|
+    { :limit => top||=:top_list_size, 
+      :conditions => ["end_date >= :today", {:today => Date.today}], 
+      :order => "start_date DESC" 
+    }
+  }
+
+#  named_scope :upcoming_specials, :conditions => ["end_date >= :today", {:today => Date.today}], 
+#                          :order => "start_date DESC", 
+#                          :limit => 10, 
+#                          :include => {:comments => :user}
     
 #   has_attached_file :picture, 
 #                     :styles => {:thumb => "100x100>",

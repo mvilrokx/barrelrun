@@ -1,9 +1,9 @@
 <div class="span-6">
   <div class="span-6 last">
     <% if object.pictures.length > 0 then %>
-      <div class="gallery_images" style="height: 278px;">
+      <div style="height: 278px;">
         <% object.pictures.each_with_index do |pic, idx| -%>
-          <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:small), :title=> "Picture Gallery" %>
+          <%= link_to image_tag(pic.url(:thumb), :alt=>pic.title), pic.url(:large), :title=> "Picture Gallery", :rel=>"prettyPhoto[wine_gal]" %>
         <% end -%>
       </div>
     <% else %>

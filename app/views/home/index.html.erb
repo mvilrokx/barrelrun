@@ -15,12 +15,14 @@
     <hr>
     <div id="upcoming_specials" style="padding-left: 10px;">
       <%= render :partial=>"shared/object_list", :locals => {:object_list => @specials,
-                                                             :list_header => "Save Money" } %>
+                                                            :path => "top/#{Special.top_list_size}/",
+                                                            :list_header => "Save Money"} %>
     </div>
     <hr>
     <div id="upcoming_events" style="padding-left: 10px;">
       <%= render :partial=>"shared/object_list", :locals => {:object_list => @events,
-                                                             :list_header => "Places to Go" } %>
+                                                            :path => "top/#{Event.top_list_size}/",
+                                                            :list_header => "Places to Go"} %>
     </div>
   </div>
 
@@ -38,14 +40,15 @@
   <div class="span-7 last">
       <div id="top_wineries">
          <%= render :partial=>"shared/object_list", :locals => {:object_list => @wineries,
-                                                                :ordered_list => true, 
-                                                                :list_header => "Top 10 Wineries" } %>
+                                                                :ordered_list => true,
+                                                                :list_header => "Top " + @wineries.count.to_s + " Wineries" } %>
       </div>
       <hr>
       <div id="top_wines">
-         <%= render :partial=>"favorites/wine_list", :locals => {:wines => @wines, 
-                                                                 :ordered_list => true, 
-                                                                 :list_header => "Top 10 Wines"} %>
+         <%= render :partial=>"shared/object_list", :locals => {:object_list => @wines,
+                                                                :ordered_list => true,
+                                                                :path => "top/#{Wine.top_list_size}/",
+                                                                :list_header => "Top #{Wine.top_list_size} Wines"} %>
       </div>
   </div>
 </div>

@@ -6,8 +6,16 @@ class Video < ActiveRecord::Base
 #   belongs_to :event
 
 	has_attached_file :movie,
-                    :url => "/assets/videos/:class/:id/:style/:basename.:extension",  
-                    :path => ":rails_root/public/assets/videos/:class/:id/:style/:basename.:extension"  
+                  	:styles => {:micro  => ["50x50>", :jpg],
+                                :thumb  => ["100x100>", :jpg],
+                                :small  => ["200x200>", :jpg],
+                                :medium => ["300x300>", :jpg],
+                                :large  => ["600x600>", :jpg],
+                                :xlarge => ["1200x1200>", :jpg]
+                               },
+                    :url => "/assets/videos/:class/:id/:style/:basename.:content_type_extension",  
+                    :path => ":rails_root/public/assets/videos/:class/:id/:style/:basename.:content_type_extension",
+                    :processors => [ :video_thumbnail ]
 
   #Controls the number of pictures you see per page (pagination)
   cattr_reader :per_page
@@ -33,7 +41,46 @@ class Video < ActiveRecord::Base
 		movie_file_size
 	end
 	
-	protected
+  def video?
+    [ 'application/x-mp4',
+      'video/mpeg',
+      'video/quicktime',
+      'video/x-la-asf',
+      'video/x-ms-asf',
+      'video/x-msvideo',
+      'video/x-sgi-movie',
+      'video/x-flv',
+      'flv-application/octet-stream',
+      'video/3gpp',
+      'video/3gpp2',
+      'video/3gpp-tt',
+      'video/BMPEG',
+      'video/BT656',
+      'video/CelB',
+      'video/DV',
+      'video/H261',
+      'video/H263',
+      'video/H263-1998',
+      'video/H263-2000',
+      'video/H264',
+      'video/JPEG',
+      'video/MJ2',
+      'video/MP1S',
+      'video/MP2P',
+      'video/MP2T',
+      'video/mp4',
+      'video/MP4V-ES',
+      'video/MPV',
+      'video/mpeg4',
+      'video/mpeg4-generic',
+      'video/nv',
+      'video/parityfec',
+      'video/pointer',
+      'video/raw',
+      'video/rtx' ].include?(movie.content_type)
+  end
+  
+  protected
 	  def only_one_primary_video_per_winery
       if self.primary?
         current_primary_video = Video.first(:conditions => {:videoable_id => self.videoable_id, :videoable_type => 'Winery', :primary => true})

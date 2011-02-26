@@ -17,13 +17,14 @@ class CommentsController < ApplicationController
     @commentable = find_commentable  
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
-    if @comment.save  
+    if @comment.save
       flash[:notice] = "Successfully saved comment."  
+      Juggernaut.publish("channel1", @comment.user.username + " commented on " + @commentable.name + " ("+ @commentable.class.name + "): '" + @comment.content + "'") rescue nil
     #     redirect_to :id => nil
 #      redirect_to root_url
     else
       flash[:notice] = "Could not save comment, please try again later."  
-#      render :action => 'new'  
+#      render :action => 'new'
     end
   end
 

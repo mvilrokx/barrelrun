@@ -19,28 +19,67 @@ class WinesController < ApplicationController
 
   def rating
     rate("Wine", params[:id], params[:stars])
-    top_wines
+    wine_list
+#    top_wines
   end
 
-  def top_wines
-    @wines = Wine.top_wines.all
+  def wine_list
+    ordered_list = false
+    list_header = "Wines"
+    if params[:winery_id]
+      @wines = Winery.find(params[:winery_id]).wines #.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
+      path = "wineries/" + params[:winery_id] + "/"
+    elsif params[:top]
+      @wines = Wine.top_wines(params[:top]) #.all(:limit => params[:top])
+      list_header = "Top " + params[:top] + " Wines"
+      ordered_list = true
+      path = "top/" + params[:top] + "/"
+    else
+      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+    end
     respond_to do |format|
-      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines, 
-                                                                       :ordered_list => true, 
-                                                                       :list_header => "Top 10 Wines" } }
-      format.json { render :layout => false, :json => @wines }
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines,
+                                                                       :path => path,
+                                                                       :ordered_list => ordered_list,
+                                                                       :list_header => list_header } }
+      format.json { render :layout => false, 
+                           :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
+                                                                 :winery => {:only => :winery_name}  } )
+                  }
     end
   end
 
+#  def top_wines
+#    @wines = Wine.top_wines.all
+#    respond_to do |format|
+#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines, 
+#                                                                       :ordered_list => true, 
+#                                                                       :list_header => "Top 10 Wines" } }
+#      format.json { render :layout => false, :json => @wines }
+#    end
+#  end
+
   def index
+#    if params[:winery_id]
+#      @wines = Winery.find(params[:winery_id]).wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
+#    elsif params[:user_id]
+#      @wines = User.find(params[:user_id]).favorite_wines.paginate(:page => params[:page], :order => "average_rating DESC")
+#    elsif params[:top]
+#      @wines = Wine.top_wines.all(:limit => params[:top])
+#    else
+#      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+#    end
+    
     if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else  
-      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+#      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+      @search = Wine.searchlogic(params[:search])
+      @wines = @search.all.paginate(:page => params[:page])
     end
 
     if request.xml_http_request?
-      render :partial => "wines", :layout => false
+      render :partial => "wines" #, :layout => false
     else
       respond_to do |format|
         format.html

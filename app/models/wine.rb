@@ -22,16 +22,29 @@ class Wine < ActiveRecord::Base
   #Controls the number of wines you see per page (pagination)
   cattr_reader :per_page
   @@per_page = 10
+  #Controls the size of Top List
+  cattr_reader :top_list_size
+  @@top_list_size = 10
 
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
 
 
-  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
+#  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
 
-  named_scope :top_wines, :order => "average_rating DESC", 
-                          :limit => 10,
-                          :include => {:comments => :user}
+#  named_scope :top_wines, :order => "average_rating DESC", :include => {:comments => :user}
+  named_scope :top_wines, lambda { |top|
+      { :limit => top||=:top_list_size, :order => "average_rating DESC" }
+#    if top.nil?
+#      { :limit => 10, :order => "average_rating DESC" }
+#    else
+#      { :limit => top, :order => "average_rating DESC" }
+#    end
+    }   
+
+#  named_scope :top_wines, :order => "average_rating DESC", 
+#                          :limit => 10,
+#                          :include => {:comments => :user}
    
   named_scope :distinct_wine_types, :select => "distinct wine_type",
                                    :order => "wine_type"

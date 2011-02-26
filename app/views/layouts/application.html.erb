@@ -5,6 +5,7 @@
   <%=stylesheet_link_tag "barrelrun",:media=> "all" %>
   <%=stylesheet_link_tag "barrelrun_mobile" if mobile_devise? %>
   <%=stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
+  <%=stylesheet_link_tag "css/prettyPhoto.css" %>
   <script type="text/javascript"><!--
    function authToken(){
      return '<%= form_authenticity_token if protect_against_forgery? -%>';
@@ -19,7 +20,8 @@
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'galleria/src/galleria.js' %>
   <%= javascript_include_tag 'galleria/src/themes/classic/galleria.classic.js' %>
-
+  <%= javascript_include_tag 'js/jquery.prettyPhoto.js' %>
+  <meta name="google-site-verification" content="gbrsWw3rBH_5VFv7hZFTawoZP-z46yA3Iyggvhd-pOA" />
   <link rel="shortcut icon" href="../images/favicon.ico" />
   <meta charset="utf-8" />
 </head>
