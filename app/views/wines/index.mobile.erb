@@ -1,39 +1,48 @@
 <div id="home" class="current">
-  <div class="toolbar">
-    <h1>Wines</h1>
-      <a href="/">Back</a>
-  </div>
-  <div class="body">
-       <ul>
-       	<% for wine in @wines %>
-        <li class="arrow">
-<table>	
-	<tr>
-		<td width="60">
-        	<% if wine.pictures.length > 0 then %>
-          		<%= image_tag wine.pictures[0].url(:thumb) %>
-        	<% end %>
-		</td>	
-		<td>	
-			<div><%= link_to h(wine.name), wine %> </div>
-			<div><%= link_to h(wine.winery.city + ", " +wine.winery.state), wine %> </div>
-			<div><%= link_to h(wine.description), wine %> </div>
-	  <% if user_signed_in? %>
-            <div class="stars">
-              <form action="/wines/<%= @wines.id %>/rating/" method="post">
-                <%= render_stars wine %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars wine, true %>
-            </div>
-          <% end %>
-		</td>
-	</tr>
-	</table>                    
-         </li>
-        <% end %>
+	<div class="toolbar">
+  	<h1>Wines</h1>
+		  <a class="button home" href="/">Home</a>
+      <% if user_signed_in? %>
+      	<a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
+      <% else %>
+      	<a <%= link_to h("Login"), new_user_session_path %> </a>
+      <% end %>
+	</div>
+  
+	<div class="body">
+		<ul>
+			<% for wine in @wines %>
+				<li class="arrow">
+					<table>	
+						<tr>
+							<td width="60">
+        				<% if wine.pictures.length > 0 then %>
+          				<%= image_tag wine.pictures[0].url(:thumb) %>
+        				<% end %>
+							</td>	
+							<td>	
+								<div><%= link_to h(wine.name), wine %> </div>
+								<div><%= link_to h(wine.winery.city + ", " +wine.winery.state), wine %> </div>
+								<div><%= link_to h(wine.description), wine %> </div>
+	  						<% if user_signed_in? %>
+            			<div class="stars">
+              			<form action="/wines/<%= @wines.id %>/rating/" method="post">
+                			<%= render_stars wine %>
+              			</form>
+            			</div>
+         				<% else %>
+            			<div class="stars">
+                		<%= render_stars wine, true %>
+            			</div>
+          			<% end %>
+
+								<script type="text/javascript"> starRating.create('.stars'); </script>
+
+							</td>
+						</tr>
+					</table>                    
+				</li>
+ 			<% end %>
     </ul>  
-</div>   
+	</div>   
 </div>

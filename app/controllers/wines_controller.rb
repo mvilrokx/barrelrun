@@ -32,16 +32,13 @@ class WinesController < ApplicationController
     end
   end
 
-  def index
+def index
     if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else  
       @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
     end
 
-    if request.xml_http_request?
-      render :partial => "wines", :layout => false
-    else
       respond_to do |format|
         format.html
         format.mobile
@@ -50,20 +47,26 @@ class WinesController < ApplicationController
                                                                    :winery => {:only => :winery_name}  } )
                     }
       end
-    end
   end
 
-  def show
+
+def show
     @wine = Wine.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures], :order => sort_column + " " + sort_asc_or_desc)
-    respond_to do |format|
-      format.mobile
-      format.html
-    end
+
+      respond_to do |format|
+        format.mobile 
+        format.html
+      end
+
     rescue Exception => e
       flash[:notice] =  'An error occured while trying to show this wine.  We have been notified about this and will try to resolve the issue ASAP.'
       logger.error("Error when trying to show wine #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
+
+
+
+
 
   def new
     @wine = Wine.new

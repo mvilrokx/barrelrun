@@ -30,7 +30,7 @@ class SpecialsController < ApplicationController
         format.html # index.html.erb
   #      format.xml  { render :xml => @specials }
         format.js
-        format.mobile # show.mobile.erb
+        format.mobile 
       end
     end
   end

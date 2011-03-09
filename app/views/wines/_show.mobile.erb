@@ -1,18 +1,8 @@
 <div id="home" class="current">
-	<div class="toolbar">
-  	<h1>Wine Detail</h1>
-		  <a class="button home" href="/">Home</a>
-      <% if user_signed_in? %>
-      <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
-      <% elsif winery_signed_in? %>
-      <div id="signed_in">
-        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
-        <%= link_to "Sign Out", destroy_winery_session_path %>
-      </div>
-      <% else %>
-      <a <%= link_to h("Login"), new_user_session_path %> </a>
-      <% end %>
-	</div>
+  <div class="toolbar">
+      <h1>Wine Detail _show.mobile</h1> 
+        	<a <%= link_to h("Back"), wines_path %></a> 
+  </div>
 
 <table>	
 <tr>

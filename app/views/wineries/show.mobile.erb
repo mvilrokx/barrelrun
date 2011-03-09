@@ -1,45 +1,45 @@
 <div id="home" class="current">
   <div class="toolbar">
-		<h1><%=h @winery.winery_name %></h1>
+		<h1><%=h @winery.winery_name %> </h1>
     	<a <%= link_to h("Back"), session[:from_page] %> </a>
 	  <a class="button button add slideup" href="#map">Map</a>
   </div>
 
-<td width="60">
-        <% if @winery.pictures.length > 0 then %>
-          <%= image_tag @winery.pictures[0].url %>
-        <% end %>
-</td>
+	<td width="60">
+		<% if @winery.pictures.length > 0 then %>
+		<%= image_tag @winery.pictures[0].url %>
+  	<% end %>
+	</td>
 
-        <div class="strong">
-          <%=h @winery.address %>
-          <%=h @winery.address2 %>
-          <%=h @winery.address3 %>
-        </div>
+  <div class="strong">
+  	<%=h @winery.address %>
+		<%=h @winery.address2 %>
+		<%=h @winery.address3 %>
+	</div>
 
-        <div class="strong">
-          <%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
-        </div>
-        <div class="span-5 last strong">
-          <%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
-        </div>
-        <div class="span-5 last strong">
-          <a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
-        </div>
+	<div class="strong">
+		<%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
+	</div>
+	<div class="span-5 last strong">
+		<%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
+	</div>
+	<div class="span-5 last strong">
+		<a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
+ 	</div>
 
-			<div class="strong">
-          <% if user_signed_in? %>
-            <div class="stars">
-              <form action="/wineries/<%= @winery.id %>/rating/" method="post">
-                <%= render_stars @winery %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars @winery, true %>
-            </div>
-          <% end %>
+	<div class="strong">
+		<% if user_signed_in? %>
+			<div class="stars">
+				<form action="/wineries/<%= @winery.id %>/rating/" method="post">
+ 					<%= render_stars @winery %>
+				</form>
 			</div>
+		<% else %>
+			<div class="stars">
+				<%= render_stars @winery, true %>
+			</div>
+		<% end %>
+	</div>
 
   <ul id="links" class="rounded">
     <li class="arrow"><%= link_to h("View and Enter Comments"), winery_comments_path(@winery) %></li>
@@ -47,10 +47,10 @@
     <li class="arrow"><%= link_to h("Pictures"), pictures_path(@winery) %></li>
     <li class="arrow"><a href="#events">Events</a></li>
     <li class="arrow"><a href="#specials">Specials</a></li>
-    <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
+    <li class="arrow"><a href="#wines">Wines</a></li>
   </ul>
 
-</div>
+</div>  <!--End Home div-->
 
 <div id="map">
   <div class="toolbar">
@@ -66,152 +66,105 @@
 	</div>
 </div>
 
-<div id="rateAndComment">
-       <div class="toolbar">
-         <h1>Rate and Comment</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-
-	</div>   
-      </div>
-</div>
-
-<div id="viewUserComments">
-       <div class="toolbar">
-         <h1>User Comments</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-       <ul>
-       <p>
-         ?????????????
-       </p>   
-      
-       </ul>   
-      </div>
-</div>
-
 <div id="welcomeVideoAndMore">
-       <div class="toolbar">
-         <h1>Welcome Video and More</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-					<div>
-      			<iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
-      			</iframe>   
-      		</div>
-			</div>
-</div>
-
-<div id="pictures">
-       <div class="toolbar">
-         <h1>Pictures</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-       <ul>
-       <p>
-         ?????????????
-       </p>   
-      
-       </ul>   
-      </div>
+	<div class="toolbar">
+		<h1>Welcome Video and More</h1>
+		<a class="button cancel" href="#">Back</a>
+	</div>
+	<div class="body">
+		<div>
+			<iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
+			</iframe>   
+		</div>
+	</div>
 </div>
 
 <div id="events">
-       <div class="toolbar">
-         <h1>Events</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-         <ul>
-            <% for event in @winery.events %>
-              <li>
-            	<div><%= link_to h(event.title), event %> </div>
-            	<div><%= link_to h(event.description), event %> </div>
-                <% if user_signed_in? %>
-                  <div class="stars">
-                    <form action="/events/<%= event.id %>/rating/" method="post">
-                      <%= render_stars event %>
-                    </form>
-                  </div>
-                <% else %>
-                  <div class="stars">
-                      <%= render_stars event, true %>
-                  </div>
-                <% end %>
-              </li>
-            <% end %>
-            </ul>   
-      </div>
+	<div class="toolbar">
+		<h1>Events</h1>
+		<a class="button cancel" href="#">Back</a>
+	</div>
+	<div class="body">
+		<ul>
+			<% for event in @winery.events %>
+				<li>
+				<div><%= link_to h(event.title), event %> </div>
+				<div><%= link_to h(event.description), event %> </div>
+					<% if user_signed_in? %>
+						<div class="stars">
+          		<form action="/events/<%= event.id %>/rating/" method="post">
+            		<%= render_stars event %>
+           		</form>
+          	</div>
+  				<% else %>
+						<div class="stars">
+							<%= render_stars event, true %>
+						</div>
+         	<% end %>
+ 				</li>
+			<% end %>
+		</ul>   
+	</div>
 </div>
 
 <div id="specials">
-       <div class="toolbar">
-         <h1>Specials</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
+	<div class="toolbar">
+		<h1>Specials</h1>
+		<a class="button cancel" href="#">Back</a>
+	</div>
+	<div class="body">
 		<ul>
-        <% for special in @winery.specials %>
-              <li>
-            	<div><%= link_to h(special.title), special %> </div>
-            	<div><%= link_to h(special.description), special %> </div>
-                <% if user_signed_in? %>
-                  <div class="stars">
-                    <form action="/specials/<%= special.id %>/rating/" method="post">
-                      <%= render_stars special %>
-                    </form>
-                  </div>
-                <% else %>
-                  <div class="stars">
-                      <%= render_stars special, true %>
-                  </div>
-                <% end %>
-              </li>
-            <% end %>
-            </ul>  
-      </div>
+			<% for special in @winery.specials %>
+				<li>
+      	<div><%= link_to h(special.title), special %> </div>
+      	<div><%= link_to h(special.description), special %> </div>
+      		<% if user_signed_in? %>
+        	<div class="stars">
+        		<form action="/specials/<%= special.id %>/rating/" method="post">
+          		<%= render_stars special %>
+        		</form>
+					</div>
+				  <% else %>
+						<div class="stars">
+          		<%= render_stars special, true %>
+         		</div>
+       		<% end %>
+					</li>
+			<% end %>
+		</ul>  
+	</div>
 </div>
 
 <div id="wines">
-       <div class="toolbar">
-         <h1>Wines</h1>
-         <a class="button cancel" href="#">Back</a>
-       </div>
-       <div class="body">
-       <ul>
-			<% for wine in @winery.wines %>  
-          	<div class="span-6 last">
-            	<div class="span-2">
-              		<% if wine.pictures.length > 0 then %>
-                		<%= image_tag wine.pictures[0].url(:thumb) %>
-              		<% else %>
-                		<%= image_tag("../images/no_image_available.png", :alt=>"No Image Found", :width=>"40", :height=>"40", :style=>"padding-bottom: 5px; vertical-align: middle;") %>
-              		<% end %>
-            	</div>  
-            	<div class="span-4 last">
-              		<strong><%= wine.name %></strong>
-              		<% if user_signed_in? %>
-                		<div class="stars">
-                  		<form action="/wines/<%= wine.id %>/rating/" method="post">
-                    	<%= render_stars wine %>
-                  		</form>
-                		</div>
-              		<% else %>
-                		<div class="stars">
-                    	<%= render_stars wine, true %>
-                		</div>
-              		<% end %>
-              		<%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", wine_comments_path(wine), :title=> "Write a Comment" %>
-        			<hr class="space" />
-            	</div>  
-          	</div>  
-          	<% end %>
-       </ul>   
-       </div>
+	<div class="toolbar">
+		<h1>Wines</h1>
+			<a class="button cancel" href="#">Back</a>
+	</div>
+
+
+	<div class="body">
+		<ul>
+			<% for wine in @winery.wines %>
+				<li class="arrow">  
+      	<div>
+				  <div><%= link_to h(wine.name), wine %> </div>
+					<div><%= link_to h(wine.winery.city + ", " + wine.winery.state), wine %> </div>
+					<% if user_signed_in? %>
+						<div class="stars">
+							<form action="/wines/<%= wine.id %>/rating/" method="post">
+								<%= render_stars wine %>
+							</form>
+ 						</div>
+					<% else %>
+        		<div class="stars">
+            	<%= render_stars wine, true %>
+         		</div>
+        	<% end %> 
+				</div> 
+				</li> 
+      <% end %>
+   </ul>   
+	</div>
 </div>
 
 
