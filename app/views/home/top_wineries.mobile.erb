@@ -1,8 +1,18 @@
 <div id="topWineries">
-  <div class="toolbar">
-    <h1>Top Wineries</h1>
-    <a  href="/">Back</a>
-  </div>
+	<div class="toolbar">
+  	<h1>Top Wineries</h1>
+		  <a class="button home" href="/">Home</a>
+      <% if user_signed_in? %>
+      <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
+      <% elsif winery_signed_in? %>
+      <div id="signed_in">
+        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        <%= link_to "Sign Out", destroy_winery_session_path %>
+      </div>
+      <% else %>
+      <a <%= link_to h("Login"), new_user_session_path %> </a>
+      <% end %>
+	</div>
   <div class="body">
    	  <ul>
 	    <% for winery in @wineries %>
@@ -10,19 +20,19 @@
 			<table>	
 			<tr>
 			<td>
-	      		<div><%= link_to h(winery.winery_name), winery %></div>
-          		<div><%= link_to h(winery.city + ", " + winery.state),  winery%></div>
-	<% if user_signed_in? %>
-            <div class="stars">
-              <form action="/winery/<%= @wineries.id %>/rating/" method="post">
-                <%= render_stars winery %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars winery, true %>
-            </div>
-          <% end %>
+	    	<div><%= link_to h(winery.winery_name), winery %></div>
+        <div><%= link_to h(winery.city + ", " + winery.state),  winery%></div>
+				<% if user_signed_in? %>
+        	<div class="stars">
+        		<form action="/winery/<%= @wineries.id %>/rating/" method="post">
+            	<%= render_stars winery %>
+          	</form>
+        	</div>
+        <% else %>
+        	<div class="stars">
+          	<%= render_stars winery, true %>
+        	</div>
+      	<% end %>
 			</td>
 			</tr>
 			</table>
