@@ -49,31 +49,7 @@ class WinesController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-def index
-=======
-#  def top_wines
-#    @wines = Wine.top_wines.all
-#    respond_to do |format|
-#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines, 
-#                                                                       :ordered_list => true, 
-#                                                                       :list_header => "Top 10 Wines" } }
-#      format.json { render :layout => false, :json => @wines }
-#    end
-#  end
-
   def index
-#    if params[:winery_id]
-#      @wines = Winery.find(params[:winery_id]).wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
-#    elsif params[:user_id]
-#      @wines = User.find(params[:user_id]).favorite_wines.paginate(:page => params[:page], :order => "average_rating DESC")
-#    elsif params[:top]
-#      @wines = Wine.top_wines.all(:limit => params[:top])
-#    else
-#      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
-#    end
-    
->>>>>>> 190f05114270bc18dde53f2251b1025363e8f367
     if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else  
@@ -82,12 +58,9 @@ def index
       @wines = @search.all.paginate(:page => params[:page])
     end
 
-<<<<<<< HEAD
-=======
     if request.xml_http_request?
       render :partial => "wines" #, :layout => false
     else
->>>>>>> 190f05114270bc18dde53f2251b1025363e8f367
       respond_to do |format|
         format.html
         format.mobile
@@ -96,10 +69,11 @@ def index
                                                                    :winery => {:only => :winery_name}  } )
                     }
       end
+    end
   end
 
 
-def show
+  def show
     @wine = Wine.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures], :order => sort_column + " " + sort_asc_or_desc)
 
       respond_to do |format|
