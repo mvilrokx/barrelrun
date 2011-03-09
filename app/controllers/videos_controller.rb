@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   before_filter :authenticate_winery!, :except => [:show, :index_yt]
   before_filter :verify_winery_subscription, :except => [:show, :index_yt]
+  before_filter :get_and_authorize_client
 
   def show
     @video = Video.find(params[:id])
@@ -9,8 +10,11 @@ class VideosController < ApplicationController
   end
     
   def index_yt
-    client = YouTubeIt::Client.new(:dev_key => 'AI39si6wyI6C04i613rvgRfxoxbm1yxn8AAKZi1cTWqXjSocqX30Yo5ratEjsPNpGM92Y5CaDNYPWkmHf0OVZ-ChUkHmVapNfg')
-    @videos = client.videos_by(:user => 'mvilrokx')
+#    client = YouTubeIt::OAuthClient.new(YOUTUBE_CONFIG)
+#    winery_auth = current_winery.authentications.first(:conditions => ["provider = ?", "you_tube"])
+#    client.authorize_from_access(winery_auth.access_token, winery_auth.access_secret)
+#    client.add_comment('cGKrBGMiH-I', 'test')
+    @videos = @client.videos_by(:user => @client.current_user)
   end
 
   def index
@@ -53,4 +57,11 @@ class VideosController < ApplicationController
     flash[:notice] = 'You are not authorized to delete that video.'
     redirect_to :action => "index"
   end
+  
+  protected
+    def get_and_authorize_client
+      @client = YouTubeIt::OAuthClient.new(YOUTUBE_CONFIG)
+      @winery_auth = current_winery.authentications.first(:conditions => ["provider = ?", "you_tube"])
+      @client.authorize_from_access(@winery_auth.access_token, @winery_auth.access_secret)
+    end  
 end

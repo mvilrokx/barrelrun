@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
 	belongs_to :videoable, :polymorphic => true
    
-  before_save :only_one_primary_video_per_winery
+  before_save :only_one_welcome_video_per_winery
   
 #   belongs_to :event
 
@@ -17,13 +17,13 @@ class Video < ActiveRecord::Base
                     :path => ":rails_root/public/assets/videos/:class/:id/:style/:basename.:content_type_extension",
                     :processors => [ :video_thumbnail ]
 
-  #Controls the number of pictures you see per page (pagination)
+  #Controls the number of movies you see per page (pagination)
   cattr_reader :per_page
   @@per_page = 10
 
 #   validates_attachment_size :photo, :less_than => 5.megabytes  
 #   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
-  validates_attachment_presence :movie
+#  validates_attachment_presence :movie
 
 	def url(*args)
 		movie.url(*args)
@@ -81,11 +81,13 @@ class Video < ActiveRecord::Base
   end
   
   protected
-	  def only_one_primary_video_per_winery
-      if self.primary?
-        current_primary_video = Video.first(:conditions => {:videoable_id => self.videoable_id, :videoable_type => 'Winery', :primary => true})
-        current_primary_video.primary = false
-        current_primary_video.save
+	  def only_one_welcome_video_per_winery
+      if self.welcome?
+        current_welcome_video = Video.first(:conditions => {:videoable_id => self.videoable_id, :videoable_type => 'Winery', :welcome => true})
+        if current_welcome_video then 
+          current_welcome_video.welcome = false
+          current_welcome_video.save
+        end
       end
     end
    	

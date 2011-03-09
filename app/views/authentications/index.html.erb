@@ -1,0 +1,22 @@
+<% title "Authentications" %>
+
+<table>
+  <tr>
+    <th>Winery</th>
+    <th>Provider</th>
+    <th>Uid</th>
+    <th>Access Token</th>
+    <th>Access Secret</th>
+  </tr>
+  <% for authentication in @authentications %>
+    <tr>
+      <td><%=h authentication.winery_id %></td>
+      <td><%=h authentication.provider %></td>
+      <td><%=h authentication.uid %></td>
+      <td><%=h authentication.access_token %></td>
+      <td><%=h authentication.access_secret %></td>
+      <td><%= link_to "Destroy", authentication, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+

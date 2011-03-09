@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110120044907) do
+ActiveRecord::Schema.define(:version => 20110309025323) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "winery_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_token"
+    t.string   "access_secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "awards", :force => true do |t|
     t.string   "title"
@@ -173,7 +183,8 @@ ActiveRecord::Schema.define(:version => 20110120044907) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.boolean  "primary"
+    t.boolean  "welcome"
+    t.string   "youtube_id"
   end
 
   create_table "wineries", :force => true do |t|

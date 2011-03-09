@@ -1,0 +1,57 @@
+<% title("Youtube Video List") %>
+
+<div class="prepend-top push-1 prepend-1 span-20 append-1 main last box">
+  
+  <div class="span-4">
+    <h2>Video List</h2>
+  </div>  
+  <div class="span-3 last">
+    <%= link_to 'Add New Video', upload_youtube_videos_path, :id => 'new_video', :class => 'dialog_form_link large' %>
+  </div>
+  <hr/>
+
+  <% if @videos.previous_page %>
+    <%= link_to '<< Previous', youtube_videos_path (:page => @videos.previous_page) %>
+  <% end %>
+  <% if @videos.next_page %>
+    <%= link_to 'Next >>', youtube_videos_path (:page => @videos.next_page) %>
+  <% end %>
+  <%= "Page #{@videos.current_page} of  #{@videos.total_pages}" %>
+
+  <div style="overflow: auto;">
+    <table style="background: white;">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Duration</th>
+        <th>Avg. Rating</th>
+        <th>View Count</th>
+        <th>Thumbnail</th>
+        <th>Show in Winery Details</th>
+        <th>Welcome Video</th>
+      </tr>
+      
+    <% for video in @videos.videos %>
+      <tr>
+        <td><%=h video.title %></td>
+        <td><%=h video.description %></td>
+        <td><%= pretty_seconds(video.duration) %></td>
+        <td><%=h video.rating.try(:average) %></td>
+        <td><%=h video.view_count %></td>
+        <td><%= link_to image_tag(video.thumbnails[0].url, :width => 100, :height => 100), video.player_url %></td>
+        <% if Video.find_by_youtube_id(video.unique_id) then %></td>
+          <td><%= link_to "Yes", :controller => "youtube_videos", :action => "remove_from_winery_details", :id => video.unique_id %></td>
+        <% else %>
+          <td><%= link_to "No", :controller => "youtube_videos", :action => "add_to_winery_details", :id => video.unique_id %></td>
+        <% end %>
+        <% if winery_video = Video.find_by_youtube_id(video.unique_id) then %></td>
+          <td><%= winery_video.welcome ? "Yes" : link_to ("No", {:controller => "youtube_videos", :action => "make_primary", :id => video.unique_id }, :method => :put, :title => "Click to turn into Welcome Video") %></td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>          
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  
+</div>

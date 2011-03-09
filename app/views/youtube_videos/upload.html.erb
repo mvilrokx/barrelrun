@@ -1,0 +1,50 @@
+<% title("Create New Video") %>
+
+<div class="container">
+	<hr class="space"/>
+	<div class="push-3 span-18 last">
+		<div class="entry_form">
+			<div class="span-18 main">
+				<hr class="space"/>
+				<div class="push-1 span-16 last">
+    
+          <h2>Create New Video</h2>
+            <div class="edit_form">
+              <fieldset>
+                <% form_tag :action => 'new' do %>
+
+                  <%= label_tag :title %>
+                  <span class="div_texbox">
+                    <%= text_field_tag :title, nil, {:required => true, :class => "fillout01"} %>
+                	</span>
+
+                  <%= label_tag :description %>
+                  <span class="div_texbox">
+                    <%= text_field_tag :description, nil, {:required => true, :class => "fillout01"} %>
+                	</span>
+
+                  <%= label_tag :keywords %>
+                  <span class="div_texbox" style="height: auto;">            
+                    <%= text_area_tag :keywords, nil, :class => "fillout01" %>
+                	</span>
+
+                  <span class="div_texbox">            
+                    <%= submit_tag "Next" %>
+                 	</span>
+
+                <% end %>
+              </fieldset>  
+            </div>          
+        </div>
+      </div>
+
+      <div id="jstemplates">
+        <%= yield :jstemplates %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<p><%= link_to "Back to List", videos_path %></p>

@@ -15,6 +15,7 @@ class Winery < ActiveRecord::Base
   has_many :credit_cards, :as => :creditable, :dependent => :destroy
   has_one  :subscription, :dependent => :destroy
   has_many :awards, :through => :wines
+  has_many :authentications, :dependent => :destroy
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 

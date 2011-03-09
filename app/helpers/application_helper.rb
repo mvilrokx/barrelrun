@@ -83,6 +83,11 @@ module ApplicationHelper
     link_to title, {:sort => column, :asc_or_desc => direction}, {:class => css_class}
   end
 
+  def pretty_seconds(sec)
+    "%02d:%02d" % [ (sec/60).floor, (sec - ((sec/60).floor * 60)).round ]
+  end
+
+
 end
 
 

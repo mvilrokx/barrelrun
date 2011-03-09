@@ -1,0 +1,13 @@
+one:
+  winery_id: 1
+  provider: MyString
+  uid: MyString
+  access_token: MyString
+  access_secret: MyString
+
+two:
+  winery_id: 1
+  provider: MyString
+  uid: MyString
+  access_token: MyString
+  access_secret: MyString

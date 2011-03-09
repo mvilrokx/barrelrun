@@ -362,7 +362,7 @@ var starRating = {
     };
     $(dom_element).find(selector).each(function() {
       var $list = $('<div></div>');
-      // loop over every radio button in each container
+      // loop over every radio button in each containerst
       $(this)
         .find('input:radio')
         .each(function(i) {

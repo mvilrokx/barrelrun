@@ -1,0 +1,16 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_tag @upload_info[:url], :multipart => true do %>
+      <%= hidden_field_tag :token, @upload_info[:token] %>
+      <%= label_tag :file %>
+      <span class="div_texbox">
+        <%= file_field_tag :file %>
+    	</span>
+
+      <span class="div_texbox">            
+        <%= submit_tag "Upload Video" %>
+     	</span>
+
+    <% end %>
+  </fieldset>  
+</div>

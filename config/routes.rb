@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :authentications
+
 
 #  map.resources :ratings
 
@@ -22,10 +24,12 @@ ActionController::Routing::Routes.draw do |map|
                                             :favorite_specials => :get}
 
   map.connect 'favorites/:favorable_type/:favorable_id/rate', :controller => 'favorites', :action => 'rate_it'
+  map.connect 'auth/:provider/callback', :controller => 'authentications', :action => 'create'
 
   map.resources :awards
   map.resources :pictures
   map.resources :videos, :collection => {:index_yt => :get}
+  map.resources :youtube_videos, :collection => {:upload => :get}
   map.resources :credit_cards
   map.resources :subscriptions, :member => {:make_default => :post}
  
