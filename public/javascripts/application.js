@@ -171,6 +171,12 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function(){
+  $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
+});
+
+
+
 /**
 * opening modal Dialog
 */
@@ -187,6 +193,7 @@ $('.dialog_form_link').live('click', function() {
                 addthis.button("#atbutton", {}, {url: link, title: "Barrelrun"});
                 
                 $('.gallery_images').galleria();
+                $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
                 $('.jqueryui_date').datepicker();
                 $('#wine_varietal').autocomplete({
                   source: "/wines/distinct_varietals.json",

@@ -1,28 +1,52 @@
 class SpecialsController < ApplicationController
-  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
-  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
+  before_filter :authenticate_winery!, :except => [:rating, :special_list, :index, :show]
+  before_filter :verify_winery_subscription, :except => [:rating, :special_list, :index, :show]
 
   def rating
     rate("Special", params[:id], params[:stars])
-    upcoming_specials
+    special_list
   end
 
-  def upcoming_specials
-    @specials = Special.upcoming_specials.all.paginate(:page => params[:page])
+
+  def special_list
+    ordered_list = false
+    list_header = "Specials"
+    if params[:winery_id]
+      @specials = Winery.find(params[:winery_id]).specials #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
+      path = "wineries/" + params[:winery_id] + "/"
+    elsif params[:top]
+      @specials = Special.upcoming_specials(params[:top]) #.all(:limit => params[:top])
+      list_header = "Save Money"
+      path = "top/" + params[:top] + "/"
+    else
+      @specials = Special.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+    end
     respond_to do |format|
-      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials, 
-                                                                       :list_header => "Save Money" } }
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials,
+                                                                       :path => path,
+                                                                       :ordered_list => ordered_list,
+                                                                       :list_header => list_header } }
       format.json { render :layout => false, :json => @specials }
-#      format.js { render :layout => false, :wines => @wines }
     end
   end
+  
+  
+#  def upcoming_specials
+#    @specials = Special.upcoming_specials.all.paginate(:page => params[:page])
+#    respond_to do |format|
+#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials, 
+#                                                                       :list_header => "Save Money" } }
+#      format.json { render :layout => false, :json => @specials }
+##      format.js { render :layout => false, :wines => @wines }
+#    end
+#  end
 
   def index
-    if current_winery
+#    if current_winery
       @specials = current_winery.specials.paginate(:page => params[:page], :order => "created_at DESC")
-    else  
-      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
-    end
+#    else  
+#      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
+#    end
     if request.xml_http_request?
       render :partial => "specials", :layout => false
     else

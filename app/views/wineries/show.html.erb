@@ -5,25 +5,14 @@
   <div class="span-13 colborder">
     <div class="span-13">
       <div class="span-8">
-        <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:S|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
+        <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:B|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
 	      </div>
       <div class="span-5 last">
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-        <div class="span-5 last strong">
-          <% if user_signed_in? %>
-            <div class="stars">
-              <form action="/wineries/<%= @winery.id %>/rating/" method="post">
-                <%= render_stars @winery %>
-              </form>
-            </div>
-          <% else %>
-            <div class="stars">
-                <%= render_stars @winery, true %>
-            </div>
-          <% end %>
-        </div>
+        
+        <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
         <div class="span-5 last strong">
           <%=h @winery.address %>
@@ -40,10 +29,21 @@
           <a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
         </div>
         <hr class="space" />
-        <div class="span-5 last strong">
-          <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", winery_comments_path(@winery), :title=> "Write a Comment" %>
-        </div>
 
+        <% if user_signed_in? %>
+          <div class="span-6 append-bottom last">
+          <% if @winery.favorites.find_by_user_id(current_user) %>
+            <a href="/wineries/<%= @winery.id%>/favorites/<%= @winery.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
+          <% else %>
+            <a href="/wineries/<%= @winery.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+          <% end %>
+          </div>
+        <% end %>
+
+        <div class="span-6 last">
+        	<a id="atbutton"></a>
+        	<a class="addthis_button"></a>
+        </div>
 
       </div>
     </div>
@@ -55,7 +55,8 @@
         <div class="span-13 last">
           <h2>Awards</h2>
           <% for award in @winery.awards %>
-            <p><%= award.title %></p>
+            <h4 style="margin-bottom:0.25px;"><%= award.title %> for <%= award.wine.name %></h4>
+            <%= award.description %>
           <% end %>
         </div>
       </div>
@@ -66,97 +67,26 @@
     <div class="span-13">
       <div class="span-13">
         <div class="span-6 colborder">
-
-          <div class="span-6 last">
-            <h2>Wine List</h2>
-          </div>  
-
-          <% for wine in @winery.wines %>
-          <div class="span-6 last">
-            <div class="span-2">
-              <% if wine.pictures.length > 0 then %>
-                <%= image_tag wine.pictures[0].url(:thumb) %>
-              <% else %>
-                <%= image_tag("../images/no_image_available.png", :alt=>"No Image Found", :width=>"40", :height=>"40", :style=>"padding-bottom: 5px; vertical-align: middle;") %>
-              <% end %>
-            </div>  
-            <div class="span-4 last">
-              <strong><%= wine.name %></strong>
-              <% if user_signed_in? %>
-                <div class="stars">
-                  <form action="/wines/<%= wine.id %>/rating/" method="post">
-                    <%= render_stars wine %>
-                  </form>
-                </div>
-              <% else %>
-                <div class="stars">
-                    <%= render_stars wine, true %>
-                </div>
-              <% end %>
-              <%= link_to "#{image_tag('../images/pencil.png', :border=>0, :alt=>'Write a comment')}Write a Comment", wine_comments_path(wine), :title=> "Write a Comment" %>
-            </div>  
-          </div>  
-          <% end %>
+          <div id="winery_wines">
+             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
+                                                                    :path => "wineries/#{@winery.id}/"} %>
+          </div>
         </div>
-        
-        
         
         <div class="span-6 last">
-          <div class="span-6 last">
-            <h2>Save Money</h2>
+          <div id="winery_specials">
+             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
+                                                                    :path => "wineries/#{@winery.id}/"} %>
           </div>
-
-          <div class="span-6 last">
-            <ul>
-            <% for special in @winery.specials %>
-              <li><%= special.title %><br/>
-              - <em>from</em> <%=h special.start_date.try(:strftime,'%m/%d/%Y') %> <em>till</em> <%=h special.end_date.try(:strftime,'%m/%d/%Y') %>
-                <% if user_signed_in? %>
-                  <div class="stars">
-                    <form action="/specials/<%= wine.id %>/rating/" method="post">
-                      <%= render_stars special %>
-                    </form>
-                  </div>
-                <% else %>
-                  <div class="stars">
-                      <%= render_stars special, true %>
-                  </div>
-                <% end %>
-              </li>
-            <% end %>
-            </ul>
-          </div>
-  
+ 
           <hr/>
 
-          <div class="span-6 last">
-            <h2>Places To Go</h2>
-          </div>
-
-          <div class="span-6 last">
-            <ul>
-            <% for event in @winery.events %>
-              <li><%= event.title %><br/>
-              - <%=h event.winery.city %>, <%=h event.winery.state %>
-                <% if user_signed_in? %>
-                  <div class="stars">
-                    <form action="/events/<%= event.id %>/rating/" method="post">
-                      <%= render_stars event %>
-                    </form>
-                  </div>
-                <% else %>
-                  <div class="stars">
-                      <%= render_stars event, true %>
-                  </div>
-                <% end %>
-              </li>
-            <% end %>
-            </ul>
+          <div id="winery_events">
+             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.events,
+                                                                    :path => "wineries/#{@winery.id}/"} %>
           </div>
 
         </div>
-        
-        comme
       </div>
     </div>
 
@@ -167,9 +97,27 @@
       <h2>Welcome Video</h2>
     </div>  
     <div class="span-8 last">
-      <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
+      <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc?wmode=transparent" frameborder="0">
       </iframe>
+    </div>
+    <hr/>
+
+    <div class="span-8 last">
+      <h2>Winery Pictures</h2>
+    </div>
+    <div class="span-8 last">
+      <% if @winery.pictures.length > 0 then %>
+        <div>
+          <% @winery.pictures.each_with_index do |pic, idx| -%>
+            <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:large), :title=> pic.title, :rel=>"prettyPhoto[wine_gal]" %>
+    <% puts pic.url(:large) %>
+          <% end -%>
+        </div>
+      <% else %>
+        <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'300x300' %>        
+      <% end %>
     </div>  
+
   </div>
 
 </div>

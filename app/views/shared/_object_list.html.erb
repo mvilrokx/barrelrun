@@ -1,41 +1,40 @@
 <% ordered_list ||= false %>
 <% map_it ||= true %>
+<% path ||= "" %>
 
-<div class='list'>
-  <h2><%= defined?(list_header) ? list_header : object_list[0].class.name %></h2>
-<% puts object_list[0].class.name %>
-  <%= ordered_list ? "<ol>" : "<ul>" %>
-    <% object_list.each_with_index do |object, idx| %>
-<% puts object %>
-<% puts idx %>
-      <% if ordered_list && idx == 0 then %>
-    <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
-      <% else %>
-    <li>
-      <% end %>
-      <% if object.class.name == "Winery" %>
-        <% if map_it then %>
-          <a class="map-wine" href="#" data-winery-lat=<%=h object.lat %> data-winery-lng=<%=h object.lng %> ><%=h object.winery_name %> <br>- <%=h object.city %>, <%=h object.state %></a>
+  <div class='list'>
+    <h2><%= defined?(list_header) ? list_header : object_list[0].class.name.pluralize %></h2>
+    <%= ordered_list ? "<ol>" : "<ul>" %>
+      <% object_list.each_with_index do |object, idx| %>
+        <% if ordered_list && idx == 0 then %>
+      <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
         <% else %>
-          <%= link_to object.winery_name + '<br>-' + object.city + ',' + object.state, object, :title=> "Show" %>
+      <li>
         <% end %>
-      <% else %>
-        <%= link_to object.name + '<br>-' + object.winery.city + ',' + object.winery.state, object, :title=> "Show", :class => 'dialog_form_link' %>
+        <% if object.class.name == "Winery" %>
+          <% if map_it then %>
+            <a class="map-wine" href="#" data-winery-lat=<%=h object.lat %> data-winery-lng=<%=h object.lng %> ><%=h object.winery_name %> <br>- <%=h object.city %>, <%=h object.state %></a>
+          <% else %>
+            <%= link_to object.winery_name + '<br>-' + object.city + ',' + object.state, object, :title=> "Show" %>
+          <% end %>
+        <% else %>
+          <%= link_to object.name + '<br>-' + object.winery.city + ',' + object.winery.state, object, :title=> "Show", :class => 'dialog_form_link' %>
+        <% end %>
+        <% if user_signed_in? %>
+          <div style="float: right;" class="stars">
+            <form action="/<%= path + object.class.name.pluralize.downcase %>/<%= object.id %>/rating/" method="post">
+              <%= render_stars object %>
+            </form>
+          </div>
+        <% else %>
+          <div style="float: right;" class="stars">
+            <form action="/<%= path + object.class.name.pluralize.downcase %>/<%= object.id %>/rating/" method="post">
+              <%= render_stars object, true %>
+            </form>
+          </div>
+        <% end %>
+      </li>
       <% end %>
-      <% if user_signed_in? %>
-        <div style="float: right;" class="stars">
-          <form action="/<%= object.class.name.pluralize.downcase %>/<%= object.id %>/rating/" method="post">
-            <%= render_stars object %>
-          </form>
-        </div>
-      <% else %>
-        <div style="float: right;" class="stars">
-          <form action="/<%= object.class.name.pluralize.downcase %>/<%= object.id %>/rating/" method="post">
-            <%= render_stars object, true %>
-          </form>
-        </div>
-      <% end %>
-    </li>
-    <% end %>
-  <%= ordered_list ? "</ol>" : "</ul>" %>  
-</div>
+    <%= ordered_list ? "</ol>" : "</ul>" %>  
+  </div>
+

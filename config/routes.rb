@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :awards
   map.resources :pictures
-  map.resources :videos
+  map.resources :videos, :collection => {:index_yt => :get}
   map.resources :credit_cards
   map.resources :subscriptions, :member => {:make_default => :post}
  
@@ -106,6 +106,13 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   
+  map.connect 'top/:top/wines/:id/rating', :action=>'rating',:controller=>'wines'
+  map.connect 'wineries/:winery_id/wines/:id/rating', :action=>'rating',:controller=>'wines'
+  map.connect 'top/:top/specials/:id/rating', :action=>'rating',:controller=>'specials'
+  map.connect 'wineries/:winery_id/specials/:id/rating', :action=>'rating',:controller=>'specials'
+  map.connect 'top/:top/events/:id/rating', :action=>'rating',:controller=>'events'
+  map.connect 'wineries/:winery_id/events/:id/rating', :action=>'rating',:controller=>'events'
+
   map.connect 'home/top_wines.:format', :action=>'top_wines',:controller=>'home'
   map.connect 'home/top_wineries.:format', :action=>'top_wineries',:controller=>'home'
   map.connect 'home/upcoming_events.:format', :action=>'upcoming_events',:controller=>'home'

@@ -1,0 +1,57 @@
+<% title("Youtube Video List") %>
+
+<div class="prepend-top push-1 prepend-1 span-20 append-1 main last box">
+  
+  <div class="span-4">
+    <h2>Video List</h2>
+  </div>  
+  <div class="span-3 last">
+    <%= link_to 'Add New Video', new_video_path, :id => 'new_video', :class => 'dialog_form_link large' %>
+  </div>
+  <hr/>
+
+  <div style="overflow: auto;">
+    <table style="background: white;">
+      <tr>
+        <th>Title</th>
+        <th>Thumbnail</th>
+        <th>Keywords</th>
+        <th>Categories</th>
+      </tr>
+      
+    <% for video in @videos.videos %>
+      <tr>
+        <td><%=h video.title %></td>
+        <td><%= image_tag video.thumbnails[0].url, :width => 100, :height => 100 %></td>
+        <td><%=h video.keywords.join(", ") %></td>
+        <td><%=h video.categories.join(", ") %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  
+</div>
+
+rating
+keywords
+title
+racy
+where
+thumbnails=[#<YouTubeIt::Model::Thumbnail:0xb64b19f8 @height=240, @url="http://i.ytimg.com/vi/cGKrBGMiH-I/0.jpg", @time="00:01:50.500", @width=320>, #<YouTubeIt::Model::Thumbnail:0xb64b1728 @height=90, @url="http://i.ytimg.com/vi/cGKrBGMiH-I/1.jpg", @time="00:00:55.250", @width=120>, #<YouTubeIt::Model::Thumbnail:0xb64b1458 @height=90, @url="http://i.ytimg.com/vi/cGKrBGMiH-I/2.jpg", @time="00:01:50.500", @width=120>, #<YouTubeIt::Model::Thumbnail:0xb64b1160 @height=90, @url="http://i.ytimg.com/vi/cGKrBGMiH-I/3.jpg", @time="00:02:45.750", @width=120>], 
+widescreen
+categories=[label,term]
+position
+favorite_count
+author=#<name, uri>
+longitude
+published_at
+duration
+player_url="http://www.youtube.com/watch?v=cGKrBGMiH-I&feature=youtube_gdata_player"
+view_count
+description
+media_content
+html_content
+video_id
+noembed
+updated_at
+latitude

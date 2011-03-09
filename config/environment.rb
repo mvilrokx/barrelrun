@@ -27,6 +27,8 @@ Rails::Initializer.run do |config|
     config.gem('thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.20')
     config.gem 'juggernaut', :version => '2.0.0'
     config.gem 'braintree', :version => '2.6.2'
+    config.gem 'searchlogic', :version => '2.4.27'
+    config.gem 'youtube_it', :version => '1.2.10'
     
   #    config.gem 'haml'
     

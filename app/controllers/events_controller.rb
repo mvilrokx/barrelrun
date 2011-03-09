@@ -4,24 +4,47 @@ class EventsController < ApplicationController
   
   def rating
     rate("Event", params[:id], params[:stars])
-    upcoming_events
+    event_list
   end
-  
-  def upcoming_events
-    @events = Events.upcoming_events.all.paginate(:page => params[:page])
+
+  def event_list
+    ordered_list = false
+    list_header = "Events"
+    if params[:winery_id]
+      @events = Winery.find(params[:winery_id]).events #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
+      path = "wineries/" + params[:winery_id] + "/"
+    elsif params[:top]
+      @events = Event.upcoming_events(params[:top]) #.all(:limit => params[:top])
+      list_header = "Places to Go"
+      path = "top/" + params[:top] + "/"
+    else
+      @events = Event.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+    end
     respond_to do |format|
-      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events, 
-                                                                       :list_header => "Places to Go" } }
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events,
+                                                                       :path => path,
+                                                                       :ordered_list => ordered_list,
+                                                                       :list_header => list_header } }
       format.json { render :layout => false, :json => @events }
     end
   end
 
+  
+#  def upcoming_events
+#    @events = Events.upcoming_events.all.paginate(:page => params[:page])
+#    respond_to do |format|
+#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events, 
+#                                                                       :list_header => "Places to Go" } }
+#      format.json { render :layout => false, :json => @events }
+#    end
+#  end
+
   def index
-    if current_winery
+#    if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
-    else  
-      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
-    end
+#    else  
+#      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
+#    end
 
     if request.xml_http_request?
       render :partial => "events", :layout => false
