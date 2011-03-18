@@ -1,1 +1,1 @@
-$("#comments").html("<%= escape_javascript(render :partial => "shared/comments", :locals =>{:commentable => @commentable}) %>");
+$("#comments").html("<%= escape_javascript(render :partial => "shared/comments", :locals =>{:commentable => @commentable, :span => (@commentable.instance_of?(Winery) ? 8 : 17)}) %>");

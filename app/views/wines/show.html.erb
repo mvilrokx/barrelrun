@@ -49,9 +49,11 @@
 
   </div>
   
-  <%= render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)} %>
-  <%= render :partial => "shared/comment_form", :locals => {:object => @wine} %>
-  <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @wine} %></div>
+  <div class="span-17 last comment_block">
+    <%= render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)} %>
+    <%= render :partial => "shared/comment_form", :locals => {:object => @wine} %>
+    <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @wine} %></div>
+  </div>
 
 </div>
 

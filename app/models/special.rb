@@ -22,7 +22,7 @@ class Special < ActiveRecord::Base
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
 
-  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
+  # ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
 
   validates_presence_of :title
   validate :validate_attachments

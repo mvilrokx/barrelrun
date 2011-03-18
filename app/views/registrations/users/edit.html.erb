@@ -81,8 +81,11 @@
               <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
             <% end %>
             </div>
-
-            <span class="div_texbox"><%= add_child_link "Add Picture?", :picture %></span>
+            <% if current_user.picture then %> 
+              <span class="div_texbox"><%= add_child_link "Change Picture?", :picture %></span>
+            <% else %>
+              <span class="div_texbox"><%= add_child_link "Add Picture?", :picture %></span>
+            <% end %>
 
             <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
 

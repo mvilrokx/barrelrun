@@ -50,41 +50,55 @@
     
     <hr/>
     
-    <div class="span-13">
+    <% if !@winery.awards.empty? %>
       <div class="span-13">
-        <div class="span-13 last">
-          <h2>Awards</h2>
-          <% for award in @winery.awards %>
-            <h4 style="margin-bottom:0.25px;"><%= award.title %> for <%= award.wine.name %></h4>
-            <%= award.description %>
-          <% end %>
+        <div class="span-13">
+          <div class="span-13 last">
+            <h2><%= image_tag("../images/trophy.jpg", :alt=>"trophy") %> Awards</h2>
+
+            <% for award in @winery.awards %>
+              <div class="span-3">
+                <% if !award.pictures.empty? then %>
+                  <%= image_tag award.pictures[0].url(:thumb) %>
+                <% end %>
+              </div>
+              <div class="span-10 last">
+                <h4 style="margin-bottom:0.25px;"><%= award.title %> for <%= award.wine.name %></h4>
+                <%= award.description %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <hr/>
+      <hr/>
+    <% end %>
     
     <div class="span-13">
       <div class="span-13">
-        <div class="span-6 colborder">
-          <div id="winery_wines">
-             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
-                                                                    :path => "wineries/#{@winery.id}/"} %>
+        <% if !@winery.wines.empty? %>      
+          <div class="span-6 colborder">
+            <div id="winery_wines">
+               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
+                                                                      :path => "wineries/#{@winery.id}/"} %>
+            </div>
           </div>
-        </div>
+        <% end %>
         
         <div class="span-6 last">
-          <div id="winery_specials">
-             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
-                                                                    :path => "wineries/#{@winery.id}/"} %>
-          </div>
- 
-          <hr/>
+          <% if !@winery.specials.empty? %>      
+            <div id="winery_specials">
+               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
+                                                                      :path => "wineries/#{@winery.id}/"} %>
+            </div>
+            <hr/>
+          <% end %>
 
-          <div id="winery_events">
-             <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.events,
-                                                                    :path => "wineries/#{@winery.id}/"} %>
-          </div>
+          <% if !@winery.events.empty? %>      
+            <div id="winery_events">
+               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.events,
+                                                                      :path => "wineries/#{@winery.id}/"} %>
+            </div>
+          <% end %>
 
         </div>
       </div>
@@ -93,39 +107,61 @@
   </div>
 
   <div class="span-8 last">
-    <div class="span-8 last">
-      <h2>Welcome Video</h2>
-    </div>
-    <div class="span-8 last">
-
-      <% if @winery.videos.length > 0 then %>
-      <% welcome_video =  @winery.videos.first(:conditions => {:welcome => true}) || @winery.videos.first %>
-      <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src=<%= "http://www.youtube.com/embed/#{welcome_video.youtube_id}?wmode=transparent" %> frameborder="0">
-      </iframe>
-        <div>
-          <% @winery.videos.all(:conditions => ['ifnull(welcome,0) <> 1 AND youtube_id is not null']).each_with_index do |vid, idx| -%>
-            <%= link_to image_tag("http://i.ytimg.com/vi/#{vid.youtube_id}/1.jpg", :size=>'50x50'), "http://www.youtube.com/watch?v=#{vid.youtube_id}", :rel=>"prettyPhoto[wine_vid_gal]" %>
-          <% end -%>
+    <% if !@winery.videos.empty? then %>
+      <div class="span-8 last">
+        <h2>Welcome Video</h2>
+      </div>
+      <div class="span-8 last">
+        <% welcome_video =  @winery.videos.first(:conditions => {:welcome => true}) || @winery.videos.first %>
+        <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src=<%= "http://www.youtube.com/embed/#{welcome_video.youtube_id}?wmode=transparent&amp;showinfo=0&amp;showsearch=0&amp;rel=0" %> frameborder="0">
+        </iframe>
+      <div>
+      <div class="span-8 last">
+        <h3>Other Videos</h3>
+      </div>
+      <div class="span-8 last">
+        <div class="span-8 last" id="scrollwrap" style="max-height: <%= ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60 %>px;" >
+          <div class="vid_scroll" id="scroll" style="width:<%= (@winery.videos.size/3)*58 %>px; max-height: <%= ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60 %>px;" >
+            <% @winery.videos.all(:conditions => ['ifnull(welcome,0) <> 1 AND youtube_id is not null']).each_with_index do |vid, idx| -%>
+              <%= link_to image_tag("http://i.ytimg.com/vi/#{vid.youtube_id}/1.jpg", :size=>'50x50'), "http://www.youtube.com/watch?v=#{vid.youtube_id}", :rel=>"prettyPhoto[wine_vid_gal]" %>
+            <% end %>
+          </div>
         </div>
-      <% end %>
-    </div>
-
-    <hr/>
-
-    <div class="span-8 last">
-      <h2>Winery Pictures</h2>
-    </div>
-    <div class="span-8 last">
-      <% if @winery.pictures.length > 0 then %>
-        <div>
-          <% @winery.pictures.each_with_index do |pic, idx| -%>
-            <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:large), :title=> pic.title, :rel=>"prettyPhoto[wine_gal]" %>
-          <% end -%>
+        <div class="span-8 last">
+          <!-- rangeinput that controls the scroll -->
+          <input class="vid_scroll" type="range" value="0" min="0" max="<%= 1 + ((@winery.videos.size/3)*58)-290 %>" step="1" />
         </div>
-      <% else %>
-        <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'300x300' %>        
-      <% end %>
-    </div>  
+      </div>
+      <hr/>
+    <% end %>
+
+    <% if !@winery.pictures.empty? then %>
+      <div class="span-8 last">
+        <h2>Winery Pictures</h2>
+      </div>
+      <div class="span-8 last">
+        <div class="span-8 last" id="scrollwrap" style="max-height: <%= ((@winery.pictures.size.to_f/5).ceil > 3 ? 3 : (@winery.pictures.size.to_f/5).ceil)*60 %>px;" >
+          <div class="pic_scroll" id="scroll" style="min-width: 275px; width:<%= (@winery.pictures.size/3)*58 %>px;" >
+            <% @winery.pictures.each_with_index do |pic, idx| -%>
+              <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:large), :title=> pic.title, :rel=>"prettyPhoto[wine_gal]" %>
+            <% end -%>
+          </div>
+        </div>
+        <div class="span-8 last">
+          <!-- rangeinput that controls the scroll -->
+          <input class="pic_scroll" type="range" value="0" min="0" max="<%= 1 + (((@winery.pictures.size/3)*58) > 275 ? ((@winery.pictures.size/3)*58) : 275)-275 %>" step="1" />
+        </div>
+      </div>
+      <hr/>
+    <% end %>
+
+    <div class="span-8 last comment_block">
+      <%= render :partial => "shared/comments_header", :locals => {:path => winery_comments_path(@winery), :span => 8} %>
+      <%= render :partial => "shared/comment_form", :locals => {:object => @winery, :span => 8} %>
+      <div id="comments">
+        <%= render :partial => "shared/comments", :locals =>{:commentable => @winery, :span => 8} %>
+      </div>
+    </div>
 
   </div>
 

@@ -9,10 +9,12 @@ class User < ActiveRecord::Base
   has_many :favorite_specials, :through => :favorites, :source => :favorable, :source_type => 'Special'
 #  has_many :favorite_users, :through => :favorites, :source => :favorable, :source_type => 'User'
   
- 	has_one :picture, :as => :pictureable, :dependent => :destroy
+ 	has_many :picture, :as => :pictureable, :dependent => :destroy
+# I SHOULD BE USING has_one BUT THAT RAISES ERRORS IN THE UPDATE FORM SO USING HAS_MANY WHICH WORKS
+# 	has_one :picture, :as => :pictureable, :dependent => :destroy
 #  has_many :favorites, :as => :favorable, :dependent => :destroy
  	
-  accepts_nested_attributes_for :picture
+  accepts_nested_attributes_for :picture, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 
   validates_presence_of :username, :first_name, :last_name
   validates_length_of :username, :in => 6..19
@@ -54,7 +56,7 @@ class User < ActiveRecord::Base
     end
 
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if picture.length > Max_Attachments
+    	picture.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
  	  end
 end

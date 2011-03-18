@@ -1,1 +1,1 @@
-require 'geokit-rails'
+require 'geokit'

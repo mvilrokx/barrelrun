@@ -42,9 +42,11 @@
 
   </div>
   
-  <%= render :partial => "shared/comments_header", :locals => {:path => event_comments_path(@event)} %>
-  <%= render :partial => "shared/comment_form", :locals => {:object => @event} %>
-  <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @event} %></div>
+  <div class="span-17 last comment_block">
+    <%= render :partial => "shared/comments_header", :locals => {:path => event_comments_path(@event)} %>
+    <%= render :partial => "shared/comment_form", :locals => {:object => @event} %>
+    <div id="comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @event} %></div>
+  </div>
 
 </div>
 

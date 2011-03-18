@@ -40,7 +40,7 @@ class WineriesController < ApplicationController
 #  end
 
   def rating
-    rate ("Winery", params[:id], params[:stars])
+    rate('Winery', params[:id], params[:stars])
     top_wineries
 #    @winery = Winery.find(params[:id])
 #    @user_rating = @winery.ratings.find_or_initialize_by_user_id(current_user.id)

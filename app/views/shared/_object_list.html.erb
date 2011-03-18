@@ -1,7 +1,7 @@
 <% ordered_list ||= false %>
 <% map_it ||= true %>
 <% path ||= "" %>
-
+<% if !object_list.empty? %>
   <div class='list'>
     <h2><%= defined?(list_header) ? list_header : object_list[0].class.name.pluralize %></h2>
     <%= ordered_list ? "<ol>" : "<ul>" %>
@@ -37,4 +37,4 @@
       <% end %>
     <%= ordered_list ? "</ol>" : "</ul>" %>  
   </div>
-
+<% end %>

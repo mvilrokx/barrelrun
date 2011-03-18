@@ -166,16 +166,18 @@ $.fn.center = function () {
     return this;
 }
 
-$(document).ready(function(){
-  $('.gallery_images').galleria();
-});
+//$(document).ready(function(){
+//  $('.gallery_images').galleria();
+//});
 
 
 $(document).ready(function(){
-  $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
+  $("a[rel^='prettyPhoto']").prettyPhoto({
+    theme: 'facebook', 
+    hideflash: true,
+    flash_markup: '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{width}" height="{height}"><param name="wmode" value="{wmode}" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="{path}?rel=0&amp;showsearch=0&amp;showinfo=0" /><embed src="{path}?rel=0&amp;showsearch=0&amp;showinfo=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{width}" height="{height}" wmode="{wmode}"></embed></object>'
+  });
 });
-
-
 
 /**
 * opening modal Dialog
@@ -192,7 +194,7 @@ $('.dialog_form_link').live('click', function() {
                 starRating.create('.dialog .stars');
                 addthis.button("#atbutton", {}, {url: link, title: "Barrelrun"});
                 
-                $('.gallery_images').galleria();
+//                $('.gallery_images').galleria();
                 $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
                 $('.jqueryui_date').datepicker();
                 $('#wine_varietal').autocomplete({
@@ -351,6 +353,7 @@ $(document).ready(function(){
 */
 $(document).ready(function(){
   starRating.create('.stars');
+  $('div.comments').hide();
 });
 
 // The widget
@@ -437,14 +440,16 @@ var starRating = {
 * Submit comments
 */
 $('a.write_comment').live('click', function() {
-  $('div.comments').slideToggle();
+//  $('div.comments').slideToggle();
+  $(this).closest('div.comment_block').find('div.comments').slideToggle();
   $('#comment_content').val("");
   return false;
 });
 
 $('#new_comment').live('submit', function(){
   $.post($(this).attr('action'), $(this).serialize(), null, "script");
-  $('div.comments').slideToggle();
+//  $('div.comments').slideToggle();
+  $(this).closest('div.comment_block').find('div.comments').slideToggle();
   $('#comment_content').val("");
   return false;
 });
@@ -499,6 +504,43 @@ $(document).ready(function(){
     });
 });
 
+
+/**
+* Scroll Bar of jquerytools
+*/
+$(document).ready(function(){
+    scrollable ('.pic_scroll');
+    scrollable ('.vid_scroll');
+});
+
+function scrollable (selector) {
+    // get handle to the scrollable DIV
+    var scroll = $(selector);
+
+    // initialize rangeinput
+    $(selector + ':range').rangeinput({
+	    // slide the DIV along with the range using jQuery's css() method
+	    onSlide: function(ev, step)  {
+		    scroll.css({left: -step});
+	    },
+
+	    // display progressbar
+	    progress: true,
+
+	    // initial value. also sets the DIV's initial scroll position
+	    value: 0,
+
+	    // this is called when the slider is clicked. we animate the DIV
+	    change: function(e, i) {
+		    scroll.animate({left: -i}, "fast");
+	    },
+
+	    // disable drag handle animation when slider is clicked
+	    speed: 0
+    });
+
+    $(selector + ':range').bind('onSlide', function(){}); // fixes a bug in jquery 1.4.4
+}
 
 
 

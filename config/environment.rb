@@ -21,10 +21,11 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
     config.gem 'warden'
     config.gem 'devise', :version => '1.0.7'
-    config.gem 'ajaxful_rating'
+#    config.gem 'ajaxful_rating'
     config.gem "geokit", :version => '~> 1.5.0'
-    config.gem('will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org')
-    config.gem('thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.20')
+    config.gem "geokit-rails", :version => '1.1.4'
+    config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+    config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.20'
     config.gem 'juggernaut', :version => '2.0.0'
     config.gem 'braintree', :version => '2.6.2'
     config.gem 'searchlogic', :version => '2.4.27'
