@@ -40,11 +40,11 @@ class EventsController < ApplicationController
 #  end
 
   def index
-#    if current_winery
+    if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
-#    else  
-#      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
-#    end
+    else  
+      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
+    end
 
     if request.xml_http_request?
       render :partial => "events", :layout => false

@@ -1,8 +1,6 @@
 class WineriesController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :rating, :index, :show]
 
-  
-
   def index
     @wineries = Winery.all;
     respond_to do |format|

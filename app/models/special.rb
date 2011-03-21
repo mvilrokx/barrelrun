@@ -27,11 +27,17 @@ class Special < ActiveRecord::Base
   validates_presence_of :title
   validate :validate_attachments
 
-  named_scope :upcoming_specials, lambda { |top|
-    { :limit => top||=:top_list_size, 
-      :conditions => ["end_date >= :today", {:today => Date.today}], 
-      :order => "start_date DESC" 
-    }
+  named_scope :upcoming_specials, lambda { |*top|
+    if top.empty? || top.first.nil?
+      { :conditions => ["end_date >= :today", {:today => Date.today}], 
+        :order => "start_date DESC" 
+      }
+    else
+      { :limit => top[0],
+        :conditions => ["end_date >= :today", {:today => Date.today}], 
+        :order => "start_date DESC" 
+      }
+    end
   }
 
 #  named_scope :upcoming_specials, :conditions => ["end_date >= :today", {:today => Date.today}], 

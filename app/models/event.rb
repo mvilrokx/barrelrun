@@ -29,11 +29,17 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :title
    
-  named_scope :upcoming_events, lambda { |top|
-    { :limit => top||=:top_list_size, 
-      :conditions => ["end_date >= :today", {:today => Date.today}], 
-      :order => "start_date DESC" 
-    }
+  named_scope :upcoming_events, lambda { |*top|
+    if top.empty? || top.first.nil?
+      { :conditions => ["end_date >= :today", {:today => Date.today}], 
+        :order => "start_date DESC" 
+      }
+    else
+      { :limit => top[0],
+        :conditions => ["end_date >= :today", {:today => Date.today}], 
+        :order => "start_date DESC" 
+      }
+    end
   }
 
 #  named_scope :upcoming_events, :conditions => ["end_date >= :today", {:today => Date.today}], 

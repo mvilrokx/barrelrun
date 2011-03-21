@@ -42,11 +42,11 @@ class SpecialsController < ApplicationController
 #  end
 
   def index
-#    if current_winery
+    if current_winery
       @specials = current_winery.specials.paginate(:page => params[:page], :order => "created_at DESC")
-#    else  
-#      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
-#    end
+    else  
+      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
+    end
     if request.xml_http_request?
       render :partial => "specials", :layout => false
     else

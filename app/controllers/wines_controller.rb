@@ -53,9 +53,9 @@ class WinesController < ApplicationController
     if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else  
-#      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
-      @search = Wine.searchlogic(params[:search])
-      @wines = @search.all.paginate(:page => params[:page])
+      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
+#      @search = Wine.searchlogic(params[:search])
+#      @wines = @search.all.paginate(:page => params[:page])
     end
 
     if request.xml_http_request?

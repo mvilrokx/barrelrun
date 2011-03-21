@@ -33,14 +33,14 @@ class Wine < ActiveRecord::Base
 #  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
 
 #  named_scope :top_wines, :order => "average_rating DESC", :include => {:comments => :user}
-  named_scope :top_wines, lambda { |top|
-      { :limit => top||=:top_list_size, :order => "average_rating DESC" }
-#    if top.nil?
-#      { :limit => 10, :order => "average_rating DESC" }
-#    else
-#      { :limit => top, :order => "average_rating DESC" }
-#    end
-    }   
+  named_scope :top_wines, lambda { |*top|
+#      { :limit => top.first||=:top_list_size, :order => "average_rating DESC" }
+    if top.empty? || top.first.nil?
+      { :limit => 10, :order => "average_rating DESC" }
+    else
+      { :limit => top[0], :order => "average_rating DESC" }
+    end
+  } 
 
 #  named_scope :top_wines, :order => "average_rating DESC", 
 #                          :limit => 10,
