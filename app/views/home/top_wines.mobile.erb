@@ -20,7 +20,7 @@
 								<div><%= link_to h(wine.winery.city + ", " + wine.winery.state), wine %> </div>
 	  						<% if user_signed_in? %>
             			<div class="stars">
-              			<form action="/wines/<%= @wines.id %>/rating/" method="post">
+              			<form action="/wines/<%= wine.id %>/rating/" method="post">
                 			<%= render_stars wine %>
               		</form>
             			</div>

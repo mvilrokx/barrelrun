@@ -20,11 +20,20 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Successfully saved comment."  
       Juggernaut.publish("channel1", @comment.user.username + " commented on " + @commentable.name + " ("+ @commentable.class.name + "): '" + @comment.content + "'") rescue nil
-    #     redirect_to :id => nil
-#      redirect_to root_url
+		  
+			if params[:format] == "mobile"
+        puts "in if condition"
+				respond_to do |format|
+					puts "respond block"
+					format.mobile {redirect_to :action=>'index', :id=>@commentable.id}
+		  	end
+			end
+
+    	# redirect_to :id => nil
+			# redirect_to root_url
     else
       flash[:notice] = "Could not save comment, please try again later."  
-#      render :action => 'new'
+			# render :action => 'new'
     end
   end
 
