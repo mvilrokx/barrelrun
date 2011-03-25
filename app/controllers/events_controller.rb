@@ -43,7 +43,9 @@ class EventsController < ApplicationController
     if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
     else  
-      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
+#      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
+      @search = Event.searchlogic(params[:search])
+      @events = @search.all.paginate(:page => params[:page])
     end
 
     if request.xml_http_request?
