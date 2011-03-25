@@ -21,7 +21,7 @@
       <tr>
         <td><%=h credit_card.card_number %></td>
 
-        <td><%= credit_card.default == "Yes" ? "Yes" : link_to ("No", { :action => "make_default", :token => credit_card.token }, :method => :post, :title => "Click to make Prefered Payment Method") %></td>
+        <td><%= credit_card.default == "Yes" ? "Yes" : link_to("No", { :action => "make_default", :token => credit_card.token }, :method => :post, :title => "Click to make Prefered Payment Method") %></td>
 
 
         <td><%=h credit_card.card_type %></td>

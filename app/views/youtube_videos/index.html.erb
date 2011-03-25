@@ -11,10 +11,10 @@
   <hr/>
 
   <% if @videos.previous_page %>
-    <%= link_to '<< Previous', youtube_videos_path (:page => @videos.previous_page) %>
+    <%= link_to '<< Previous', youtube_videos_path(:page => @videos.previous_page) %>
   <% end %>
   <% if @videos.next_page %>
-    <%= link_to 'Next >>', youtube_videos_path (:page => @videos.next_page) %>
+    <%= link_to 'Next >>', youtube_videos_path(:page => @videos.next_page) %>
   <% end %>
   <%= "Page #{@videos.current_page} of  #{@videos.total_pages}" %>
 
@@ -45,7 +45,7 @@
           <td><%= link_to "No", :controller => "youtube_videos", :action => "add_to_winery_details", :id => video.unique_id %></td>
         <% end %>
         <% if winery_video = Video.find_by_youtube_id(video.unique_id) then %></td>
-          <td><%= winery_video.welcome ? "Yes" : link_to ("No", {:controller => "youtube_videos", :action => "make_primary", :id => video.unique_id }, :method => :put, :title => "Click to turn into Welcome Video") %></td>
+          <td><%= winery_video.welcome ? "Yes" : link_to("No", {:controller => "youtube_videos", :action => "make_primary", :id => video.unique_id }, :method => :put, :title => "Click to turn into Welcome Video") %></td>
         <% else %>
           <td>N/A</td>
         <% end %>          
