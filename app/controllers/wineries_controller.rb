@@ -2,7 +2,9 @@ class WineriesController < ApplicationController
   before_filter :authenticate_winery!, :except => [:rate, :rating, :index, :show]
 
   def index
-    @wineries = Winery.all;
+#    @wineries = Winery.all;
+    @search = Winery.searchlogic(params[:search])
+    @wineries = @search.all.paginate(:page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :layout => false, :json => @wineries }

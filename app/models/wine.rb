@@ -1,38 +1,30 @@
 class Wine < ActiveRecord::Base
-
  	has_many :comments, :as => :commentable, :dependent => :destroy, :order => "created_at DESC"
  	has_many :favorites, :as => :favorable, :dependent => :destroy
 #    accepts_nested_attributes_for :favorites, :allow_destroy => true
  	has_many :pictures, :as => :pictureable, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
   has_many :awards, :dependent => :destroy
+ 	belongs_to :winery
 
   accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
  
- 	belongs_to :winery
- 
-#  	before_validation :clear_picture
-
   validates_presence_of :name, :wine_type, :vintage, :varietal
  	validates_numericality_of :price, :vintage, :allow_blank => true
  	validate :price_must_be_at_least_a_cent, :validate_attachments
  	validates_associated :favorites
 
   before_validation :clear_tasting_notes
-  #Controls the number of wines you see per page (pagination)
+
   cattr_reader :per_page
   @@per_page = 10
-  #Controls the size of Top List
+
   cattr_reader :top_list_size
   @@top_list_size = 10
 
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
 
-
-#  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
-
-#  named_scope :top_wines, :order => "average_rating DESC", :include => {:comments => :user}
   named_scope :top_wines, lambda { |*top|
 #      { :limit => top.first||=:top_list_size, :order => "average_rating DESC" }
     if top.empty? || top.first.nil?
@@ -65,17 +57,6 @@ class Wine < ActiveRecord::Base
 
   validates_attachment_content_type :tasting_notes, :content_type => ['application/pdf', 'application/msword']     
 
-#   	has_attached_file :picture, 
-#                      :styles => {:thumb => "100x100>",
-#                                  :small => "300x300>",
-#                                  :large => "600x600>"
-#                                 },  
-#                      :url => "/assets/wines/:id/:style/:basename.:extension",  
-#                      :path => ":rails_root/public/assets/wines/:id/:style/:basename.:extension"
- 
-#   validates_attachment_size :photo, :less_than => 5.megabytes  
-#   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']     
-   
   def delete_tasting_notes=(value)
     @delete_tasting_notes = !value.to_i.zero?
   end
