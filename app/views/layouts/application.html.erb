@@ -32,12 +32,20 @@
       <% form_tag({:controller => "searches", :action => "all_objects"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
           <div class="span-8">
-            <label>Enter Winery, Wine or Region</label><br>
-            <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+            <div class="span-8 last">
+              <label>Enter Winery, Wine or Region</label><br>
+            </div>
+            <div class="span-8 last">
+              <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+            </div>
           </div>
           <div class="span-5">
-            <label>Nearby (Enter City)</label><br>
-            <input size="20" type="text">
+            <div class="span-5 last">
+              <label>Nearby (Enter City)</label><br>
+            </div>
+            <div class="span-5 last">
+              <%= text_field_tag :nearby, params[:nearby], :class=>"span-4" %>
+            </div>
           </div>
           <div class="span-2 prepend-top">
             <input class="button grey" type="submit" value="Search">
