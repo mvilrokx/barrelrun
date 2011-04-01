@@ -59,7 +59,9 @@ class Winery < ActiveRecord::Base
     indexes [:address, :address2, :address3, :city, :state, :zipcode, :country], :as => :address
 
     has average_rating, :facet => true
-    has lat, lng
+#    has lat, lng
+    has "RADIANS(lat)",  :as => :latitude,  :type => :float
+    has "RADIANS(lng)", :as => :longitude, :type => :float
   end
 
   Max_Attachments = 10

@@ -29,7 +29,7 @@
       <div class="span-8 prepend-top" id="company_logo">
         <%= link_to image_tag("../images/barrelrun_logo.png", :border=>0), root_path %>
       </div>
-      <% form_tag({:action => "all_objects_search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+      <% form_tag({:controller => "searches", :action => "all_objects"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
           <div class="span-8">
             <label>Enter Winery, Wine or Region</label><br>

@@ -4,7 +4,7 @@ class WineriesController < ApplicationController
   def index
 #    @wineries = Winery.all;
     @search = Winery.searchlogic(params[:search])
-    @wineries = @search.all.paginate(:page => params[:page])
+    @wineries = @search.all
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :layout => false, :json => @wineries }
