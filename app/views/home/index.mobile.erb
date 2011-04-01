@@ -32,7 +32,7 @@
   </div>
   <ul id="links" class="rounded">
     <li class="arrow"><a href="/home/top_wines">Top Wines</a></li>
-    <li class="arrow"><a href="/home/top_wineries">Top Wineries</a></li>
+    <li class="arrow"><a href="/home/top_wineries">Top Wineries 2</a></li>
     <li class="arrow"><a href="#nearBy">Near By</a></li>
     <li class="arrow"><%= link_to h("Events"), events_path %></li>
     <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
@@ -49,9 +49,12 @@
          <a class="button cancel" href="#">Back</a>
     </div>
     <div class="body">
+ 
 		<div class="colborder">
       		<div>
-		          <div id="map"></div>
+		          <div id="map">
+		                 <%= render :partial=>"home/map" %>  
+		          </div>
 
 			</div>
 	      </div>    
