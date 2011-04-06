@@ -8,47 +8,54 @@
       		<a <%= link_to h("Login"), new_user_session_path %> </a>
       	<% end %>    	
   </div>
-
-	<td width="60">
-		<% if @winery.pictures.length > 0 then %>
-		<%= image_tag @winery.pictures[0].url %>
-  	<% end %>
-	</td>	
-
-  <div class="strong">
-  	<%=h @winery.address %>
-		<%=h @winery.address2 %>
-		<%=h @winery.address3 %>
-	</div>
-
-	<div class="strong">
-		<%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
-	</div>
-	<div class="span-5 last strong">
-		<%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
-	</div>
-	<div class="span-5 last strong">
-		<a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
- 	</div>
-
-	<div class="strong">
-		<% if user_signed_in? %>
-			<div class="stars">
-				<form action="/wineries/<%= @winery.id %>/rating/" method="post">
- 					<%= render_stars @winery %>
-				</form>
+  
+<table>
+	<tr> 
+		<td>
+			<% if @winery.pictures.length > 0 then %>
+			<%= image_tag @winery.pictures[0].url(:thumb) %>
+  		<% end %>
+		</td>	
+		
+		<td>
+  		<div class="strong">
+  			<%=h @winery.address %>
+				<%=h @winery.address2 %>
+				<%=h @winery.address3 %>
 			</div>
-		<% else %>
-			<div class="stars">
-				<%= render_stars @winery, true %>
+
+			<div class="strong">
+				<%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
 			</div>
-		<% end %>
-	</div>
+			<div class="span-5 last strong">
+				<%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
+			</div>
+			<div class="span-5 last strong">
+				<a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
+ 			</div>
+
+			<div class="strong">
+				<% if user_signed_in? %>
+					<div class="stars">
+						<form action="/wineries/<%= @winery.id %>/rating/" method="post">
+ 							<%= render_stars @winery %>
+						</form>
+					</div>
+				<% else %>
+					<div class="stars">
+						<%= render_stars @winery, true %>
+					</div>
+				<% end %>
+			</div>
+		</td>
+	
+	</tr>
+</table> 
 
   <ul id="links" class="rounded">
 	  <li class="arrow"><a href="#map">Map</a></li>
     <li class="arrow"><%= link_to h("View and Enter Comments"), winery_comments_path(@winery) %></li>
-    <li class="arrow"><a href="#welcomeVideoAndMore">Welcome Video and More</a></li>
+    <li class="arrow"><a href="#welcomeVideoAndMore">Welcome Video and More NOT WORKING</a></li>
     <li class="arrow"><%= link_to h("Pictures NOT WORKING"), pictures_path(@winery) %></li>
     <li class="arrow"><a href="#events">Events</a></li>
     <li class="arrow"><a href="#specials">Specials</a></li>
@@ -67,19 +74,6 @@
       	<div>
         		<img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:S|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
 	  		</div>
-		</div>
-	</div>
-</div>
-
-<div id="welcomeVideoAndMore">
-	<div class="toolbar">
-		<h1>Welcome Video and More</h1>
-		<a class="button cancel" href="#">Back</a>
-	</div>
-	<div class="body">
-		<div>
-			<iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
-			</iframe>   
 		</div>
 	</div>
 </div>
@@ -145,8 +139,6 @@
 		<h1>Wines</h1>
 			<a class="button cancel" href="#">Back</a>
 	</div>
-
-
 	<div class="body">
 		<ul>
 			<% for wine in @winery.wines %>
@@ -169,7 +161,18 @@
 				</li> 
       <% end %>
    </ul>   
+</div>
+
+<div id="welcomeVideoAndMore">
+	<div class="toolbar">
+		<h1>Welcome Video and More</h1>
+		<a class="button cancel" href="#">Back</a>
+	</div>
+	<div class="body">
+		<a>iframe was not working here</a>
 	</div>
 </div>
+
+
 
 
