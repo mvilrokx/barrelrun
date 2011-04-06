@@ -967,3 +967,34 @@ div.sort .desc {
 .range {
 	display:none;
 }
+
+div.facet {
+    margin-bottom: .25em; 
+    border: 1px solid lightgrey;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    background: #E6E6E6;
+}
+
+div.facet:hover {
+    border: 1px solid gray;
+}
+
+div.facet h4 {
+    padding: 5px 10px; margin-bottom: 0px;
+}
+    
+div.facet h4 img {
+    margin-bottom: -3px; 
+    -webkit-transform: rotate(-90deg);
+}
+
+div.facet.open {
+    background: white;
+}
+
+div.facet.open h4 img {
+    -webkit-transform: rotate(0deg);
+}
