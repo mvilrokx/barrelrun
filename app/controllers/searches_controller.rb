@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
   require 'ap'
   
   PER_PAGE = 10
-  MILES = 5
+  MILES = 25
 
   def search
     ap params
@@ -18,7 +18,11 @@ class SearchesController < ApplicationController
       :order => @order + "@relevance DESC"
     )
     facets
-    render :all_objects
+    if request.xml_http_request?
+      render :partial => "search_results", :layout => false
+    else
+      render :all_objects
+    end
   end
 
   def faceted_search
@@ -35,7 +39,11 @@ class SearchesController < ApplicationController
       :order => @order + "@relevance DESC"
     )
     facets
-    render :all_objects
+    if request.xml_http_request?
+      render :partial => "search_results", :layout => false
+    else
+      render :all_objects
+    end
   end
 
   def facets

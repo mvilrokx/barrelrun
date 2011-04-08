@@ -53,17 +53,11 @@ class Winery < ActiveRecord::Base
                              
   # ThinkingSphinx setup
   define_index do
+    # Fields
     indexes winery_name
-#    indexes wines.name, :as => :wine_name
-#    indexes wines.description, :as => :wine_description
-#    indexes wines.varietal, :as => :varietal, :facet => true
-#    indexes wines.wine_type, :as => :wine_type, :facet => true
     indexes [:address, :address2, :address3, :city, :state, :zipcode, :country], :as => :address
-
+    # Attributes
     has average_rating, :facet => true, :type => :integer
-#    has wines.vintage, :as => :vintage, :type => :integer, :facet => true
-
-#    has lat, lng
     has "RADIANS(lat)",  :as => :latitude,  :type => :float
     has "RADIANS(lng)", :as => :longitude, :type => :float
   end

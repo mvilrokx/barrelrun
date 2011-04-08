@@ -3,12 +3,12 @@
 <div class="container">
   <hr class="space">
   <div class="prepend-1 span-5">
-    <% form_tag '/searches/faceted_search' do -%>
+    <% form_tag '/searches/faceted_search', :method => "get" do -%>
       <div class="accordion">
         <%- @facets.each do |facet, facet_options| -%>
           <%- if facet_options.count > 0 -%>
             <div class="facet">
-              <h4><%= image_tag 'bullet_arrow_down.png' %><%= facet %></h4>
+              <h4><%= image_tag 'bullet_arrow_down.png' %><%= facet.to_s.humanize %></h4>
               <div class="options" style="padding-left: 10px;">
               <%- facet_options.each do |option, count| -%>
                 <% if params[facet] %>
@@ -16,7 +16,7 @@
                 <%- else -%>      
                   <%= check_box_tag "#{facet}[]", option, false, {:id => option} %>
                 <%- end -%>      
-                <%= label_tag option, "#{option} (#{count})", :style => 'display: inline; float: none; padding: 0px;' %><br/>
+                <%= label_tag option, "#{option.blank? ? "None" : option}", :style => 'display: inline; float: none; padding: 0px;' %><br/>
               <%- end -%>      
               </div>
             </div>
@@ -35,53 +35,9 @@
       <%= hidden_field_tag "search", params[:search] if !params[:search].blank?  %>
       <%= submit_tag "Apply Filter" %>
     <%- end -%>
-
-<script>
-$(document).ready(function(){
-  // Hide all facets
-  $('.accordion h4').next().hide();
-  // Now show the ones that have a checked bocx
-  $('input:checked').each(function() {
-    $(this)
-      .parent().show()
-      .closest('.facet').addClass('open');
-  });
-  //toggle accordion when clicked
-	$('.accordion h4').click(function() {
-		$(this).parent().toggleClass('open');	
-		$(this).next().slideToggle('fast');
-		return false;
-	});
-  // show distance value
-	$('#distance').change(function() {
-	  $('#miles').html($(this).val());
-	});
-	
-});
-</script>
-
   </div>
 
-  <div class="span-17 last">
-    <div class="pagination">
-      <div class="page_info">
-        <%= page_entries_info @search_results %>
-      </div>
-    </div>
-    <%= will_paginate @search_results, :container => false %>
-    <br>
-    <% @search_results.each do |search_result| %>
-      <% if search_result.instance_of?(Winery) then %>
-        <%= render :partial => "winery", :locals => {:winery => search_result} %>
-      <% elsif search_result.instance_of?(Wine) then %>
-        <%= render :partial => "wine", :locals => {:wine => search_result} %>
-      <% end %>
-    <% end %>
-    <div class="pagination">
-      <div class="page_info">
-        <%= page_entries_info @search_results %>
-      </div>
-    </div>
-    <%= will_paginate @search_results, :container => false %>
-  </div>
+  <%= render :partial => "search_results" %>
+  
 </div>
+

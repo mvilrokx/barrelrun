@@ -542,7 +542,30 @@ function scrollable (selector) {
     $(selector + ':range').bind('onSlide', function(){}); // fixes a bug in jquery 1.4.4
 }
 
-
+/**
+* Accordion on search page
+*/
+$(document).ready(function(){
+  // Hide all facets
+  $('.accordion h4').next().hide();
+  // Now show the ones that have a checked bocx
+  $('input:checked').each(function() {
+    $(this)
+      .parent().show()
+      .closest('.facet').addClass('open');
+  });
+  //toggle accordion when clicked
+	$('.accordion h4').click(function() {
+		$(this).parent().toggleClass('open');	
+		$(this).next().slideToggle('fast');
+		return false;
+	});
+  // show distance value
+	$('#distance').change(function() {
+	  $('#miles').html($(this).val());
+	});
+	
+});
 
 /**
 * JQUery Plugin Star Rating System
