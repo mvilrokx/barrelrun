@@ -1,0 +1,9 @@
+<div class="span-17 last">
+  <div class="span-10">
+    <h3><%= wine.name %></h3>
+  </div>
+  <div class="span-7 last">
+    <%= "#{wine.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if wine.sphinx_attributes['@geodist'] %>
+  </div>
+</div>
+<hr/>

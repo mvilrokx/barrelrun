@@ -45,12 +45,18 @@ class Wine < ActiveRecord::Base
 
   # ThinkingSphinx setup
   define_index do
+    # Fields
     indexes :name
     indexes description
-    indexes varietal, :facet => true
-    indexes wine_type, :facet => true
-    
-    has vintage, average_rating, :facet => true
+    indexes varietal, :facet => true # this implicitly gives an attribute called varietal_facet
+    indexes wine_type, :facet => true # this implicitly gives an attribute called wine_type_facet
+    # Joins
+    join winery
+    # Attributes
+    has vintage, :facet => true
+    has average_rating, :facet => true, :type => :integer
+    has "RADIANS(wineries.lat)",  :as => :latitude,  :type => :float
+    has "RADIANS(wineries.lng)", :as => :longitude, :type => :float
   end
   
   has_attached_file :tasting_notes

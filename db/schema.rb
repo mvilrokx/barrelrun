@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110309025323) do
+ActiveRecord::Schema.define(:version => 20110402044034) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -244,7 +244,7 @@ ActiveRecord::Schema.define(:version => 20110309025323) do
     t.string   "wine_type"
     t.string   "varietal"
     t.integer  "vintage"
-    t.decimal  "average_rating",             :precision => 4, :scale => 2
+    t.float    "average_rating"
     t.string   "tasting_notes_file_name"
     t.string   "tasting_notes_content_type"
     t.integer  "tasting_notes_file_size"

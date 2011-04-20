@@ -54,11 +54,15 @@ class Winery < ActiveRecord::Base
   # ThinkingSphinx setup
   define_index do
     indexes winery_name
-    indexes wines.name, :as => :wine_name
-    indexes wines.description, :as => :wine_description
+#    indexes wines.name, :as => :wine_name
+#    indexes wines.description, :as => :wine_description
+#    indexes wines.varietal, :as => :varietal, :facet => true
+#    indexes wines.wine_type, :as => :wine_type, :facet => true
     indexes [:address, :address2, :address3, :city, :state, :zipcode, :country], :as => :address
 
-    has average_rating, :facet => true
+    has average_rating, :facet => true, :type => :integer
+#    has wines.vintage, :as => :vintage, :type => :integer, :facet => true
+
 #    has lat, lng
     has "RADIANS(lat)",  :as => :latitude,  :type => :float
     has "RADIANS(lng)", :as => :longitude, :type => :float
@@ -67,7 +71,12 @@ class Winery < ActiveRecord::Base
   Max_Attachments = 10
   Max_Attachment_Size = 5.megabyte
 
+  def name
+    winery_name
+  end
+
  	protected
+    
   	def validate_attachments
      	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
     	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
