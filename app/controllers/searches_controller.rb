@@ -7,7 +7,6 @@ class SearchesController < ApplicationController
   MILES = 25
 
   def search
-    ap params
     @search_results = ThinkingSphinx.search(
       params[:search],
       :star => true,
@@ -26,7 +25,6 @@ class SearchesController < ApplicationController
   end
 
   def faceted_search
-    ap params
     @search_results = ThinkingSphinx.search(
       params[:search],
       :star => true,
@@ -76,20 +74,22 @@ class SearchesController < ApplicationController
       if !params[:nearby].blank?
         res=MultiGeocoder.geocode(params[:nearby])
         @geo=[(res.lat/360)*Math::PI*2, (res.lng/360)*Math::PI*2]
-        # 1_000.0 = 1km
+        # 1_000.0 = 1000 meters = 1km
         if params[:distance].blank?
           params[:distance] = MILES
         end
         @with_params["@geodist"] = 0.0..params[:distance].to_f.miles.to.meters.to_f
         @order = "@geodist ASC, "
       end
+      
+      @with_params[:price] = params[:min_price][/\d.+/].to_f..params[:max_price][/\d.+/].to_f if params[:min_price] && params[:max_price]
+      
       @with_params[:vintage] = params[:vintage] if params[:vintage]
       @with_params[:varietal_facet] = params[:varietal].collect {|x| x.to_crc32} if params[:varietal]
       @with_params[:wine_type_facet] = params[:wine_type].collect {|x| x.to_crc32} if params[:wine_type]
       @with_params[:average_rating] = params[:average_rating] if params[:average_rating]
-      if params[:wine_type] || params[:vintage] || params[:varietal]
-        @classes = [Wine]
-      end
+      @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || params[:min_price] || params[:max_price]
+      
       ap @with_params
     end
 end

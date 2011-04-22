@@ -43,6 +43,8 @@ class Wine < ActiveRecord::Base
   named_scope :distinct_varietals, :select => "distinct varietal",
                                    :order => "varietal"
 
+  named_scope :highest_price, :select => "max(price)"
+
   # ThinkingSphinx setup
   define_index do
     # Fields
@@ -54,6 +56,7 @@ class Wine < ActiveRecord::Base
     join winery
     # Attributes
     has vintage, :facet => true
+    has price, :facet => trueta
     has average_rating, :facet => true, :type => :integer
     has "RADIANS(wineries.lat)",  :as => :latitude,  :type => :float
     has "RADIANS(wineries.lng)", :as => :longitude, :type => :float

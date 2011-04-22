@@ -6,7 +6,8 @@
       <div class="span-2 colborder">
         <%=h comment.user.username %>
       </div>
-      <% if comment.user.picture %>
+
+      <% if comment.user.picture[0] %>
       <div class="span-2 colborder">
         <%= image_tag comment.user.picture[0].url(:micro) %>
       </div>

@@ -548,23 +548,22 @@ function scrollable (selector) {
 $(document).ready(function(){
   // Hide all facets
   $('.accordion h4').next().hide();
-  // Now show the ones that have a checked bocx
+  // Now show the ones that have a checked box
   $('input:checked').each(function() {
     $(this)
       .parent().show()
       .closest('.facet').addClass('open');
   });
   //toggle accordion when clicked
-	$('.accordion h4').click(function() {
-		$(this).parent().toggleClass('open');	
-		$(this).next().slideToggle('fast');
-		return false;
-	});
+  $('.accordion h4').click(function() {
+    $(this).parent().toggleClass('open');	
+    $(this).next().slideToggle('fast');
+    return false;
+  });
   // show distance value
-	$('#distance').change(function() {
-	  $('#miles').html($(this).val());
-	});
-	
+  $('#distance').change(function() {
+	$('#miles').html($(this).val());
+  });
 });
 
 /**

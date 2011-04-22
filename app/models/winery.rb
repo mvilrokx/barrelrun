@@ -19,7 +19,7 @@ class Winery < ActiveRecord::Base
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 
-  after_create :store_customer_in_vault
+  after_create   :store_customer_in_vault
   before_destroy :destroy_customer_in_vault
 
   def complete_address
@@ -37,15 +37,14 @@ class Winery < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :username,  
-                 :winery_name, :owner_gm_name, :owner_gm_email,
-                 :contact_first_name, :contact_last_name,
-                 :telephone, :address, :address2, :address3,
-                 :city, :state, :zipcode, :country, :website_url
-
-#  ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:overall]
+                  :winery_name, :owner_gm_name, :owner_gm_email,
+                  :contact_first_name, :contact_last_name,
+                  :telephone, :address, :address2, :address3,
+                  :city, :state, :zipcode, :country, :website_url
 
 #  validates_presence_of :lat, :lng
-  acts_as_mappable :auto_geocode => {:field=>:complete_address, :error_message=>'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
+  acts_as_mappable :auto_geocode => {:field => :complete_address, 
+                                     :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
   named_scope :top_wineries, :order => "average_rating DESC", 
                              :limit => 10, 
@@ -57,9 +56,9 @@ class Winery < ActiveRecord::Base
     indexes winery_name
     indexes [:address, :address2, :address3, :city, :state, :zipcode, :country], :as => :address
     # Attributes
-    has average_rating, :facet => true, :type => :integer
+    has average_rating,  :facet => true, :type => :integer
     has "RADIANS(lat)",  :as => :latitude,  :type => :float
-    has "RADIANS(lng)", :as => :longitude, :type => :float
+    has "RADIANS(lng)",  :as => :longitude, :type => :float
   end
 
   Max_Attachments = 10

@@ -1,0 +1,56 @@
+<div class="edit_form">
+<script>
+  $(window).load(function () {
+    $("#wine_varietal").autocomplete({
+      source: "/wines/distinct_varietals.json",
+      minLength: 1
+    });
+    $("#wine_wine_type").autocomplete({
+      source: "/wines/distinct_wine_types.json",
+      minLength: 1
+    });
+  });
+</script>
+
+  <fieldset>
+     <% form_for @wine, :url => user_winery_wines_path(@winery) do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :name %>
+      <span class="div_texbox">
+        <%= f.text_field :name, :required => true, :class => "fillout01" %>
+    	</span>
+      <div class="span-16 last">
+        <%= f.label :description %>
+        <span class="div_texbox" style="height: auto;">            
+          <%= f.text_area :description, :class => "fillout01" %>
+      	</span>
+      </div>
+
+      <%= f.label :wine_type %>
+      <span class="div_texbox">            
+        <%= f.text_field :wine_type, :required => true, :class => "fillout03" %>
+    	</span>
+
+      <%= f.label :vintage %>
+      <span class="div_texbox">            
+        <%= f.text_field :vintage, :required => true, :class => "fillout04" %>
+    	</span>
+
+      <%= f.label :varietal %>
+      <span class="div_texbox">            
+        <%= f.text_field :varietal, :required => true, :class => "fillout02" %>
+    	</span>
+
+      <%= f.label :price %>
+      <span class="div_texbox">            
+        <%= f.text_field :price, :required => true, :class => "fillout04" %>
+    	</span>
+
+      <span class="div_texbox">            
+        <%= f.submit "Save" %>
+    	</span>
+
+    <% end -%>
+  </fieldset>
+</div>
+

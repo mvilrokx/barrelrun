@@ -1,0 +1,23 @@
+<% title("Create New Wine for " + @winery.name) %>
+
+<div class="container">
+	<hr class="space"/>
+	<div class="push-3 span-18 last">
+		<div class="entry_form">
+			<div class="span-18 main">
+				<hr class="space"/>
+				<div class="push-1 span-16 last">
+    
+          <h2>Create New Wine for <%= @winery.name %></h2>
+
+          <%= render :partial => "form" %>
+
+        </div>
+      </div>
+      <div id="jstemplates">
+        <%= yield :jstemplates %>
+      </div>
+    </div>
+  </div>
+
+</div>
