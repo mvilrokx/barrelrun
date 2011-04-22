@@ -20,7 +20,7 @@
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'js/jquery.prettyPhoto.js' %>
   <meta name="google-site-verification" content="gbrsWw3rBH_5VFv7hZFTawoZP-z46yA3Iyggvhd-pOA" />
-  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="shortcut icon" href="/../images/favicon.ico" />
   <meta charset="utf-8" />
 </head>
 <body>
@@ -29,7 +29,7 @@
       <div class="span-8 prepend-top" id="company_logo">
         <%= link_to image_tag("../images/barrelrun_logo.png", :border=>0), root_path %>
       </div>
-      <% form_tag({:controller => "searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+      <% form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
           <div class="span-8">
             <div class="span-8 last">

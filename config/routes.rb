@@ -65,6 +65,15 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :wineries, :has_many => :credit_cards
   map.resources :events, :has_many => :ratings
 
+#  map.resources :userwineries, :namespace => "user", :controller => "wineries"
+#  map.with_options(:namespace => "user") do |user|
+#    user.resources :wineries
+#  end
+  map.namespace(:user) do |user|
+  	user.resources :wineries, :has_many => :wines
+  end
+
+  map.resources :emails, :collection => {:incoming => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

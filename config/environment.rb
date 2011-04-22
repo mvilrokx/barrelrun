@@ -32,6 +32,7 @@ Rails::Initializer.run do |config|
     config.gem 'youtube_it', :version => '1.2.10'
 #    config.gem 'omniauth', :version => '0.1.6'
     config.gem 'omniauth', :version => '0.2.0.beta4'
+    config.gem 'alchemist', :source => 'http://gemcutter.org'
     
   #    config.gem 'haml'
     

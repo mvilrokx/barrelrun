@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402044034) do
+ActiveRecord::Schema.define(:version => 20110421022607) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20110402044034) do
     t.float    "lat"
     t.float    "lng"
     t.decimal  "average_rating",                      :precision => 4, :scale => 2
+    t.string   "ownership_status"
   end
 
   add_index "wineries", ["confirmation_token"], :name => "index_wineries_on_confirmation_token", :unique => true
@@ -234,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20110402044034) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",                      :precision => 8, :scale => 2, :default => 0.0
+    t.float    "price",                                                    :default => 0.0
     t.decimal  "rating_average",             :precision => 6, :scale => 2, :default => 0.0
     t.string   "picture_file_name"
     t.string   "picture_content_type"

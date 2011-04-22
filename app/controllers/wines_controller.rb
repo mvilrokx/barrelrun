@@ -1,6 +1,6 @@
 class WinesController < ApplicationController
-  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
-  before_filter :verify_winery_subscription, :except => [:rating, :index, :show]
+  before_filter :authenticate_winery!, :except => [:rating, :index, :show, :distinct_varietals, :distinct_wine_types]
+  before_filter :verify_winery_subscription, :except => [:rating, :index, :show, :distinct_varietals, :distinct_wine_types]
 
   helper_method :sort_column, :sort_asc_or_desc
   

@@ -42,9 +42,7 @@
       </ul>
     </div>
 
-    <% if @wine.tasting_notes? %>
-      <%= link_to "Download Tasting Notes", @wine.tasting_notes.url %>
-    <% end %>
+    <%= link_to "Download Tasting Notes", @wine.tasting_notes.url if @wine.tasting_notes? %>
     <hr/>
 
   </div>

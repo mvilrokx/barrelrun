@@ -1,6 +1,13 @@
 <div class="prepend-top prepend-1 span-22 append-1 last">
   <div class="span-22 last">
-    <h2><%=h @winery.winery_name %></h2>
+    <h2>
+      <%=h @winery.winery_name %>
+      <% if @winery.ownership_status == 'USER' %>
+        <span style="font-size: 12px;"><%= link_to "Do you own this winery?" %></span>
+      <% else %>
+        <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
+      <% end %>    
+    </h2>
   </div>
   <div class="span-13 colborder">
     <div class="span-13">
@@ -75,10 +82,17 @@
     
     <div class="span-13">
       <div class="span-13">
+        <div class="span-6 colborder">
+          <% if user_signed_in? && @winery.ownership_status == 'USER' %>
+            <%= link_to "Add a Wine", new_user_winery_wine_path(@winery), :class => "dialog_form_link" %>
+          <% end %>
+        </div>
+
+
         <% if !@winery.wines.empty? %>      
           <div class="span-6 colborder">
             <div id="winery_wines">
-               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
+              <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
                                                                       :path => "wineries/#{@winery.id}/"} %>
             </div>
           </div>
