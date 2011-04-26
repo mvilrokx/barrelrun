@@ -3,12 +3,8 @@
 <html>
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <!--%= stylesheet_link_tag "/jqtouch/jqtouch.min.css", "/jqtouch/themes/apple/theme.min.css" %-->
-  <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" /> 
-	<script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
-
-
+    <%= stylesheet_link_tag "/jqtouch/jqtouch.min.css", "/jqtouch/themes/apple/theme.min.css" %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "/jqtouch/jqtouch.min.js", "mobile" %>
   <script type="text/javascript"><!--
    function authToken(){
      return '<%= form_authenticity_token if protect_against_forgery? -%>';
