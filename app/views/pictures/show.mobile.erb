@@ -1,0 +1,16 @@
+<div class="entry_form">
+  <% title "Picture" %>
+
+  <p>
+    <strong>File Name:</strong>
+    <%=h @picture.name %>
+  </p>
+  <p>
+    <%= image_tag @picture.url(:large) %>  
+  </p>
+</div>
+
+<p>
+  <%= link_to "Destroy", @picture, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", pictures_path %>
+</p>
