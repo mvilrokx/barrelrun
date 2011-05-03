@@ -2,16 +2,16 @@
 	<div class="toolbar">
   	<h1>Top Wineries</h1>
 		  <a class="button home" href="/">Home</a>
-      <% if user_signed_in? %>
-      <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
-      <% elsif winery_signed_in? %>
-      <div id="signed_in">
-        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
-        <%= link_to "Sign Out", destroy_winery_session_path %>
-      </div>
-      <% else %>
-      <a <%= link_to h("Login"), new_user_session_path %> </a>
-      <% end %>
+      	<% if user_signed_in? %>
+      		<a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
+      	<% elsif winery_signed_in? %>
+      		<div id="signed_in">
+        		<%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        		<%= link_to "Sign Out", destroy_winery_session_path %>
+      		</div>
+      	<% else %>
+      		<a <%= link_to h("Login"), new_user_session_path %> </a>
+      	<% end %>
 	</div>
   <div class="body">
    	  <ul>
@@ -38,8 +38,6 @@
 			</table>
 	    </li>
 	    <% end %>
-      </ul>
-          <script type="text/javascript">starRating.create('.stars');</script>    
+      </ul>    
   </div>
-      <script type="text/javascript">starRating.create('.stars');</script>
 </div>

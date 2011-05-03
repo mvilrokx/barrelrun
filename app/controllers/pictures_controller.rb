@@ -4,8 +4,8 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
-    # do security check here
-#    send_file picture.data.path, :type => picture.content_type
+  # do security check here
+  # send_file picture.data.path, :type => picture.content_type
   end
     
   def index
