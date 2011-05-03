@@ -70,7 +70,7 @@ ActionController::Routing::Routes.draw do |map|
 #    user.resources :wineries
 #  end
   map.namespace(:user) do |user|
-  	user.resources :wineries, :has_many => :wines
+  	user.resources :wineries, :has_many => :wines, :member => {:claim => :get, :update_claim => :put}
   end
 
   map.resources :emails, :collection => {:incoming => :post}

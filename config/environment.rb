@@ -20,7 +20,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
     config.gem 'warden'
-    config.gem 'devise', :version => '1.0.7'
+    config.gem 'devise', :version => '1.0.11'
 #    config.gem 'ajaxful_rating'
     config.gem "geokit", :version => '~> 1.5.0'
     config.gem "geokit-rails", :version => '1.1.4'

@@ -397,7 +397,7 @@ var starRating = {
       // Handle Star click
       var $star = $(this);
       var $allLinks = $(this).parent();
-      
+//    alert('clicked stars');  
       // Set the radio button value
       $allLinks
         .parent()

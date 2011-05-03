@@ -2,8 +2,8 @@
   <div class="span-22 last">
     <h2>
       <%=h @winery.winery_name %>
-      <% if @winery.ownership_status == 'USER' %>
-        <span style="font-size: 12px;"><%= link_to "Do you own this winery?" %></span>
+      <% if @winery.ownership_status != 'CLAIMED' %>
+        <span style="font-size: 12px;"><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
         <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
       <% end %>    
@@ -59,22 +59,22 @@
     
     <% if !@winery.awards.empty? %>
       <div class="span-13">
-        <div class="span-13">
-          <div class="span-13 last">
-            <h2><%= image_tag("../images/trophy.jpg", :alt=>"trophy") %> Awards</h2>
+        <div class="span-13 last">
+          <h2><%= image_tag("../images/trophy.jpg", :alt=>"trophy") %> Awards</h2>
 
-            <% for award in @winery.awards %>
+          <% for award in @winery.awards %>
+            <div class="span-13 last">
               <div class="span-3">
                 <% if !award.pictures.empty? then %>
                   <%= image_tag award.pictures[0].url(:thumb) %>
                 <% end %>
               </div>
               <div class="span-10 last">
-                <h4 style="margin-bottom:0.25px;"><%= award.title %> for <%= award.wine.name %></h4>
+                <h4 style="margin-bottom:0.25px;"><%= award.title %> for <%= link_to award.wine.name, award.wine, :class => "dialog_form_link" %></h4>
                 <%= award.description %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <hr/>
@@ -83,8 +83,12 @@
     <div class="span-13">
       <div class="span-13">
         <div class="span-6 colborder">
-          <% if user_signed_in? && @winery.ownership_status == 'USER' %>
-            <%= link_to "Add a Wine", new_user_winery_wine_path(@winery), :class => "dialog_form_link" %>
+          <% if @winery.ownership_status != 'CLAIMED' %>        
+            <% if user_signed_in? %>
+              <%= link_to "Add a Wine", new_user_winery_wine_path(@winery), :class => "dialog_form_link" %>
+            <% else %>
+              <%= link_to "Register", new_user_registration_path %> or <%= link_to content_tag(:span, 'Login'), new_user_session_path %> to add wines!
+            <% end %>
           <% end %>
         </div>
 

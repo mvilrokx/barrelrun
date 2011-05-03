@@ -1,5 +1,5 @@
 class User::WinesController < ApplicationController
-  before_filter :authenticate_user!, :find_winery, :verify_ownership_status_is_user
+  before_filter :authenticate_user!, :find_winery, :verify_winery_is_not_claimed
 
   def new
     @wine = @winery.wines.new
@@ -37,8 +37,8 @@ class User::WinesController < ApplicationController
       @winery = Winery.find(params[:winery_id])
     end
     
-    def verify_ownership_status_is_user
-      if @winery.ownership_status == 'USER'
+    def verify_winery_is_not_claimed
+      if @winery.ownership_status != 'CLAIMED'
         true
       else
         flash[:notice] = "You cannot add wines to this winery."

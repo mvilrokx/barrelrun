@@ -1,0 +1,47 @@
+<div class="edit_form">
+  <fieldset>
+    <% form_for @winery, :url => '/user/wineries' do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :winery_name %>
+      <span class="div_texbox">
+        <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
+    	</span>
+      <%= f.label :telephone %>
+      <span class="div_texbox">
+        <%= f.text_field :telephone, :class => "fillout03" %>
+    	</span>
+      <%= f.label :address %>
+      <span class="div_texbox">
+        <%= f.text_field :address, :required => true, :class => "fillout01" %>
+    	</span>
+      <%= f.label :address2 %>
+      <span class="div_texbox">
+        <%= f.text_field :address2, :class => "fillout01" %>
+    	</span>
+      <%= f.label :city %>
+      <span class="div_texbox">
+        <%= f.text_field :city, :required => true, :class => "fillout03" %>
+    	</span>
+      <%= f.label :state %>
+      <span class="div_texbox">
+        <%= f.text_field :state, :required => true, :class => "fillout04" %>
+    	</span>
+      <%= f.label :zipcode %>
+      <span class="div_texbox">
+        <%= f.text_field :zipcode, :required => true, :class => "fillout04" %>
+    	</span>
+      <%= f.label :country %>
+      <span class="div_texbox">
+        <%= f.text_field :country, :class => "fillout04" %>
+    	</span>
+      <%= f.label :website_url %>
+      <span class="div_texbox">
+        <%= f.text_field :website_url, :class => "fillout01" %>
+    	</span>
+      <span class="div_texbox">
+        <%= f.submit "Save" %>
+    	</span>
+    <% end -%>
+  </fieldset>
+</div>
+
