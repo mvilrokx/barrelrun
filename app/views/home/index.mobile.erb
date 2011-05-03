@@ -17,7 +17,6 @@
 <div id="home" class="current">
   <div class="toolbar">
       <h1>Barrel Run</h1>
-
       <% if user_signed_in? %>
       <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
       <% elsif winery_signed_in? %>
@@ -38,6 +37,7 @@
     <li class="arrow"><%= link_to h("Wineries"), wineries_path %></li>
     <li class="arrow"><%= link_to h("Wines"), wines_path %></li>
     <li class="arrow"><%= link_to h("Specials"), specials_path %></li>
+    <li class="arrow"><a href="#search">Search</a></li>
   </ul>
 
 
@@ -56,6 +56,38 @@
 			</div>
 	      </div>    
     </div>
+</div>
+
+<div id="search">
+	<div class="toolbar">
+		<h1>Search</h1>
+		<a class="button cancel" href="#">Back</a>
+  </div>
+	<div class="body">
+      <% form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+        <div id="header_search_box">
+          <div>
+            <div>
+              <label>Enter Winery, Wine or Region</label><br>
+            </div>
+            <div>
+              <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label>Nearby (Enter City)</label><br>
+            </div>
+            <div>
+              <%= text_field_tag :nearby, params[:nearby], :class=>"span-4" %>
+            </div>
+          </div>
+          <div>
+            <input  type="submit" value="Search">
+          </div>
+        </div>
+          <% end %> 
+	</div>
 </div>
 
 

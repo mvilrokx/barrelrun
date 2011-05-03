@@ -1,0 +1,69 @@
+<% title("Search results") %>
+
+<div class="container">
+  <hr class="space">
+  <div class="prepend-1 span-5">
+    <% form_tag '/searches/faceted_search', :method => "get" do -%>
+      <div class="accordion">
+
+        <%- @facets.each do |facet, facet_options| -%>
+          <%- unless facet.to_s == "price" -%>
+            <%- if facet_options.count > 0 -%>
+              <div class="facet">
+                <h4><%= image_tag 'bullet_arrow_down.png' %><%= facet.to_s.humanize %></h4>
+                <div class="options" style="padding-left: 10px;">
+                <%- facet_options.each do |option, count| -%>
+                  <% if params[facet] %>
+                    <%= check_box_tag "#{facet}[]", option, params[facet].include?(option.to_s), {:id => option} %>
+                  <%- else -%>      
+                    <%= check_box_tag "#{facet}[]", option, false, {:id => option} %>
+                  <%- end -%>      
+                  <%= label_tag option, "#{option.blank? ? "None" : option}", :style => 'display: inline; float: none; padding: 0px;' %><br/>
+                <%- end -%>      
+                </div>
+              </div>
+            <%- end -%>
+          <%- end -%>
+        <%- end -%>
+
+        <%- if !params[:nearby].blank? -%>
+          <div class="facet">
+            <h4><%= image_tag 'bullet_arrow_down.png' %>Distance (<span id="miles"><%= params[:distance]||SearchesController::MILES %></span>  miles)</h4>
+            <div class="options" style="padding-left: 10px;">
+              0<input id="distance" type="range" name="distance" min="0" max="50" step="1" value=<%= params[:distance]||SearchesController::MILES %> />50
+            </div>
+          </div>     
+        <%- end -%>
+        
+        <div class="facet" id="price_range">
+          <h4><%= image_tag 'bullet_arrow_down.png' %>Price Range $<%= text_field_tag :min_price, params[:min_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold; text-align: right;"} %>-$<%= text_field_tag :max_price, params[:max_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold;"} %></h4>
+          <div class="options" style="padding: 10px;">
+            <div id="slider-range"></div>
+<script>
+$(function() {
+		$("#slider-range").slider({
+			range: true,
+			min: <%= Wine.minimum(:price).to_i %>,
+			max: <%= Wine.maximum(:price).to_i + 1 %>,
+			values: [ <%= params[:min_price]||10 %> , <%= params[:max_price]||50 %> ],
+			slide: function( event, ui ) {
+				$("#min_price").val( ui.values[0]);
+				$("#max_price").val( ui.values[1]);
+			}
+		});		
+	});
+</script>
+          </div>
+        </div>
+        
+      </div>
+      <%= hidden_field_tag "nearby", params[:nearby] if !params[:nearby].blank? %>
+      <%= hidden_field_tag "search", params[:search] if !params[:search].blank?  %>
+      <%= submit_tag "Apply Filter" %>
+    <%- end -%>
+  </div>
+
+  <%= render :partial => "search_results" %>
+  
+</div>
+
