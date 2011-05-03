@@ -49,6 +49,7 @@ class WineriesController < ApplicationController
                                                                        :list_header => "Top 10 Wineries" } }
       format.json { render :layout => false, :json => @wineries }
       format.js
+      format.mobile
     end
   end
 
