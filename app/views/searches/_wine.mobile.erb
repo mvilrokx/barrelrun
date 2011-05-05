@@ -1,0 +1,10 @@
+<div class="span-17 last">
+  <div class="span-10">
+    <h3><%= link_to wine.name, wine, :class => 'dialog_form_link' %></h3>
+    Made by <%= link_to wine.winery.name, wine.winery %>
+  </div>
+  <div class="span-7 last">
+    <%= "#{wine.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if wine.sphinx_attributes['@geodist'] %>
+  </div>
+</div>
+<hr/>
