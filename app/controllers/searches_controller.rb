@@ -18,9 +18,17 @@ class SearchesController < ApplicationController
     )
     facets
     if request.xml_http_request?
-      render :partial => "search_results", :layout => false
+          	puts "1 block"
+    	respond_to do |format|
+      	format.html   {render :partial => "search_results", :layout => false}
+      	format.mobile {render :all_objects}
+      end     
     else
-      render :all_objects
+          	puts "2 block"
+      respond_to do |format|
+      	format.html {render :all_objects}
+      	format.mobile {render :all_objects}
+      end
     end
   end
 
@@ -38,9 +46,17 @@ class SearchesController < ApplicationController
     )
     facets
     if request.xml_http_request?
-      render :partial => "search_results", :layout => false
+          	puts "3 block"
+    	respond_to do |format|
+      	format.html {render :partial => "search_results", :layout => false}
+        format.mobile {render :mobile => "search_results", :layout => false}
+      end  
     else
-      render :all_objects
+          	puts "4 block"
+    	respond_to do |format|
+      	format.html {render :all_objects}
+				format.mobile {render :all_objects}
+      end  
     end
   end
 
