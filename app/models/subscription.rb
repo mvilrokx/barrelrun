@@ -12,7 +12,60 @@ class Subscription < ActiveRecord::Base
   after_create :create_subscription_in_vault
   before_update :update_subscription_in_vault
   before_destroy :cancel_subscription_in_vault
+  
+  LEVELS = ["Free", "Bronze", "Silver", "Gold"]
+  FEATURES = ["Setup Fee", 
+              "Business data", 
+              "Push Wine information", 
+              "Push Wine Specials", 
+              "Push Wine Events",
+              "Display videos", 
+              "Upload pictures", 
+              "Publish wine awards", 
+              "Complete winery detail page", 
+              "Barrel of a Deal Transaction Fee", 
+              "Featured Winery - All Regions", 
+              "Featured Winery - Localized", 
+              "Real-Time Stats - coming soon",
+              "Subscription Price Guaranteed", 
+              "Integration with mobile app"]
+  
+  LEVEL_FEATURES= Hash.new(true)
+  
+  LEVEL_FEATURES[[ LEVELS[0], FEATURES[0] ]] = "Waived"
+  LEVEL_FEATURES[[ LEVELS[1], FEATURES[0] ]] = "Waived"
+  LEVEL_FEATURES[[ LEVELS[2], FEATURES[0] ]] = "Waived"
+  LEVEL_FEATURES[[ LEVELS[3], FEATURES[0] ]] = "Waived"
 
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[5] ]] = false
+
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[6] ]] = false
+  LEVEL_FEATURES[[LEVELS[1], FEATURES[6] ]] = "15Mb"
+  LEVEL_FEATURES[[LEVELS[2], FEATURES[6] ]] = "50Mb"
+  LEVEL_FEATURES[[LEVELS[3], FEATURES[6] ]] = "Unlimited"
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[7] ]] = false
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[8] ]] = false
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[9] ]] = "30%"
+  LEVEL_FEATURES[[LEVELS[1], FEATURES[9] ]] = "20%"
+  LEVEL_FEATURES[[LEVELS[2], FEATURES[9] ]] = "12%"
+  LEVEL_FEATURES[[LEVELS[3], FEATURES[9] ]] = "7%"
+
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[10] ]] = false
+  LEVEL_FEATURES[[LEVELS[1], FEATURES[10] ]] = false
+  LEVEL_FEATURES[[LEVELS[2], FEATURES[10] ]] = false
+
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[11] ]] = false
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[12] ]] = false
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[13] ]] = false
+  LEVEL_FEATURES[[LEVELS[1], FEATURES[13] ]] = false
+  
+  LEVEL_FEATURES[[LEVELS[0], FEATURES[14] ]] = false
+  
   protected
   
     def after_find # Get vault info from Braintree

@@ -998,3 +998,56 @@ div.facet.open {
 div.facet.open h4 img {
     -webkit-transform: rotate(0deg);
 }
+
+
+
+
+table#subscription {
+  background-color: #FFFFFF;
+}
+
+table#subscription tbody tr:nth-child(even), tbody tr.even {
+  background-color: #FFFFFF;
+}
+
+table#subscription tbody tr:nth-child(odd), tbody tr.odd {
+  background-color: #FFFFFF;
+}
+
+table#subscription th, td {
+  padding: 7px 10px;
+  min-width: 45px;
+  text-align: center;
+  border-right: 2px solid #FFFFFF;      
+}
+
+table#subscription td.table-column-header {
+  font-weight: bold;
+  text-align: right;
+}
+
+table#subscription tbody  {
+}
+
+table#subscription tbody tr:nth-child(even) td.table-col-0, tbody tr.even td.table-col-0 {
+}
+table#subscription tbody tr:nth-child(even) td.table-col-1, tbody tr.even td.table-col-1 {
+}
+table#subscription tbody tr:nth-child(even) td.table-col-2, tbody tr.even td.table-col-2 {
+}
+table#subscription tbody tr:nth-child(even) td.table-col-3, tbody tr.even td.table-col-3 {
+}
+
+
+td.allowed_on_level {
+  background: transparent;
+  background-image: url(../images/tick.png);
+  background-repeat: no-repeat; 
+  background-position: center;
+}
+
+table#subscription td img {
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
+}
