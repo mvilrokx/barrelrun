@@ -49,7 +49,7 @@ class SearchesController < ApplicationController
           	puts "3 block"
     	respond_to do |format|
       	format.html {render :partial => "search_results", :layout => false}
-        format.mobile {render :mobile => "search_results", :layout => false}
+      	format.mobile {render :all_objects}
       end  
     else
           	puts "4 block"
