@@ -98,6 +98,13 @@ class SearchesController < ApplicationController
         @order = "@geodist ASC, "
       end
       
+      if params[:min_price].blank?
+          params[:min_price] = "1"
+      end
+      if params[:max_price].blank?
+          params[:max_price] = "9999999"
+      end
+        
       @with_params[:price] = params[:min_price][/\d.+/].to_f..params[:max_price][/\d.+/].to_f if params[:min_price] && params[:max_price]
       
       @with_params[:vintage] = params[:vintage] if params[:vintage]
