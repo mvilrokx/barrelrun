@@ -21,13 +21,13 @@ class SearchesController < ApplicationController
           	puts "1 block"
     	respond_to do |format|
       	format.html   {render :partial => "search_results", :layout => false}
-      	format.mobile {render :all_objects}
+      	format.mobile {render :all_objects, :layout => false}
       end     
     else
           	puts "2 block"
       respond_to do |format|
       	format.html {render :all_objects}
-      	format.mobile {render :all_objects}
+      	format.mobile {render :all_objects, :layout => false}
       end
     end
   end
@@ -49,13 +49,13 @@ class SearchesController < ApplicationController
           	puts "3 block"
     	respond_to do |format|
       	format.html {render :partial => "search_results", :layout => false}
-      	format.mobile {render :all_objects}
+      	format.mobile {render :all_objects, :layout => false}
       end  
     else
           	puts "4 block"
     	respond_to do |format|
       	format.html {render :all_objects}
-				format.mobile {render :all_objects}
+				format.mobile {render :all_objects, :layout => false}
       end  
     end
   end
