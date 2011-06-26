@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421022607) do
+ActiveRecord::Schema.define(:version => 20110530200427) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(:version => 20110421022607) do
     t.datetime "updated_at"
   end
 
+  create_table "registration_levels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "price",      :precision => 8, :scale => 2
+  end
+
   create_table "specials", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -134,16 +141,16 @@ ActiveRecord::Schema.define(:version => 20110421022607) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                                   :default => "", :null => false
+    t.string   "encrypted_password",       :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                           :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",                           :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -168,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20110421022607) do
     t.string   "movie_content_type"
     t.integer  "movie_file_size"
     t.datetime "movie_updated_at"
+    t.boolean  "accepts_terms_of_service"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -188,16 +196,16 @@ ActiveRecord::Schema.define(:version => 20110421022607) do
   end
 
   create_table "wineries", :force => true do |t|
-    t.string   "email",                                                             :default => "",  :null => false
-    t.string   "encrypted_password",   :limit => 128,                               :default => "",  :null => false
-    t.string   "password_salt",                                                     :default => "",  :null => false
+    t.string   "email",                                                                 :default => "",  :null => false
+    t.string   "encrypted_password",       :limit => 128,                               :default => "",  :null => false
+    t.string   "password_salt",                                                         :default => "",  :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                                     :default => 0
+    t.integer  "sign_in_count",                                                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -219,11 +227,12 @@ ActiveRecord::Schema.define(:version => 20110421022607) do
     t.string   "zipcode"
     t.string   "country"
     t.string   "website_url"
-    t.decimal  "rating_average",                      :precision => 6, :scale => 2, :default => 0.0
+    t.decimal  "rating_average",                          :precision => 6, :scale => 2, :default => 0.0
     t.float    "lat"
     t.float    "lng"
-    t.decimal  "average_rating",                      :precision => 4, :scale => 2
+    t.decimal  "average_rating",                          :precision => 4, :scale => 2
     t.string   "ownership_status"
+    t.boolean  "accepts_terms_of_service"
   end
 
   add_index "wineries", ["confirmation_token"], :name => "index_wineries_on_confirmation_token", :unique => true

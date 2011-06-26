@@ -180,7 +180,7 @@ $(document).ready(function(){
 });
 
 /**
-* opening modal Dialog
+* opening modal Dialog for form (with dynamic content added on the fly)
 */
 $('.dialog_form_link').live('click', function() {
     var link = "http://www.barrelrun.com" + $(this).attr('href'); 
@@ -192,7 +192,7 @@ $('.dialog_form_link').live('click', function() {
                 addNotice("<p>" + msg + xhr.status + " " + xhr.statusText + "</p>")
             } else {
                 starRating.create('.dialog .stars');
-                addthis.button("#atbutton", {}, {url: link, title: "Barrelrun"});
+                addthis.button("#dialog_atbutton", {}, {url: link, title: "Barrelrun"});
                 
 //                $('.gallery_images').galleria();
                 $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
@@ -225,6 +225,37 @@ $('.dialog_form_link').live('click', function() {
     // prevent the default action, e.g., following a link
     return false;
 });
+
+
+/**
+* opening content of link in modal Dialog)
+*/
+$('.dialog_link').live('click', function() {
+    var $dialog = $('<div class="dialog"></div>')
+        .load($(this).attr('href'), function(response, status, xhr){
+            if (status == "error") {
+                var msg = "Sorry but there was an error: ";
+                addNotice("<p>" + msg + xhr.status + " " + xhr.statusText + "</p>")
+            } else {
+                $(this).dialog({
+                    modal: true,
+    //                title: $(this).text(),
+    //                autoOpen: false,
+                    width: 'auto',
+                    height: 'auto',
+                    position: 'center',               
+                    show: {effect: 'blind', 
+                           duration: 250
+                    },
+                    hide: {effect: 'blind', duration: 250},
+                    close: function(ev, ui) { $('div.dialog').remove(); }
+                });
+            }
+        });
+    return false;
+});
+
+
 
 /**
 * Makes the scrollable area actually scrollable using jquery ui tools

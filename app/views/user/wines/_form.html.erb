@@ -13,7 +13,8 @@
 </script>
 
   <fieldset>
-     <% form_for @wine, :url => user_winery_wines_path(@winery) do |f| %>
+     <% url = @wine.new_record? ? user_winery_wines_path(@winery) : user_winery_wine_path(@winery, @wine)%>
+     <% form_for @wine, :url => url do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
       <span class="div_texbox">

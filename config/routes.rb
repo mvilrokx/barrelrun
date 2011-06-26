@@ -1,11 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :registration_levels, 
+                :as => :registrations,
+                :only => [:index], 
+                :member => {:apply => :get}
+
   map.resources :authentications
 
 
 #  map.resources :ratings
 
-
-  map.devise_for :wineries
+          
+  map.devise_for :wineries #, :controller => "wineries/registrations"
   map.devise_for :users
 
   map.resources :wines, :member => {:rating => :post}, 

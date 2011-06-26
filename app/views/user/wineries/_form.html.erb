@@ -1,6 +1,6 @@
 <div class="edit_form">
   <fieldset>
-    <% form_for @winery, :url => '/user/wineries' do |f| %>
+    <% form_for @winery, :url => @winery.new_record? ? '/user/wineries' :  "/user/wineries/#{@winery.id}" do |f| %>
       <%= f.error_messages %>
       <%= f.label :winery_name %>
       <span class="div_texbox">

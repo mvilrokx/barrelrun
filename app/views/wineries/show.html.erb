@@ -3,7 +3,7 @@
     <h2>
       <%=h @winery.winery_name %>
       <% if @winery.ownership_status != 'CLAIMED' %>
-        <span style="font-size: 12px;"><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
+        <span style="font-size: 12px;"><%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
         <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
       <% end %>    
@@ -93,11 +93,12 @@
         </div>
 
 
-        <% if !@winery.wines.empty? %>      
+        <% if !@winery.wines.empty? %>
           <div class="span-6 colborder">
             <div id="winery_wines">
               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines,
-                                                                      :path => "wineries/#{@winery.id}/"} %>
+                                                                     :path => "wineries/#{@winery.id}/",
+                                                                     :editable => @winery.ownership_status!='CLAIMED'? true : false} %>
             </div>
           </div>
         <% end %>
@@ -176,7 +177,7 @@
     <div class="span-8 last comment_block">
       <%= render :partial => "shared/comments_header", :locals => {:path => winery_comments_path(@winery), :span => 8} %>
       <%= render :partial => "shared/comment_form", :locals => {:object => @winery, :span => 8} %>
-      <div id="comments">
+      <div id="winery_comments">
         <%= render :partial => "shared/comments", :locals =>{:commentable => @winery, :span => 8} %>
       </div>
     </div>

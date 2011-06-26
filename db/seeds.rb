@@ -10,16 +10,20 @@
 # db/seeds.rb
 require 'open-uri'
 
-#["Windows", "Linux", "Mac OS X"].each do |os|
-#  OperatingSystem.find_or_create_by_name(os)
-#end
+available_levels = {"Free" => 0.00, "Bronze" => 199.00, "Silver" => 399.00, "Gold" => 699.00}
+
+RegistrationLevel.delete_all
+available_levels.each do |level, price|
+  puts price
+  RegistrationLevel.find_or_create_by_name(:name => level, :price => price)
+end
 
 STDOUT.sync = true
 
 wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt"]
 wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt"]
 
-Winery.delete_all
+#Winery.delete_all
 idx = 0
 
 wineryFiles.each do |wineryFile|
@@ -36,7 +40,7 @@ wineryFiles.each do |wineryFile|
         telephone = "555.555.5555"
       end
       begin
-        Winery.create!(:winery_name => winery_name, 
+        Winery.find_or_create_by_winery_name(:winery_name => winery_name, 
                        :address => address, 
                        :city => city, 
                        :state => state, 
@@ -64,7 +68,7 @@ wineryFiles.each do |wineryFile|
 end
 puts " "
 
-Wine.delete_all
+#Wine.delete_all
 #open("db/ListofWines_AtoG_NapaRegion.txt") do |wines|
 #open("db/ListofWines_temeculaValley.txt") do |wines|
 
@@ -82,7 +86,7 @@ wineFiles.each do |wineFile|
           price.slice!(0)
         end
         begin
-          @winery.wines.create!(:name => wine_name, 
+          @winery.wines.find_or_create_by_name(:name => wine_name,
                                 :price => price, 
                                 :wine_type => type, 
                                 :vintage => vintage, 

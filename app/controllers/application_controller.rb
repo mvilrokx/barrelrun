@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   before_filter :prepare_for_mobile, :set_subscription
   after_filter :flash_to_headers

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
  	
   accepts_nested_attributes_for :picture, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 
-  validates_presence_of :username, :first_name, :last_name
+  validates_presence_of :username, :first_name, :last_name, :accepts_terms_of_service
   validates_length_of :username, :in => 6..19
   validates_uniqueness_of :telephone, :allow_nil => true, :allow_blank => true
 
@@ -24,15 +24,17 @@ class User < ActiveRecord::Base
     model.errors.add(attr, 'You must be at least 21 years old to be able to register.') if  value > Date.new((Date.today.year - 21),(Date.today.month),(Date.today.day))
   end   
    # Include default devise modules. Others available are:
-   # :http_authenticatable, :token_authenticatable, :lockable, :confirmable, :timeoutable and :activatable
+   # , :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable, 
-        :rememberable, :trackable, :validatable
+        :rememberable, :trackable, :validatable, :confirmable,
+        :http_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, 
                  :first_name, :last_name, :username, :birthdate,
                  :telephone, :address, :address2, :address3,
-                 :city, :state, :zipcode, :country, :picture_attributes
+                 :city, :state, :zipcode, :country, :picture_attributes,
+                 :accepts_terms_of_service
   # ajaxful_rater
 
   # Virtual attribute for GeoCoding

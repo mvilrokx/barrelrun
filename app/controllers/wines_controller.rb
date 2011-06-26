@@ -103,7 +103,7 @@ class WinesController < ApplicationController
       if @wine.save
         flash[:notice] = 'Wine was successfully created.'
         format.html {redirect_to wines_url}
-        Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new wine called " + @wine.name.to_s) rescue nil
+        Juggernaut.publish("channel1", "#{current_winery.winery_name.to_s} added a new wine called <a href='/wines/#{@wine.id}' class='dialog_form_link'>#{@wine.name.to_s}</a>") rescue nil
       else
         format.html { render :action => "new" }
       end

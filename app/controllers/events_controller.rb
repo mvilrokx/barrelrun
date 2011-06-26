@@ -75,7 +75,7 @@ class EventsController < ApplicationController
     @event = current_winery.events.new(params[:event])
     if @event.save
       flash[:notice] = 'Successfully created event.'
-      Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new event called " + @event.name.to_s) rescue nil
+      Juggernaut.publish("channel1", "#{current_winery.winery_name.to_s} added a new event called <a href='/events/#{@event.id}' class='dialog_form_link'>#{@event.name.to_s}</a>") rescue nil
       redirect_to events_url
     else
       render :action => "new"

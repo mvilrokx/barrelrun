@@ -30,7 +30,7 @@
     <tr>
       <td class="table-column-header">&nbsp;</td>
       <% Subscription::LEVELS.each_with_index do |level, i| %>
-        <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", subscriptions_path + "/#{level.downcase}" %></td>
+        <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", subscriptions_path + "/#{level.downcase}", :class => "button" %></td>
       <% end %>
     </tr>
     <% Subscription::FEATURES.each_with_index do |feature, i| %>
@@ -49,6 +49,12 @@
         <% end %>  
       </tr>
     <% end %>  
+    <tr>
+      <td class="table-column-header">&nbsp;</td>
+      <% Subscription::LEVELS.each_with_index do |level, i| %>
+        <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", subscriptions_path + "/#{level.downcase}", :class => "button" %></td>
+      <% end %>
+    </tr>
     
   </table>
 </div>

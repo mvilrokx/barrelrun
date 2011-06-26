@@ -23,7 +23,7 @@ class User::WinesController < ApplicationController
 
   def update
     @wine = @winery.wines.find(params[:id])
-    if @wine.update_attributes(params[:winery])
+    if @wine.update_attributes(params[:wine])
       flash[:notice] = "Successfully updated wine."
       redirect_to wine_path(@wine)
     else

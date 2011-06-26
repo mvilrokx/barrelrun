@@ -1,0 +1,40 @@
+<div>
+  <table id="subscription">
+    <tr>
+      <th class="table-column-header">&nbsp;</th>
+      <th class="table-col-0">Free</th>
+      <th class="table-col-1">$199</th>
+      <th class="table-col-2">$399</th>
+      <th class="table-col-3">$699</th>
+    </tr>
+    <tr>
+      <td class="table-column-header">&nbsp;</td>
+      <% Subscription::LEVELS.each_with_index do |level, i| %>
+        <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", apply_registration_level_path(level.downcase) %></td>
+      <% end %>
+    </tr>
+    <% Subscription::FEATURES.each_with_index do |feature, i| %>
+      <tr>
+        <td class="table-column-header"><%= feature %></td>
+        <% Subscription::LEVELS.each_with_index do |level, j| %>
+          <% if Subscription::LEVEL_FEATURES[ [level, feature] ] %>
+            <% if Subscription::LEVEL_FEATURES[ [level, feature] ].respond_to? :to_str %>           
+              <td class="<%= "table-col-#{j}" %>" ><%= Subscription::LEVEL_FEATURES[ [level, feature] ] %></td>
+            <% else %>
+              <td class="<%= "table-col-#{j}" %>" ><%= image_tag '/images/tick.png' %></td>
+            <% end %>
+          <% else %>
+            <td class="<%= "table-col-#{j}" %>" >&nbsp;</td>
+          <% end %>
+        <% end %>  
+      </tr>
+    <% end %>  
+    <tr>
+      <td class="table-column-header">&nbsp;</td>
+      <% Subscription::LEVELS.each_with_index do |level, i| %>
+        <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", subscriptions_path + "/#{level.downcase}" %></td>
+      <% end %>
+    </tr>
+    
+  </table>
+</div>

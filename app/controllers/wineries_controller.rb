@@ -23,18 +23,23 @@ class WineriesController < ApplicationController
 
   def new
     @winery = Winery.new
+    @winery.credit_cards.build
+#    @winery.build_subscription
+#    ap @winery.credit_cards[0]
   end
 
   def create
-    @winery = Winery.new(params[:winery])
+    @winery = Winery.new(params[:winery])    
     @winery.ownership_status = 'WINERY'
     if @winery.save
       flash[:notice] = "Successfully created winery."
+      redirect_to :credit_card
 #      render :action => 'index'
-    end    
+    else 
+      render :action => 'new'
+    end
     render :action => 'new'
   end
-
 
   def rating
     rate('Winery', params[:id], params[:stars])

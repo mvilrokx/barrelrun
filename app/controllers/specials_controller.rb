@@ -78,7 +78,8 @@ class SpecialsController < ApplicationController
 
     if @special.save
       flash[:notice] = 'Successfully created special.'
-      Juggernaut.publish("channel1", current_winery.winery_name.to_s + " added a new special called " + @special.name.to_s) rescue nil
+      Juggernaut.publish("channel1", "#{current_winery.winery_name.to_s} added a new special called <a href='/specials/#{@special.id}' class='dialog_form_link'>#{@special.name.to_s}</a>") rescue nil
+
       redirect_to specials_url
     else
       render :action => "new"

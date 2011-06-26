@@ -3,7 +3,7 @@ class CreditCard < ActiveRecord::Base
   
   attr_accessor :card_number, :card_verification_value, :card_type, :default
   
-  before_create :create_credit_card_in_vault
+#  before_create :create_credit_card_in_vault
   before_update :update_credit_card_in_vault
   before_destroy :destroy_credit_card_in_vault
 
@@ -21,7 +21,8 @@ class CreditCard < ActiveRecord::Base
     end
 
     def create_credit_card_in_vault
-      winery = Winery.find(creditable_id)
+      winery = creditable #Winery.find(creditable_id)
+      ap winery
       result = Braintree::CreditCard.create(
         :customer_id => winery.username,
         :number => card_number, #"5105105105105100"
@@ -36,7 +37,10 @@ class CreditCard < ActiveRecord::Base
         self.token = result.credit_card.token
       else
         result.errors.each do |error|
+          ap error
           errors.add_to_base error.message
+          self.creditable.errors.add_to_base error.message
+          
         end
         return false # don't create a new record
   #      verification = result.credit_card_verification

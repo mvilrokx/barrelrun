@@ -47,7 +47,7 @@
           	</span>
             <%= f.label :email %>
             <span class="div_texbox">
-              <%= tag(:input, {id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"}) %>
+              <%= tag(:input, {:id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"}) %>
           	</span>
             <%= f.label :birthdate %>
             <span class="div_texbox">
@@ -82,13 +82,18 @@
               <%= f.text_field :telephone, :class => "fillout03" %>
           	</span>
 
+            <%= f.label :accepts_terms_of_service, "Accept" %>
+            <span class="div_texbox">
+              <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/user_terms_of_service', :class=>"dialog_link" %>
+          	</span>
+
             <div id="picture_fields">
             <% f.fields_for :picture do |builder| %>
               <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
             <% end %>
             </div>
 
-            <span class="div_texbox"><%= add_child_link "Add Avatar?", :picture %></span>
+            <span class="div_texbox"><%= add_child_link "Add Avatar", :picture %></span>
 
             <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
 
