@@ -1,0 +1,12 @@
+<div>
+    <% if object.pictures.length > 0 then %>
+      <div class="gallery_images" style="height: 40px;">
+        <% object.pictures.each_with_index do |pic, idx| -%>
+          <%= link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:small), :title=> "Picture Gallery" %>
+        <% end -%>
+      </div>
+    <% else %>
+      <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>        
+    <% end %>
+</div>
+

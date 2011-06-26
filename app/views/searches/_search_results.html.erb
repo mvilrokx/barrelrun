@@ -1,11 +1,11 @@
 <div id="search_results" class="span-17 last">
   <div class="list">
     <div class="pagination">
-      <div class="span-17">
+      <div>
         <%= will_paginate @search_results, :container => false %>
       </div>
     </div>
-    <div class="span-17 last">
+    <div>
       <br>
       <% @search_results.each do |search_result| %>
         <% if search_result.instance_of?(Winery) then %>
@@ -15,7 +15,7 @@
         <% end %>
       <% end %>
     <div class="pagination">
-      <div class="span-17">
+      <div>
         <%= will_paginate @search_results, :container => false %>
       </div>
     </div>

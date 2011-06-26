@@ -13,24 +13,30 @@
       <a <%= link_to h("Login"), new_user_session_path %> </a>
       <% end %>
 	</div>
-
-<table>	
-<tr>
 <h3><%=h @wine.name %></h3>
-<td width="60">
-        <% if @wine.pictures.length > 0 then %>
-          <%= image_tag @wine.pictures[0].url(:thumb) %>
-        <% end %>
-</td>
-<td>
+<table>	
+	<tr>
+		<td width="60" VALIGN="top">
+				<% if @wine.pictures.length > 0 then %>
+      <div class="gallery_images" style="height: 40px; ">
+        <% @wine.pictures.each_with_index do |pic, idx| -%>
+          <%= link_to image_tag(pic.url(:thumb), :alt=>pic.title), pic.url(:small), :title=> "Picture Gallery" %>
+        <% end -%>
+      </div>
+    <% else %>
+      <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>        
+    <% end %>
+		</td>
+		
+		<td>
         <div><strong>Vintage: </strong><%=h @wine.vintage %></div>
         <div><strong>Type: </strong><%=h @wine.wine_type %></div>
         <div><strong>Varietal: </strong><%=h @wine.varietal %></div>
         <div><strong>Price: </strong><%=h number_to_currency(@wine.price) %></div>
         <div>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></div>
         <div><%= link_to h("View and Enter Comments"), wine_comments_path(@wine) %></div>
-	<div><strong>Rating: </strong>
-	<% if user_signed_in? %>
+				<div><strong>Rating: </strong>
+					<% if user_signed_in? %>
             <div class="stars">
               <form action="/wines/<%= @wine.id %>/rating/" method="post">
                 <%= render_stars @wine %>
@@ -41,11 +47,12 @@
                 <%= render_stars @wine, true %>
             </div>
           <% end %>
-	</div>
-</td>
-</tr>
+				</div>
+		</td>
+	</tr>              
 </table>
-        <div class="span-9 last"style="height:50px; overflow: auto; margin: 10px 0px;">
-          <%=h @wine.description %> </div>	
+<div style="height:50px; overflow: auto; margin: 10px 0px;"><%=h @wine.description %> </div>	 
+
+
 </div>
 
