@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110530200427) do
+ActiveRecord::Schema.define(:version => 20110627033734) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -230,7 +230,7 @@ ActiveRecord::Schema.define(:version => 20110530200427) do
     t.decimal  "rating_average",                          :precision => 6, :scale => 2, :default => 0.0
     t.float    "lat"
     t.float    "lng"
-    t.decimal  "average_rating",                          :precision => 4, :scale => 2
+    t.float    "average_rating"
     t.string   "ownership_status"
     t.boolean  "accepts_terms_of_service"
   end

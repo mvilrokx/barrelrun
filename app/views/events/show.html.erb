@@ -23,7 +23,7 @@
         <% end %>
 
         <div class="span-6 last">
-        	<a id="atbutton"></a>
+        	<a id="dialog_atbutton"></a>
         	<a class="addthis_button"></a>
         </div>
         	
@@ -35,8 +35,14 @@
     
     <div class="span-4 last" style="font-size: 22px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
+        <li>Where: <strong><%=h @event.place %></strong></li>
+        <li>Invitation Type: <strong><%=h @event.invitation_type %></strong></li>
         <li>Start: <strong><%=h @event.start_date.try(:strftime,'%m/%d/%Y')  %></strong></li>
         <li>End: <strong><%=h @event.end_date.try(:strftime,'%m/%d/%Y') %></strong></li>
+        <li>Price: <strong><%=h number_to_currency(@event.price) %></strong></li>
+        <li>Contact Name: <strong><%=h @event.contact_info_name %></strong></li>
+        <li>Phone: <strong><%=h @event.contact_info_phone %></strong></li>
+        <li>Email: <strong><%=h @event.contact_info_email %></strong></li>
       </ul>
     </div>
 

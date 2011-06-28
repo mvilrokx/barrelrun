@@ -106,7 +106,7 @@
       <div class="container">
       
         <% flash.each do |key, msg| %>
-          <% if msg =~ /confirmation/ %>
+          <% if msg =~ /confirm/ %>
             <%= content_tag :div, msg, :id => key, :class => "#{key} push-3 span-18 last" %>
           <% end %>
         <% end %>

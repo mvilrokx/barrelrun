@@ -11,6 +11,7 @@ class User::WinesController < ApplicationController
     if @wine.save
       flash[:notice] = "Successfully created wine."
       redirect_to wine_path(@wine)
+      Juggernaut.publish("channel1", "#{current_user.username.to_s} added a new wine called <a href='/wines/#{@wine.id}' class='dialog_form_link'>#{@wine.name.to_s}</a>") rescue nil
     else
       flash[:notice] = "Error while creating wine."
       render :action => 'new'

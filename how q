@@ -1,0 +1,66 @@
+commit 72d5ca0cf781592a3ed4db99a8bc9f3f148fa5f1
+Merge: cf2505f fc5ba3f
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Sat Jun 25 20:40:39 2011 -0700
+
+    removed default price params from search_controller
+
+commit cf2505f562feb458a6c74222de6fcac77f39f752
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Sat Jun 25 20:19:46 2011 -0700
+
+    final push for beta
+
+commit 9ca9dd1a9cb70c00b15bb4d604f1649ee8da2d7f
+Author: Greg Sandford <gregory_sandford@msn.com>
+Date:   Tue May 17 14:05:39 2011 -0700
+
+    none
+
+commit a58cdf72acc97870a3810d9c4bef89956124237c
+Author: Greg Sandford <gregory_sandford@msn.com>
+Date:   Mon May 16 21:32:38 2011 -0700
+
+    none
+
+commit 78cbc1d3323e5ae3c4594bcd8c37c44f4e3051ae
+Author: Greg Sandford <gregory_sandford@msn.com>
+Date:   Wed May 11 19:29:18 2011 -0700
+
+    none
+
+commit 5204a1395d19401662397f05c94a9fd200470ebb
+Author: Greg Sandford <gregory_sandford@msn.com>
+Date:   Mon May 9 15:16:51 2011 -0700
+
+    none
+
+commit 0e1ffa018f627c7b6a950630e7bf30cfc94a16bb
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Thu Apr 21 21:43:22 2011 -0700
+
+    Added features to allow users to add wineries and wines
+
+commit e77dfa2de272f008e385d323a8644174a6f8b876
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Thu Apr 7 22:59:31 2011 -0700
+
+    more changes to search (cleanup) and experimented with Incomming SMS/Email
+
+commit 98de5198710754aac15fc2720e7baeebf28ba33e
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Tue Apr 5 23:01:35 2011 -0700
+
+    Added Search features and Geo Search
+
+commit 0b9d435920e577b95a2c552231d5e2e576010798
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Fri Apr 1 10:01:12 2011 -0700
+
+    Added GEO Search capability
+
+commit 07918887e83d6feb1bf0dea6fd3a0ab6f08ba397
+Author: Mark Vilrokx <mvilrokx@gmail.com>
+Date:   Fri Apr 1 08:49:54 2011 -0700
+
+    Fixed Wineries Index pagination for map

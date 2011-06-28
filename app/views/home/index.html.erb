@@ -10,7 +10,7 @@
     <div style="background: #EEE; padding: 0 10px;">
       <h2><img src="images/deal_icon.jpg" width="35" height="40" alt="Barrel of a Deal" style="padding-bottom: 3px; vertical-align: middle;"> <span style="color: red;">Barrel of a Deal</span></h2>
       <img src="images/barrel_deal_img.jpg" width="358" height="230" alt="Barrel of a Deal image">
-      <p>Discover incredible deals on wines, tours, tastings, and more... direct from various wineries across the pacific west!</p><span style="font-weight: bold;">&gt;&gt; Details</span>
+      <p class="largefont">Discover incredible deals direct from various wineries across the pacific west! <%= link_to "Register", new_user_registration_path %> to be notified when it is launched!</p>
     </div>
     <hr>
     <div id="upcoming_specials" style="padding-left: 10px;">
@@ -27,14 +27,11 @@
   </div>
 
   <div class="span-6 colborder">
-    <h2>Featured Wineries</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip.</p>
-    <hr>
+    <h2><img src="images/barrelspeaks_icon.jpg" width="40" height="28" alt="barrel speaks"> Barrel Speaks</h2>
+    <%= render :partial=>"feed" %>    
     <h2>Get the app on your mobile phone</h2>
     <p class="largefont"><img src="images/iphone-4.jpg" width="174" height="131" class="top pull-1">It is free and helps you find great local wineries and so much more<img src="images/btn_getit.jpg" alt="get it now" width="120" height="39"></p>
     <hr>
-    <h2><img src="images/barrelspeaks_icon.jpg" width="40" height="28" alt="barrel speaks"> Barrel Speaks</h2>
-    <%= render :partial=>"feed" %>    
   </div>
 
   <div class="span-7 last">

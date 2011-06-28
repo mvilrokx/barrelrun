@@ -4,8 +4,10 @@
   <div class="push-3 span-18 last sub_nav">
     <ul>
       <li><%= link_with_active 'Winery', edit_winery_registration_path %></li>
+<% if false %>
       <li><%= link_with_active 'Credit Cards', credit_cards_path %></li>
       <li><%= link_with_active 'Subscription Information', subscriptions_path%></li>
+<% end %>
     </ul>
   </div>
   <hr class="space">
@@ -97,6 +99,9 @@
             <span class="div_texbox">
               <%= f.password_field :current_password, :required => true, :class => "fillout01" %> <i>(for confirmation)</i>
            	</span>
+            <span class="div_texbox">
+              <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
+          	</span>
             <span class="div_texbox">
               <%= f.submit "Update" %>
            	</span>

@@ -18,11 +18,13 @@
     	</span>
       <%= f.label :start_date %>
       <span class="div_texbox">
-        <%= f.text_field :start_date, :required => true, :class => "fillout03 jqueryui_date", :value => @event.try(:start_date).try(:strftime,'%m/%d/%Y') %>
+        <%= text_field_tag :start_date, @event.try(:start_date).try(:strftime,'%m/%d/%Y'), :required => true, :class => "fillout03 jqueryui_date"  %>
+        <%= f.hidden_field :start_date, :id => "start_date_db" %>
     	</span>
       <%= f.label :end_date %>
       <span class="div_texbox">
-        <%= f.text_field :end_date, :required => true, :class => "fillout03 jqueryui_date", :value => @event.try(:end_date).try(:strftime,'%m/%d/%Y')  %>
+        <%= text_field_tag :end_date, @event.try(:end_date).try(:strftime,'%m/%d/%Y'), :required => true, :class => "fillout03 jqueryui_date"  %>
+        <%= f.hidden_field :end_date, :id => "end_date_db" %>
     	</span>
       <%= f.label :price %>
       <span class="div_texbox">
@@ -42,7 +44,7 @@
     	</span>
       <%= f.label :invitation_type %>
       <span class="div_texbox">
-        <%= f.select (:invitation_type, options_for_select(['Open to the Public', 'RSVP', 'Wine Club With Guest', 'Wine Club Only'], @event.invitation_type), {}, {:class => "fillout01"}) %>
+        <%= f.select :invitation_type, options_for_select(['Open to the Public', 'RSVP', 'Wine Club With Guest', 'Wine Club Only'], @event.invitation_type), {}, {:class => "fillout01"} %>
     	</span>
       <div id="picture_fields">
       <% f.fields_for :pictures do |builder| %>

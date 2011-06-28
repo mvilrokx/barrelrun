@@ -86,7 +86,8 @@ class SearchesController < ApplicationController
       @with_params = {}
       @classes = []
       if !params[:nearby].blank?
-        res=MultiGeocoder.geocode(params[:nearby])
+        res=MultiGeocoder.geocode(params[:nearby].downcase)
+        p res
         @geo=[(res.lat/360)*Math::PI*2, (res.lng/360)*Math::PI*2]
         # 1_000.0 = 1000 meters = 1km
         if params[:distance].blank?
@@ -95,13 +96,13 @@ class SearchesController < ApplicationController
         @with_params["@geodist"] = 0.0..params[:distance].to_f.miles.to.meters.to_f
         @order = "@geodist ASC, "
       end
-      
-      @with_params[:price] = params[:min_price][/\d.+/].to_f..params[:max_price][/\d.+/].to_f if params[:min_price] && params[:max_price]
+      puts params[:max_price]
+      @with_params[:price] = params[:min_price][/\d.+/].to_f..params[:max_price][/\d.+/].to_f if params[:min_price] && params[:max_price] && !params[:max_price].blank?
       
       @with_params[:vintage] = params[:vintage] if params[:vintage]
       @with_params[:varietal_facet] = params[:varietal].collect {|x| x.to_crc32} if params[:varietal]
       @with_params[:wine_type_facet] = params[:wine_type].collect {|x| x.to_crc32} if params[:wine_type]
-      @with_params[:average_rating] = params[:average_rating] if params[:average_rating]
+      @with_params[:average_rating] = params[:average_rating].collect{|rating| rating.to_f} if params[:average_rating]
       @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || params[:min_price] || params[:max_price]
       
       ap @with_params

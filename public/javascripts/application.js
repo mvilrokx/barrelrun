@@ -55,12 +55,13 @@ $(document).ready(function(){
 });
 
 
-/**
-* Enable jquery date picker
-*/
-$(document).ready(function(){
-   $('.jqueryui_date').datepicker();
+$(".jqueryui_date").live('focus', function() {
+   $(this).datepicker({
+    altField: $(this).next(),
+    altFormat: "yy-mm-d"
+   });
 });
+
 
 /**
 * Map It functionality
@@ -196,7 +197,7 @@ $('.dialog_form_link').live('click', function() {
                 
 //                $('.gallery_images').galleria();
                 $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
-                $('.jqueryui_date').datepicker();
+
                 $('#wine_varietal').autocomplete({
                   source: "/wines/distinct_varietals.json",
                   minLength: 1

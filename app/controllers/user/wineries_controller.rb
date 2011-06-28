@@ -24,6 +24,7 @@ class User::WineriesController < ApplicationController
     if @winery.save
       flash[:notice] = "Successfully created winery."
       redirect_to winery_path(@winery)
+      Juggernaut.publish("channel1", "#{current_user.username.to_s} added a new winery called <a href='/wineries/#{@winery.id}'>#{@winery.name.to_s}</a>") rescue nil
     else
       flash[:notice] = "Error while creating winery."
       render :action => 'new'
