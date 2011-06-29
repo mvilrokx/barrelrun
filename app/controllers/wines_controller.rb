@@ -124,6 +124,7 @@ class WinesController < ApplicationController
     respond_to do |format|
       if @wine.update_attributes(params[:wine])
         flash[:notice] = 'Wine was successfully updated.'
+        Juggernaut.publish("channel1", "#{current_winery.winery_name.to_s} updated their wine called <a href='/wines/#{@wine.id}' class='dialog_form_link'>#{@wine.name.to_s}</a>") rescue nil
         format.html { redirect_to wines_url }
 #        format.xml  { head :ok }
     else

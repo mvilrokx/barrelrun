@@ -33,16 +33,16 @@
       </div>
     </div>
     
-    <div class="span-4 last" style="font-size: 22px;">
+    <div class="span-4 last" style="font-size: 16px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
-        <li>Where: <strong><%=h @event.place %></strong></li>
-        <li>Invitation Type: <strong><%=h @event.invitation_type %></strong></li>
-        <li>Start: <strong><%=h @event.start_date.try(:strftime,'%m/%d/%Y')  %></strong></li>
-        <li>End: <strong><%=h @event.end_date.try(:strftime,'%m/%d/%Y') %></strong></li>
-        <li>Price: <strong><%=h number_to_currency(@event.price) %></strong></li>
-        <li>Contact Name: <strong><%=h @event.contact_info_name %></strong></li>
-        <li>Phone: <strong><%=h @event.contact_info_phone %></strong></li>
-        <li>Email: <strong><%=h @event.contact_info_email %></strong></li>
+        <li><strong>Where:</strong> <%=h @event.place %></li>
+        <li><strong>Invitation Type: </strong><%=h @event.invitation_type %></li>
+        <li><strong>Start: </strong><%=h @event.start_date.try(:strftime,'%m/%d/%Y')  %></li>
+        <li><strong>End: </strong><%=h @event.end_date.try(:strftime,'%m/%d/%Y') %></li>
+        <li><strong>Price: </strong><%=h number_to_currency(@event.price) %></li>
+        <li><strong>Contact Name: </strong><%=h @event.contact_info_name %></li>
+        <li><strong>Phone: </strong><%=h @event.contact_info_phone %></li>
+        <li><strong>Email: </strong><%=h @event.contact_info_email %></li>
       </ul>
     </div>
 

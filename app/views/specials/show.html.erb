@@ -33,10 +33,10 @@
       </div>
     </div>
     
-    <div class="span-4 last" style="font-size: 22px;">
+    <div class="span-4 last" style="font-size: 16px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
-        <li>Start: <strong><%=h @special.start_date.try(:strftime,'%m/%d/%Y') %></strong></li>
-        <li>End: <strong><%=h @special.end_date.try(:strftime,'%m/%d/%Y') %></strong></li>
+        <li><strong>Start: </strong><%=h @special.start_date.try(:strftime,'%m/%d/%Y') %></li>
+        <li><strong>End: </strong><%=h @special.end_date.try(:strftime,'%m/%d/%Y') %></li>
       </ul>
     </div>
 

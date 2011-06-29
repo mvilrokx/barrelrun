@@ -3,7 +3,7 @@ class AwardsController < ApplicationController
 
   def index
 #    @awards = Award.all
-    @awards = current_winery.awards.paginate(:page => params[:page])
+    @awards = current_winery.awards.paginate(:page => params[:page], :order => "created_at DESC")
   end
   
   def show

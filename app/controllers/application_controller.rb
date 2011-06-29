@@ -48,7 +48,8 @@ class ApplicationController < ActionController::Base
       user_rating = object.ratings.find_or_initialize_by_user_id(current_user.id)
       user_rating.rate = rating
       if user_rating.save
-        flash[:notice] = "Successfully saved your " + object_type + " rating."
+        flash[:notice] = "Successfully saved your #{object_type} rating."
+        Juggernaut.publish("channel1", "#{current_user.username.to_s} rated #{object_type} #{object.name.to_s} a #{rating}.") rescue nil
       end
     end
 

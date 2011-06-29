@@ -33,12 +33,12 @@
       </div>
     </div>
     
-    <div class="span-4 last" style="font-size: 22px;">
+    <div class="span-4 last" style="font-size: 16px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
-        <li>Vintage: <strong><%=h @wine.vintage %></strong></li>
-        <li>Type: <strong><%=h @wine.wine_type %></strong></li>
-        <li>Varietal: <strong><%=h @wine.varietal %></strong></li>
-        <li>Price: <strong><%=h number_to_currency(@wine.price) %></strong></li>
+        <li><strong>Vintage: </strong><%=h @wine.vintage %></li>
+        <li><strong>Type: </strong><%=h @wine.wine_type %></li>
+        <li><strong>Varietal: </strong><%=h @wine.varietal %></li>
+        <li><strong>Price: </strong><%=h number_to_currency(@wine.price) %></li>
       </ul>
     </div>
 

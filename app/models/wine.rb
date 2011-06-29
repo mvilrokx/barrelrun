@@ -15,7 +15,8 @@ class Wine < ActiveRecord::Base
  	validates_associated :favorites
 
   before_validation :clear_tasting_notes
-
+  before_destroy :check_for_comments_or_ratingscheck_for_comments_or_ratings
+ 
   cattr_reader :per_page
   @@per_page = 10
 
@@ -90,4 +91,15 @@ class Wine < ActiveRecord::Base
     	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
  	  end
 
+  def check_for_comments_or_ratings
+    puts "check"
+    puts comments.count
+    puts ratings.count
+    if comments.count > 0 || ratings.count > 0
+      puts "errors"
+      errors.add_to_base("You cannot delete this object because users have already commented on it or rated it.")
+      return false
+    end
+  end
+  
 end

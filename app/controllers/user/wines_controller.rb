@@ -26,6 +26,7 @@ class User::WinesController < ApplicationController
     @wine = @winery.wines.find(params[:id])
     if @wine.update_attributes(params[:wine])
       flash[:notice] = "Successfully updated wine."
+      Juggernaut.publish("channel1", "#{current_user.username.to_s} updated the wine called <a href='/wines/#{@wine.id}' class='dialog_form_link'>#{@wine.name.to_s}</a>") rescue nil
       redirect_to wine_path(@wine)
     else
       flash[:notice] = "Error while updating wine."
