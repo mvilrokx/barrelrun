@@ -80,6 +80,7 @@ wineFiles.each do |wineFile|
       winery_name, wine_name, price, type, vintage, varietal = wine.chomp.strip.split("|")
       if !winery_name.blank? then
         @winery = Winery.find_by_winery_name(winery_name)
+        puts "\nLoading wines for winery " + winery_name
       end
       if !wine_name.nil? then
         if !price.blank? then
