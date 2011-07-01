@@ -27,7 +27,7 @@ task :shell do |t|
 end
 
 desc 'Generate documentation for the paperclip plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.title    = 'Paperclip'
   rdoc.options << '--line-numbers' << '--inline-source'
@@ -74,3 +74,4 @@ desc "Build the gem into the current directory"
 task :gem => :gemspec do
   `gem build #{spec.name}.gemspec`
 end
+

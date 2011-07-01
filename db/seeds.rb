@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
@@ -40,10 +40,10 @@ wineryFiles.each do |wineryFile|
         telephone = "555.555.5555"
       end
       begin
-        Winery.find_or_create_by_winery_name(:winery_name => winery_name, 
-                       :address => address, 
-                       :city => city, 
-                       :state => state, 
+        Winery.find_or_create_by_winery_name(:winery_name => winery_name,
+                       :address => address,
+                       :city => city,
+                       :state => state,
                        :zipcode => zipcode,
                        :country => "USA",
                        :telephone => telephone,
@@ -61,7 +61,7 @@ wineryFiles.each do |wineryFile|
           puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
         else
           puts "\nWarning: Please remove the column headers/titles from your file"
-        end  
+        end
       end
     end
   end
@@ -86,10 +86,11 @@ wineFiles.each do |wineFile|
           price.slice!(0)
         end
         begin
-          @winery.wines.find_or_create_by_name(:name => wine_name,
-                                :price => price, 
-                                :wine_type => type, 
-                                :vintage => vintage, 
+          Wine.find_or_create_by_name_and_winery_id(:name => wine_name,
+                                :winery_id => @winery.id,
+                                :price => price,
+                                :wine_type => type,
+                                :vintage => vintage,
                                 :varietal => varietal)
           print "."
         rescue Exception => e
