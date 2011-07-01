@@ -40,15 +40,15 @@ wineryFiles.each do |wineryFile|
         telephone = "555.555.5555"
       end
       begin
-        Winery.find_or_create_by_winery_name(:winery_name => winery_name,
-                       :address => address,
-                       :city => city,
-                       :state => state,
-                       :zipcode => zipcode,
+        Winery.find_or_create_by_winery_name(:winery_name => winery_name.strip,
+                       :address => address.strip,
+                       :city => city.strip,
+                       :state => state.strip,
+                       :zipcode => zipcode.strip,
                        :country => "USA",
-                       :telephone => telephone,
+                       :telephone => telephone.strip,
                        :website_url => "http://" + website,
-                       :username => winery_name,
+                       :username => winery_name.strip,
                        :email => "jin" + idx.to_s + "@barrelrun.com",
                        :contact_first_name => "Jin",
                        :contact_last_name => "Kim",
@@ -79,7 +79,7 @@ wineFiles.each do |wineFile|
     wines.read.each_line do |wine|
       winery_name, wine_name, price, type, vintage, varietal = wine.chomp.strip.split("|")
       if !winery_name.blank? then
-        @winery = Winery.find_by_winery_name(winery_name)
+        @winery = Winery.find_by_winery_name(winery_name.strip)
         puts "\nLoading wines for winery " + winery_name
       end
       if !wine_name.nil? then
@@ -87,12 +87,12 @@ wineFiles.each do |wineFile|
           price.slice!(0)
         end
         begin
-          Wine.find_or_create_by_name_and_winery_id(:name => wine_name,
+          Wine.find_or_create_by_name_and_winery_id(:name => wine_name.strip,
                                 :winery_id => @winery.id,
                                 :price => price,
-                                :wine_type => type,
-                                :vintage => vintage,
-                                :varietal => varietal)
+                                :wine_type => type.strip,
+                                :vintage => vintage.strip,
+                                :varietal => varietal.strip)
           print "."
         rescue Exception => e
           if winery_name != "winery name" && wine_name != "name" && price != "pricy" && type != "type"
