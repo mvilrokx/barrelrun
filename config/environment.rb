@@ -33,7 +33,6 @@ Rails::Initializer.run do |config|
 #    config.gem 'omniauth', :version => '0.1.6'
     config.gem 'omniauth', :version => '0.2.0.beta4'
     config.gem 'alchemist', :source => 'http://gemcutter.org'
-    config.gem 'alchemist', :source => 'http://gemcutter.org'
     config.gem 'awesome_print', :as => 'ap'
   #    config.gem 'haml'
 
