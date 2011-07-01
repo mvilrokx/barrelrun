@@ -23,16 +23,15 @@
         <% end %>
 
         <div class="span-6 last">
-        	<a id="dialog_atbutton"></a>
-        	<a class="addthis_button"></a>
+        	<div class="addthis_toolbox addthis_32x32_style"></div>
         </div>
-        	
+
         <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
           <%=h @wine.description %>
         </div>
       </div>
     </div>
-    
+
     <div class="span-4 last" style="font-size: 16px;">
       <ul style="list-style: none; margin: 0px; padding: 0px;" >
         <li><strong>Vintage: </strong><%=h @wine.vintage %></li>
@@ -46,7 +45,7 @@
     <hr/>
 
   </div>
-  
+
   <div class="span-17 last comment_block">
     <%= render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)} %>
     <%= render :partial => "shared/comment_form", :locals => {:object => @wine} %>
@@ -54,3 +53,4 @@
   </div>
 
 </div>
+

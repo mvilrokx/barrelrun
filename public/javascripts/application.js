@@ -37,7 +37,7 @@ $(document).ready(function(){
                if ($(this).prev().hasClass('menu-open')) {
                   $(this).hide();
                   $(this).prev().toggleClass('menu-open');
-               }            
+               }
    	      });
             //and open this one
             $element.parent().next().toggle();
@@ -48,7 +48,7 @@ $(document).ready(function(){
             if ($(this).prev().hasClass('menu-open')) {
                $(this).hide();
                $(this).prev().toggleClass('menu-open');
-            }            
+            }
 	      });
 	   }
    });
@@ -81,7 +81,7 @@ $('.map-wine').live('click', function() {
                 };
             };
         };
-            
+
    /* }); */
 });
 
@@ -109,19 +109,19 @@ $(document).ready(function() {
    $("div#signin_menu").mouseup(function() {
        return false
    });
-   
+
    $(document).mouseup(function(e) {
        if($(this).parent("a.signin").length==0) {
            $(".signin").removeClass("menu-open");
            $("div#signin_menu").hide('slow');
        }
-   });            
+   });
 */
 /*   addNotice("<p>Welcome to Barrelrun!</p>");
    setTimeout(function() { addNotice("<p>Stay awhile!</p><p>Stay FOREVER!</p>"); }, 2000); */
 
  });
-        
+
 /**
 * function that adds notices to growl like message box in bottom right corner
 */
@@ -174,7 +174,7 @@ $.fn.center = function () {
 
 $(document).ready(function(){
   $("a[rel^='prettyPhoto']").prettyPhoto({
-    theme: 'facebook', 
+    theme: 'facebook',
     hideflash: true,
     flash_markup: '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{width}" height="{height}"><param name="wmode" value="{wmode}" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="{path}?rel=0&amp;showsearch=0&amp;showinfo=0" /><embed src="{path}?rel=0&amp;showsearch=0&amp;showinfo=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{width}" height="{height}" wmode="{wmode}"></embed></object>'
   });
@@ -184,7 +184,7 @@ $(document).ready(function(){
 * opening modal Dialog for form (with dynamic content added on the fly)
 */
 $('.dialog_form_link').live('click', function() {
-    var link = "http://www.barrelrun.com" + $(this).attr('href'); 
+    var link = "http://www.barrelrun.com" + $(this).attr('href');
     var $dialog = $('<div class="dialog"></div>')
         .appendTo('body')
         .load($(this).attr('href') + ' .entry_form', function(response, status, xhr){
@@ -193,8 +193,23 @@ $('.dialog_form_link').live('click', function() {
                 addNotice("<p>" + msg + xhr.status + " " + xhr.statusText + "</p>")
             } else {
                 starRating.create('.dialog .stars');
-                addthis.button("#dialog_atbutton", {}, {url: link, title: "Barrelrun"});
-                
+                $(".addthis_toolbox")
+                    .append('<a class="addthis_button_email" style="float: left;"></a>')
+                    .append('<a class="addthis_button_facebook" style="float: left;"></a>')
+                    .append('<a class="addthis_button_twitter" style="float: left;"></a>')
+                addthis.toolbox(".addthis_toolbox",{},{url: link, title: "Barrelrun"});
+//<div class="addthis_toolbox" addthis:url="http://example.com/blog/post/2009/05/01" addthis:title="Hooray!">
+//    <a class="addthis_button_compact">Share</a>
+//    <a class="addthis_button_email"></a>
+//    <a class="addthis_button_facebook"></a>
+//    <a class="addthis_button_buzz"></a>
+//</div>
+
+
+
+                addthis.button("#dialog_atbutton", {ui_click: true, services_compact: 'facebook, twitter'}, {url: link, title: "Barrelrun"});
+//                addthis.toolbox(".addthis_toolbox", {ui_click: true, services_expanded: "facebook, twitter"}, {url: link, title: "Barrelrun"});
+
 //                $('.gallery_images').galleria();
                 $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook', hideflash: true});
 
@@ -213,8 +228,8 @@ $('.dialog_form_link').live('click', function() {
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',
-                    position: 'center',               
-                    show: {effect: 'blind', 
+                    position: 'center',
+                    show: {effect: 'blind',
                            duration: 250
                     },
                     hide: {effect: 'blind', duration: 250},
@@ -244,8 +259,8 @@ $('.dialog_link').live('click', function() {
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',
-                    position: 'center',               
-                    show: {effect: 'blind', 
+                    position: 'center',
+                    show: {effect: 'blind',
                            duration: 250
                     },
                     hide: {effect: 'blind', duration: 250},
@@ -313,8 +328,21 @@ $(document).ready(function(){
     $('a.delete').live('click', function(){
         if(confirm("Are you sure?")){
             var row = $(this).closest("tr").get(0);
-            $.post(this.href, {_method:'delete'}, null, "script");
-            $(row).fadeOut('fast', function(){addNotice("<p>Delete was successful.</p>");});
+            $.post(
+                this.href,
+                {_method:'delete'},
+                function(data, status){
+                    if (data.length > 0){
+                        addNotice("<p>" + data[0][1] + "</p>");
+                    }
+                    else {
+                        $(row).fadeOut(
+                            'fast',
+                            function(){
+                                addNotice("<p>Delete was successful.</p>");
+                            });
+                    }
+                });
             return false;
         } else {
             //they clicked no.
@@ -332,7 +360,7 @@ $(document).ready(function(){
         if(confirm("Are you sure?")){
             var row = $(this).closest("tr").get(0);
             $.post(this.href, {_method:'delete'}, function(){addNotice("<p>Wine was successfully deleted.</p>");}, "script");
-            
+
             $(row).slideUp();
 
             return false;
@@ -410,12 +438,12 @@ var starRating = {
                 .attr('title', rating)
                 .addClass(i % 2 == 1 ? 'rating-right' : '')
                 .text(rating);
-              
+
               starRating.addHandlers($item);
           }
-          
+
           $list.append($item);
-          
+
           if($(this).is(':checked')) {
             $item.prevAll().andSelf().addClass('rating');
           }
@@ -429,22 +457,22 @@ var starRating = {
       // Handle Star click
       var $star = $(this);
       var $allLinks = $(this).parent();
-//    alert('clicked stars');  
+//    alert('clicked stars');
       // Set the radio button value
       $allLinks
         .parent()
         .find('input:radio[value=' + $star.text() + ']')
         .attr('checked', true);
-        
+
       // Set the ratings
       $allLinks.children().removeClass('rating');
       $star.prevAll().andSelf().addClass('rating');
-      
+
       // prevent default link click
       e.preventDefault();
-      
+
       $list = $(this).closest('div.list').parent();
-      
+
       $.post($(this).attr('href'), {stars: $star.text() }, function(data){
 // THIS WILL WORK FOR RATING FAVORITES, NEED TO GET IT WORKING FOR RATING WINES ETC.
           $list.html(data);
@@ -499,7 +527,7 @@ $('.add_as_favorite').live('click', function() {
 * Hijack click on Remove as Favorite link
 */
 $('.remove_as_favorite').live('click', function() {
-    $.ajax({ url: $(this).attr('href'), 
+    $.ajax({ url: $(this).attr('href'),
              type: "delete",
              dataType: "script"
              });
@@ -588,7 +616,7 @@ $(document).ready(function(){
   });
   //toggle accordion when clicked
   $('.accordion h4').click(function() {
-    $(this).parent().toggleClass('open');	
+    $(this).parent().toggleClass('open');
     $(this).next().slideToggle('fast');
     return false;
   });

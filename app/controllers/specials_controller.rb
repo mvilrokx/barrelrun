@@ -29,12 +29,12 @@ class SpecialsController < ApplicationController
       format.json { render :layout => false, :json => @specials }
     end
   end
-  
-  
+
+
 #  def upcoming_specials
 #    @specials = Special.upcoming_specials.all.paginate(:page => params[:page])
 #    respond_to do |format|
-#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials, 
+#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials,
 #                                                                       :list_header => "Save Money" } }
 #      format.json { render :layout => false, :json => @specials }
 ##      format.js { render :layout => false, :wines => @wines }
@@ -44,7 +44,7 @@ class SpecialsController < ApplicationController
   def index
     if current_winery
       @specials = current_winery.specials.paginate(:page => params[:page], :order => "created_at DESC")
-    else  
+    else
 #      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
       @search = Special.searchlogic(params[:search])
       @specials = @search.all.paginate(:page => params[:page])
@@ -56,11 +56,11 @@ class SpecialsController < ApplicationController
         format.html # index.html.erb
   #      format.xml  { render :xml => @specials }
         format.js
-        format.mobile 
+        format.mobile
       end
     end
   end
-  
+
   def show
     @special = Special.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures])
     rescue Exception => e
@@ -68,11 +68,11 @@ class SpecialsController < ApplicationController
       logger.error("Error when trying to show special #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def new
     @special = current_winery.specials.new
   end
-  
+
   def create
     @special = current_winery.specials.new(params[:special])
 
@@ -85,7 +85,7 @@ class SpecialsController < ApplicationController
       render :action => "new"
     end
   end
-  
+
   def edit
     @special = current_winery.specials.find(params[:id])
     rescue Exception => e
@@ -93,7 +93,7 @@ class SpecialsController < ApplicationController
       logger.error("Error when trying to edit special #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def update
     @special = current_winery.specials.find(params[:id])
     if @special.update_attributes(params[:special])
@@ -107,15 +107,17 @@ class SpecialsController < ApplicationController
       logger.error("Error when trying to edit special #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def destroy
     @special = current_winery.specials.find(params[:id])
     @special.destroy
-    flash[:notice] = "Successfully destroyed special."
-    redirect_to specials_url
+    render :json => @special.errors
+#    flash[:notice] = "Successfully destroyed special."
+#    redirect_to specials_url
     rescue Exception => e
       flash[:notice] =  'An error occured while trying to delete this special.  We have been notified about this and will try to resolve the issue ASAP.'
       logger.error("Error when trying to delete special #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
 end
+

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_winery!, :except => [:index, :rating, :show]
   before_filter :verify_winery_subscription, :except => [:index, :rating, :show]
-  
+
   def rating
     rate("Event", params[:id], params[:stars])
     event_list
@@ -29,11 +29,11 @@ class EventsController < ApplicationController
     end
   end
 
-  
+
 #  def upcoming_events
 #    @events = Events.upcoming_events.all.paginate(:page => params[:page])
 #    respond_to do |format|
-#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events, 
+#      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events,
 #                                                                       :list_header => "Places to Go" } }
 #      format.json { render :layout => false, :json => @events }
 #    end
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   def index
     if current_winery
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
-    else  
+    else
 #      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
       @search = Event.searchlogic(params[:search])
       @events = @search.all.paginate(:page => params[:page])
@@ -66,11 +66,11 @@ class EventsController < ApplicationController
       logger.error("Error when trying to show event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def new
     @event = current_winery.events.new
   end
-  
+
   def create
     @event = current_winery.events.new(params[:event])
     if @event.save
@@ -81,7 +81,7 @@ class EventsController < ApplicationController
       render :action => "new"
     end
   end
-  
+
   def edit
     @event = current_winery.events.find(params[:id])
     rescue Exception => e
@@ -89,7 +89,7 @@ class EventsController < ApplicationController
       logger.error("Error when trying to edit event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def update
     @event = current_winery.events.find(params[:id])
     if @event.update_attributes(params[:event])
@@ -103,15 +103,17 @@ class EventsController < ApplicationController
       logger.error("Error when trying to edit event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
-  
+
   def destroy
     @event = current_winery.events.find(params[:id])
     @event.destroy
-    flash[:notice] = "Successfully destroyed event."
-    redirect_to events_url
+    render :json => @event.errors
+#    flash[:notice] = "Successfully destroyed event."
+#    redirect_to events_url
     rescue Exception => e
       flash[:notice] =  'An error occured while trying to delete this event.  We have been notified about this and will try to resolve the issue ASAP.'
       logger.error("Error when trying to delete event #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
   end
 end
+

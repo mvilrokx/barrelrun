@@ -3,7 +3,7 @@ class WinesController < ApplicationController
   before_filter :verify_winery_subscription, :except => [:rating, :index, :show, :distinct_varietals, :distinct_wine_types]
 
   helper_method :sort_column, :sort_asc_or_desc
-  
+
 #  def ratecurrent_winery
 #    @wine = Wine.find(params[:id])
 #    @wine.rate(params[:stars], current_user, params[:dimension])
@@ -13,7 +13,7 @@ class WinesController < ApplicationController
 #      # Update Top Wines list with new result everytime user updates rating
 #      @wines = Wine.all(:order => "rating_average DESC")
 #      page.replace_html 'top_wines', :partial => 'home/top_wines',
-#                                     :locals => {:top_wines=>@wines }   
+#                                     :locals => {:top_wines=>@wines }
 #    end
 #  end
 
@@ -42,7 +42,7 @@ class WinesController < ApplicationController
                                                                        :path => path,
                                                                        :ordered_list => ordered_list,
                                                                        :list_header => list_header } }
-      format.json { render :layout => false, 
+      format.json { render :layout => false,
                            :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
                                                                  :winery => {:only => :winery_name}  } )
                   }
@@ -52,7 +52,7 @@ class WinesController < ApplicationController
   def index
     if current_winery
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
-    else  
+    else
 #      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
       @search = Wine.searchlogic(params[:search])
       @wines = @search.all.paginate(:page => params[:page])
@@ -64,7 +64,7 @@ class WinesController < ApplicationController
       respond_to do |format|
         format.html
         format.mobile
-        format.json { render :layout => false, 
+        format.json { render :layout => false,
                              :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
                                                                    :winery => {:only => :winery_name}  } )
                     }
@@ -77,7 +77,7 @@ class WinesController < ApplicationController
     @wine = Wine.find(params[:id], :include => [{:comments => {:user => :picture}}, :pictures], :order => sort_column + " " + sort_asc_or_desc)
 
       respond_to do |format|
-        format.mobile 
+        format.mobile
         format.html
       end
 
@@ -142,11 +142,8 @@ class WinesController < ApplicationController
     @wine = current_winery.wines.find(params[:id])
     redirect_to(wines_url) and return if params[:cancel]
     @wine.destroy
-
     respond_to do |format|
-      flash[:notice] = 'Wine was successfully deleted.'
-      format.html { redirect_to(wines_url) }
-#      format.xml  { head :ok }
+      format.json { render :json => @wine.errors } #, :status => :unprocessable_entity }
     end
     rescue Exception => e
       flash[:notice] =  'An error occured while trying to delete this wine.  We have been notified about this and will try to resolve the issue ASAP.'
@@ -164,10 +161,10 @@ class WinesController < ApplicationController
 #      logger.error("Error when trying to delete wine #{params[:id]}.  Error message = " + e.message)
 #      redirect_to :action => "index"
 #  end
-  
+
   def distinct_varietals
 #    @distinct_varietals = Wine.connection.select_values('select distinct(varietal) from wines')
-        
+
     @varietals = Wine.distinct_varietals.all(:conditions => ["varietal like ?","%#{params[:term]}%"])
     @varietals_hash = []
     @varietals.each do |varietal|
@@ -190,9 +187,10 @@ class WinesController < ApplicationController
   def sort_column
     %w[comments.created_at comments.average_rating].include?(params[:sort]) ? params[:sort] : "comments.created_at"
   end
-  
+
   def sort_asc_or_desc
     %w[asc desc].include?(params[:asc_or_desc]) ? params[:asc_or_desc] : "desc"
   end
-  
+
 end
+

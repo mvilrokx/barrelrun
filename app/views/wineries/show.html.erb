@@ -6,7 +6,7 @@
         <span style="font-size: 12px;"><%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
         <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
-      <% end %>    
+      <% end %>
     </h2>
   </div>
   <div class="span-13 colborder">
@@ -18,7 +18,7 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-        
+
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
         <div class="span-5 last strong">
@@ -50,13 +50,14 @@
         <div class="span-6 last">
         	<a id="atbutton"></a>
         	<a class="addthis_button"></a>
+        	<div class="addthis_toolbox"></div>
         </div>
 
       </div>
     </div>
-    
+
     <hr/>
-    
+
     <% if !@winery.awards.empty? %>
       <div class="span-13">
         <div class="span-13 last">
@@ -79,11 +80,11 @@
       </div>
       <hr/>
     <% end %>
-    
+
     <div class="span-13">
       <div class="span-13">
         <div class="span-6 colborder">
-          <% if @winery.ownership_status != 'CLAIMED' %>        
+          <% if @winery.ownership_status != 'CLAIMED' %>
             <% if user_signed_in? %>
               <%= link_to "Add a Wine", new_user_winery_wine_path(@winery), :class => "dialog_form_link" %>
             <% else %>
@@ -102,9 +103,9 @@
             </div>
           </div>
         <% end %>
-        
+
         <div class="span-6 last">
-          <% if !@winery.specials.empty? %>      
+          <% if !@winery.specials.empty? %>
             <div id="winery_specials">
                <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
                                                                       :path => "wineries/#{@winery.id}/"} %>
@@ -112,7 +113,7 @@
             <hr/>
           <% end %>
 
-          <% if !@winery.events.empty? %>      
+          <% if !@winery.events.empty? %>
             <div id="winery_events">
                <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.events,
                                                                       :path => "wineries/#{@winery.id}/"} %>
@@ -185,3 +186,4 @@
   </div>
 
 </div>
+
