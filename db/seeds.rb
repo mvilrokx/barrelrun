@@ -40,7 +40,7 @@ wineryFiles.each do |wineryFile|
         telephone = "555.555.5555"
       end
       begin
-        Winery.find_or_create_by_winery_name(:winery_name => winery_name.strip,
+        winery = Winery.find_or_create_by_winery_name(:winery_name => winery_name.strip,
                        :address => address.strip,
                        :city => city.strip,
                        :state => state.strip,
@@ -55,6 +55,7 @@ wineryFiles.each do |wineryFile|
                        :password => "s3cr3t",
                        :confirm_password => "s3cr3t"
                        )
+        ap winery
         print "."
       rescue Exception => e
         if winery_name != "winery name" && address != "address" && city != "city" && zipcode != "zipcode"
