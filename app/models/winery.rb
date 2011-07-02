@@ -3,7 +3,7 @@ class Winery < ActiveRecord::Base
   validates_presence_of :username, :winery_name, :contact_first_name,
                         :contact_last_name, :state, :telephone, :website_url
 
-  validates_presence_of :city, :zipcode, :unless => :seed_data
+  validates_presence_of :city, :zipcode, :unless => :seed_data?
 
   validates_presence_of :accepts_terms_of_service, :if => :should_accept_terms?
 
@@ -57,8 +57,8 @@ class Winery < ActiveRecord::Base
                   :telephone, :address, :address2, :address3,
                   :city, :state, :zipcode, :country, :website_url,
                   :credit_cards_attributes, :subscription_attributes,
-                  :accepts_terms_of_service, :seed_data
-
+                  :accepts_terms_of_service
+  attr_accessor :seed_data
 #  validates_presence_of :lat, :lng
   acts_as_mappable :auto_geocode => {:field => :complete_address,
                                      :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
@@ -138,6 +138,9 @@ class Winery < ActiveRecord::Base
   	  ownership_status == 'CLAIMED'
  	  end
 
+  	def seed_data?
+  	  seed_data
+ 	  end
 # Added to be able to RATE a winery (which is a devise user) but doesn't seem to work either'
 #  protected
 #    def password_required?

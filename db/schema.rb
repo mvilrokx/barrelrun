@@ -171,10 +171,6 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.string   "country"
     t.float    "lat"
     t.float    "lng"
-    t.string   "movie_file_name"
-    t.string   "movie_content_type"
-    t.integer  "movie_file_size"
-    t.datetime "movie_updated_at"
     t.boolean  "accepts_terms_of_service"
   end
 
