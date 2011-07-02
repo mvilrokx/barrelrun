@@ -1,8 +1,9 @@
 class Winery < ActiveRecord::Base
   validates_uniqueness_of :username
-  validates_presence_of :username, :winery_name, :contact_first_name, 
-                        :contact_last_name, :telephone, :city, 
-                        :state, :zipcode, :website_url
+  validates_presence_of :username, :winery_name, :contact_first_name,
+                        :contact_last_name, :state, :telephone, :website_url
+
+  validates_presence_of :city, :zipcode, :unless => :seed_data
 
   validates_presence_of :accepts_terms_of_service, :if => :should_accept_terms?
 
@@ -20,7 +21,7 @@ class Winery < ActiveRecord::Base
   accepts_nested_attributes_for :subscription
 
 #  validates_associated :credit_cards
-  
+
   has_many :awards, :through => :wines
   has_many :authentications, :dependent => :destroy
 
@@ -44,28 +45,28 @@ class Winery < ActiveRecord::Base
   end
 
   # Include default devise modules. Others available are:
-  # , :token_authenticatable, :lockable, :timeoutable and :activatable  
+  # , :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable,
          :rememberable, :trackable, :confirmable, :validatable,
          :http_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :username,  
+  attr_accessible :email, :password, :password_confirmation, :username,
                   :winery_name, :owner_gm_name, :owner_gm_email,
                   :contact_first_name, :contact_last_name,
                   :telephone, :address, :address2, :address3,
                   :city, :state, :zipcode, :country, :website_url,
                   :credit_cards_attributes, :subscription_attributes,
-                  :accepts_terms_of_service
+                  :accepts_terms_of_service, :seed_data
 
 #  validates_presence_of :lat, :lng
-  acts_as_mappable :auto_geocode => {:field => :complete_address, 
+  acts_as_mappable :auto_geocode => {:field => :complete_address,
                                      :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
-  named_scope :top_wineries, :order => "average_rating DESC", 
-                             :limit => 10, 
+  named_scope :top_wineries, :order => "average_rating DESC",
+                             :limit => 10,
                              :include => {:comments => :user}
-                             
+
   # ThinkingSphinx setup
   define_index do
     # Fields
@@ -85,7 +86,7 @@ class Winery < ActiveRecord::Base
   end
 
  	protected
-    
+
   	def validate_attachments
      	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
     	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
@@ -118,7 +119,7 @@ class Winery < ActiveRecord::Base
             ap error
             errors.add_to_base error.message
             self.creditable.errors.add_to_base error.message
-            
+
           end
         end
       end
@@ -136,9 +137,11 @@ class Winery < ActiveRecord::Base
   	def should_accept_terms?
   	  ownership_status == 'CLAIMED'
  	  end
+
 # Added to be able to RATE a winery (which is a devise user) but doesn't seem to work either'
 #  protected
 #    def password_required?
 #      new_record? || destroyed?
 #    end
 end
+

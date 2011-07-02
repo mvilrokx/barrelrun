@@ -111,4 +111,3 @@ Wilson Creek Winery & Vineyard|Estate Syrah|$32.95|red|2007|Syrah
 |Estate Zinfandel|$34.95|red|2007|Zinfandel
 |Decadencia Chocolate Dessert Wine|$36.95|dessert|2009|Blend
 |Estate Chardonnay|$17.95|white|2007|Chardonnay
-

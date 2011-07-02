@@ -53,7 +53,8 @@ wineryFiles.each do |wineryFile|
                        :contact_first_name => "Jin",
                        :contact_last_name => "Kim",
                        :password => "s3cr3t",
-                       :confirm_password => "s3cr3t"
+                       :confirm_password => "s3cr3t",
+                       :seed_date => true
                        )
         ap winery
         print "."
@@ -91,9 +92,9 @@ wineFiles.each do |wineFile|
           Wine.find_or_create_by_name_and_winery_id(:name => wine_name.strip,
                                 :winery_id => @winery.id,
                                 :price => price,
-                                :wine_type => type.strip,
-                                :vintage => vintage.strip,
-                                :varietal => varietal.strip)
+                                :wine_type => type,
+                                :vintage => vintage,
+                                :varietal => varietal)
           print "."
         rescue Exception => e
           if winery_name != "winery name" && wine_name != "name" && price != "pricy" && type != "type"
