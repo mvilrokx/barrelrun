@@ -23,7 +23,7 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.server_settings = {
+config.action_mailer.smtp_settings = {
   :address => 'smtpout.secureserver.net',
   :domain  => 'barrelrun.com',
   :port      => 80,

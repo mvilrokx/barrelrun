@@ -28,7 +28,7 @@ config.action_mailer.sendmail_settings = {
 # Added by Mark Vilrokx -- THIS WORKED JUST FINE
 # NOTE THAT YOU CAN ONLY SEND 500 e-mails/day from GoDaddy!!!!
 #config.action_mailer.delivery_method = :smtp
-#config.action_mailer.server_settings = {
+#config.action_mailer.smtp_settings = {
 #  :address => 'smtpout.secureserver.net',
 #  :domain  => 'www.barrelrun.com',
 #  :port      => 80,
