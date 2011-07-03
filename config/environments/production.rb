@@ -24,11 +24,11 @@ config.action_view.cache_template_loading            = true
 # Disable delivery errors, bad email addresses will be ignored
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.server_settings = {
-  :address => ‘smtpout.secureserver.net’,
-  :domain  => ‘barrelrun.com’
+  :address => 'smtpout.secureserver.net',
+  :domain  => 'barrelrun.com',
   :port      => 80,
-  :user_name => ‘jinbkim’,
-  :password => ‘acctpro1’,
+  :user_name => 'jinbkim',
+  :password => 'acctpro1',
   :authentication => :plain
 }
 
