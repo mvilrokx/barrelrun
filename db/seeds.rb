@@ -20,8 +20,10 @@ end
 
 STDOUT.sync = true
 
+#wineryFiles = ["db/amici.txt"]
 wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt"]
 wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt"]
+#wineFiles = []
 
 #Winery.delete_all
 idx = 0
@@ -40,27 +42,29 @@ wineryFiles.each do |wineryFile|
         telephone = "555.555.5555"
       end
       begin
-        winery = Winery.find_or_create_by_winery_name(:winery_name => winery_name.strip,
-                       :address => address.strip,
-                       :city => city.strip,
-                       :state => state.strip,
-                       :zipcode => zipcode.strip,
+        winery = Winery.find_or_initialize_by_winery_name(:winery_name => winery_name,
+#        winery = Winery.find_or_create_by_winery_name(:winery_name => winery_name,
+                       :address => address,
+                       :city => city,
+                       :state => state,
+                       :zipcode => zipcode,
                        :country => "USA",
-                       :telephone => telephone.strip,
+                       :telephone => telephone,
                        :website_url => "http://" + website,
-                       :username => winery_name.strip,
+                       :username => winery_name,
                        :email => "jin" + idx.to_s + "@barrelrun.com",
                        :contact_first_name => "Jin",
                        :contact_last_name => "Kim",
                        :password => "s3cr3t",
-                       :confirm_password => "s3cr3t",
-                       :seed_date => true
+                       :confirm_password => "s3cr3t"
                        )
-        ap winery
+        winery.seed_data = true
+        winery.save!
         print "."
       rescue Exception => e
         if winery_name != "winery name" && address != "address" && city != "city" && zipcode != "zipcode"
-          puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
+#          puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
+          puts e.message
         else
           puts "\nWarning: Please remove the column headers/titles from your file"
         end
@@ -81,7 +85,7 @@ wineFiles.each do |wineFile|
     wines.read.each_line do |wine|
       winery_name, wine_name, price, type, vintage, varietal = wine.chomp.strip.split("|")
       if !winery_name.blank? then
-        @winery = Winery.find_by_winery_name(winery_name.strip)
+        @winery = Winery.find_by_winery_name(winery_name)
         puts "\nLoading wines for winery " + winery_name
       end
       if !wine_name.nil? then
@@ -89,7 +93,7 @@ wineFiles.each do |wineFile|
           price.slice!(0)
         end
         begin
-          Wine.find_or_create_by_name_and_winery_id(:name => wine_name.strip,
+          Wine.find_or_create_by_name_and_winery_id(:name => wine_name,
                                 :winery_id => @winery.id,
                                 :price => price,
                                 :wine_type => type,
