@@ -2,6 +2,7 @@ source :gemcutter
 gem "rails", "~> 2.3.11"
 
 gem 'mysql', '2.8.1'
+gem 'mysql2', '~> 0.2.0'
 gem 'warden'
 gem 'devise', '1.0.11'
 gem "geokit", '~> 1.5.0'

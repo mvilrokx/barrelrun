@@ -22,6 +22,17 @@ config.action_view.cache_template_loading            = true
 # config.action_controller.asset_host = "http://assets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.server_settings = {
+  :address => ‘smtpout.secureserver.net’,
+  :domain  => ‘barrelrun.com’
+  :port      => 80,
+  :user_name => ‘jinbkim’,
+  :password => ‘acctpro1’,
+  :authentication => :plain
+}
+
+config.action_mailer.default_url_options = { :host => 'barrelrun.com' }
 config.action_mailer.raise_delivery_errors = false
 
 # Enable threaded mode

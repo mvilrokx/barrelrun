@@ -104,14 +104,15 @@
 
     <div id="content">
       <div class="container">
-      
-        <% flash.each do |key, msg| %>
-          <% if msg =~ /confirm/ %>
-            <%= content_tag :div, msg, :id => key, :class => "#{key} push-3 span-18 last" %>
+        <div class="span-24 last">
+          <% flash.each do |key, msg| %>
+            <% if msg =~ /confirm/ %>
+              <%= content_tag :div, msg, :id => key, :class => "#{key} push-3 span-18 last" %>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <%=yield :layout%>
+          <%=yield :layout%>
+        </div>
       </div>
     </div>
   </div>
@@ -121,14 +122,14 @@
       <div class="span-5 colborder prepend-4"><span style="font-weight: bold;">I want to Know about</span><br>
         Barrelrun<br>
         <%= link_to "Terms of Service", "/pages/user_terms_of_service" %><br>
-        <%= link_to "Privacy", "/pages/privacy" %><br>        
+        <%= link_to "Privacy", "/pages/privacy" %><br>
       </div>
       <div class="span-5 colborder"><span style="font-weight: bold;">I am a biz owner and want to</span>
         <br>Advertise<br>
         Get more info
       </div>
       <div class="span-8 last"><span style="font-weight: bold;">I am a winery and want to</span><br>
-        <%= link_to "Register", registration_levels_path %><br>
+        <%= link_to "Register", new_winery_registration_path %><br>
         <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
         Get more info
       </div>
@@ -142,7 +143,7 @@
      <% content_tag :script, :type => "text/javascript" do -%>
         $(document).ready(function() {
            addNotice("<p><%= msg %></p>");
-        });   
+        });
      <% end %>
   <% end %>
 
@@ -151,3 +152,4 @@
 
 </body>
 </html>
+
