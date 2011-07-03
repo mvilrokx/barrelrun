@@ -20,7 +20,7 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :sendmail
 config.action_mailer.sendmail_settings = {
   :location       => '/usr/sbin/sendmail',
-  :arguments      => '-i -t -f support@barrelrun.com'
+  :arguments      => '-i -f support@barrelrun.com'
 }
 
 #config.action_mailer.default_url_options = { :host => 'mark-server.dlinkddns.com:3000' }
