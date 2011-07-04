@@ -17,7 +17,7 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = true
 
 # Added by Mark Vilrokx -- THIS WORKED JUST FINE ON DEVELOPMENT!!!!
-#config.action_mailer.delivery_method = :sendmail
+config.action_mailer.delivery_method = :sendmail
 #config.action_mailer.sendmail_settings = {
 #  :location       => '/usr/sbin/sendmail',
 #  :arguments      => '-i -f support@barrelrun.com'
@@ -27,15 +27,15 @@ config.action_mailer.raise_delivery_errors = true
 
 # Added by Mark Vilrokx -- THIS WORKED JUST FINE
 # NOTE THAT YOU CAN ONLY SEND 500 e-mails/day from GoDaddy!!!!
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address => 'smtpout.secureserver.net',
-  :domain  => 'www.barrelrun.com',
-  :port      => 80,
-  :user_name => 'jinbkim',
-  :password => 'acctpro1',
-  :authentication => :plain
-}
+#config.action_mailer.delivery_method = :smtp
+#config.action_mailer.smtp_settings = {
+#  :address => 'smtpout.secureserver.net',
+#  :domain  => 'www.barrelrun.com',
+#  :port      => 80,
+#  :user_name => 'support@barrelrun.com',
+#  :password => 'MarkandJin',
+#  :authentication => :plain
+#}
 
 config.action_mailer.default_url_options = { :host => 'mark-server.dlinkddns.com:3000' }
 
