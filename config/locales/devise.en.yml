@@ -5,7 +5,7 @@ en:
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
+      unconfirmed: 'Thank you for registering. An email has been sent to confirm and activate your account. If you do not see the email in your inbox, please check your spam folder.'
       locked: 'Your account is locked.'
       invalid: 'Invalid username or password.'
       invalid_token: 'Invalid authentication token.'
