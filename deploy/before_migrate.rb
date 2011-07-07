@@ -6,6 +6,7 @@ run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
 
 # replace action_mailer host
 node[:engineyard][:environment][:instances].each do |instance|
+  puts instance
   if instance[:framework_env]=="development"
     host = instance[:public_hostname]
     puts host
