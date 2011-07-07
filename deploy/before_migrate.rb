@@ -14,5 +14,5 @@ end
 
 filepath = "#{release_path}/config/environments/development.rb"
 text = File.read(filepath)
-replace = text.gsub(/mark-server.dlinkddns.com:3000/, host)
+replace = text.gsub(/mark-server.dlinkddns.com:3000/, host) if host.defined?
 File.open(filepath, "w") {|file| file.puts replace}
