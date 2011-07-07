@@ -4,16 +4,16 @@ require 'fileutils'
 run "ln -nfs #{shared_path}/config/sphinx #{release_path}/config/sphinx"
 run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
 
-# replace action_mailer host
-node[:engineyard][:environment][:instances].each do |instance|
-  puts "========================="
-  puts instance
-  puts "========================="
-  puts instance[:framework_env]
-  puts "========================="
-  puts instance[:public_hostname]
-  puts "========================="
-  if instance[:framework_env]=="development"
+# replace action_mailer host on development environment
+host = nil
+puts node[:environment][:framework_env]
+if node[:environment][:framework_env]=="development"
+  node[:engineyard][:environment][:instances].each do |instance|
+    puts "========================="
+    puts instance
+    puts "========================="
+    puts instance[:public_hostname]
+    puts "========================="
     host = instance[:public_hostname]
   end
 end
