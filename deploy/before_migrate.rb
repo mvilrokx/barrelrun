@@ -8,5 +8,5 @@ run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
 filepath = "#{release_path}/config/environments/development.rb"
 text = File.read(filepath)
 puts node[:engineyard]
-replace = text.gsub(/mark-server.dlinkddns.com:3000/, "#{node[:engineyard][:environemnts][:instances[0][:public_hostname]}")
+replace = text.gsub(/mark-server.dlinkddns.com:3000/, "#{node[:engineyard][:environemnts][:instances][0][:public_hostname]}")
 File.open(filepath, "w") {|file| file.puts replace}
