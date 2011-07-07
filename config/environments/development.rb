@@ -18,10 +18,10 @@ config.action_mailer.raise_delivery_errors = true
 
 # Added by Mark Vilrokx -- THIS WORKED JUST FINE ON DEVELOPMENT!!!!
 config.action_mailer.delivery_method = :sendmail
-#config.action_mailer.sendmail_settings = {
+config.action_mailer.sendmail_settings = {
 #  :location       => '/usr/sbin/sendmail',
-#  :arguments      => '-i -f support@barrelrun.com'
-#}
+  :arguments      => '-fsupport@barrelrun.com'
+}
 
 #config.action_mailer.default_url_options = { :host => 'mark-server.dlinkddns.com:3000' }
 

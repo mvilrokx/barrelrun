@@ -17,4 +17,5 @@ gem 'youtube_it', '1.2.10'
 gem 'omniauth', '0.2.6'
 gem 'alchemist'
 gem 'awesome_print'
+gem 'newrelic_rpm'
 

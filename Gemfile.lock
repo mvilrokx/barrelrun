@@ -37,6 +37,7 @@ GEM
     mysql (2.8.1)
     mysql2 (0.2.11)
     net-ldap (0.2.2)
+    newrelic_rpm (3.1.0)
     nokogiri (1.4.7)
     oa-basic (0.2.6)
       oa-core (= 0.2.6)
@@ -122,6 +123,7 @@ DEPENDENCIES
   juggernaut (= 2.0.0)
   mysql (= 2.8.1)
   mysql2 (~> 0.2.0)
+  newrelic_rpm
   omniauth (= 0.2.6)
   rails (~> 2.3.11)
   searchlogic (= 2.4.27)
