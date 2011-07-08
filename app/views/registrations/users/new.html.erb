@@ -5,26 +5,26 @@
   <div class="push-3 span-18 last main">
     <hr class="space">
     <div class="push-1 span-16">
-    
+
       <h2><%= resource_name.to_s.humanize %> Sign up</h2>
       <div class="edit_form">
         <fieldset>
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
-          <% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
+          <% form_for resource_name, resource, :url => registration_path(resource_name), :html => {:multipart => true } do |f| -%>
             <%= f.error_messages %>
             <%= f.label :username, "User Name" %>
             <span class="div_texbox">
               <%= tag(:input, {:id => "user_username",
                                :class => "fillout01",
                                :required => true,
-                               :name => "user[username]", 
-                               :type => :text, 
-                               :placeholder => 'screen name, 19 chars or less', 
+                               :name => "user[username]",
+                               :type => :text,
+                               :placeholder => 'screen name, 19 chars or less',
                                :value => f.object.username}) %>
           	</span>
-          	
+
             <%= f.label :password %>
             <span class="div_texbox">
               <%= f.password_field :password, :required => true, :class => "fillout01" %>
@@ -89,7 +89,7 @@
 
             <div id="picture_fields">
             <% f.fields_for :picture do |builder| %>
-              <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
+              <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>
             <% end %>
             </div>
 
