@@ -32,6 +32,7 @@ class WineriesController < ApplicationController
     @winery = Winery.new(params[:winery])
     @winery.ownership_status = 'CLAIMED'
     if @winery.save
+      ap @winery
       flash[:notice] = "Successfully created winery."
       redirect_to :credit_card
 #      render :action => 'index'
