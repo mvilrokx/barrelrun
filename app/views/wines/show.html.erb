@@ -41,7 +41,7 @@
       </ul>
     </div>
 
-    <%= link_to "Download Tasting Notes", @wine.tasting_notes.url if @wine.tasting_notes? %>
+    <%= link_to "View Tasting Notes", @wine.tasting_notes.url, :target => "_blank" if @wine.tasting_notes? %>
     <hr/>
 
   </div>

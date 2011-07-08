@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   include Geokit::Geocoders
   before_filter :prep_conditions
   require 'ap'
-  
+
   PER_PAGE = 10
   MILES = 25
 
@@ -21,7 +21,7 @@ class SearchesController < ApplicationController
     	respond_to do |format|
       	format.html   {render :partial => "search_results", :layout => false}
       	format.mobile {render :all_objects, :layout => false}
-      end     
+      end
     else
       respond_to do |format|
       	format.html {render :all_objects}
@@ -34,7 +34,7 @@ class SearchesController < ApplicationController
     @search_results = ThinkingSphinx.search(
       params[:search],
       :star => true,
-      :page => params[:page], 
+      :page => params[:page],
       :per_page => PER_PAGE,
       :with => @with_params,
       :classes => @classes,
@@ -48,13 +48,13 @@ class SearchesController < ApplicationController
     	respond_to do |format|
       	format.html {render :partial => "search_results", :layout => false}
       	format.mobile {render :all_objects, :layout => false}
-      end  
+      end
     else
           	puts "4 block"
     	respond_to do |format|
       	format.html {render :all_objects}
 				format.mobile {render :all_objects, :layout => false}
-      end  
+      end
     end
   end
 
@@ -76,7 +76,7 @@ class SearchesController < ApplicationController
         :class_facet => false
       )
     end
-    
+
   end
 
   private
@@ -98,13 +98,14 @@ class SearchesController < ApplicationController
       end
       puts params[:max_price]
       @with_params[:price] = params[:min_price][/\d.+/].to_f..params[:max_price][/\d.+/].to_f if params[:min_price] && params[:max_price] && !params[:max_price].blank?
-      
+
       @with_params[:vintage] = params[:vintage] if params[:vintage]
       @with_params[:varietal_facet] = params[:varietal].collect {|x| x.to_crc32} if params[:varietal]
       @with_params[:wine_type_facet] = params[:wine_type].collect {|x| x.to_crc32} if params[:wine_type]
       @with_params[:average_rating] = params[:average_rating].collect{|rating| rating.to_f} if params[:average_rating]
-      @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || params[:min_price] || params[:max_price]
-      
+      @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || !params[:max_price].blank?
+
       ap @with_params
     end
 end
+
