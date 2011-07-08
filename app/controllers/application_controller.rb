@@ -14,23 +14,24 @@ class ApplicationController < ActionController::Base
       redirect_to subscriptions_path
     end
   end
-  
+
   private
-  
+
     def mobile_devise?
       if session[:mobile_param]
         session[:mobile_param] == "1"
-      else
-        request.user_agent =~ /Mobile|webOS/
+# DISABLE AUTOMATIC DISCOVERY UNTIL MOBILE WEB APP IS READY
+#      else
+#        request.user_agent =~ /Mobile|webOS/
       end
     end
     helper_method :mobile_devise?
-    
+
     def prepare_for_mobile
       session[:mobile_param] = params[:mobile] if params[:mobile]
       request.format = :mobile if mobile_devise?
     end
-    
+
     def set_subscription
       if winery_signed_in?
         if session[:subscription].blank?
@@ -65,3 +66,4 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 end
+
