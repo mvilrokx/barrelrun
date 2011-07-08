@@ -13,7 +13,7 @@ class WineriesController < ApplicationController
 
   def show
     @winery = Winery.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.xml { render :xml => @winery }
@@ -29,13 +29,13 @@ class WineriesController < ApplicationController
   end
 
   def create
-    @winery = Winery.new(params[:winery])    
-    @winery.ownership_status = 'WINERY'
+    @winery = Winery.new(params[:winery])
+    @winery.ownership_status = 'CLAIMED'
     if @winery.save
       flash[:notice] = "Successfully created winery."
       redirect_to :credit_card
 #      render :action => 'index'
-    else 
+    else
       render :action => 'new'
     end
     render :action => 'new'
@@ -49,8 +49,8 @@ class WineriesController < ApplicationController
   def top_wineries
     @wineries = Winery.top_wineries.all
     respond_to do |format|
-      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wineries, 
-                                                                       :ordered_list => true, 
+      format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wineries,
+                                                                       :ordered_list => true,
                                                                        :list_header => "Top 10 Wineries" } }
       format.json { render :layout => false, :json => @wineries }
       format.js
@@ -59,3 +59,4 @@ class WineriesController < ApplicationController
   end
 
 end
+
