@@ -16,9 +16,9 @@ if node[:environment][:framework_env]=="development"
     puts "========================="
     host = instance[:public_hostname]
   end
+  filepath = "#{release_path}/config/environments/development.rb"
+  text = File.read(filepath)
+  replace = text.gsub(/mark-server.dlinkddns.com:3000/, host)
+  File.open(filepath, "w") {|file| file.puts replace}
 end
 
-filepath = "#{release_path}/config/environments/development.rb"
-text = File.read(filepath)
-replace = text.gsub(/mark-server.dlinkddns.com:3000/, host)
-File.open(filepath, "w") {|file| file.puts replace}
