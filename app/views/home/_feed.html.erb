@@ -10,7 +10,8 @@
     $('<div class="feed">' + data + '</div>').prependTo('#user_feed').hide().slideDown("slow");
   };
 
-  var jug = new Juggernaut({port: 8080});
+//  var jug = new Juggernaut({port: 8080});
+  var jug = new Juggernaut;
 
   jug.on("connect", function(){ log("Connected") });
   jug.on("disconnect", function(){ log("Disconnected") });
