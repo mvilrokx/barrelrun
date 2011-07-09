@@ -1,4 +1,6 @@
-<%= javascript_include_tag 'jug_application.js' %>
+<% content_for :head do %>
+  <%= javascript_include_tag root_url.chop + ':8080/application.js' %>
+<% end %>
 
 <div id="user_feed" style="overflow: auto; height: 600px;"></div>
 
