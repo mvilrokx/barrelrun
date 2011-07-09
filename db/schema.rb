@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110627033734) do
+ActiveRecord::Schema.define(:version => 20110709005531) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "updated_at"
   end
 
+  add_index "awards", ["wine_id"], :name => "index_awards_on_wine_id"
+
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "commentable_id"
@@ -38,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "credit_cards", :force => true do |t|
     t.string   "token"
     t.date     "expiration_date"
@@ -46,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "credit_cards", ["creditable_type", "creditable_id"], :name => "index_credit_cards_on_creditable_type_and_creditable_id"
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -68,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.string   "invitation_type"
   end
 
+  add_index "events", ["winery_id"], :name => "index_events_on_winery_id"
+
   create_table "favorites", :force => true do |t|
     t.string   "favorable_type"
     t.integer  "favorable_id"
@@ -75,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "favorites", ["favorable_type", "favorable_id"], :name => "index_favorites_on_favorable_type_and_favorable_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "pictures", :force => true do |t|
     t.integer  "pictureable_id"
@@ -87,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "photo_updated_at"
     t.string   "title"
   end
+
+  add_index "pictures", ["pictureable_type", "pictureable_id"], :name => "index_pictures_on_pictureable_type_and_pictureable_id"
 
   create_table "rates", :force => true do |t|
     t.integer  "rater_id"
@@ -110,6 +124,9 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "updated_at"
   end
 
+  add_index "ratings", ["rateable_type", "rateable_id"], :name => "index_ratings_on_rateable_type_and_rateable_id"
+  add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
+
   create_table "registration_levels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -132,6 +149,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.decimal  "average_rating",       :precision => 4, :scale => 2
   end
 
+  add_index "specials", ["winery_id"], :name => "index_specials_on_winery_id"
+
   create_table "subscriptions", :force => true do |t|
     t.string   "plan_id"
     t.integer  "winery_id"
@@ -139,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "subscriptions", ["winery_id"], :name => "index_subscriptions_on_winery_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                   :default => "", :null => false
@@ -190,6 +211,8 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.boolean  "welcome"
     t.string   "youtube_id"
   end
+
+  add_index "videos", ["videoable_type", "videoable_id"], :name => "index_videos_on_videoable_type_and_videoable_id"
 
   create_table "wineries", :force => true do |t|
     t.string   "email",                                                                 :default => "",  :null => false
@@ -256,5 +279,7 @@ ActiveRecord::Schema.define(:version => 20110627033734) do
     t.integer  "tasting_notes_file_size"
     t.datetime "tasting_notes_updated_at"
   end
+
+  add_index "wines", ["winery_id"], :name => "index_wines_on_winery_id"
 
 end

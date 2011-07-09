@@ -52,11 +52,11 @@ wineryFiles.each do |wineryFile|
                        :telephone => telephone,
                        :website_url => "http://" + website,
                        :username => winery_name,
-                       :email => "jin" + idx.to_s + "@barrelrun.com",
-                       :contact_first_name => "Jin",
-                       :contact_last_name => "Kim",
-                       :password => "s3cr3t",
-                       :confirm_password => "s3cr3t"
+                       :email => "changeme" + idx.to_s + "@example.com",
+                       :contact_first_name => "change me",
+                       :contact_last_name => "change me",
+                       :password => "s3cr3t sauce",
+                       :confirm_password => "s3cr3t sauce"
                        )
         winery.seed_data = true
         winery.save!
