@@ -99,10 +99,10 @@ form.inline p {margin-bottom:0;}
 .div_texbox {width:347px;float:right;height:35px;}
 .div_texbox2 {width:427px;float:right;height:35px;}
 .textbox:focus, .textbox:hover {background-color:#F0FFE6;}
-.fillout01 {width:200px;color: #999999;padding:3px 5px;}
-.fillout02 {width:150px;color: #999999;padding:3px 5px;}
-.fillout03 {width:100px;color: #999999;padding:3px 5px;}
-.fillout04 {width:75px;color: #999999;padding:3px 5px;}
+.fillout01 {width:200px;color: #333333;padding:3px 5px;}
+.fillout02 {width:150px;color: #333333;padding:3px 5px;}
+.fillout03 {width:100px;color: #333333;padding:3px 5px;}
+.fillout04 {width:75px;color: #333333;padding:3px 5px;}
 .fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover  {background-color:#F0FFE6;}
 
 
