@@ -85,6 +85,14 @@ class Winery < ActiveRecord::Base
     winery_name
   end
 
+  def url
+    if website_url =~ /^http/
+      website_url
+    else
+      "http://" + website_url
+    end
+  end
+
  	protected
 
   	def validate_attachments

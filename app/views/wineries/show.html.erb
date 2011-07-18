@@ -33,7 +33,7 @@
           <%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
         </div>
         <div class="span-5 last strong">
-          <a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
+          <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
         <hr class="space" />
 
@@ -146,8 +146,17 @@
         <h3>Other Videos</h3>
       </div>
       <div class="span-8 last">
-        <div class="span-8 last" id="scrollwrap" style="max-height: <%= ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60 %>px;" >
-          <div class="vid_scroll" id="scroll" style="width:<%= (@winery.videos.size/3)*58 %>px; max-height: <%= ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60 %>px;" >
+        <% max_height = ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60 %>
+        <% if @winery.videos.size < 5 %>
+          <% width = @winery.videos.size %>
+        <% elsif @winery.videos.size < 16 %>
+          <% width = 5 %>
+        <% else %>
+          <% width = 5 + ((@winery.videos.size - 15)/3.to_f).ceil %>
+        <% end %>
+        <% width = width * 58 %>
+        <div class="span-8 last" id="scrollwrap" style="max-height: <%= max_height %> px;" >
+          <div class="vid_scroll" id="scroll" style='<%= "width: #{width}px; max-height: #{max_height}px;" %>' >
             <% @winery.videos.all(:conditions => ['ifnull(welcome,0) <> 1 AND youtube_id is not null']).each_with_index do |vid, idx| -%>
               <%= link_to image_tag("http://i.ytimg.com/vi/#{vid.youtube_id}/1.jpg", :size=>'50x50'), "http://www.youtube.com/watch?v=#{vid.youtube_id}", :rel=>"prettyPhoto[wine_vid_gal]" %>
             <% end %>
@@ -155,7 +164,7 @@
         </div>
         <div class="span-8 last">
           <!-- rangeinput that controls the scroll -->
-          <input class="vid_scroll" type="range" value="0" min="0" max="<%= 1 + ((@winery.videos.size/3)*58)-290 %>" step="1" />
+          <input class="vid_scroll" type="range" value="0" min="0" max="<%= [1, 1 + ((@winery.videos.size/3)*58)-290].max %>" step="1" />
         </div>
       </div>
       <hr/>
