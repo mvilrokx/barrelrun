@@ -35,7 +35,6 @@ class PicturesController < ApplicationController
       flash[:notice] =  'An error occured while trying to delete this picture.  We have been notified about this and will try to resolve the issue ASAP.'
       logger.error("Error when trying to delete picture #{params[:id]}.  Error message = " + e.message)
       redirect_to :action => "index"
-    end
   end
 
 end
