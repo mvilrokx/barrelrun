@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   # do security check here
   # send_file picture.data.path, :type => picture.content_type
   end
-    
+
   def index
     @pictures = current_winery.pictures.paginate(:page => params[:page], :order => "created_at DESC")
   end
@@ -30,12 +30,13 @@ class PicturesController < ApplicationController
   def destroy
     @picture = current_winery.pictures.find(params[:id])
     @picture.destroy
-    flash[:notice] = "Successfully destroyed picture."
-    redirect_to specials_url
-  rescue
-    flash[:notice] = 'You are not authorized to delete that picture.'
-    redirect_to :action => "index"
+    render :json => @picture.errors
+    rescue Exception => e
+      flash[:notice] =  'An error occured while trying to delete this picture.  We have been notified about this and will try to resolve the issue ASAP.'
+      logger.error("Error when trying to delete picture #{params[:id]}.  Error message = " + e.message)
+      redirect_to :action => "index"
+    end
   end
 
-
 end
+

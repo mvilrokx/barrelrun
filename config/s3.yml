@@ -1,0 +1,13 @@
+development:
+  bucket: barrelrun-dev
+  access_key_id: AKIAJCHJ2CKQNMQQ2ACQ
+  secret_access_key: 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
+test:
+  bucket: barrelrun-test
+  access_key_id: AKIAJCHJ2CKQNMQQ2ACQ
+  secret_access_key: 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
+production:
+  bucket: barrelrun-dev
+  access_key_id: AKIAJCHJ2CKQNMQQ2ACQ
+  secret_access_key: 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
+
