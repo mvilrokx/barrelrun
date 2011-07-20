@@ -20,13 +20,13 @@ end
 
 STDOUT.sync = true
 
-#wineryFiles = ["db/amici.txt"]
-wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt"]
-wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt"]
-#wineFiles = []
+#wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt", "db/ListofWineries_CentraltoSouth_CA.txt"]
+wineryFiles = ["db/ListofWineries_CentraltoSouth_CA.txt"]
+#wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt", "db/ListofWines_CentraltoSouth_CA.txt"]
+wineFiles = ["db/ListofWines_CentraltoSouth_CA.txt"]
 
 #Winery.delete_all
-idx = 0
+idx = Winery.maximum("id")
 
 wineryFiles.each do |wineryFile|
   open(wineryFile) do |wineries|
@@ -63,8 +63,8 @@ wineryFiles.each do |wineryFile|
         print "."
       rescue Exception => e
         if winery_name != "winery name" && address != "address" && city != "city" && zipcode != "zipcode"
-#          puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
-          puts e.message
+          puts "\nERROR WITH " + winery_name + ' ERROR = ' + e.message
+#          puts e.message
         else
           puts "\nWarning: Please remove the column headers/titles from your file"
         end
