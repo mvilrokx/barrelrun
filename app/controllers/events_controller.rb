@@ -45,7 +45,7 @@ class EventsController < ApplicationController
     else
 #      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
       @search = Event.searchlogic(params[:search])
-      @events = @search.all.paginate(:page => params[:page])
+      @events = @search.all.paginate(:page => params[:page], :per_page => params[:per_page])
     end
 
     if request.xml_http_request?

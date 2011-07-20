@@ -47,7 +47,7 @@ class SpecialsController < ApplicationController
     else
 #      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
       @search = Special.searchlogic(params[:search])
-      @specials = @search.all.paginate(:page => params[:page])
+      @specials = @search.all.paginate(:page => params[:page], :per_page => params[:per_page])
     end
     if request.xml_http_request?
       render :partial => "specials", :layout => false
