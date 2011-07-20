@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
   end
 
   def index
-    @pictures = current_winery.pictures.paginate(:page => params[:page], , :per_page => params[:per_page], :order => "created_at DESC")
+    @pictures = current_winery.pictures.paginate(:page => params[:page], :per_page => params[:per_page], :order => "created_at DESC")
   end
 
   def new
