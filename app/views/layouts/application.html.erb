@@ -134,7 +134,7 @@
 
   <div id="footer">
     <div class="container" style="background-color: rgb(189,189,189);">
-      <div class="span-5 colborder prepend-4"><span style="font-weight: bold;">I want to Know about</span><br>
+      <div class="span-4 colborder prepend-2"><span style="font-weight: bold;">I want to Know about</span><br>
         Barrelrun<br>
         <%= link_to "Terms of Service", "/pages/user_terms_of_service" %><br>
         <%= link_to "Privacy", "/pages/privacy" %><br>
@@ -143,10 +143,27 @@
         <br>Advertise<br>
         Get more info
       </div>
-      <div class="span-8 last"><span style="font-weight: bold;">I am a winery and want to</span><br>
+      <div class="span-4 colborder"><span style="font-weight: bold;">I am a winery and want to</span><br>
         <%= link_to "Register", new_winery_registration_path %><br>
         <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
         Get more info
+      </div>
+		<div class="span-4 last"><span style="font-weight: bold;">Follow Menu</span><br>
+			 <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
+    		<script type="text/javascript">
+				%script{:src => "http://platform.twitter.com/widgets.js", :type => "text/javascript"}
+			</script> <br>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) {return;}
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/all.js#appId=169256969820182&xfbml=1";
+  			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+
+<div class="fb-like" data-href="http://barrelrun.com/" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div>
       </div>
       <div class="prepend-7 span-10 append-7 prepend-top last">
         <h4>Copyright &copy <%= Time.new.year%> Barrelrun.  All rights reserved.</h4>
