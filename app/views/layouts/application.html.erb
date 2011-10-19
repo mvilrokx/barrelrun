@@ -54,21 +54,21 @@ var cookiecontent = '0';
 // to find out where our specific cookie begins and ends (provided the one we want actually exists).
 // If any cookies are available ...
 if(document.cookie.length > 0) {
-	// Determine begin position of the cookie with the specified name.
-	var cookiename = name + '=';
-	var cookiebegin = document.cookie.indexOf(cookiename);
-	// Initialize the end position at zero.
-	var cookieend = 0;
-	// If a cookie with the specified name is actually available ...
-	if(cookiebegin > -1) {
-		// Offset the begin position of the cookie by the lengh of the cookie name.
-		cookiebegin += cookiename.length;
-		// Determine the end position of the cookie.
-		cookieend = document.cookie.indexOf(";",cookiebegin);
-		if(cookieend < cookiebegin) { cookieend = document.cookie.length; }
-		// Put the cookie into our own variable "cookiecontent".
-		cookiecontent = document.cookie.substring(cookiebegin,cookieend);
-	}
+    // Determine begin position of the cookie with the specified name.
+    var cookiename = name + '=';
+    var cookiebegin = document.cookie.indexOf(cookiename);
+    // Initialize the end position at zero.
+    var cookieend = 0;
+    // If a cookie with the specified name is actually available ...
+    if(cookiebegin > -1) {
+        // Offset the begin position of the cookie by the lengh of the cookie name.
+        cookiebegin += cookiename.length;
+        // Determine the end position of the cookie.
+        cookieend = document.cookie.indexOf(";",cookiebegin);
+        if(cookieend < cookiebegin) { cookieend = document.cookie.length; }
+        // Put the cookie into our own variable "cookiecontent".
+        cookiecontent = document.cookie.substring(cookiebegin,cookieend);
+    }
 }
 // Increment cookie content by 1 and store in variable "value".
 var value = parseInt(cookiecontent) + 1;
@@ -84,18 +84,39 @@ function PutCookie(n,v) {
 var exp = '';
 // If an expiration date is applicable, determine the future date and store the date in variable "exp" in the correct format.
 if(DaysToLive > 0) {
-	var now = new Date();
-	then = now.getTime() + (DaysToLive * 24 * 60 * 60 * 1000);
-	now.setTime(then);
-	exp = '; expires=' +
-	now.toGMTString();
+    var now = new Date();
+    then = now.getTime() + (DaysToLive * 24 * 60 * 60 * 1000);
+    now.setTime(then);
+    exp = '; expires=' +
+    now.toGMTString();
 }
 // Put the cookie on the user's hard drive with path set to root and with any applicable expiration date.
 document.cookie = n + "=" + v + '; path=/' + exp;
 }
-// -->
+
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+	visits = GetCookie('page_name');
+	var pAutoOpen = false
+	if(visits == 1) {
+		pAutoOpen = true;
+	}
+		var $dialog = $('<div><%= link_to "Barrelrun", "images/barrelrun_landingpage.jpg" %></div>')
+			.html('<img src="images/barrelrun_landingpage.jpg">' )
+			.dialog({
+				autoOpen: pAutoOpen,
+				title: 'Welcome',
+				width: 1040,
+				height: 850
+			});
+		$('#opener').click(function() {
+			$dialog.dialog('open');
+			return false;
+		});
+	});
+</script>
 
 </head>
 <script type="text/javascript">
@@ -105,24 +126,6 @@ document.cookie = n + "=" + v + '; path=/' + exp;
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
   })();
 </script>
-
-
-<script type="text/javascript" language="JavaScript"><!--
-	function Popup(url,w,h) {
-	var attributes = 'resizable=yes,scrollbars=yes,' + 
-	'width=' + w + ',height=' + h;
-	window.open(url,"DescPopup",attributes);
-} //-->
-</script>
-
-<script type="text/javascript" language="JavaScript">
-<!--
-visits = GetCookie('page_name');
-if(visits == 1)  { Popup('images/barrelrun_landingpage.jpg',900,900); }
-//if(visits > 1)  { Popup('images/barrelrun_landingpage.jpg',900,900); }
-// -->
-</script>
-
 
 
 <body>
@@ -213,7 +216,9 @@ if(visits == 1)  { Popup('images/barrelrun_landingpage.jpg',900,900); }
   <div id="footer">
     <div class="container" style="background-color: rgb(189,189,189);">
       <div class="span-4 colborder prepend-1"><span style="font-weight: bold;">I want to Know about</span><br>
-        Barrelrun<br>
+
+	<a id="opener" href='#' class='withLink'>Barrelrun</a><br>
+
         <%= link_to "Terms of Service", "/pages/user_terms_of_service" %><br>
         <%= link_to "Privacy", "/pages/privacy" %><br>
       </div>
@@ -226,25 +231,25 @@ if(visits == 1)  { Popup('images/barrelrun_landingpage.jpg',900,900); }
         <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
         Get more info
       </div>
-		<div class="span-8 last"><span style="font-weight: bold;"></span><br>
+        <div class="span-8 last"><span style="font-weight: bold;"></span><br>
 
-		<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="barrelrun"  width="52" height="40">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="barrelrun"  width="52" height="40">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
-		<a href="http://twitter.com/barrelrun">
+        <a href="http://twitter.com/barrelrun">
 
-		</a>
-		<%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
-			                      
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-  		var js, fjs = d.getElementsByTagName(s)[0];
-  		if (d.getElementById(id)) {return;}
-  		js = d.createElement(s); js.id = id;
-  		js.src = "//connect.facebook.net/en_US/all.js#appId=234974179883778&xfbml=1";
-  		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		<div class="fb-like" data-href="http://barrelrun.com/" 
-			data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div>
+        </a>
+        <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
+                                  
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#appId=234974179883778&xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-like" data-href="http://barrelrun.com/"
+            data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div>
 
       </div>
       <div class="prepend-7 span-10 append-7 prepend-top last">
@@ -266,4 +271,3 @@ if(visits == 1)  { Popup('images/barrelrun_landingpage.jpg',900,900); }
 
 </body>
 </html>
-
