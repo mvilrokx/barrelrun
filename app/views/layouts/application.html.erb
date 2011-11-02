@@ -100,22 +100,11 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 	$(document).ready(function() {
 	visits = GetCookie('page_name');
 	var pAutoOpen = false
+// When the user first visits the site, redirect them to the landing page.
 	if(visits == 1) {
-		pAutoOpen = true;
+		window.location = "/pages/landingpage"
 	}
-		var $dialog = $('<div><%= link_to "Barrelrun", "images/barrelrun_landingpage.jpg" %></div>')
-			.html('<img src="images/barrelrun_landingpage.jpg">' )
-			.dialog({
-				autoOpen: pAutoOpen,
-				title: 'Welcome',
-				width: 1040,
-				height: 850,
- 				modal: true
-			});
-		$('#opener').click(function() {
-			$dialog.dialog('open');
-			return false;
-		});
+		
 	});
 </script>
 
