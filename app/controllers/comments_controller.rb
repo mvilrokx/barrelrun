@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       format.js
       format.mobile
       format.json { render :layout => false,
-                           :json => @comments.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
+                           :json => @comments.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )}
     end
   end  
 
