@@ -18,5 +18,6 @@ class AddAttrToWinery < ActiveRecord::Migration
 	remove_column :wineries, :credit_cards
 	remove_column :wineries, :fam_friendly
 	remove_column :wineries, :restaurant
+	remove_column :wineries, :hours
   end
 end
