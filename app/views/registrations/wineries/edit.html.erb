@@ -43,11 +43,11 @@
             <span class="div_texbox">
               <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :owner_gm_name %>
+            <%= f.label :owner_gm_name, "Owner/GM name" %>
             <span class="div_texbox">
               <%= f.text_field :owner_gm_name, :class => "fillout02" %>
           	</span>
-            <%= f.label :owner_gm_email %>
+            <%= f.label :owner_gm_email, "Owner/GM email" %>
             <span class="div_texbox">
               <%= f.text_field :owner_gm_email, :class => "fillout01" %>
           	</span>
@@ -116,7 +116,7 @@
 	<div/>
 
 	<div class="span-16 last">
- 	  <%= f.label :price, "Price Range" %>
+ 	  <%= f.label :price, "Price range" %>
       <span class="div_texbox">
         <%= f.text_field :price, :class => "fillout01" %>
     	</span>
@@ -130,7 +130,7 @@
 	<div/>
 
 	<div class="span-16 last">
- 	  <%= f.label :handicap, "Handicaped Accessible" %>
+ 	  <%= f.label :handicap, "Handicaped accessible" %>
       <span class="div_texbox">
         <%= f.check_box :handicap%>
     	</span>
@@ -144,7 +144,7 @@
 	<div/>
 
 	<div class="span-16 last">
- 	  <%= f.label :fam_friendly, "Family Friendly" %>
+ 	  <%= f.label :fam_friendly, "Family friendly" %>
       <span class="div_texbox">
         <%= f.check_box :fam_friendly %>
     	</span>
