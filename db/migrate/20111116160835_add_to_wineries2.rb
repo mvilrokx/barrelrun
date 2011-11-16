@@ -1,5 +1,4 @@
 class AddToWineries2 < ActiveRecord::Migration
-class RemoveFromWineries < ActiveRecord::Migration
    def self.up
     add_column :wineries, :descr, :text
     add_column :wineries, :hours, :string
