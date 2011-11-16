@@ -95,7 +95,8 @@
             <span class="div_texbox">
               <%= f.text_field :website_url, :required => true, :class => "fillout01" %>
           	</span>
-
+	
+          <hr>
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
           </div>
@@ -109,16 +110,15 @@
     	</span>
  	  <%= f.label :parking, "Parking" %>
       <span class="div_texbox">
-        <%= f.check_box :parking, :class => "fillout04" %>
+        <%= f.check_box :parking %>
     	</span>
  	  <%= f.label :handicap, "Handicaped Accessible" %>
       <span class="div_texbox">
-        <%= f.check_box :handicap, :class => "fillout04" %>
+        <%= f.check_box :handicap%>
     	</span>
- 	 
  	  <%= f.label :restaurant, "Restaurant" %>
       <span class="div_texbox">
-        <%= f.check_box :restaurant, :class => "fillout04" %>
+        <%= f.check_box :restaurant %>
     	</span>
  	  <%= f.label :hours, "Hours" %>
       <span class="div_texbox">
@@ -130,9 +130,11 @@
             <span class="div_texbox">
               <%= f.password_field :current_password, :required => true, :class => "fillout01" %> <i>(for confirmation)</i>
            	</span>
+
             <span class="div_texbox">
               <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
           	</span>
+
             <span class="div_texbox">
               <%= f.submit "Update" %>
            	</span>
