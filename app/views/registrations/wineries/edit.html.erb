@@ -107,22 +107,35 @@
         <%= f.text_area :descr, :class => "fillout01" %>
     	</span>
 	<div/>
+
+	<div>
  	  <%= f.label :price, "Price Range" %>
       <span class="div_texbox">
         <%= f.text_field :price, :class => "fillout04" %>
     	</span>
+	<div/>
+
+	<div>
  	  <%= f.label :parking, "Parking" %>
       <span class="div_texbox">
         <%= f.check_box :parking %>
     	</span>
+	<div/>
+
+	<div>
  	  <%= f.label :handicap, "Handicaped Accessible" %>
       <span class="div_texbox">
         <%= f.check_box :handicap%>
     	</span>
+	<div/>
+
+	<div>
  	  <%= f.label :restaurant, "Restaurant" %>
       <span class="div_texbox">
         <%= f.check_box :restaurant %>
     	</span>
+	<div/>
+
 	<div class="span-16 last">
  	  <%= f.label :hours, "Hours" %>
       <span class="div_texbox" style="height: auto;">
@@ -130,14 +143,16 @@
     	</span>
 	<div/>
 
+	<div>
             <%= f.label :current_password %>
             <span class="div_texbox">
               <%= f.password_field :current_password, :required => true, :class => "fillout01" %> <i>(for confirmation)</i>
-           	</span>
+            </span>
+	<div/>
 
             <span class="div_texbox">
               <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
-          	</span>
+            </span>
 
             <span class="div_texbox">
               <%= f.submit "Update" %>
