@@ -224,7 +224,7 @@ $('.dialog_form_link').live('click', function() {
                 $('div.comments').hide();
                 $(this).dialog({
                     modal: true,
-    //                title: $(this).text(),
+                    title: $('.name').text(),
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',
@@ -255,7 +255,7 @@ $('.dialog_link').live('click', function() {
             } else {
                 $(this).dialog({
                     modal: true,
-    //                title: $(this).text(),
+                    title: $('.name').text(),
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',
