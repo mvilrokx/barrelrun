@@ -109,6 +109,13 @@
 	<div/>
 
 	<div class="span-16 last">
+ 	  <%= f.label :credit_cards, "Credit Cards" %>
+      <span class="div_texbox">
+        <%= f.check_box :credit_cards, :class => "fillout04" %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
  	  <%= f.label :price, "Price Range" %>
       <span class="div_texbox">
         <%= f.text_field :price, :class => "fillout01" %>
@@ -143,12 +150,6 @@
     	</span>
 	<div/>
 
-	<div class="span-16 last">
- 	  <%= f.label :credit_cards, "Credit Cards" %>
-      <span class="div_texbox">
-        <%= f.check_box :credit_cards, :class => "fillout04" %>
-    	</span>
-	<div/>
 
 	<div class="span-16 last">
  	  <%= f.label :hours, "Hours" %>
