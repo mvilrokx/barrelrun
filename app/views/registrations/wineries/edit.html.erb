@@ -109,6 +109,13 @@
 	<div/>
 
 	<div class="span-16 last">
+ 	  <%= f.label :hours, "Hours" %>
+      <span class="div_texbox" style="height: auto;">
+        <%= f.text_area :hours, :class => "fillout01"  %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
  	  <%= f.label :price, "Price Range" %>
       <span class="div_texbox">
         <%= f.text_field :price, :class => "fillout01" %>
@@ -140,14 +147,6 @@
  	  <%= f.label :fam_friendly, "Family Friendly" %>
       <span class="div_texbox">
         <%= f.check_box :fam_friendly, :class => "fillout04" %>
-    	</span>
-	<div/>
-
-
-	<div class="span-16 last">
- 	  <%= f.label :hours, "Hours" %>
-      <span class="div_texbox" style="height: auto;">
-        <%= f.text_area :hours, :class => "fillout01"  %>
     	</span>
 	<div/>
 
