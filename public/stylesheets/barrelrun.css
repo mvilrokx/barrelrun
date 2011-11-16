@@ -103,7 +103,8 @@ form.inline p {margin-bottom:0;}
 .fillout02 {width:150px;color: #333333;padding:3px 5px;}
 .fillout03 {width:100px;color: #333333;padding:3px 5px;}
 .fillout04 {width:75px;color: #333333;padding:3px 5px;}
-.fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover  {background-color:#F0FFE6;}
+.fillout05 {width:400px;color: #333333;padding:3px 5px;}
+.fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover, .fillout05:focus,  {background-color:#F0FFE6;}
 
 
 input[type="text"]:required,
