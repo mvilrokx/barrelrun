@@ -98,7 +98,7 @@ form.inline p {margin-bottom:0;}
 .holder {background-color:#fff;}
 .div_texbox {width:347px;float:right;height:35px;}
 .div_texbox2 {width:427px;float:right;height:35px;}
-.div_texbox3 {width:340px;float:left;height:35px;padding:10px 0px;}
+.div_texbox3 {width:340px;float:left;height:35px;padding:0px 0px;}
 .textbox:focus, .textbox:hover {background-color:#F0FFE6;}
 .fillout01 {width:200px;color: #333333;padding:3px 5px;}
 .fillout02 {width:150px;color: #333333;padding:3px 5px;}
