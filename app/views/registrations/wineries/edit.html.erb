@@ -100,10 +100,13 @@
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
           </div>
+
+	<div class="span-16 last">
 	  <%= f.label :descr, "Description" %>
-      <span class="div_texbox">
-        <%= f.text_area :descr, :rows => "1", :cols => "20" %>
+      <span class="div_texbox" style="height: auto;">
+        <%= f.text_area :descr, :class => "fillout01" %>
     	</span>
+	<div/>
  	  <%= f.label :price, "Price Range" %>
       <span class="div_texbox">
         <%= f.text_field :price, :class => "fillout04" %>
@@ -120,11 +123,12 @@
       <span class="div_texbox">
         <%= f.check_box :restaurant %>
     	</span>
+	<div class="span-16 last">
  	  <%= f.label :hours, "Hours" %>
-      <span class="div_texbox">
-        <%= f.text_area :hours, :rows => "1", :cols => "20"  %>
+      <span class="div_texbox" style="height: auto;">
+        <%= f.text_area :hours, :class => "fillout01"  %>
     	</span>
-
+	<div/>
 
             <%= f.label :current_password %>
             <span class="div_texbox">
