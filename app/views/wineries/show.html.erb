@@ -18,7 +18,7 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-	<%=h @winery.descr %>
+	<%=h @winery.descr width: 30px%>
 
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
@@ -40,33 +40,27 @@
         <div class="span-5 last strong">
 
 		  <% if @winery.price? %>
-          	<div> <p>Price range: </p> <%=h @winery.price %> </div>
-		  	<hr class="space" />
+          	<p Price range:  <%=h @winery.price %> </p>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<div> <p>Hours: </p> <%=h @winery.hours %> </div>
-		    <hr class="space" />
+		  	<div> <p Hours:  <%=h @winery.hours %> </div> </p>
 		  <% end %>
 
 		  <% if @winery.parking? %>
 			<p>Parking available</p>
-		  	<hr class="space" />
 		  <% end %>
 
 		  <% if @winery.handicap? %>
 		  	<p>Handicap accessible</p>
-		  	<hr class="space" />
 		  <% end %>
 
 		  <% if @winery.fam_friendly? %>
 		  	<p>Family friendly</p>
-		    <hr class="space" />
 		  <% end %>
 
 		  <% if @winery.restaurant? %>
 		  	<p>Restaurant on-site</p>
-		    <hr class="space" />
 		  <% end %>
 
         </div>
