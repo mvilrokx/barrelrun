@@ -36,15 +36,39 @@
         <div class="span-5 last strong">
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
+		<hr class="space" />
         <div class="span-5 last strong">
-          <%=h @winery.price %>
-		  <%=h @winery.hours %>
+
+		  <% if @winery.price? %>
+          	<div> <p>Price range: </p> <%=h @winery.price %> </div>
+		  	<hr class="space" />
+		  <% end %>
+
+		  <% if @winery.hours? %>
+		  	<div> <p>Hours: </p> <%=h @winery.hours %> </div>
+		    <hr class="space" />
+		  <% end %>
+
 		  <% if @winery.parking? %>
 			<p>Parking available</p>
+		  	<hr class="space" />
 		  <% end %>
-		  <%=h @winery.handicap %>
-		  <%=h @winery.fam_friendly %>
-		  <%=h @winery.restaurant %>
+
+		  <% if @winery.handicap? %>
+		  	<p>Handicap accessible</p>
+		  	<hr class="space" />
+		  <% end %>
+
+		  <% if @winery.fam_friendly? %>
+		  	<p>Family friendly</p>
+		    <hr class="space" />
+		  <% end %>
+
+		  <% if @winery.restaurant? %>
+		  	<p>Restaurant on-site</p>
+		    <hr class="space" />
+		  <% end %>
+
         </div>
         <hr class="space" />
 
