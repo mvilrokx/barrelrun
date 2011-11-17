@@ -11,6 +11,9 @@
   </div>
   <div class="span-13 colborder">
     <div class="span-13">
+	  <div class="span-8">
+	    <%=h @winery.descr%>
+     </div>
       <div class="span-8">
         <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:B|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
 	      </div>
@@ -18,9 +21,6 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-	  <div class="span-5 last style="width:30px;">
-	    <%=h @winery.descr%>
-     </div>
 
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
@@ -41,27 +41,33 @@
         <div class="span-5 last strong">
 
 		  <% if @winery.price? %>
-			<p><strong>Price range: </strong><%=h @winery.price %></p>
+			<strong>Price range: </strong><%=h @winery.price %>
+			<br>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<p><strong>Hours:  </strong><%=h @winery.hours %></p>
+		  	<strong>Hours:  </strong><%=h @winery.hours %>
+			<br>
 		  <% end %>
 
 		  <% if @winery.parking? %>
-			<p>Parking available</p>
+			Parking available
+			<br>
 		  <% end %>
 
 		  <% if @winery.handicap? %>
-		  	<p>Handicap accessible</p>
+		  	Handicap accessible
+			<br>
 		  <% end %>
 
 		  <% if @winery.fam_friendly? %>
-		  	<p>Family friendly</p>
+		  	Family friendly
+			<br>
 		  <% end %>
 
 		  <% if @winery.restaurant? %>
-		  	<p>Restaurant on-site</p>
+		  	Restaurant on-site
+			<br>
 		  <% end %>
 
         </div>
