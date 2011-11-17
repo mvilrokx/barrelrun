@@ -18,7 +18,9 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-	<%=h @winery.descr width: 30px%>
+	  <div class="span-5 last">
+	    <%=h @winery.descr%>
+     </div>
 
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
