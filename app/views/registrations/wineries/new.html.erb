@@ -41,6 +41,7 @@
             <legend class="subheading">
               <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </legend>
+	    <p> * Required fields</p>
             <%= f.label :winery_name %>
             <span class="div_texbox">
               <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
@@ -108,6 +109,31 @@
           	</span>
           	<hr>
           </fieldset>
+
+          <fieldset>
+            <legend class="subheading"><%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %>Additional Information</legend>
+           <%= f.label :username %>
+            <span class="div_texbox">
+              <%= tag(:input, {:id => "winery_username",
+                               :class => "fillout01",
+                               :required => true,
+                               :name => "winery[username]",
+                               :type => :text,
+                               :placeholder => 'screen name, 19 chars or less',
+                               :value => f.object.username}) %>
+          	</span>
+
+            <%= f.label :password %>
+            <span class="div_texbox">
+              <%= f.password_field :password, :required => true, :class => "fillout01" %>
+          	</span>
+            <%= f.label :password_confirmation %>
+            <span class="div_texbox">
+              <%= f.password_field :password_confirmation , :class => "fillout01" %>
+          	</span>
+          	<hr>
+          </fieldset>
+
         <% end -%>
       <%= render :partial => "shared/devise_links" %>
       </div>
