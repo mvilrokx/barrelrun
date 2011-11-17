@@ -152,7 +152,8 @@
       <span class="div_texbox">
         <%= f.check_box :fam_friendly %>
     	</span>
-<%= f.label :accepts_terms_of_service, "* Accept" %>
+
+	<%= f.label :accepts_terms_of_service, "* Accept" %>
             <span class="div_texbox">
               <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
           	</span>

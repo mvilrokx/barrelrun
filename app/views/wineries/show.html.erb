@@ -18,6 +18,7 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
+	<%=h @winery.descr %>
 
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
 
@@ -34,6 +35,16 @@
         </div>
         <div class="span-5 last strong">
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
+        </div>
+        <div class="span-5 last strong">
+          <%=h @winery.price %>
+		  <%=h @winery.hours %>
+		  <% if @winery.parking? %>
+			<p>Parking available</p>
+		  <% end %>
+		  <%=h @winery.handicap %>
+		  <%=h @winery.fam_friendly %>
+		  <%=h @winery.restaurant %>
         </div>
         <hr class="space" />
 
