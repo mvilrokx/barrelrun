@@ -42,53 +42,53 @@
               <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </legend>
 	    <p> * Required fields</p>
-            <%= f.label :winery_name %>
+            <%= f.label :winery_name, "* Winery name" %>
             <span class="div_texbox">
               <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :owner_gm_name %>
+            <%= f.label :owner_gm_name, "Owner/GM name"  %>
             <span class="div_texbox">
               <%= f.text_field :owner_gm_name, :class => "fillout02" %>
           	</span>
-            <%= f.label :owner_gm_email %>
+            <%= f.label :owner_gm_email, "Owner/GM email %>
             <span class="div_texbox">
-              <%= f.text_field :owner_gm_email, :class => "fillout02" %>
+              <%= f.text_field :owner_gm_email, :class => "fillout01" %>
           	</span>
-            <%= f.label :contact_first_name%>
+            <%= f.label :contact_first_name, "* Contact first name" %>
             <span class="div_texbox">
               <%= f.text_field :contact_first_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :contact_last_name %>
+            <%= f.label :contact_last_name, "* Contact Last name"  %>
             <span class="div_texbox">
               <%= f.text_field :contact_last_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :telephone %>
+            <%= f.label :telephone, "* Telephone" %>
             <span class="div_texbox">
               <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :email %>
+            <%= f.label :email, "* Email" %>
             <span class="div_texbox">
               <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :required => true,
                                :type => :email, :placeholder => 'e.g. user@domain.com',
-                               :value => f.object.email, :class => "fillout02"}) %>
+                               :value => f.object.email, :class => "fillout01"}) %>
           	</span>
-            <%= f.label :address %>
+            <%= f.label :address, "* Address" %>
             <span class="div_texbox">
               <%= f.text_field :address, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :address2 %>
+            <%= f.label :address2, "Address 2" %>
             <span class="div_texbox">
               <%= f.text_field :address2, :class => "fillout01" %>
           	</span>
-            <%= f.label :city %>
+            <%= f.label :city, "* City" %>
             <span class="div_texbox">
               <%= f.text_field :city, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :state %>
+            <%= f.label :state, "* State" %>
             <span class="div_texbox">
               <%= f.text_field :state, :required => true, :class => "fillout04" %>
           	</span>
-            <%= f.label :zipcode %>
+            <%= f.label :zipcode, "* Zipcode" %>
             <span class="div_texbox">
               <%= f.text_field :zipcode, :required => true, :class => "fillout04" %>
           	</span>
@@ -96,11 +96,11 @@
             <span class="div_texbox">
               <%= f.text_field :country, :class => "fillout04" %>
           	</span>
-            <%= f.label :website_url %>
+            <%= f.label :website_url, "* Website URL" %>
             <span class="div_texbox">
               <%= f.text_field :website_url, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :accepts_terms_of_service, "Accept" %>
+            <%= f.label :accepts_terms_of_service, "* Accept" %>
             <span class="div_texbox">
               <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
           	</span>
@@ -112,25 +112,53 @@
 
           <fieldset>
             <legend class="subheading"><%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %>Additional Information</legend>
-           <%= f.label :username %>
-            <span class="div_texbox">
-              <%= tag(:input, {:id => "winery_username",
-                               :class => "fillout01",
-                               :required => true,
-                               :name => "winery[username]",
-                               :type => :text,
-                               :placeholder => 'screen name, 19 chars or less',
-                               :value => f.object.username}) %>
-          	</span>
+           <div class="span-16 last">
+	  <%= f.label :descr, "Description" %>
+      <span class="div_texbox3_descr" style="height: auto;">
+        <%= f.text_area :descr, :class => "fillout05_descr" %>
+    	</span>
+	<div/>
 
-            <%= f.label :password %>
-            <span class="div_texbox">
-              <%= f.password_field :password, :required => true, :class => "fillout01" %>
-          	</span>
-            <%= f.label :password_confirmation %>
-            <span class="div_texbox">
-              <%= f.password_field :password_confirmation , :class => "fillout01" %>
-          	</span>
+	<div class="span-16 last">
+ 	  <%= f.label :hours, "Hours" %>
+      <span class="div_texbox4_hours" style="height: auto;">
+        <%= f.text_area :hours, :class => "fillout06_hours"  %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
+ 	  <%= f.label :price, "Price range" %>
+      <span class="div_texbox">
+        <%= f.text_field :price, :class => "fillout01" %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
+ 	  <%= f.label :parking, "Parking" %>
+      <span class="div_texbox">
+        <%= f.check_box :parking %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
+ 	  <%= f.label :handicap, "Handicaped accessible" %>
+      <span class="div_texbox">
+        <%= f.check_box :handicap%>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
+ 	  <%= f.label :restaurant, "Restaurant" %>
+      <span class="div_texbox">
+        <%= f.check_box :restaurant %>
+    	</span>
+	<div/>
+
+	<div class="span-16 last">
+ 	  <%= f.label :fam_friendly, "Family friendly" %>
+      <span class="div_texbox">
+        <%= f.check_box :fam_friendly %>
+    	</span>
           	<hr>
           </fieldset>
 
