@@ -38,6 +38,7 @@
               <%= f.password_field :password_confirmation, :required => true, :class => "fillout01" %>
           	</span>
           	<hr>
+		<br>
           <div class="subheading">
             <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
           </div>
@@ -47,7 +48,7 @@
           	</span>
             <%= f.label :owner_gm_name, "Owner/GM name" %>
             <span class="div_texbox">
-              <%= f.text_field :owner_gm_name, :class => "fillout02" %>
+              <%= f.text_field :owner_gm_name, :class => "fillout01" %>
           	</span>
             <%= f.label :owner_gm_email, "Owner/GM email" %>
             <span class="div_texbox">
@@ -57,7 +58,7 @@
             <span class="div_texbox">
               <%= f.text_field :contact_first_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :contact_last_name, "* Contact Last name" %>
+            <%= f.label :contact_last_name, "* Contact last name" %>
             <span class="div_texbox">
               <%= f.text_field :contact_last_name, :required => true, :class => "fillout03" %>
           	</span>
@@ -97,7 +98,7 @@
             <span class="div_texbox">
               <%= f.text_field :website_url, :required => true, :class => "fillout01" %>
           	</span>
-	
+		<br>
           <hr>
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
