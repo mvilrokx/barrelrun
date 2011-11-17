@@ -41,11 +41,11 @@
         <div class="span-5 last strong">
 
 		  <% if @winery.price? %>
-			<a><strong>Price range: </strong><%=h @winery.price %></a>
+			<p><strong>Price range: </strong><%=h @winery.price %></p>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<a><strong>Hours:  </strong><%=h @winery.hours %></a>
+		  	<p><strong>Hours:  </strong><%=h @winery.hours %></p>
 		  <% end %>
 
 		  <% if @winery.parking? %>
