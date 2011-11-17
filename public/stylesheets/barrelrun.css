@@ -99,8 +99,8 @@ form.inline p {margin-bottom:0;}
 .div_texbox  {width:347px;float:right;height:35px;}
 .div_texbox2 {width:427px;float:right;height:35px;}
 
-.div_texbox3_descr {width:300px;float:right;height:35px}
-.div_texbox4_hours {width:250px;float:right;height:35px}
+.div_texbox3_descr {width:347px;float:right;height:35px}
+.div_texbox4_hours {width:347px;float:right;height:35px}
 
 .textbox:focus, .textbox:hover {background-color:#F0FFE6;}
 .fillout01 {width:200px;color: #333333;padding:3px 5px;}
