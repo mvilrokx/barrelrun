@@ -16,7 +16,7 @@
           </div>
           <% form_for @winery, :url => update_claim_user_winery_path(@winery) do |f| %>
             <%= f.error_messages %>
-            <%= f.label :username, "* User Name %>
+            <%= f.label :username, "* User Name" %>
             <span class="div_texbox">
               <%= f.text_field :username, :required => true, :class => "fillout01" %>
           	</span>         	
