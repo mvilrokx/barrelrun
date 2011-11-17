@@ -18,7 +18,7 @@
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
         </div>
-	  <div class="span-5 last">
+	  <div class="span-5 last style="width:30px;">
 	    <%=h @winery.descr%>
      </div>
 
@@ -38,15 +38,14 @@
         <div class="span-5 last strong">
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
-		<hr class="space" />
         <div class="span-5 last strong">
 
 		  <% if @winery.price? %>
-          	<p Price range:  <%=h @winery.price %> </p>
+			<li><strong>Price range: </strong><%=h @winery.price %></li>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<div> <p Hours:  <%=h @winery.hours %> </div> </p>
+		  	<li><strong>Hours:  </strong><%=h @winery.hours %></li>
 		  <% end %>
 
 		  <% if @winery.parking? %>
