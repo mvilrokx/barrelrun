@@ -248,29 +248,4 @@
 
 </div>
 
-<script type="text/javascript">
-$(function(){
-
-var adjustheight = 10;
-var moreText = "+  More";
-var lessText = "- Less";
-
-$(".more-less .more-block").css('height', adjustheight).css('overflow', 'hidden');
-
-$(".more-less").append('[…]');
-
-$("a.adjust").text(moreText);
- 
-$(".adjust").toggle(function() { 
-		$(this).parents("div:first").find(".more-block").css('height', 'auto').css('overflow', 'visible'); 
- 
-		$(this).parents("div:first").find("p.continued").css('display', 'none');
-		$(this).text(lessText); 
-	}, function() { 
-		$(this).parents("div:first").find(".more-block").css('height', adjustheight).css('overflow', 'hidden');
-		$(this).parents("div:first").find("p.continued").css('display', 'block'); 
-		$(this).text(moreText); 
-		}); 
-	});
-</script>
 
