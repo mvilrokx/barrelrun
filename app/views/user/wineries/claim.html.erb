@@ -144,6 +144,13 @@
     	</span>
 	<div/>
 
+	<div class="span-16 last">
+ 	  <%= f.label :credit_cards_accepted, "Credit cards accepted" %>
+      <span class="div_texbox">
+        <%= f.check_box :credit_cards_accepted %>
+    	</span>
+	<div/>
+
             <span class="div_texbox">
               <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
           	</span>
