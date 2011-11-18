@@ -9,7 +9,8 @@
         <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
       <% end %>
 
-        <div class="span-6 last">
+    </h2>
+		<div class="span-6 last">
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolboxes addthis_default_style addthis_32x32_style">
           <a class="addthis_button_email"></a>
@@ -21,7 +22,6 @@
         <!-- AddThis Button END -->
         </div>
 
-    </h2>
   </div>
   <div class="span-13 colborder">
     <div class="span-13">
@@ -97,9 +97,13 @@
         <% end %>
 
       </div>
-	  <div class="span-13">
-	    <%=h @winery.descr%>
+
+	  <div class="more-less">
+		<div class="more-block">
+	    	<%=h @winery.descr%>
+	 	</div>
      </div>
+
     </div>
 
     <hr/>
