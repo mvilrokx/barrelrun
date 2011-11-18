@@ -104,7 +104,9 @@
       </div>
 
 		<div class="textarea2">
-			<%= f.text_area @winery.desc, :rows => 3, :style=>"height: 100%; width: 100%;"  %>
+			<% form_for %>
+				<%= f.text_area @winery.desc, :rows => 3, :style=>"height: 100%; width: 100%;"  %>
+			<% end %>
 	 	</div>
 
     </div>
