@@ -1,6 +1,5 @@
 <div class="prepend-top prepend-1 span-23 ">
   <div class="span-9">
-
     <h2>
       <%=h @winery.winery_name %>
 
@@ -10,7 +9,6 @@
         <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
       <% end %>
     </h2>
-
   </div>
 
 	<div class="span-8">
@@ -23,12 +21,13 @@
         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mvilrokx"></script>
  	</div>
 
+</div>
 
   <div class="span-13 colborder">
     <div class="span-13">
       <div class="span-8">
         <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:B|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
-	      </div>
+	  </div>
       <div class="span-5 last">
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
