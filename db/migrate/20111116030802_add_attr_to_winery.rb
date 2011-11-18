@@ -1,6 +1,6 @@
 class AddAttrToWinery < ActiveRecord::Migration
    def self.up
-    add_column :wineries, :descr, :text
+    add_column :wineries, :descr, :string
     add_column :wineries, :price, :string
     add_column :wineries, :parking, :boolean
     add_column :wineries, :handicap, :boolean
