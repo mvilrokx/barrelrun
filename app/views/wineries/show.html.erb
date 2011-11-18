@@ -1,7 +1,8 @@
 <div class="prepend-top prepend-1 span-22 append-1 last">
-  <div class="span-22 last">
+  <div class="span-22">
     <h2>
       <%=h @winery.winery_name %>
+
       <% if @winery.ownership_status != 'CLAIMED' %>
         <span style="font-size: 12px;"><%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
@@ -49,7 +50,7 @@
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
         <div class="span-5 last strong">
-
+        	<hr class="space" />
 		  <% if @winery.price? %>
 			<strong>Price range: </strong><%=h @winery.price %>
 			<br>
@@ -94,7 +95,6 @@
           <% end %>
           </div>
         <% end %>
-
 
       </div>
 	  <div class="span-13">
