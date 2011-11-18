@@ -64,7 +64,7 @@ class SearchesController < ApplicationController
         params[:search],
         :star => true,
         :all_facets => true,
-        :class_facet => false
+#        :class_facet => false
       )
     else
       @facets = ThinkingSphinx.facets(
@@ -73,7 +73,7 @@ class SearchesController < ApplicationController
         :with => {"@geodist" => @with_params["@geodist"]},
         :geo => @geo, :latitude_attr => "latitude", :longitude_attr => "longitude",
         :all_facets => true,
-        :class_facet => false
+#        :class_facet => false
       )
     end
 
@@ -84,7 +84,17 @@ class SearchesController < ApplicationController
       ap params
       @order = ""
       @with_params = {}
-      @classes = []
+
+      if params[:class]
+        @classes = params[:class].map{|c| c.classify.constantize}
+      else
+        if params[:wine_type] || params[:vintage] || params[:varietal] || !params[:max_price].blank?
+          @classes = [Wine]
+        else
+          @classes = [Wine, Winery]
+        end
+      end
+
       if !params[:nearby].blank?
         res=MultiGeocoder.geocode(params[:nearby].downcase)
         p res
@@ -103,7 +113,8 @@ class SearchesController < ApplicationController
       @with_params[:varietal_facet] = params[:varietal].collect {|x| x.to_crc32} if params[:varietal]
       @with_params[:wine_type_facet] = params[:wine_type].collect {|x| x.to_crc32} if params[:wine_type]
       @with_params[:average_rating] = params[:average_rating].collect{|rating| rating.to_f} if params[:average_rating]
-      @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || !params[:max_price].blank?
+
+#      @classes = [Wine] if params[:wine_type] || params[:vintage] || params[:varietal] || !params[:max_price].blank?
 
       ap @with_params
     end
