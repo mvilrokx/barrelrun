@@ -14,7 +14,7 @@ module ApplicationHelper
        else
          return link_to text, url
        end
-    else           
+    else
        if request.request_uri.include? url then
          return link_to text, url, :id => "selected_main_tab"
        else
@@ -30,8 +30,8 @@ module ApplicationHelper
 
     content_for :jstemplates do
       content_tag(:div, :id => "#{association}_fields_template", :style => "display: none") do
-        form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|        
-          render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })        
+        form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|
+          render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })
         end
       end
     end
@@ -56,9 +56,9 @@ module ApplicationHelper
 #      (1..10).map do |i|
       [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map do |i|
 #        if object_to_rate.average_rating
-          if ((rating*2).round)/2 == i
+          if ((rating*2).round)/2.to_f == i
             radio_button_tag "rating", i, true, :disabled => read_only
-          else    
+          else
             radio_button_tag "rating", i, false, :disabled => read_only
           end
 #        end
@@ -70,7 +70,7 @@ module ApplicationHelper
 #    (1..10).map do |i|
 #      if rating.round == i
 #        radio_button_tag "rating", i, true, :disabled => read_only
-#      else    
+#      else
 #        radio_button_tag "rating", i, false, :disabled => read_only
 #      end
 #    end
@@ -89,5 +89,4 @@ module ApplicationHelper
 
 
 end
-
 
