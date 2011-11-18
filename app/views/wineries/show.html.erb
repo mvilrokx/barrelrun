@@ -11,7 +11,7 @@
     </h2>
   </div>
 
-	<div class="span-8 last" >
+	<div class="prepend-1 span-8 last" >
         <div class="addthis_toolboxes addthis_default_style addthis_32x32_style">
           <a class="addthis_button_email"></a>
           <a class="addthis_button_facebook"></a>
@@ -83,7 +83,7 @@
 			<br>
 		  <% end %>
 
-		  <% if @winery.credit_cards_accepted? %>
+		  <% if @winery.accept_credit? %>
 		  	<FONT COLOR="#04B431">- </FONT>Credit cards accepted
 			<br>
 		  <% end %>
@@ -103,9 +103,11 @@
 
       </div>
 
-		<div style="height:120px;width:525px;overflow:scroll;">
-			<%=h @winery.descr%>
-		</div>
+		<% if @winery.descr? %>
+			<div style="height:120px;width:520px;overflow:scroll;">
+				<%=h @winery.descr%>
+			</div>
+		<% end %>
 
     </div>
 
