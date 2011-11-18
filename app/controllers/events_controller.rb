@@ -25,7 +25,9 @@ class EventsController < ApplicationController
                                                                        :path => path,
                                                                        :ordered_list => ordered_list,
                                                                        :list_header => list_header } }
-      format.json { render :layout => false, :json => @events }
+      format.json { render :layout => false,
+                           :json => @events.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
+                  }
     end
   end
 
@@ -55,6 +57,9 @@ class EventsController < ApplicationController
         format.html
         format.js
         format.mobile
+        format.json { render :layout => false,
+                           :json => @events.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
+                  }
       end
     end
   end

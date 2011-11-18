@@ -81,6 +81,7 @@ input[type=text], input[type=email], input[type=password], input.text, input.tit
 input.text, input.title {width:300px;padding:5px;}
 input.title {font-size:1.5em;}
 textarea {width:300px;height:150px;padding:5px;}
+textarea2 {width:300px;height:15px;padding:5px;}
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 .error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
@@ -96,14 +97,22 @@ form.inline p {margin-bottom:0;}
 .subheading {font-weight: bold;font-size: 14px;color:#B32317;}
 .form {margin:0;padding:0;}
 .holder {background-color:#fff;}
-.div_texbox {width:347px;float:right;height:35px;}
+.div_texbox  {width:347px;float:right;height:35px;}
 .div_texbox2 {width:427px;float:right;height:35px;}
+
+.div_texbox3_descr {width:347px;float:right;height:35px}
+.div_texbox4_hours {width:347px;float:right;height:35px}
+
 .textbox:focus, .textbox:hover {background-color:#F0FFE6;}
 .fillout01 {width:200px;color: #333333;padding:3px 5px;}
 .fillout02 {width:150px;color: #333333;padding:3px 5px;}
 .fillout03 {width:100px;color: #333333;padding:3px 5px;}
 .fillout04 {width:75px;color: #333333;padding:3px 5px;}
-.fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover  {background-color:#F0FFE6;}
+
+.fillout05_descr {width:200px;		   color: #333333;padding:3px 5px}
+.fillout06_hours {width:200px;height:105px;color: #333333;padding:3px 5px}
+
+.fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover, .fillout05_descr:focus, .fillout06_hours:focus  {background-color:#F0FFE6;}
 
 
 input[type="text"]:required,
@@ -455,13 +464,6 @@ div#nav ul li a#selected_main_tab {
 div#nav ul li a#selected_main_tab:hover {
 	text-decoration: none;
 }
-
-
-
-
-
-
-
 
 
 div.sub_nav {
