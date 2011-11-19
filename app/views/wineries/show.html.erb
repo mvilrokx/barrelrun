@@ -1,5 +1,5 @@
-<div class="prepend-top prepend-1 span-23 ">
-  <div class="span-9">
+<div class="prepend-top prepend-1 span-24 ">
+  <div class="span-171">
     <h2>
       <%=h @winery.winery_name %>
 
@@ -10,8 +10,9 @@
       <% end %>
     </h2>
   </div>
+<!--was here  -->
 
-	<div class="prepend-1 span-8 last" >
+	<div class="prepend-1 span-3 last" >
         <div class="addthis_toolboxes addthis_default_style addthis_32x32_style">
           <a class="addthis_button_email"></a>
           <a class="addthis_button_facebook"></a>
@@ -105,7 +106,7 @@
 
 		<% if @winery.descr? %>
 			<div style="height:120px;width:520px;overflow:scroll;overflow-x:hidden;">
-				<%=h @winery.descr%>
+				<p><%=h @winery.descr%></p>
 			</div>
 		<% end %>
 
