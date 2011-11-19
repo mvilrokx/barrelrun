@@ -103,7 +103,7 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 	if(visits == 1) {
 		window.location = "/pages/landingpage"
 	}
-		
+
 	});
 </script>
 
@@ -131,6 +131,8 @@ document.cookie = n + "=" + v + '; path=/' + exp;
             </div>
             <div class="span-8 last">
               <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+              <%= hidden_field_tag "class[]", 'Wine' %>
+              <%= hidden_field_tag "class[]", 'Winery' %>
             </div>
           </div>
           <div class="span-5">
@@ -226,7 +228,7 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 
         </a>
         <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
-                                  
+
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -258,3 +260,4 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 
 </body>
 </html>
+
