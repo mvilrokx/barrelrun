@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709005531) do      
+ActiveRecord::Schema.define(:version => 20111118032050) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "winery_id"
@@ -252,6 +252,15 @@ ActiveRecord::Schema.define(:version => 20110709005531) do
     t.float    "average_rating"
     t.string   "ownership_status"
     t.boolean  "accepts_terms_of_service"
+    t.string   "price"
+    t.boolean  "parking"
+    t.boolean  "handicap"
+    t.boolean  "fam_friendly"
+    t.boolean  "restaurant"
+    t.text     "descr"
+    t.string   "hours"
+    t.boolean  "credit_cards_accepted"
+    t.boolean  "accept_credit"
   end
 
   add_index "wineries", ["confirmation_token"], :name => "index_wineries_on_confirmation_token", :unique => true
