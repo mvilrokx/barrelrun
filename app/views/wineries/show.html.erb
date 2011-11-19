@@ -106,7 +106,7 @@
 
 		<% if @winery.descr? %>
 			<div style="height:120px;width:520px;overflow:scroll;overflow-x:hidden;">
-				<p><%=$('h @winery.descr').html($('h @winery.descr').text().replace(/\n\r?/g, '<br />'));%></p>
+				<p><%=h @winery.descr%></p>
 			</div>
 		<% end %>
 
