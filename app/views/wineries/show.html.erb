@@ -163,11 +163,6 @@
                <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
                                                                       :path => "wineries/#{@winery.id}/"} %>
             </div>
-	  <% else %>
-		<div id="winery_specials">
-               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
-                                                                      :path => "wineries/#{@winery.id}/"} %>
-            </div>
             <hr/>
           <% end %>
 
