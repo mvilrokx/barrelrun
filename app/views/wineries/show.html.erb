@@ -50,12 +50,12 @@
         <div class="span-5 last strong">
         	<hr class="space" />
 		  <% if @winery.price? %>
-			<strong>Price range: </strong><%=simple_format @winery.price %>
+			<strong>Price range: </strong><%=h @winery.price %>
 			<br>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<strong>Hours:  </strong><%=simple_format @winery.hours %>
+		  	<strong>Hours:  </strong><%=h @winery.hours %>
 			<br>
 		  <% end %>
 
@@ -160,6 +160,11 @@
         <div class="span-6 last">
           <% if !@winery.specials.empty? %>
             <div id="winery_specials">
+               <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
+                                                                      :path => "wineries/#{@winery.id}/"} %>
+            </div>
+	  <% else %>
+		<div id="winery_specials">
                <%= render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials,
                                                                       :path => "wineries/#{@winery.id}/"} %>
             </div>
