@@ -50,12 +50,12 @@
         <div class="span-5 last strong">
         	<hr class="space" />
 		  <% if @winery.price? %>
-			<strong>Price range: </strong><%=h @winery.price %>
+			<strong>Price range: </strong><%=simple_format @winery.price %>
 			<br>
 		  <% end %>
 
 		  <% if @winery.hours? %>
-		  	<strong>Hours:  </strong><%=h @winery.hours %>
+		  	<strong>Hours:  </strong><%=simple_format @winery.hours %>
 			<br>
 		  <% end %>
 
