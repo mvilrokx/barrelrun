@@ -101,14 +101,13 @@
 
       </div>
 
-		<% if @winery.descr? %>
-			<div class="more-less">
-    				<div class="more-block">
-					<p><%=simple_format @winery.descr%></p>
-				  <a href="#" id="adjust">more</a>
-				</div>
-			</div>
-		<% end %>
+	<div class="description">
+		<p><%=simple_format @winery.descr[0..200]%></p>
+  		<span class="details">
+			<p><%=simple_format @winery.descr[200..winery.description.length]%></p>
+  		</span>
+	</div>
+
     </div>
 
     <hr/>
