@@ -68,7 +68,7 @@ $(this).text("more");
 $(function(){
 
 // The height of the content block when it's not expanded
-var adjustheight = 20;
+var adjustheight = 30;
 // The "more" link text
 var moreText = "+  More";
 // The "less" link text
