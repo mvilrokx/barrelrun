@@ -55,7 +55,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-var adjustheight = 200;
+var adjustheight = 20;
 $("#adjust").toggle(function() {
 $('#mytext').css('height', 'auto').css('overflow', 'visible');
 $(this).text("less");
