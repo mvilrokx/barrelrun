@@ -57,10 +57,6 @@ $(document).ready(function(){
 // Begin More/Less
 $(document).ready(function() {
   $('.details').hide();
-});
-
-$(document).ready(function() {
-  $('.details').hide();
   $('<span class="show_more">more ...</span>').insertBefore('.details');
   $('<span class="show_less">less</span>').insertAfter('.details').hide();
   $('.show_more').click(function() {
