@@ -110,6 +110,25 @@
 			</div>
 		<% end %>
 
+<div style="height:20px;overflow:hidden" id="blah">
+  <p><%=simple_format @winery.descr%></p>
+</div>
+
+<script>
+var open = false;
+$('#blah').click(function() {
+    if (open) {
+        $(this).animate({height:'20px'}); 
+    }
+    else {
+        $(this).animate({height:'100%'});
+    }
+    open = !open;
+});
+
+</script>
+
+
     </div>
 
     <hr/>
