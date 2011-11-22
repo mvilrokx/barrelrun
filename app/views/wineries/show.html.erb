@@ -102,10 +102,11 @@
       </div>
 
 		<% if @winery.descr? %>
-			<div>
-				<p id="mytext" style="'width:260px;height:15px;overflow:hidden;'">
-				  <%=simple_format @winery.descr%></p>
+			<div class="more-less">
+    				<div class="more-block">
+					<p><%=simple_format @winery.descr%></p>
 				  <a href="#" id="adjust">more</a>
+				</div>
 			</div>
 		<% end %>
 
