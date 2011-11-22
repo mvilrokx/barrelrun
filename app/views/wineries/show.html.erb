@@ -104,7 +104,7 @@
 	<div class="description">
 		<p><%=simple_format @winery.descr[0..200]%></p>
   		<span class="details">
-			<p><%=simple_format @winery.descr[200..winery.description.length]%></p>
+			<p><%=simple_format @winery.descr[200..@winery.descr.length]%></p>
   		</span>
 	</div>
 
