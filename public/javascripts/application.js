@@ -59,16 +59,6 @@ $(document).ready(function() {
   $('.details').hide();
 });
 
-
-$(document).ready(function() {
-  $('.details').hide();
-  $('<span class="show_more">more ...</span>').insertBefore('.details');
-  $('.show_more').click(function() {
-    $(this).hide(); 
-    $(this).next().fadeIn();
-  });
-});
-
 $(document).ready(function() {
   $('.details').hide();
   $('<span class="show_more">more ...</span>').insertBefore('.details');
