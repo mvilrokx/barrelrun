@@ -115,6 +115,15 @@ form.inline p {margin-bottom:0;}
 .fillout01:focus, .fillout01:hover, .fillout02:focus, .fillout02:hover, .fillout03:focus, .fillout03:hover, .fillout04:focus, .fillout04:hover textarea:focus, textarea:hover, .fillout05_descr:focus, .fillout06_hours:focus  {background-color:#F0FFE6;}
 
 
+
+.show_more, .show_less {
+    display: block;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+    color: blue;}
+
+
 input[type="text"]:required,
 input[type="password"]:required,
 input[type="email"]:required  {
