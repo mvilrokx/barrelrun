@@ -54,6 +54,23 @@ $(document).ready(function(){
    });
 });
 
+// Begin More/Less
+$(document).ready(function() {
+  $('.details').hide();
+});
+
+
+$(document).ready(function() {
+  $('.details').hide();
+  $('<span class="show_more">more ...</span>').insertBefore('.details');
+  $('.show_more').click(function() {
+    $(this).hide(); 
+    $(this).next().fadeIn();
+  });
+});
+
+// End Begin More/Less
+
 
 $(".jqueryui_date").live('focus', function() {
    $(this).datepicker({
