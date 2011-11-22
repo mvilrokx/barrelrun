@@ -58,7 +58,7 @@ class Winery < ActiveRecord::Base
                   :city, :state, :zipcode, :country, :website_url,
                   :credit_cards_attributes, :subscription_attributes,
                   :accepts_terms_of_service, :ownership_status, :descr, :price,
-		  :parking, :handicap, :credit_cards, :fam_friendly, :restaurant, :hours
+		  :parking, :handicap, :accept_credit, :fam_friendly, :restaurant, :hours
   attr_accessor :seed_data
 #  validates_presence_of :lat, :lng
   acts_as_mappable :auto_geocode => {:field => :complete_address,
