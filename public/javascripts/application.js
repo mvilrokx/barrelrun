@@ -71,6 +71,17 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+var adjustheight = 80;
+$("#adjust").toggle(function() {
+$('#mytext').css('height', 'auto').css('overflow', 'visible');
+$(this).text("less");
+}, function() {
+$('#mytext').css('height', adjustheight).css('overflow', 'hidden');
+$(this).text("more");
+});
+});
+
 // End Begin More/Less
 
 

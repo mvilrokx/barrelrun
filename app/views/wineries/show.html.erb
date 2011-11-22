@@ -101,14 +101,15 @@
 
       </div>
 
-	<span>
-	<div class="description">
-		<p><%=simple_format @winery.descr[0..200]%></p>
-  			<span class="details">
-				<p><%=simple_format @winery.descr[201..@winery.descr.length]%></p>
-  			</span>
+
+	<div class="more-less">
+    	<div class="more-block">
+  			<p id="mytext" style="width:260px;height:80px;overflow:hidden;">
+				<%=simple_format @winery.descr[0..200]%></p>
+				<a href="#" id="adjust">more</a>
+    	</div>
 	</div>
-	</span>
+
 
     </div>
 
