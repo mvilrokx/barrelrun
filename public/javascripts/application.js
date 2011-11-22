@@ -69,6 +69,22 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $('.details').hide();
+  $('<span class="show_more">more ...</span>').insertBefore('.details');
+  $('<span class="show_less">less</span>').insertAfter('.details').hide();
+  $('.show_more').click(function() {
+    $(this).hide(); 
+    $(this).next().show();
+    $('.show_less').show();
+  });
+  $('.show_less').click(function() {
+    $(this).hide(); 
+    $(this).prev().hide();
+    $('.show_more').show();
+  });
+});
+
 // End Begin More/Less
 
 
