@@ -99,7 +99,23 @@
           </div>
         <% end %>
       </div>
-	<div class="span-13"><div class="description"><p><%=simple_format @winery.descr[0..200]%></p><span class="details"><p><%=simple_format @winery.descr[201..@winery.descr.length]%></p></span></div></div>
+
+		<div class="span-13">
+			<% if @winery.descr? %>
+				<div style="height:120px;width:520px;overflow:scroll;overflow-x:hidden;">
+					<p><%=simple_format @winery.descr%></p>
+				</div>
+			<% end %>
+
+		<!-- With this code we loose the paragraph formatting and extra <p> are inserted causing big blank lines -->
+		<!--div class="description">
+			<p><%=simple_format @winery.descr[0..200]%></p>
+  				<span class="details">
+					<p><%=simple_format @winery.descr[201..@winery.descr.length]%></p>
+  				</span>
+		</div-->
+
+		</div>
 </div>
 
     <hr/>
