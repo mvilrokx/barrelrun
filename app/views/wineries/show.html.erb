@@ -59,7 +59,7 @@
 			<br>
 		  <% end %>
 
-    		  <hr class="space">
+    		  <hr class="space"/>
 
 		  <% if @winery.parking? %>
 			<FONT COLOR="#04B431">- </FONT>Parking available
@@ -101,15 +101,14 @@
 
       </div>
 
-	<div class="description">
-		<p><%=simple_format @winery.descr[0..200]%></p>
-  			<span class="details">
-				<p><%=simple_format @winery.descr[201..@winery.descr.length]%></p>
-  			</span>
-	</div>
+	<div class="span-13">
+		<div class="description">
+			<p><%=simple_format @winery.descr[0..200]%></p>
+  				<span class="details">
+					<p><%=simple_format @winery.descr[201..@winery.descr.length]%></p>
+  				</span>
+		</div>
     </div>
-
-    <hr/>
 
     <% if !@winery.awards.empty? %>
       <div class="span-13">
