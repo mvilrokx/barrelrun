@@ -6,15 +6,17 @@
     <% form_tag '/searches/faceted_search', :method => "get" do -%>
       <div class="accordion">
 
-        <div class="facet">
-          <h4><%= image_tag 'bullet_arrow_down.png' %>Display</h4>
-          <div class="options" style="padding-left: 10px;">
-            <%= check_box_tag "class[]", "Wine", params["class"].include?("Wine"), {:id => "Wine"} %>
-            <%= label_tag "Wine", "Wine", :style => 'display: inline; float: none; padding: 0px;' %><br/>
-            <%= check_box_tag "class[]", "Winery", params["class"].include?("Winery"), {:id => "Winery"} %>
-            <%= label_tag "Winery", "Winery", :style => 'display: inline; float: none; padding: 0px;' %><br/>
+        <%- unless params["class"].nil? -%>
+          <div class="facet">
+            <h4><%= image_tag 'bullet_arrow_down.png' %>Display</h4>
+            <div class="options" style="padding-left: 10px;">
+              <%= check_box_tag "class[]", "Wine", params["class"].include?("Wine"), {:id => "Wine"} %>
+              <%= label_tag "Wine", "Wine", :style => 'display: inline; float: none; padding: 0px;' %><br/>
+              <%= check_box_tag "class[]", "Winery", params["class"].include?("Winery"), {:id => "Winery"} %>
+              <%= label_tag "Winery", "Winery", :style => 'display: inline; float: none; padding: 0px;' %><br/>
+            </div>
           </div>
-        </div>
+        <%- end -%>
 
         <%- @facets.each do |facet, facet_options| -%>
           <%- unless facet.to_s == "price" || facet.to_s == "class"-%>

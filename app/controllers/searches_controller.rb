@@ -92,6 +92,7 @@ class SearchesController < ApplicationController
           @classes = [Wine]
         else
           @classes = [Wine, Winery]
+          params[:class] = ["Wine", "Winery"]
         end
       end
 
