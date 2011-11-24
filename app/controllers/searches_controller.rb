@@ -62,6 +62,7 @@ class SearchesController < ApplicationController
         params[:search],
         :star => true,
         :all_facets => true,
+        :classes => @classes,
 #        :class_facet => false
       )
     else
@@ -71,6 +72,7 @@ class SearchesController < ApplicationController
         :with => {"@geodist" => @with_params["@geodist"]},
         :geo => @geo, :latitude_attr => "latitude", :longitude_attr => "longitude",
         :all_facets => true,
+        :classes => @classes,
 #        :class_facet => false
       )
     end

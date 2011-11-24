@@ -100,11 +100,8 @@
         <% end %>
       </div>
 
-		<div class="span-13">
-                  <%=h @winery.descr[0..200]%>
-                  <span class="details">
-                    <%=h @winery.descr[201..@winery.descr.length]%>
-                  </span>
+		<div class="span-13 winery_description">
+                  <%=simple_format @winery.descr%>
                 </div>
 </div>
 
