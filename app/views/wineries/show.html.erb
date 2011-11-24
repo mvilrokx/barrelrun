@@ -101,11 +101,10 @@
       </div>
 
 		<div class="span-13">
-                  <%=h @winery.descr[0..200]%>
-                  <span class="details">
-                    <%=h @winery.descr[201..@winery.descr.length]%>
-                  </span>
-                </div>
+			<div class="description">
+                  <%=simple_format @winery.descr%>
+			</div>
+        </div>
 </div>
 
     <hr/>
