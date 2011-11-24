@@ -56,7 +56,8 @@ $(document).ready(function(){
 
 // Begin More/Less
 $(document).ready(function() {
-  if ($('.description').height() > 75) {
+//alert($('.description').height());
+  if ($('.description').height() > 90) {
       $('<span class="show_more">more ...</span>').insertAfter('.description');
       $('<span class="show_less">less</span>').insertAfter('.description').hide();
       $('.description').height('75px');
