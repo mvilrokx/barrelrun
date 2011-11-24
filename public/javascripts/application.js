@@ -56,19 +56,21 @@ $(document).ready(function(){
 
 // Begin More/Less
 $(document).ready(function() {
-  $('<span class="show_more">more ...</span>').insertAfter('.description');
-  $('<span class="show_less">less</span>').insertAfter('.description').hide();
-  $('.description').height('75px');
-  $('.show_more').click(function() {
-    $(this).hide(); 
-    $('.description').height('auto');
-    $('.show_less').show();
-  });
-  $('.show_less').click(function() {
-    $(this).hide(); 
-    $('.description').height('75px');
-    $('.show_more').show();
-  });
+  if ($('.description').height > 75) {
+      $('<span class="show_more">more ...</span>').insertAfter('.description');
+      $('<span class="show_less">less</span>').insertAfter('.description').hide();
+      $('.description').height('75px');
+      $('.show_more').click(function() {
+        $(this).hide();
+        $('.description').height('auto');
+        $('.show_less').show();
+      });
+      $('.show_less').click(function() {
+        $(this).hide();
+        $('.description').height('75px');
+        $('.show_more').show();
+      });
+    }
 });
 
 // End Begin More/Less
