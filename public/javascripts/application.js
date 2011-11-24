@@ -56,30 +56,19 @@ $(document).ready(function(){
 
 // Begin More/Less
 $(document).ready(function() {
-  $('.details').hide();
-  $('<span class="show_more">more ...</span>').insertBefore('.details');
-  $('<span class="show_less">less</span>').insertAfter('.details').hide();
+  $('<span class="show_more">more ...</span>').insertAfter('.description');
+  $('<span class="show_less">less</span>').insertAfter('.description').hide();
+  $('.description').height('75px');
   $('.show_more').click(function() {
     $(this).hide(); 
-    $(this).next().show();
+    $('.description').height('auto');
     $('.show_less').show();
   });
   $('.show_less').click(function() {
     $(this).hide(); 
-    $(this).prev().hide();
+    $('.description').height('75px');
     $('.show_more').show();
   });
-});
-
-$(document).ready(function() {
-var adjustheight = 80;
-$("#adjust").toggle(function() {
-$('#mytext').css('height', 'auto').css('overflow', 'visible');
-$(this).text("less");
-}, function() {
-$('#mytext').css('height', adjustheight).css('overflow', 'hidden');
-$(this).text("more");
-});
 });
 
 // End Begin More/Less
