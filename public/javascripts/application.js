@@ -58,7 +58,7 @@ $(document).ready(function(){
 $(document).ready(function() {
   $('<span class="show_more">more ...</span>').insertAfter('.description');
   $('<span class="show_less">less</span>').insertAfter('.description').hide();
-  $('.description').height('80px');
+  $('.description').height('75px');
   $('.show_more').click(function() {
     $(this).hide(); 
     $('.description').height('auto');
@@ -66,7 +66,7 @@ $(document).ready(function() {
   });
   $('.show_less').click(function() {
     $(this).hide(); 
-    $('.description').height('80px');
+    $('.description').height('75px');
     $('.show_more').show();
   });
 });
