@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Successfully saved comment."  
       Juggernaut.publish("channel1", @comment.user.username + " commented on " + @commentable.name + " ("+ @commentable.class.name + "): '" + @comment.content + "'") rescue nil
-		  
+
 			if params[:format] == "mobile"
         puts "in if condition"
 				respond_to do |format|

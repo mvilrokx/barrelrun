@@ -6,7 +6,7 @@
 
       <div class="span-6 last">
         <div class="span-6 last">
-          <h3><%=h @wine.name %></h3>
+          <h3 class="name"><%=h @wine.name %></h3>
           <h4>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></h4>
         </div>
 
@@ -27,7 +27,7 @@
         </div>
 
         <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
-          <%=h @wine.description %>
+          <%=simple_format @wine.description %>
         </div>
       </div>
     </div>

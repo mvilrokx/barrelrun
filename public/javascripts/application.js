@@ -54,6 +54,28 @@ $(document).ready(function(){
    });
 });
 
+// Begin More/Less
+$(document).ready(function() {
+//alert($('.description').height());
+  if ($('.description').height() > 90) {
+      $('<span class="show_more">more ...</span>').insertAfter('.description');
+      $('<span class="show_less">less</span>').insertAfter('.description').hide();
+      $('.description').height('75px');
+      $('.show_more').click(function() {
+        $(this).hide();
+        $('.description').height('auto');
+        $('.show_less').show();
+      });
+      $('.show_less').click(function() {
+        $(this).hide();
+        $('.description').height('75px');
+        $('.show_more').show();
+      });
+    }
+});
+
+// End Begin More/Less
+
 
 $(".jqueryui_date").live('focus', function() {
    $(this).datepicker({
@@ -224,7 +246,7 @@ $('.dialog_form_link').live('click', function() {
                 $('div.comments').hide();
                 $(this).dialog({
                     modal: true,
-    //                title: $(this).text(),
+                    title: $('.name').text(),
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',
@@ -255,7 +277,7 @@ $('.dialog_link').live('click', function() {
             } else {
                 $(this).dialog({
                     modal: true,
-    //                title: $(this).text(),
+                    title: $('.name').text(),
     //                autoOpen: false,
                     width: 'auto',
                     height: 'auto',

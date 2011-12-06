@@ -1,7 +1,8 @@
-<div class="prepend-top prepend-1 span-22 append-1 last">
-  <div class="span-22 last">
+<div class="prepend-top prepend-1 span-24 ">
+  <div class="span-171">
     <h2>
       <%=h @winery.winery_name %>
+
       <% if @winery.ownership_status != 'CLAIMED' %>
         <span style="font-size: 12px;"><%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
@@ -9,11 +10,22 @@
       <% end %>
     </h2>
   </div>
-  <div class="span-13 colborder">
+	<div class="prepend-1 span-3 last" >
+        <div class="addthis_toolboxes addthis_default_style addthis_32x32_style">
+          <a class="addthis_button_email"></a>
+          <a class="addthis_button_facebook"></a>
+          <a class="addthis_button_twitter"></a>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mvilrokx"></script>
+ 	</div>
+</div>
+
+  <div class="span-13 colborder prepend-1 ">
     <div class="span-13">
       <div class="span-8">
         <img src="http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:B|<%= @winery.lat %>,<%= @winery.lng %>&sensor=false"/>
-	      </div>
+	  </div>
       <div class="span-5 last">
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
@@ -35,6 +47,46 @@
         <div class="span-5 last strong">
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
+        <div class="span-5 last strong">
+        	<hr class="space" />
+		  <% if @winery.price? %>
+			<strong>Price range: </strong><%=h @winery.price %>
+			<br>
+		  <% end %>
+
+		  <% if @winery.hours? %>
+		  	<strong>Hours:  </strong><%=h @winery.hours %>
+			<br>
+		  <% end %>
+
+    		  <hr class="space"/>
+
+		  <% if @winery.parking? %>
+			<FONT COLOR="#04B431">- </FONT>Parking available
+			<br>
+		  <% end %>
+
+		  <% if @winery.handicap? %>
+		  	<FONT COLOR="#04B431">- </FONT>Handicap accessible
+			<br>
+		  <% end %>
+
+		  <% if @winery.fam_friendly? %>
+		  	<FONT COLOR="#04B431">- </FONT>Family friendly
+			<br>
+		  <% end %>
+
+		  <% if @winery.restaurant? %>
+		  	<FONT COLOR="#04B431">- </FONT>Restaurant on-site
+			<br>
+		  <% end %>
+
+		  <% if @winery.accept_credit? %>
+		  	<FONT COLOR="#04B431">- </FONT>Credit cards accepted
+			<br>
+		  <% end %>
+
+        </div>
         <hr class="space" />
 
         <% if user_signed_in? %>
@@ -46,19 +98,11 @@
           <% end %>
           </div>
         <% end %>
-
-        <div class="span-6 last">
-        <!-- AddThis Button BEGIN -->
-        <div class="addthis_toolboxes addthis_default_style addthis_32x32_style">
-          <a class="addthis_button_email"></a>
-          <a class="addthis_button_facebook"></a>
-          <a class="addthis_button_twitter"></a>
+      </div>
+  		<div class="span-13">
+    		<div class="description">
+          <%=simple_format @winery.descr%>
         </div>
-        <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mvilrokx"></script>
-        <!-- AddThis Button END -->
-        </div>
-
       </div>
     </div>
 
@@ -129,8 +173,7 @@
         </div>
       </div>
     </div>
-
-  </div>
+</div>
 
   <div class="span-8 last">
     <% if !@winery.videos.empty? then %>

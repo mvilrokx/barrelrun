@@ -93,7 +93,6 @@ if(DaysToLive > 0) {
 // Put the cookie on the user's hard drive with path set to root and with any applicable expiration date.
 document.cookie = n + "=" + v + '; path=/' + exp;
 }
-
 </script>
 
 <script type="text/javascript">
@@ -104,7 +103,7 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 	if(visits == 1) {
 		window.location = "/pages/landingpage"
 	}
-		
+
 	});
 </script>
 
@@ -128,15 +127,17 @@ document.cookie = n + "=" + v + '; path=/' + exp;
         <div id="header_search_box">
           <div class="span-8">
             <div class="span-8 last">
-              <label>Enter Winery or Wine</label><br>
+              <label>Enter Winery, Wine, Type or Varietal</label><br>
             </div>
             <div class="span-8 last">
               <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+              <%= hidden_field_tag "class[]", 'Wine' %>
+              <%= hidden_field_tag "class[]", 'Winery' %>
             </div>
           </div>
           <div class="span-5">
             <div class="span-5 last">
-              <label>Nearby (Enter City)</label><br>
+              <label>Nearby (Enter City or Region)</label><br>
             </div>
             <div class="span-5 last">
               <%= text_field_tag :nearby, params[:nearby], :class=>"span-4" %>
@@ -227,7 +228,7 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 
         </a>
         <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
-                                  
+
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -259,3 +260,4 @@ document.cookie = n + "=" + v + '; path=/' + exp;
 
 </body>
 </html>
+
