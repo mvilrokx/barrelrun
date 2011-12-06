@@ -9,11 +9,7 @@ class CommentsController < ApplicationController
       format.xml
       format.js
       format.mobile
-      format.json {render :layout => false,
-                      :json =>
-               @comments.to_json(:include => { :user => {
-                  :include => {:pictures => {:id, :photo_file_name} },
-                                  :only => [:user_name] } } )
+      format.json { render :layout => false, :json => @comments }
     end
   end  
 
@@ -24,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Successfully saved comment."  
       Juggernaut.publish("channel1", @comment.user.username + " commented on " + @commentable.name + " ("+ @commentable.class.name + "): '" + @comment.content + "'") rescue nil
-		  
+
 			if params[:format] == "mobile"
         puts "in if condition"
 				respond_to do |format|
