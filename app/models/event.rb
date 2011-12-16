@@ -30,16 +30,11 @@ class Event < ActiveRecord::Base
   validates_presence_of :title
   before_destroy :check_for_comments_or_ratings
 
-  named_scope :upcoming_events, lambda { |*top|
+  scope :upcoming_events, lambda { |*top|
     if top.empty? || top.first.nil?
-      { :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
+      where(["end_date >= :today", {:today => Date.today}]).order("start_date DESC")
     else
-      { :limit => top[0],
-        :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
+      where( ["end_date >= :today", {:today => Date.today}]).limit(top[0]).order("start_date DESC")
     end
   }
 

@@ -123,7 +123,7 @@ document.cookie = n + "=" + v + '; path=/' + exp;
       <div class="span-8 prepend-top" id="company_logo">
         <%= link_to image_tag("../images/beta_logo_white.png", :border=>0), root_path %>
       </div>
-      <% form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+      <%= form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
           <div class="span-8">
             <div class="span-8 last">

@@ -63,9 +63,7 @@ class Winery < ActiveRecord::Base
   acts_as_mappable :auto_geocode => {:field => :complete_address,
                                      :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
-  named_scope :top_wineries, :order => "average_rating DESC",
-                             :limit => 10,
-                             :include => {:comments => :user}
+  scope :top_wineries, order("average_rating DESC").limit(10).includes(:comments => :user)
 
   # ThinkingSphinx setup
   define_index do

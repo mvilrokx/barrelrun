@@ -119,7 +119,7 @@ end
   end
 
   def local_wineries
-      @wineries = Winery.find(:all)
+      @wineries = Winery.all
       respond_to do |format|
          format.html 
          format.xml { render :text=>@wineries.to_xml(:only => [:lat, :lng, :winery_name],

@@ -36,8 +36,8 @@ GEM
       mime-types
       xml-simple
     bcrypt-ruby (3.0.1)
-    braintree (2.6.2)
-      builder
+    braintree (2.13.1)
+      builder (>= 2.0.0)
     builder (2.1.2)
     cocaine (0.2.1)
     devise (1.5.2)
@@ -120,7 +120,7 @@ DEPENDENCIES
   alchemist
   awesome_print
   aws-s3
-  braintree (= 2.6.2)
+  braintree
   devise
   geokit
   geokit-rails

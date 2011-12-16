@@ -7,13 +7,13 @@ module ApplicationHelper
   # Method used to determine which tab is active
   def link_with_active(text, url)
     if url == "/" then
-       if request.request_uri == "/" then
+       if request.fullpath == "/" then
          return link_to text, url, :id => "selected_main_tab"
        else
          return link_to text, url
        end
     else
-       if request.request_uri.include? url then
+       if request.fullpath.include? url then
          return link_to text, url, :id => "selected_main_tab"
        else
          return link_to text, url

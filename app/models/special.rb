@@ -28,16 +28,11 @@ class Special < ActiveRecord::Base
   validate :validate_attachments
   before_destroy :check_for_comments_or_ratings
 
-  named_scope :upcoming_specials, lambda { |*top|
+  scope :upcoming_specials, lambda { |*top|
     if top.empty? || top.first.nil?
-      { :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
+      where(["end_date >= :today", {:today => Date.today}]).order("start_date DESC")
     else
-      { :limit => top[0],
-        :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
+      where(["end_date >= :today", {:today => Date.today}]).limit(top[0]).order("start_date DESC")
     end
   }
 

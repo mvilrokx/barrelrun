@@ -6,10 +6,11 @@ class CreditCard < ActiveRecord::Base
 #  before_create :create_credit_card_in_vault
   before_update :update_credit_card_in_vault
   before_destroy :destroy_credit_card_in_vault
+  after_find :vault_info
 
   protected
 
-    def after_find # Get vault info from Braintree
+    def vault_info
       braintree_credit_card_data = Braintree::CreditCard.find(token)
       self.card_number = braintree_credit_card_data.masked_number
       self.card_type = braintree_credit_card_data.card_type

@@ -10,7 +10,7 @@ gem "geokit-rails"
 gem 'will_paginate'
 gem 'thinking-sphinx'
 gem 'juggernaut', '2.0.0'
-gem 'braintree', '2.6.2'
+gem 'braintree'
 # gem 'searchlogic', '2.4.27'
 gem 'youtube_it', '1.2.10'
 gem 'omniauth'

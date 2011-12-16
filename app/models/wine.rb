@@ -26,12 +26,12 @@ class Wine < ActiveRecord::Base
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
 
-  named_scope :top_wines, lambda { |*top|
+  scope :top_wines, lambda { |*top|
 #      { :limit => top.first||=:top_list_size, :order => "average_rating DESC" }
     if top.empty? || top.first.nil?
-      { :limit => 10, :order => "average_rating DESC" }
+      limit(10).order("average_rating DESC")
     else
-      { :limit => top[0], :order => "average_rating DESC" }
+      limit(0).order("average_rating DESC")
     end
   }
 
@@ -39,12 +39,10 @@ class Wine < ActiveRecord::Base
 #                          :limit => 10,
 #                          :include => {:comments => :user}
 
-  named_scope :distinct_wine_types, :select => "distinct wine_type",
-                                   :order => "wine_type"
-  named_scope :distinct_varietals, :select => "distinct varietal",
-                                   :order => "varietal"
+  scope :distinct_wine_types, select("distinct wine_type").order("wine_type")
+  scope :distinct_varietals, select("distinct varietal").order("varietal")
 
-  named_scope :highest_price, :select => "max(price)"
+  scope :highest_price, select("max(price)")
 
   # ThinkingSphinx setup
   define_index do
