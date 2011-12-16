@@ -23,11 +23,12 @@ class User < ActiveRecord::Base
   validates_each :birthdate do |model, attr, value|
     model.errors.add(attr, 'You must be at least 21 years old to be able to register.') if  value > Date.new((Date.today.year - 21),(Date.today.month),(Date.today.day))
   end   
-   # Include default devise modules. Others available are:
-   # , :token_authenticatable, :lockable, :timeoutable and :activatable
-  devise :registerable, :database_authenticatable, :recoverable, 
-        :rememberable, :trackable, :validatable, :confirmable,
-        :http_authenticatable
+
+
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, 

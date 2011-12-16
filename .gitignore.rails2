@@ -1,0 +1,7 @@
+db/*.sqlite3
+log/*.log
+tmp/**/*
+public/assets/**/*
+config/database.yml
+db/sphinx/
+*~

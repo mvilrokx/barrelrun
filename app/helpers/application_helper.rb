@@ -1,6 +1,4 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-
   # Method used to add a title to each page
   def title(page_title)
     content_for(:title) { page_title }
@@ -87,6 +85,4 @@ module ApplicationHelper
     "%02d:%02d" % [ (sec/60).floor, (sec - ((sec/60).floor * 60)).round ]
   end
 
-
 end
-

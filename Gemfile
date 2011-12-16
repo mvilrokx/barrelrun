@@ -1,22 +1,22 @@
 source :gemcutter
-gem "rails", "~> 2.3.11"
+gem "rails", "3.0.9"
 
-gem 'mysql', '2.8.1'
+# gem 'mysql', '2.8.1'
 gem 'mysql2', '~> 0.2.0'
 gem 'warden'
-gem 'devise', '1.0.11'
-gem "geokit", '~> 1.5.0'
-gem "geokit-rails", '1.1.4'
-gem 'will_paginate', '~> 2.3.11'
-gem 'thinking-sphinx', '1.3.20'
+gem 'devise'
+gem "geokit"
+gem "geokit-rails"
+gem 'will_paginate'
+gem 'thinking-sphinx'
 gem 'juggernaut', '2.0.0'
 gem 'braintree', '2.6.2'
-gem 'searchlogic', '2.4.27'
+# gem 'searchlogic', '2.4.27'
 gem 'youtube_it', '1.2.10'
-gem 'omniauth', '0.2.6'
+gem 'omniauth'
 gem "aws-s3", :require => "aws/s3"
 gem 'paperclip', '~> 2.3'
 gem 'alchemist'
 gem 'awesome_print'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 

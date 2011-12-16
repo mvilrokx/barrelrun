@@ -47,9 +47,8 @@ class Winery < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # , :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable,
-         :rememberable, :trackable, :confirmable, :validatable,
-         :http_authenticatable
-
+         :rememberable, :trackable, :confirmable, :validatable
+         
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :username,
                   :winery_name, :owner_gm_name, :owner_gm_email,
