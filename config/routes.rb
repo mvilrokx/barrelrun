@@ -114,13 +114,15 @@ Barrelrun::Application.routes.draw do
     resources :ratings
   end
 
-#  resources :userwineries, :namespace => "user", :controller => "wineries"
-#  with_options(:namespace => "user") do |user|
-#    user.resources :wineries
-#  end
-###  namespace(:user) do |user|
-###  	user.resources :wineries, :has_many => :wines, :member => {:claim => :get, :update_claim => :put}
-###  end
+  namespace :user do
+  	resources :wineries do
+      resources :wines
+      member do
+        get 'claim'
+        put 'update_claim'
+      end
+  	end    
+  end
 
   resources :emails do
     collection do

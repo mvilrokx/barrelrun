@@ -2,8 +2,10 @@ class WineriesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
 
   def index
-    @search = Winery.searchlogic(params[:search])
-    @wineries = @search.all
+# NEEDS TO GET REPLACED WITH DIFFERENT SEARCH GEM!!!!
+#    @search = Winery.searchlogic(params[:search])
+#    @wineries = @search.all
+    @wineries = Winery.all
     respond_to do |format|
       format.html
       format.json { render :layout => false,

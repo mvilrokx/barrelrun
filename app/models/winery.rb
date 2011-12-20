@@ -27,12 +27,16 @@ class Winery < ActiveRecord::Base
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 
-  after_create   :store_customer_in_vault
+# ADD BACK IN WHEN BRAINTREE IS CONFIGURED PROPERLY
+#  after_create   :store_customer_in_vault
   before_destroy :destroy_customer_in_vault
 
   def complete_address
-    [address, city, state, zipcode, country].join(', ')
+    [address, city, state, zipcode, country].compact.join(', ')
   end
+
+  geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng
+  after_validation :geocode          # auto-fetch coordinates
 
   def with_cc_and_subscription
     self.credit_cards.build if credit_cards.empty?
@@ -57,11 +61,9 @@ class Winery < ActiveRecord::Base
                   :city, :state, :zipcode, :country, :website_url,
                   :credit_cards_attributes, :subscription_attributes,
                   :accepts_terms_of_service, :ownership_status, :descr, :price,
-		  :parking, :handicap, :accept_credit, :fam_friendly, :restaurant, :hours
+            		  :parking, :handicap, :accept_credit, :fam_friendly,
+            		  :restaurant, :hours, :lat, :lng, :id
   attr_accessor :seed_data
-#  validates_presence_of :lat, :lng
-  acts_as_mappable :auto_geocode => {:field => :complete_address,
-                                     :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
   scope :top_wineries, order("average_rating DESC").limit(10).includes(:comments => :user)
 

@@ -40,23 +40,16 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for GeoCoding
   def complete_address
-    [address, city, state, zipcode, country].join(', ')
+    [address, city, state, zipcode, country].compact.join(', ')
   end
-
-  acts_as_mappable # :auto_geocode => {:field=>:complete_address} => this only works on creation, not on update so I added the code below to handle both update and create.
-
-  before_validation :geocode_address
 
   Max_Attachments = 1
   Max_Attachment_Size = 5.megabyte
 
-  private
+  geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng
+  after_validation :geocode          # auto-fetch coordinates
 
-    def geocode_address
-     geo = Geokit::Geocoders::MultiGeocoder.geocode(complete_address)
-     errors.add(:complete_address, "Could not Geocode address") if !geo.success
-     self.lat, self.lng = geo.lat,geo.lng if geo.success
-    end
+  private
 
   	def validate_attachments
      	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if picture.length > Max_Attachments
