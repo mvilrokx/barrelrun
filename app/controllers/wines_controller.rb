@@ -54,7 +54,7 @@ class WinesController < ApplicationController
       @wines = current_winery.wines.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
     else
 #      @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
-      @search = Wine.searchlogic(params[:search])
+      @search = Wine.metasearch(params[:search])
       @wines = @search.all.paginate(:page => params[:page], :per_page => params[:per_page])
     end
 

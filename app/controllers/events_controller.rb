@@ -46,7 +46,7 @@ class EventsController < ApplicationController
       @events = current_winery.events.paginate(:page => params[:page], :order => "created_at DESC")
     else
 #      @events = Event.all.paginate(:page => params[:page], :order => "created_at DESC")
-      @search = Event.searchlogic(params[:search])
+      @search = Event.metasearch(params[:search])
       @events = @search.all.paginate(:page => params[:page], :per_page => params[:per_page])
     end
 

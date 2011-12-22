@@ -48,7 +48,7 @@ class SpecialsController < ApplicationController
       @specials = current_winery.specials.paginate(:page => params[:page], :order => "created_at DESC")
     else
 #      @specials = Special.all.paginate(:page => params[:page], :order => "created_at DESC")
-      @search = Special.searchlogic(params[:search])
+      @search = Special.metasearch(params[:search])
       @specials = @search.all.paginate(:page => params[:page], :per_page => params[:per_page])
     end
     if request.xml_http_request?
