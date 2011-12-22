@@ -1,7 +1,7 @@
 source :gemcutter
-gem "rails", "3.0.10"
+gem "rails", "3.1.3"
 
-gem 'mysql2', '~> 0.2.0'
+gem 'mysql2'
 gem 'warden'
 gem 'devise'
 gem 'geocoder'
@@ -18,4 +18,5 @@ gem 'alchemist'
 gem 'awesome_print'
 # gem 'newrelic_rpm'
 gem 'jquery-rails',        '>= 1.0.12'
+gem 'haml-rails'
 
