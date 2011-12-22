@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
 
     def rate (object_type, id, rating)
       object = object_type.classify.constantize.find(id)
-      ap current_user
       user_rating = object.ratings.find_or_initialize_by_user_id(current_user.id)
       user_rating.rate = rating
       if user_rating.save
