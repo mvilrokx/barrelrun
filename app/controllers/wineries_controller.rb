@@ -47,8 +47,11 @@ class WineriesController < ApplicationController
   end
 
   def rating
+    puts "entering rating"
+    ap current_user
     rate('Winery', params[:id], params[:stars])
     top_wineries
+    puts "leaving rating"
   end
 
   def top_wineries

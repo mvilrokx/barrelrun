@@ -60,7 +60,7 @@ module ApplicationHelper
             radio_button_tag "rating", i, false, :disabled => read_only
           end
 #        end
-      end.join
+      end.join.html_safe
 #    end
   end
 

@@ -5,7 +5,7 @@
 <div class='list'>
   <h2><%= defined?(list_header) ? list_header : object_list[0].class.name.pluralize %></h2>
   <% if !object_list.empty? %>
-    <%= ordered_list ? "<ol>" : "<ul>" %>
+    <%= ordered_list ? "<ol>".html_safe : "<ul>".html_safe %>
       <% object_list.each_with_index do |object, idx| %>
         <% if ordered_list && idx == 0 then %>
       <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
@@ -39,7 +39,7 @@
         <% end %>
       </li>
       <% end %>
-    <%= ordered_list ? "</ol>" : "</ul>" %>
+    <%= ordered_list ? "</ol>".html_safe : "</ul>".html_safe %>
   <% end %>
 </div>
 

@@ -20,4 +20,5 @@ gem 'paperclip', '~> 2.3'
 gem 'alchemist'
 gem 'awesome_print'
 # gem 'newrelic_rpm'
+gem 'jquery-rails',        '>= 1.0.12'
 
