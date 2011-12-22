@@ -12,7 +12,7 @@
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
-          <% form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true } do |f| -%>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f| %>
             <%= f.error_messages %>
             <%= f.label :username, 'User Name' %>
             <span class="div_texbox">

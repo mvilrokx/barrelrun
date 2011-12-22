@@ -1,96 +1,103 @@
 <% title(resource_name.to_s.humanize + " Sign up") %>
+
 <div class="container">
   <hr class="space">
   <div class="push-3 span-18 last main">
     <hr class="space">
     <div class="push-1 span-16">
-
+    
       <h2><%= resource_name.to_s.humanize %> Sign up</h2>
-      <em>Please search our website to see if your winery already exists.  If it does, then register by claiming your winery.  If it does not exist, then proceed with the registration process using this page.  Thank you.</em>
       <div class="edit_form">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <% form_for resource_name, resource.with_cc_and_subscription, :url => registration_path(resource_name) do |f| -%>
           <%= f.error_messages %>
-          <%= f.hidden_field(:ownership_status, :value => "CLAIMED") %>
-          <% f.fields_for :subscription do |subscription_builder| %>
-            <%= subscription_builder.hidden_field(:plan_id, :value => "Free") %>
-        	<% end %>
-	     * Required fields
-<br>
+          <fieldset>
+            <legend class="subheading">Subscription</legend>
+            <% f.fields_for :subscription do |subscription_builder| %>  
+              <%= subscription_builder.label :plan_id, 'Your Level' %>
+              <span class="div_texbox">
+                <%= subscription_builder.select(:plan_id,
+                      options_from_collection_for_select(RegistrationLevel.all, 
+                                                         :name, 
+                                                         :name_price, 
+                                                         (session[:registration_level]||"Free").capitalize) ) %>
+            	</span>
+          	<% end %>
+          	<hr>
+          </fieldset>
           <fieldset>
             <legend class="subheading"><%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %>Account</legend>
-           <%= f.label :username, "* User Name" %>
+           <%= f.label :username %>
             <span class="div_texbox">
               <%= tag(:input, {:id => "winery_username",
                                :class => "fillout01",
                                :required => true,
-                               :name => "winery[username]",
-                               :type => :text,
-                               :placeholder => 'screen name, 19 chars or less',
+                               :name => "winery[username]", 
+                               :type => :text, 
+                               :placeholder => 'screen name, 19 chars or less', 
                                :value => f.object.username}) %>
           	</span>
-
-            <%= f.label :password, "* Password" %>
+          	
+            <%= f.label :password %>
             <span class="div_texbox">
               <%= f.password_field :password, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :password_confirmation, "* Password confirmation" %>
+            <%= f.label :password_confirmation %>
             <span class="div_texbox">
-              <%= f.password_field :password_confirmation, :required => true , :class => "fillout01" %>
+              <%= f.password_field :password_confirmation , :class => "fillout01" %>
           	</span>
           	<hr>
-		<br>
           </fieldset>
           <fieldset>
             <legend class="subheading">
               <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </legend>
-            <%= f.label :winery_name, "* Winery name" %>
+            <%= f.label :winery_name %>
             <span class="div_texbox">
               <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :owner_gm_name, "Owner/GM name"  %>
+            <%= f.label :owner_gm_name %>
             <span class="div_texbox">
-              <%= f.text_field :owner_gm_name, :class => "fillout01" %>
+              <%= f.text_field :owner_gm_name, :class => "fillout02" %>
           	</span>
-            <%= f.label :owner_gm_email, "Owner/GM email" %>
+            <%= f.label :owner_gm_email %>
             <span class="div_texbox">
-              <%= f.text_field :owner_gm_email, :class => "fillout01" %>
+              <%= f.text_field :owner_gm_email, :class => "fillout02" %>
           	</span>
-            <%= f.label :contact_first_name, "* Contact first name" %>
+            <%= f.label :contact_first_name%>
             <span class="div_texbox">
               <%= f.text_field :contact_first_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :contact_last_name, "* Contact last name"  %>
+            <%= f.label :contact_last_name %>
             <span class="div_texbox">
               <%= f.text_field :contact_last_name, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :telephone, "* Telephone" %>
+            <%= f.label :telephone %>
             <span class="div_texbox">
               <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :email, "* Email" %>
+            <%= f.label :email %>
             <span class="div_texbox">
-              <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :required => true,
-                               :type => :email, :placeholder => 'e.g. user@domain.com',
-                               :value => f.object.email, :class => "fillout01"}) %>
+              <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :required => true, 
+                               :type => :email, :placeholder => 'e.g. user@domain.com', 
+                               :value => f.object.email, :class => "fillout02"}) %>
           	</span>
-            <%= f.label :address, "* Address" %>
+            <%= f.label :address %>
             <span class="div_texbox">
               <%= f.text_field :address, :required => true, :class => "fillout01" %>
           	</span>
-            <%= f.label :address2, "Address 2" %>
+            <%= f.label :address2 %>
             <span class="div_texbox">
               <%= f.text_field :address2, :class => "fillout01" %>
           	</span>
-            <%= f.label :city, "* City" %>
+            <%= f.label :city %>
             <span class="div_texbox">
               <%= f.text_field :city, :required => true, :class => "fillout03" %>
           	</span>
-            <%= f.label :state, "* State" %>
+            <%= f.label :state %>
             <span class="div_texbox">
               <%= f.text_field :state, :required => true, :class => "fillout04" %>
           	</span>
-            <%= f.label :zipcode, "* Zipcode" %>
+            <%= f.label :zipcode %>
             <span class="div_texbox">
               <%= f.text_field :zipcode, :required => true, :class => "fillout04" %>
           	</span>
@@ -98,81 +105,36 @@
             <span class="div_texbox">
               <%= f.text_field :country, :class => "fillout04" %>
           	</span>
-            <%= f.label :website_url, "* Website URL" %>
+            <%= f.label :website_url %>
             <span class="div_texbox">
               <%= f.text_field :website_url, :required => true, :class => "fillout01" %>
           	</span>
           	<hr>
-		<br>
           </fieldset>
-
           <fieldset>
-            <legend class="subheading"><%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %>Additional Information</legend>
-           <div class="span-16 last">
-	  <%= f.label :descr, "Description" %>
-      <span class="div_texbox3_descr" style="height: auto;">
-        <%= f.text_area :descr, :class => "fillout05_descr" %>
-    	</span>
-	<div/>
+            <legend class="subheading">
+              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Credit Card
+            </legend>
+            <% f.fields_for :credit_cards do |cc_builder| %>  
+              <%= cc_builder.label :card_number %>
+              <span class="div_texbox">
+                <%= cc_builder.text_field :card_number, :required => true, :class => "fillout01" %>
+            	</span>
+              <%= cc_builder.label :card_verification_value %>
+              <span class="div_texbox">
+                <%= cc_builder.text_field :card_verification_value, :required => true, :class => "fillout01" %>
+            	</span>
+              <%= cc_builder.label :expiration_date %>
+              <span class="div_texbox">
+                <%= cc_builder.date_select :expiration_date, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+            	</span>
 
-	<div class="span-16 last">
- 	  <%= f.label :hours, "Hours" %>
-      <span class="div_texbox4_hours" style="height: auto;">
-        <%= f.text_area :hours, :class => "fillout06_hours"  %>
-    	</span>
-	<div/>
-
-	<div class="span-16 last">
- 	  <%= f.label :price, "Price range" %>
-      <span class="div_texbox">
-        <%= f.text_field :price, :class => "fillout01" %>
-    	</span>
-	<div/>
-
-	<div class="span-16 last">
- 	  <%= f.label :parking, "Parking" %>
-      <span class="div_texbox">
-        <%= f.check_box :parking %>
-    	</span>
-	<div/>
-
-	<div class="span-16 last">
- 	  <%= f.label :handicap, "Handicaped accessible" %>
-      <span class="div_texbox">
-        <%= f.check_box :handicap%>
-    	</span>
-	<div/>
-
-	<div class="span-16 last">
- 	  <%= f.label :restaurant, "Restaurant" %>
-      <span class="div_texbox">
-        <%= f.check_box :restaurant %>
-    	</span>
-	<div/>
-
-	<div class="span-16 last">
- 	  <%= f.label :fam_friendly, "Family friendly" %>
-      <span class="div_texbox">
-        <%= f.check_box :fam_friendly %>
-    	</span>
-
-	<div class="span-16 last">
- 	  <%= f.label :accept_credit, "Credit cards accepted" %>
-      <span class="div_texbox">
-        <%= f.check_box :accept_credit %>
-    	</span>
-	<div/>
-
-	<%= f.label :accepts_terms_of_service, "* Accept" %>
-            <span class="div_texbox">
-              <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link" %>
-          	</span>
+            <% end -%>
             <span class="div_texbox">
               <%= f.submit "Sign up" %>
           	</span>
-          <hr>
+          	<hr>
           </fieldset>
-
         <% end -%>
       <%= render :partial => "shared/devise_links" %>
       </div>
@@ -201,10 +163,10 @@
 //            $(this).append(span_start + prev  + " | " + review + span_end);
 //            breadcrum = breadcrum + "<li class='last'>" + $(this).find('legend').html() + "</li>"
 //        } else {
-//            $(this).append(span_start + prev + " | " + next + span_end);
+//            $(this).append(span_start + prev + " | " + next + span_end);        
 //        }
 //    } else {
-//        $(this).append(span_start + next + span_end);
+//        $(this).append(span_start + next + span_end);        
 //        breadcrum = breadcrum + "<li class='first visited'>" + $(this).find('legend').text() + "</li>"
 //    };
 //});
@@ -212,7 +174,7 @@
 // breadcrum = breadcrum + "<li class='last'>Review</li>"
 // breadcrum = breadcrum + "</ul>";
 // $(".edit_form form").prepend(breadcrum);
-
+    
 
 // $(".review").live('click', function(){
 //    $(".edit_form form").replaceWith(originalForm);
@@ -285,7 +247,7 @@ $(".prev", form).live('click', function(){
 
 $(".review").live('click', function(){
     $("fieldset", form).each(function(i) {
-
+        
         $(this).show();
     });
     $('.nav_links').hide();
@@ -300,13 +262,12 @@ $(".review").live('click', function(){
 
 //$("[id^=edit_step]").live('click', function(e, data){
 //    selector = $(this).attr('id').replace( /edit_/, "#" );
-//    step = parseInt($(this).attr('id').replace( /edit_step_/, "" ));
+//    step = parseInt($(this).attr('id').replace( /edit_step_/, "" ));  
 //    $(this).closest('fieldset').hide('slide', { direction: "right" }, function(){
 //        $(selector).show('slide');
 //    });
-//    for(i=step+1; i<fieldsets.length; i++) {
+//    for(i=step+1; i<fieldsets.length; i++) { 
 //        $(".breadcrumb li#breadcrumb_step_" + i).removeClass("visited");
 //    }
 //});
 </script>
-

@@ -26,18 +26,13 @@ class Wine < ActiveRecord::Base
   Max_Attachments = 5
   Max_Attachment_Size = 5.megabyte
 
-  scope :top_wines, lambda { |*top|
-#      { :limit => top.first||=:top_list_size, :order => "average_rating DESC" }
-    if top.empty? || top.first.nil?
-      limit(10).order("average_rating DESC")
-    else
-      limit(0).order("average_rating DESC")
-    end
-  }
+  def self.top (limit = 10)
+    limit(limit)
+  end
 
-#  named_scope :top_wines, :order => "average_rating DESC",
-#                          :limit => 10,
-#                          :include => {:comments => :user}
+  def self.order
+    order("average_rating DESC")
+  end
 
   scope :distinct_wine_types, select("distinct wine_type").order("wine_type")
   scope :distinct_varietals, select("distinct varietal").order("varietal")

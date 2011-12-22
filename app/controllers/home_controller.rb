@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.upcoming_events(Event.top_list_size) # .all.paginate(:page => params[:page])
-    @specials = Special.upcoming_specials(Special.top_list_size) # .all.paginate(:page => params[:page])
-    @wines = Wine.top_wines(Wine.top_list_size) #.paginate(:page => params[:page]) #.all(:limit => 10) #.paginate(:page => params[:page])
+    @events = Event.upcoming.top(Event.top_list_size) # .all.paginate(:page => params[:page])
+    @specials = Special.upcoming.top(Special.top_list_size) # .all.paginate(:page => params[:page])
+    @wines = Wine.top(Wine.top_list_size).order #.paginate(:page => params[:page]) #.all(:limit => 10) #.paginate(:page => params[:page])
     @wineries = Winery.top_wineries.all.paginate(:page => params[:page])
   end
 
