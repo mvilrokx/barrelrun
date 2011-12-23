@@ -150,7 +150,7 @@ Barrelrun::Application.routes.draw do
   match 'home/upcoming_specials.:format', :to => 'home#upcoming_specials'
   match 'home/local_wineries.:format', :to => 'home#local_wineries'
 
-  match '/:controller(/:action(/:id))'
-  match ':controller/:action/:id.:format'
+  match 'searches/search(/:search)' => 'searches#search'
+#  match ':controller(/:action(/:id))'
 
 end

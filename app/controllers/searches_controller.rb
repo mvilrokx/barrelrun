@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  include Geokit::Geocoders
+#  include Geokit::Geocoders
   before_filter :prep_conditions
   require 'ap'
 
@@ -97,9 +97,11 @@ class SearchesController < ApplicationController
       end
 
       if !params[:nearby].blank?
-        res=MultiGeocoder.geocode(params[:nearby].downcase)
+#        res=MultiGeocoder.geocode(params[:nearby].downcase)
+        res=Geocoder.search(params[:nearby].downcase)
         p res
-        @geo=[(res.lat/360)*Math::PI*2, (res.lng/360)*Math::PI*2]
+#        @geo=[(res.lat/360)*Math::PI*2, (res.lng/360)*Math::PI*2]
+        @geo=[(res[0].latitude/360)*Math::PI*2, (res[0].longitude/360)*Math::PI*2]
         # 1_000.0 = 1000 meters = 1km
         if params[:distance].blank?
           params[:distance] = MILES
