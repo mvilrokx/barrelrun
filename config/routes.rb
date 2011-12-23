@@ -151,6 +151,7 @@ Barrelrun::Application.routes.draw do
   match 'home/local_wineries.:format', :to => 'home#local_wineries'
 
   match 'searches/search(/:search)' => 'searches#search'
+  match 'searches/faceted_search(/:search)' => 'searches#faceted_search'
 #  match ':controller(/:action(/:id))'
 
 end
