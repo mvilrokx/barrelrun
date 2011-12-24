@@ -30,7 +30,7 @@ class Wine < ActiveRecord::Base
     limit(limit)
   end
 
-  def self.order
+  def self.sort
     order("average_rating DESC")
   end
 

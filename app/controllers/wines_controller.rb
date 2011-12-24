@@ -30,7 +30,7 @@ class WinesController < ApplicationController
       @wines = Winery.find(params[:winery_id]).wines #.paginate(:page => params[:page], :include => [:pictures], :order => "wines.updated_at DESC")
       path = "wineries/" + params[:winery_id] + "/"
     elsif params[:top]
-      @wines = Wine.top_wines(params[:top]) #.all(:limit => params[:top])
+      @wines = Wine.sort.top(params[:top]) #.all(:limit => params[:top])
       list_header = "Top " + params[:top] + " Wines"
       ordered_list = true
       path = "top/" + params[:top] + "/"
