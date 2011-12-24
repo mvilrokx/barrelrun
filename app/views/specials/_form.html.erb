@@ -1,6 +1,6 @@
 <div class="edit_form">
   <fieldset>
-    <% form_for @special, :html => {:multipart => true } do |f| %>
+    <%= form_for @special, :html => {:multipart => true } do |f| %>
       <%= f.error_messages %>
       <%= f.label :title %>
       <span class="div_texbox">

@@ -8,7 +8,7 @@
   
 <h2>New Comment</h2>
 <div class="entry_form">
-  <% form_for [@commentable, Comment.new] do |f| %>  
+  <%= form_for [@commentable, Comment.new] do |f| %>  
     <%= f.error_messages %>
     <fieldset>
       <ol>

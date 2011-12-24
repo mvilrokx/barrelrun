@@ -15,7 +15,7 @@
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
-          <% form_for @winery, :url => update_claim_user_winery_path(@winery) do |f| %>
+          <%= form_for @winery, :url => update_claim_user_winery_path(@winery) do |f| %>
             <%= f.error_messages %>
             <%= f.label :username, "* User Name" %>
             <span class="div_texbox">

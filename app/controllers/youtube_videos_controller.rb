@@ -63,6 +63,8 @@ class YoutubeVideosController < ApplicationController
     def get_and_authorize_client
       @client = YouTubeIt::OAuthClient.new(YOUTUBE_CONFIG)
       @winery_auth = current_winery.authentications.first(:conditions => ["provider = ?", "you_tube"])
+#      @winery_auth = current_winery.authentications.where("provider = ?", "you_tube")
+      ap @winery_auth
       if @winery_auth
         @client.authorize_from_access(@winery_auth.access_token, @winery_auth.access_secret)
       else

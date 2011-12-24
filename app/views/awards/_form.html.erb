@@ -1,6 +1,6 @@
 <div class="edit_form">
   <fieldset>
-    <% form_for @award, :html => {:multipart => true } do |f| %>
+    <%= form_for @award, :html => {:multipart => true } do |f| %>
       <%= f.error_messages %>
       <%= f.label :wine_id %>
       <span class="div_texbox">
