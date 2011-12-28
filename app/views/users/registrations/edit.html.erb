@@ -77,7 +77,7 @@
           	</span>
 
             <div id="picture_fields">
-            <% f.fields_for :picture do |builder| %>
+            <%= f.fields_for :picture do |builder| %>
               <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
             <% end %>
             </div>

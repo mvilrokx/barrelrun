@@ -18,7 +18,7 @@
       </div>
 
       <div id="picture_fields">
-      <% f.fields_for :pictures do |builder| %>
+      <%= f.fields_for :pictures do |builder| %>
         <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
       <% end %>
       </div>

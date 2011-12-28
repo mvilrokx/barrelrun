@@ -47,7 +47,7 @@
         <%= f.select :invitation_type, options_for_select(['Open to the Public', 'RSVP', 'Wine Club With Guest', 'Wine Club Only'], @event.invitation_type), {}, {:class => "fillout01"} %>
     	</span>
       <div id="picture_fields">
-      <% f.fields_for :pictures do |builder| %>
+      <%= f.fields_for :pictures do |builder| %>
         <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
       <% end %>
       </div>

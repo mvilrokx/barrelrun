@@ -11,7 +11,7 @@
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <%= f.error_messages %>
           <%= f.hidden_field(:ownership_status, :value => "CLAIMED") %>
-          <% f.fields_for :subscription do |subscription_builder| %>
+          <%= f.fields_for :subscription do |subscription_builder| %>
             <%= subscription_builder.hidden_field(:plan_id, :value => "Free") %>
         	<% end %>
 	     * Required fields

@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       format.html {redirect_to favorites_url}
       format.xml
-      format.js
+      format.js { render :json => [@favorable.class.name.downcase.pluralize, @favorable.id, @favorite.id]}
     end
     rescue Exception => e
       flash[:alert] =  'An error occured while you were creating this favorite.  We have been notified about this and will try to resolve the issue ASAP.'
@@ -37,7 +37,7 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       format.html {redirect_to favorites_url}
       format.xml
-      format.js
+      format.js { render :json => [@favorable.class.name.downcase.pluralize, @favorable.id]}
     end
     rescue Exception => e
       flash[:alert] =  'An error occured while you were removing this favorite.  We have been notified about this and will try to resolve the issue ASAP.'

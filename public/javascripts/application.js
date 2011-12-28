@@ -541,7 +541,19 @@ $('#new_comment').live('submit', function(){
 * Hijack "Add as Favorite" link
 */
 $('.add_as_favorite').live('click', function() {
-    $.post($(this).attr('href'), null, null, "script");
+    $this = $(this);
+    $.post(
+      $this.attr('href'),
+      function(data) {
+        $this.text('Remove from favorites');
+        $this.attr(
+          {class: 'remove_as_favorite', 
+           title: 'Remove From My Favorites',
+           href: "/" + data[0] + "/" + data[1] + "/favorites/" + data[2]
+        });
+      },
+      "json"
+    );
     return false;
 });
 
@@ -549,10 +561,20 @@ $('.add_as_favorite').live('click', function() {
 * Hijack click on Remove as Favorite link
 */
 $('.remove_as_favorite').live('click', function() {
-    $.ajax({ url: $(this).attr('href'),
-             type: "delete",
-             dataType: "script"
-             });
+    $this = $(this);
+    $.ajax({ 
+      url: $this.attr('href'),
+      type: "delete",
+      success: function(data) {
+        $this.text('Add to My Favorites');
+        $this.attr(
+          {class: 'add_as_favorite', 
+           title: 'Add to My Favorites',
+           href: "/" + data[0] + "/" + data[1] + "/favorites"
+        });
+      },      
+      dataType: "json"
+    });
     return false;
 });
 
