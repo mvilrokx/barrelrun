@@ -1,7 +1,7 @@
 module ApplicationHelper
   # Method used to add a title to each page
   def title(page_title)
-    content_for(:title) { page_title }
+    content_for(:title, page_title.to_s)
   end
 
   # Method used to determine which tab is active

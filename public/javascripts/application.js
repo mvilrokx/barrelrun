@@ -54,6 +54,14 @@ $(document).ready(function(){
    });
 });
 
+// Need this to get round an issue with rails_ujs which prevents form submission
+// when required fields are present but does not show an error message indicating
+// why it is not submitting.  When we implement Modernizr we should remove this.
+$('form').live('ajax:aborted:required', function(event, elements){
+  // If user answers 'OK' to confirm dialog, we return false
+  return false;
+});
+
 // Begin More/Less
 $(document).ready(function() {
 //alert($('.description').height());

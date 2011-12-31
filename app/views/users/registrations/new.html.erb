@@ -8,12 +8,12 @@
 
       <h2><%= resource_name.to_s.humanize %> Sign up</h2>            
       <div class="edit_form">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f| %>
         <fieldset>
 	<p> * Required fields</p>
           <div class="subheading">
             <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
-          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f| %>
             <%= f.error_messages %>
             <%= f.label :username, "* User Name" %>
             <span class="div_texbox">
@@ -106,12 +106,12 @@
             <span class="div_texbox">
               <%= f.submit "Sign up" %>
           	</span>
-          <% end -%>
-        </fieldset>
-      <%= render :partial => "shared/devise_links" %>
-      <div id="jstemplates">
-        <%= yield :jstemplates %>
-      </div>
+          </fieldset>
+        <% end -%>
+        <%= render :partial => "shared/devise_links" %>
+        <div id="jstemplates">
+          <%= yield :jstemplates %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Barrelrun - <%= yield(:title)|| "Discover and connect" %></title>
+  <title>Barrelrun - <%= content_for?(:title) ? yield(:title) : "Discover and connect" %></title>
   <%=stylesheet_link_tag "barrelrun",:media=> "all" %>
   <%=stylesheet_link_tag "barrelrun_mobile" if mobile_devise? %>
   <%=stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
