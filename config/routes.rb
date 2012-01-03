@@ -66,7 +66,7 @@ Barrelrun::Application.routes.draw do
       get :upload
       get :add_to_winery_details
       get :remove_from_winery_details
-      get :make_primary
+      put :make_primary
     end
   end
   resources :credit_cards
@@ -155,6 +155,8 @@ Barrelrun::Application.routes.draw do
 
   match 'searches/search(/:search)' => 'searches#search'
   match 'searches/faceted_search(/:search)' => 'searches#faceted_search'
-#  match ':controller(/:action(/:id))'
+  
+#  match 'pages/landingpage' => 
+  match ':controller(/:action(/:id))'
 
 end
