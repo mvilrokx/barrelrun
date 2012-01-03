@@ -64,6 +64,9 @@ Barrelrun::Application.routes.draw do
   resources :youtube_videos do
     collection do
       get :upload
+      get :add_to_winery_details
+      get :remove_to_winery_details
+      get :make_primary
     end
   end
   resources :credit_cards
