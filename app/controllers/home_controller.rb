@@ -79,7 +79,7 @@ end
   
   # None of these are used by Web I believe, they are used as APIs by iPhone app
   def upcoming_events
-      @events = Event.upcoming_events.all
+      @events = Event.upcoming
       respond_to do |format|
          format.html { render :partial=>"home/upcoming_events", :locals=>{:upcoming_events=>@events} }
          format.json { render :layout => false, :json => @events }
@@ -88,7 +88,7 @@ end
   end
 
   def upcoming_specials
-      @specials = Special.upcoming_specials.all
+      @specials = Special.upcoming
       respond_to do |format|
          format.html { render :partial=>"home/upcoming_specials", :locals=>{:upcoming_specials=>@specials} }
          format.json { render :layout => false, :json => @specials }
@@ -97,7 +97,7 @@ end
   end
 
   def top_wines
-      @wines = Wine.top_wines.all
+      @wines = Wine.top
       respond_to do |format|
          format.html { render :partial=>"home/top_wines", :locals=>{:top_wines=>@wines} }
          format.json { render :layout => false, :json => @wines }

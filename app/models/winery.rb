@@ -97,8 +97,8 @@ class Winery < ActiveRecord::Base
  	protected
 
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
+    	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
  	  end
 
   	def store_customer_in_vault
@@ -107,7 +107,7 @@ class Winery < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
       end
       credit_cards do |cc|
@@ -126,8 +126,8 @@ class Winery < ActiveRecord::Base
         else
           result.errors.each do |error|
             ap error
-            errors.add_to_base error.message
-            self.creditable.errors.add_to_base error.message
+            errors[:base] << error.message
+            self.creditable.errors[:base] << error.message
 
           end
         end
@@ -138,7 +138,7 @@ class Winery < ActiveRecord::Base
       result = Braintree::Customer.delete(username)
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
       end
  	  end

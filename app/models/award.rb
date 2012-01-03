@@ -15,8 +15,8 @@ class Award < ActiveRecord::Base
   protected
 
     def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-	    pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
+	    pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
     end
 
 end

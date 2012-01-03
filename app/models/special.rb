@@ -72,12 +72,12 @@ class Special < ActiveRecord::Base
 
  	protected
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
+    	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
     end
     def check_for_comments_or_ratings
       if comments.count > 0 || ratings.count > 0
-        errors.add_to_base("You cannot delete this object because users have already commented on it or rated it.")
+        errors[:base] << "You cannot delete this object because users have already commented on it or rated it."
         return false
       end
     end

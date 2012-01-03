@@ -39,8 +39,8 @@ class CreditCard < ActiveRecord::Base
       else
         result.errors.each do |error|
           ap error
-          errors.add_to_base error.message
-          self.creditable.errors.add_to_base error.message
+          errors[:base] << error.message
+          self.creditable.errors[:base] << error.message
           
         end
         return false # don't create a new record
@@ -63,7 +63,7 @@ class CreditCard < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
         return false # don't update record
       end
