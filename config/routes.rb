@@ -65,7 +65,7 @@ Barrelrun::Application.routes.draw do
     collection do
       get :upload
       get :add_to_winery_details
-      get :remove_to_winery_details
+      get :remove_from_winery_details
       get :make_primary
     end
   end
