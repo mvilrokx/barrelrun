@@ -362,8 +362,8 @@ $(document).ready(function(){
                 this.href,
                 {_method:'delete'},
                 function(data, status){
-                    if (data.length > 0){
-                        addNotice("<p>" + data[0][1] + "</p>");
+                    if (data.base.length > 0){
+                        addNotice("<p>" + data.base[0] + "</p>");
                     }
                     else {
                         $(row).fadeOut(
