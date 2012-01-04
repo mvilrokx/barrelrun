@@ -6,7 +6,8 @@ Barrelrun::Application.routes.draw do
 
   resources :authentications
 
-  devise_for :wineries #, :controller => "wineries/registrations"
+#  devise_for :wineries
+  devise_for :wineries, :controllers => { :registrations => "wineries/registrations" }
   devise_for :users
 
   resources :wines do
