@@ -4,7 +4,7 @@
   <title>Barrelrun - <%= content_for?(:title) ? yield(:title) : "Discover and connect" %></title>
   <%=stylesheet_link_tag "barrelrun",:media=> "all" %>
   <%=stylesheet_link_tag "barrelrun_mobile" if mobile_devise? %>
-  <%=stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
+  <%=stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
   <%=stylesheet_link_tag "css/prettyPhoto.css" %>
   <%=stylesheet_link_tag "css3buttons.css" %>
   <script type="text/javascript"><!--
@@ -12,10 +12,10 @@
      return '<%= form_authenticity_token if protect_against_forgery? -%>';
    }
   //--></script>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js' %>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' %>
-  <%= javascript_include_tag 'http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js' %>
-  <%= javascript_include_tag 'http://s7.addthis.com/js/250/addthis_widget.js' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' %>
+  <%= javascript_include_tag '//cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js' %>
+  <%= javascript_include_tag '//s7.addthis.com/js/250/addthis_widget.js' %>
   <%= javascript_include_tag 'flowplayer-3.2.4.min.js' %>
   <%= javascript_include_tag 'jwplayer.js' %>
   <%= javascript_include_tag 'application' %>
