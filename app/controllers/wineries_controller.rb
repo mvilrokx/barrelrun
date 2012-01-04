@@ -6,9 +6,10 @@ class WineriesController < ApplicationController
     @wineries = @search.all
     respond_to do |format|
       format.html
-      format.json { render :layout => false,
-                           :json => @wineries.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
-                  }
+      format.json { render :layout => false, :json => @wineries }
+#      format.json { render :layout => false,
+#                           :json => @wineries.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
+#                  }
       format.mobile
     end
   end
@@ -55,9 +56,10 @@ class WineriesController < ApplicationController
       format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wineries,
                                                                        :ordered_list => true,
                                                                        :list_header => "Top 10 Wineries" } }
-      format.json { render :layout => false,
-                           :json => @wineries.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
-                  }
+      format.json { render :layout => false, :json => @wineries }
+#      format.json { render :layout => false,
+#                           :json => @wineries.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
+#                  }
       format.js
       format.mobile
     end
