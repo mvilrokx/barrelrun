@@ -4,7 +4,7 @@
      <a class="button home" href="/">Back</a>
   </div>
 
-   <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+   <%= form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
      <%= f.error_messages %>
       <fieldset>
          <legend>Sign In</legend>

@@ -3,7 +3,7 @@
     <a class="button cancel" href="/">Back</a>
   </div>
 
-<% form_for resource_name, resource, :url => password_path(resource_name) do |f| %>
+<%= form_for resource_name, resource, :url => password_path(resource_name) do |f| %>
   <%= f.error_messages %>
 
   <p><%= f.label :email %></p>

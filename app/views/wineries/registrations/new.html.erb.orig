@@ -1,0 +1,273 @@
+<% title(resource_name.to_s.humanize + " Sign up") %>
+
+<div class="container">
+  <hr class="space">
+  <div class="push-3 span-18 last main">
+    <hr class="space">
+    <div class="push-1 span-16">
+    
+      <h2><%= resource_name.to_s.humanize %> Sign up</h2>
+      <div class="edit_form">
+        <% form_for resource_name, resource.with_cc_and_subscription, :url => registration_path(resource_name) do |f| -%>
+          <%= f.error_messages %>
+          <fieldset>
+            <legend class="subheading">Subscription</legend>
+            <% f.fields_for :subscription do |subscription_builder| %>  
+              <%= subscription_builder.label :plan_id, 'Your Level' %>
+              <span class="div_texbox">
+                <%= subscription_builder.select(:plan_id,
+                      options_from_collection_for_select(RegistrationLevel.all, 
+                                                         :name, 
+                                                         :name_price, 
+                                                         (session[:registration_level]||"Free").capitalize) ) %>
+            	</span>
+          	<% end %>
+          	<hr>
+          </fieldset>
+          <fieldset>
+            <legend class="subheading"><%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %>Account</legend>
+           <%= f.label :username %>
+            <span class="div_texbox">
+              <%= tag(:input, {:id => "winery_username",
+                               :class => "fillout01",
+                               :required => true,
+                               :name => "winery[username]", 
+                               :type => :text, 
+                               :placeholder => 'screen name, 19 chars or less', 
+                               :value => f.object.username}) %>
+          	</span>
+          	
+            <%= f.label :password %>
+            <span class="div_texbox">
+              <%= f.password_field :password, :required => true, :class => "fillout01" %>
+          	</span>
+            <%= f.label :password_confirmation %>
+            <span class="div_texbox">
+              <%= f.password_field :password_confirmation , :class => "fillout01" %>
+          	</span>
+          	<hr>
+          </fieldset>
+          <fieldset>
+            <legend class="subheading">
+              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+            </legend>
+            <%= f.label :winery_name %>
+            <span class="div_texbox">
+              <%= f.text_field :winery_name, :required => true, :class => "fillout01" %>
+          	</span>
+            <%= f.label :owner_gm_name %>
+            <span class="div_texbox">
+              <%= f.text_field :owner_gm_name, :class => "fillout02" %>
+          	</span>
+            <%= f.label :owner_gm_email %>
+            <span class="div_texbox">
+              <%= f.text_field :owner_gm_email, :class => "fillout02" %>
+          	</span>
+            <%= f.label :contact_first_name%>
+            <span class="div_texbox">
+              <%= f.text_field :contact_first_name, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :contact_last_name %>
+            <span class="div_texbox">
+              <%= f.text_field :contact_last_name, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :telephone %>
+            <span class="div_texbox">
+              <%= f.text_field :telephone, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :email %>
+            <span class="div_texbox">
+              <%= tag(:input, {:id => "winery_email", :name => "winery[email]", :required => true, 
+                               :type => :email, :placeholder => 'e.g. user@domain.com', 
+                               :value => f.object.email, :class => "fillout02"}) %>
+          	</span>
+            <%= f.label :address %>
+            <span class="div_texbox">
+              <%= f.text_field :address, :required => true, :class => "fillout01" %>
+          	</span>
+            <%= f.label :address2 %>
+            <span class="div_texbox">
+              <%= f.text_field :address2, :class => "fillout01" %>
+          	</span>
+            <%= f.label :city %>
+            <span class="div_texbox">
+              <%= f.text_field :city, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :state %>
+            <span class="div_texbox">
+              <%= f.text_field :state, :required => true, :class => "fillout04" %>
+          	</span>
+            <%= f.label :zipcode %>
+            <span class="div_texbox">
+              <%= f.text_field :zipcode, :required => true, :class => "fillout04" %>
+          	</span>
+            <%= f.label :country %>
+            <span class="div_texbox">
+              <%= f.text_field :country, :class => "fillout04" %>
+          	</span>
+            <%= f.label :website_url %>
+            <span class="div_texbox">
+              <%= f.text_field :website_url, :required => true, :class => "fillout01" %>
+          	</span>
+          	<hr>
+          </fieldset>
+          <fieldset>
+            <legend class="subheading">
+              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Credit Card
+            </legend>
+            <% f.fields_for :credit_cards do |cc_builder| %>  
+              <%= cc_builder.label :card_number %>
+              <span class="div_texbox">
+                <%= cc_builder.text_field :card_number, :required => true, :class => "fillout01" %>
+            	</span>
+              <%= cc_builder.label :card_verification_value %>
+              <span class="div_texbox">
+                <%= cc_builder.text_field :card_verification_value, :required => true, :class => "fillout01" %>
+            	</span>
+              <%= cc_builder.label :expiration_date %>
+              <span class="div_texbox">
+                <%= cc_builder.date_select :expiration_date, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+            	</span>
+
+            <% end -%>
+            <span class="div_texbox">
+              <%= f.submit "Sign up" %>
+          	</span>
+          	<hr>
+          </fieldset>
+        <% end -%>
+      <%= render :partial => "shared/devise_links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+// var span_start = "<span class='div_texbox nav_links'>";
+// var span_end = "</span>";
+// var prev = "<a href='#' class='prev'>< Back</a>";
+// var next = "<a href='#' class='next'>Next ></a>";
+// var review = "<a href='#' class='review'>Review ></a>";
+//var breadcrum = "<ul class='breadcrumb'>";
+
+
+// var originalForm = $(".edit_form form").clone();
+// $('.edit_form form input[type="submit"]').hide();
+
+// $(".edit_form form fieldset").each(function(i) {
+//    $(this).find('legend').hide();
+//    if (i != 0) {
+//        $(this).hide();
+//        breadcrum = breadcrum + "<li>" + $(this).find('legend').text() + "</li>"
+//        if (i == $(".edit_form form fieldset").size()-1) {
+//            $(this).append(span_start + prev  + " | " + review + span_end);
+//            breadcrum = breadcrum + "<li class='last'>" + $(this).find('legend').html() + "</li>"
+//        } else {
+//            $(this).append(span_start + prev + " | " + next + span_end);        
+//        }
+//    } else {
+//        $(this).append(span_start + next + span_end);        
+//        breadcrum = breadcrum + "<li class='first visited'>" + $(this).find('legend').text() + "</li>"
+//    };
+//});
+
+// breadcrum = breadcrum + "<li class='last'>Review</li>"
+// breadcrum = breadcrum + "</ul>";
+// $(".edit_form form").prepend(breadcrum);
+    
+
+// $(".review").live('click', function(){
+//    $(".edit_form form").replaceWith(originalForm);
+//    $(".edit_form form fieldset").each(function(i) {
+//        $(this).show();
+//    });
+//    $('.nav_links').remove();
+//    $(".edit_form form input").each(function(i) {
+//        $(this).attr('disabled', true);
+//    });
+//    $('.edit_form form input[type="submit"]').show();
+//    $(".breadcrumb li.visited:last").next().addClass("visited");
+//    $(".edit_form form").show('slide', { direction: "right" });
+// });
+</script>
+
+<script type="text/javascript">
+var breadcrum = $("<ul class='breadcrumb'></ul>");
+var navigation = "<span class='div_texbox nav_links'><span>";
+var fieldsets = new Array();
+var fs_name = new Array();
+
+var form = $(".edit_form form");
+form.prepend(breadcrum);
+
+$("fieldset", form).each(function(i) {
+    fieldsets[i] = $(this);
+    fieldsets[i].attr('id', 'step' + i);
+    fs_name[i] = fieldsets[i].find('legend').text();
+    fieldsets[i].find('legend').hide();
+    fieldsets[i].append(navigation);
+    $('.breadcrumb', form).append("<li id='breadcrumb_step_" + i + "'>" + fs_name[i] + "</li>");
+});
+$('.breadcrumb', form).append("<li class='last' id='breadcrumb_step_" + fieldsets.length + "'>Review</li>");
+// hide the submit button, it will be reveiled on the review page
+$('input[type="submit"]', form).hide();
+
+for(i=0; i<fieldsets.length; i++) {
+    switch(i) {
+        case 0: //first fieldset
+            $('.nav_links', fieldsets[i]).append("<a href='#' class='next button'>" + fs_name[i+1] + " ></a>");
+            $('#breadcrumb_step_' + i, form).addClass('first visited');
+            break;
+        case fieldsets.length-1: //Last fieldset
+            fieldsets[i].hide();
+            $('.nav_links', fieldsets[i]).append("<a href='#' class='prev button'>< " + fs_name[i-1] + "</a>&nbsp;<a href='#' class='review button'>Review ></a>");
+//            $('#breadcrumb_step_' + i, form).addClass('last');
+            break;
+        default: // all other fieldsets
+            fieldsets[i].hide();
+            $('.nav_links', fieldsets[i]).append("<a href='#' class='prev button'>< " + fs_name[i-1] + "</a>&nbsp;<a href='#' class='next button'>" + fs_name[i+1] + " ></a>");
+    }
+}
+
+$(".next", form).live('click', function(){
+    current_fieldset = $(this)
+    current_fieldset.closest('fieldset').hide('slide', function(){
+        current_fieldset.parents('fieldset:first').next('fieldset').show('slide', { direction: "right" });
+    });
+    $(".breadcrumb li.visited:last").next().addClass("visited");
+});
+
+$(".prev", form).live('click', function(){
+    current_fieldset = $(this)
+    $(this).closest('fieldset').hide('slide', { direction: "right" }, function(){
+      current_fieldset.parents('fieldset:first').prev('fieldset').show('slide');
+    });
+    $(".breadcrumb li.visited:last").removeClass("visited");
+});
+
+$(".review").live('click', function(){
+    $("fieldset", form).each(function(i) {
+        
+        $(this).show();
+    });
+    $('.nav_links').hide();
+    $('legend').show();
+//    $("input", form).each(function(i) {
+//        $(this).attr('disabled', true);
+//    });
+    $('input[type="submit"]', form).show();
+    $(".breadcrumb li.visited:last").next().addClass("visited");
+    form.show('slide', { direction: "right" });
+});
+
+//$("[id^=edit_step]").live('click', function(e, data){
+//    selector = $(this).attr('id').replace( /edit_/, "#" );
+//    step = parseInt($(this).attr('id').replace( /edit_step_/, "" ));  
+//    $(this).closest('fieldset').hide('slide', { direction: "right" }, function(){
+//        $(selector).show('slide');
+//    });
+//    for(i=step+1; i<fieldsets.length; i++) { 
+//        $(".breadcrumb li#breadcrumb_step_" + i).removeClass("visited");
+//    }
+//});
+</script>

@@ -6,10 +6,11 @@ class CreditCard < ActiveRecord::Base
 #  before_create :create_credit_card_in_vault
   before_update :update_credit_card_in_vault
   before_destroy :destroy_credit_card_in_vault
+  after_find :vault_info
 
   protected
 
-    def after_find # Get vault info from Braintree
+    def vault_info
       braintree_credit_card_data = Braintree::CreditCard.find(token)
       self.card_number = braintree_credit_card_data.masked_number
       self.card_type = braintree_credit_card_data.card_type
@@ -38,8 +39,8 @@ class CreditCard < ActiveRecord::Base
       else
         result.errors.each do |error|
           ap error
-          errors.add_to_base error.message
-          self.creditable.errors.add_to_base error.message
+          errors[:base] << error.message
+          self.creditable.errors[:base] << error.message
           
         end
         return false # don't create a new record
@@ -62,7 +63,7 @@ class CreditCard < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
         return false # don't update record
       end

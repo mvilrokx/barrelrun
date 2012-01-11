@@ -30,18 +30,13 @@ class Event < ActiveRecord::Base
   validates_presence_of :title
   before_destroy :check_for_comments_or_ratings
 
-  named_scope :upcoming_events, lambda { |*top|
-    if top.empty? || top.first.nil?
-      { :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
-    else
-      { :limit => top[0],
-        :conditions => ["end_date >= :today", {:today => Date.today}],
-        :order => "start_date DESC"
-      }
-    end
-  }
+  def self.top (limit = 10)
+    limit(limit)
+  end
+  
+  def self.upcoming
+    where("end_date >= ?", Date.today).order("start_date DESC")
+  end
 
 #  named_scope :upcoming_events, :conditions => ["end_date >= :today", {:today => Date.today}],
 #                                :order => "start_date DESC",
@@ -79,13 +74,13 @@ class Event < ActiveRecord::Base
  	protected
 
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
+    	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
  	  end
 
     def check_for_comments_or_ratings
       if comments.count > 0 || ratings.count > 0
-        errors.add_to_base("You cannot delete this object because users have already commented on it or rated it.")
+        errors[:base] << "You cannot delete this object because users have already commented on it or rated it."
         return false
       end
     end

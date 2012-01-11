@@ -1,9 +1,6 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  protect_from_forgery
 
   before_filter :prepare_for_mobile, :set_subscription
   after_filter :flash_to_headers
@@ -63,7 +60,4 @@ class ApplicationController < ActionController::Base
       flash.discard  # don't want the flash to appear when you reload page
     end
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
 end
-

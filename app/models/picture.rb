@@ -12,7 +12,7 @@ class Picture < ActiveRecord::Base
                                 :xlarge => "1200x1200>"
                                },
                     :storage => :s3,
-                    :s3_credentials =>  "#{RAILS_ROOT}/config/s3.yml",
+                    :s3_credentials =>  "#{Rails.root}/config/s3.yml",
 #                    :url => "/assets/pictures/:class/:id/:style/:basename.:extension",
 #                    :path => ":rails_root/public/assets/pictures/:class/:id/:style/:basename.:extension"
                     :path => "/assets/:id/:style/:filename"

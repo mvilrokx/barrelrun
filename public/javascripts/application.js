@@ -54,6 +54,14 @@ $(document).ready(function(){
    });
 });
 
+// Need this to get round an issue with rails_ujs which prevents form submission
+// when required fields are present but does not show an error message indicating
+// why it is not submitting.  When we implement Modernizr we should remove this.
+$('form').live('ajax:aborted:required', function(event, elements){
+  // If user answers 'OK' to confirm dialog, we return false
+  return false;
+});
+
 // Begin More/Less
 $(document).ready(function() {
 //alert($('.description').height());
@@ -354,8 +362,8 @@ $(document).ready(function(){
                 this.href,
                 {_method:'delete'},
                 function(data, status){
-                    if (data.length > 0){
-                        addNotice("<p>" + data[0][1] + "</p>");
+                    if (data.base.length > 0){
+                        addNotice("<p>" + data.base[0] + "</p>");
                     }
                     else {
                         $(row).fadeOut(
@@ -541,7 +549,19 @@ $('#new_comment').live('submit', function(){
 * Hijack "Add as Favorite" link
 */
 $('.add_as_favorite').live('click', function() {
-    $.post($(this).attr('href'), null, null, "script");
+    $this = $(this);
+    $.post(
+      $this.attr('href'),
+      function(data) {
+        $this.text('Remove from favorites');
+        $this.attr(
+          {class: 'remove_as_favorite', 
+           title: 'Remove From My Favorites',
+           href: "/" + data[0] + "/" + data[1] + "/favorites/" + data[2]
+        });
+      },
+      "json"
+    );
     return false;
 });
 
@@ -549,10 +569,20 @@ $('.add_as_favorite').live('click', function() {
 * Hijack click on Remove as Favorite link
 */
 $('.remove_as_favorite').live('click', function() {
-    $.ajax({ url: $(this).attr('href'),
-             type: "delete",
-             dataType: "script"
-             });
+    $this = $(this);
+    $.ajax({ 
+      url: $this.attr('href'),
+      type: "delete",
+      success: function(data) {
+        $this.text('Add to My Favorites');
+        $this.attr(
+          {class: 'add_as_favorite', 
+           title: 'Add to My Favorites',
+           href: "/" + data[0] + "/" + data[1] + "/favorites"
+        });
+      },      
+      dataType: "json"
+    });
     return false;
 });
 

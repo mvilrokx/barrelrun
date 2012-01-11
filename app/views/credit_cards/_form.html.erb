@@ -1,6 +1,6 @@
 <div class="edit_form">
   <fieldset>
-    <% form_for @credit_card, :html => {:autocomplete => "off"} do |f| %>
+    <%= form_for @credit_card, :html => {:autocomplete => "off"} do |f| %>
       <%= f.error_messages %>
       <%= f.label :card_number %>
       <span class="div_texbox">

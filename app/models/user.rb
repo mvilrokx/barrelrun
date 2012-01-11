@@ -23,11 +23,13 @@ class User < ActiveRecord::Base
   validates_each :birthdate do |model, attr, value|
     model.errors.add(attr, 'You must be at least 21 years old to be able to register.') if  value > Date.new((Date.today.year - 21),(Date.today.month),(Date.today.day))
   end   
-   # Include default devise modules. Others available are:
-   # , :token_authenticatable, :lockable, :timeoutable and :activatable
-  devise :registerable, :database_authenticatable, :recoverable, 
-        :rememberable, :trackable, :validatable, :confirmable,
-        :http_authenticatable
+
+
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :encryptable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, 
@@ -39,26 +41,19 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for GeoCoding
   def complete_address
-    [address, city, state, zipcode, country].join(', ')
+    [address, city, state, zipcode, country].compact.join(', ')
   end
-
-  acts_as_mappable # :auto_geocode => {:field=>:complete_address} => this only works on creation, not on update so I added the code below to handle both update and create.
-
-  before_validation :geocode_address
 
   Max_Attachments = 1
   Max_Attachment_Size = 5.megabyte
 
+  geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng
+  after_validation :geocode          # auto-fetch coordinates
+
   private
 
-    def geocode_address
-     geo = Geokit::Geocoders::MultiGeocoder.geocode(complete_address)
-     errors.add(:complete_address, "Could not Geocode address") if !geo.success
-     self.lat, self.lng = geo.lat,geo.lng if geo.success
-    end
-
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if picture.length > Max_Attachments
-    	picture.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if picture.length > Max_Attachments
+    	picture.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
  	  end
 end

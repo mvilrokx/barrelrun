@@ -8,7 +8,7 @@
       <h2><%= resource_name.to_s.humanize %> Sign up</h2>
       <em>Please search our website to see if your winery already exists.  If it does, then register by claiming your winery.  If it does not exist, then proceed with the registration process using this page.  Thank you.</em>
       <div class="edit_form">
-        <% form_for resource_name, resource.with_cc_and_subscription, :url => registration_path(resource_name) do |f| -%>
+        <%= form_for resource_name, resource.with_cc_and_subscription, :url => registration_path(resource_name) do |f| -%>
           <%= f.error_messages %>
           <%= f.hidden_field(:ownership_status, :value => "CLAIMED") %>
           <% f.fields_for :subscription do |subscription_builder| %>

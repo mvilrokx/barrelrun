@@ -20,7 +20,7 @@ Devise.setup do |config|
   # authentication tools as :clearance_sha1, :authlogic_sha512 (then you should set
   # stretches above to 20 for default behavior) and :restful_authentication_sha1
   # (then you should set stretches to 10, and copy REST_AUTH_SITE_KEY to pepper)
-  # config.encryptor = :sha1
+  config.encryptor = :sha1
 
   # Configure which keys are used when authenticating an user. By default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -69,6 +69,7 @@ Devise.setup do |config|
   # (requires mongo_ext installed) and :data_mapper (experimental).
   # require 'devise/orm/mongo_mapper'
   # config.orm = :mongo_mapper
+  require 'devise/orm/active_record'
 
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "sessions/users/new". It's turned off by default because it's slower if you

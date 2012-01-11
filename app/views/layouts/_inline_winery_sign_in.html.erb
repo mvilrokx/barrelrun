@@ -1,5 +1,5 @@
 <div id="signin_menu">
-<% form_for (Winery.new, :url => {:controller=>'wineries', :action=>'sign_in'}) do |f| -%>
+<%  form_for("winery", :url => winery_session_path) do |f| %>
   <%= f.error_messages %>
    <fieldset>
       <ol>

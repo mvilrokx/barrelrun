@@ -3,7 +3,7 @@
 <div class="container">
   <hr class="space">
   <div class="prepend-1 span-5">
-    <% form_tag '/searches/faceted_search', :method => "get" do -%>
+    <%= form_tag '/searches/faceted_search', :method => "get" do -%>
       <div class="accordion">
 
         <%- unless params["class"].nil? -%>

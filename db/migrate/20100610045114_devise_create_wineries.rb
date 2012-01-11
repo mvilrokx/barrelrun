@@ -6,6 +6,7 @@ class DeviseCreateWineries < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
+      t.encryptable
       # t.lockable
 
       t.timestamps

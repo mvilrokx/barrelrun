@@ -1,0 +1,119 @@
+<% title(resource_name.to_s.humanize + " Sign up") %>
+
+<div class="container">
+  <hr class="space">
+  <div class="push-3 span-18 last main">
+    <hr class="space">
+    <div class="push-1 span-16">
+
+      <h2><%= resource_name.to_s.humanize %> Sign up</h2>            
+      <div class="edit_form">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f| %>
+        <fieldset>
+	<p> * Required fields</p>
+          <div class="subheading">
+            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
+          </div>
+            <%= f.error_messages %>
+            <%= f.label :username, "* User Name" %>
+            <span class="div_texbox">
+              <%= tag(:input, {:id => "user_username",
+                               :class => "fillout01",
+                               :required => true,
+                               :name => "user[username]",
+                               :type => :text,
+                               :placeholder => 'screen name, 19 chars or less',
+                               :value => f.object.username}) %>
+          	</span>
+
+            <%= f.label :password, "* Password" %>
+            <span class="div_texbox">
+               <%= f.password_field :password, :required => true, :class => "fillout01" %>
+          	</span>
+            <%= f.label :password_confirmation, "* Password confirmation" %>
+            <span class="div_texbox">
+              <%= f.password_field :password_confirmation, :required => true, :class => "fillout01" %>
+          	</span>
+          	<hr>
+            <div class="subheading">
+              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+            </div>
+            <%= f.label :first_name, "* First name" %>
+            <span class="div_texbox">
+              <%= f.text_field :first_name, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :last_name, "* Last Name" %>
+            <span class="div_texbox">
+              <%= f.text_field :last_name, :required => true, :class => "fillout03" %>
+          	</span>
+            <%= f.label :email , "* Email"%>
+            <span class="div_texbox">
+              <%= tag(:input, {:id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout01"}) %>
+          	</span>
+
+
+            <%= f.label :birthdate, "* Birthdate" %>  
+            <span class="div_texbox">
+              <%= f.date_select(:birthdate, {:order => [:day, :month, :year], :start_year => Time.now.year-110, :end_year => Time.now.year,}) %> <img src="/images/question.jpg" title="Because the site deals with alcohol you must be a certain age to register."/>
+          	</span>
+
+	
+
+            <%= f.label :address %>
+            <span class="div_texbox">
+              <%= f.text_field :address, :class => "fillout01" %>
+          	</span>
+            <%= f.label :address2 %>
+            <span class="div_texbox">
+              <%= f.text_field :address2, :class => "fillout01" %>
+          	</span>
+            <%= f.label :city %>
+            <span class="div_texbox">
+              <%= f.text_field :city, :class => "fillout03" %>
+          	</span>
+            <%= f.label :state %>
+            <span class="div_texbox">
+              <%= f.text_field :state, :class => "fillout04" %>
+          	</span>
+            <%= f.label :zipcode %>
+            <span class="div_texbox">
+              <%= f.text_field :zipcode, :class => "fillout04" %>
+          	</span>
+            <%= f.label :country %>
+            <span class="div_texbox">
+              <%= f.text_field :country, :class => "fillout04" %>
+          	</span>
+            <%= f.label :telephone %>
+            <span class="div_texbox">
+              <%= f.text_field :telephone, :class => "fillout03" %>
+          	</span>
+
+            <%= f.label :accepts_terms_of_service, "* Accept" %>
+            <span class="div_texbox">
+              <%= f.check_box :accepts_terms_of_service, :required => true %>&nbsp;&nbsp;<%=link_to "Terms of Service", '/pages/user_terms_of_service', :class=>"dialog_link" %>
+          	</span>
+
+            <div id="picture_fields">
+            <%= f.fields_for :picture do |builder| %>
+              <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>
+            <% end %>
+            </div>
+
+            <span class="div_texbox"><%= add_child_link "Add Avatar", :picture %></span>
+
+            <%= new_child_fields_template f, :picture, {:partial => "shared/picture"} %>
+
+            <span class="div_texbox">
+              <%= f.submit "Sign up" %>
+          	</span>
+          </fieldset>
+        <% end -%>
+        <%= render :partial => "shared/devise_links" %>
+        <div id="jstemplates">
+          <%= yield :jstemplates %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

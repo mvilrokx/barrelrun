@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.upcoming_events(Event.top_list_size) # .all.paginate(:page => params[:page])
-    @specials = Special.upcoming_specials(Special.top_list_size) # .all.paginate(:page => params[:page])
-    @wines = Wine.top_wines(Wine.top_list_size) #.paginate(:page => params[:page]) #.all(:limit => 10) #.paginate(:page => params[:page])
+    @events = Event.upcoming.top(Event.top_list_size) # .all.paginate(:page => params[:page])
+    @specials = Special.upcoming.top(Special.top_list_size) # .all.paginate(:page => params[:page])
+    @wines = Wine.sort.top(Wine.top_list_size) #.paginate(:page => params[:page]) #.all(:limit => 10) #.paginate(:page => params[:page])
     @wineries = Winery.top_wineries.all.paginate(:page => params[:page])
   end
 
@@ -79,7 +79,7 @@ end
   
   # None of these are used by Web I believe, they are used as APIs by iPhone app
   def upcoming_events
-      @events = Event.upcoming_events.all
+      @events = Event.upcoming
       respond_to do |format|
          format.html { render :partial=>"home/upcoming_events", :locals=>{:upcoming_events=>@events} }
          format.json { render :layout => false, :json => @events }
@@ -88,7 +88,7 @@ end
   end
 
   def upcoming_specials
-      @specials = Special.upcoming_specials.all
+      @specials = Special.upcoming
       respond_to do |format|
          format.html { render :partial=>"home/upcoming_specials", :locals=>{:upcoming_specials=>@specials} }
          format.json { render :layout => false, :json => @specials }
@@ -97,7 +97,7 @@ end
   end
 
   def top_wines
-      @wines = Wine.top_wines.all
+      @wines = Wine.top
       respond_to do |format|
          format.html { render :partial=>"home/top_wines", :locals=>{:top_wines=>@wines} }
          format.json { render :layout => false, :json => @wines }
@@ -119,7 +119,7 @@ end
   end
 
   def local_wineries
-      @wineries = Winery.find(:all)
+      @wineries = Winery.all
       respond_to do |format|
          format.html 
          format.xml { render :text=>@wineries.to_xml(:only => [:lat, :lng, :winery_name],

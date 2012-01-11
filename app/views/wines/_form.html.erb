@@ -13,7 +13,7 @@
 </script>
 
   <fieldset>
-    <% form_for @wine, :html => {:multipart => true } do |f| %>
+    <%= form_for @wine, :html => {:multipart => true } do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
       <span class="div_texbox">
@@ -58,7 +58,7 @@
     	</span>
 
       <div id="picture_fields">
-      <% f.fields_for :pictures do |builder| %>
+      <%= f.fields_for :pictures do |builder| %>
         <%= render :partial => "shared/picture_fields", :locals => {:f => builder} %>        
       <% end %>
       </div>

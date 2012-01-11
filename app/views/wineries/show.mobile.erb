@@ -72,7 +72,7 @@
 
     <div class="entry_form">
         <% if user_signed_in? %>
-          <% form_for [@winery, Comment.new] do |f| %>    
+          <%= form_for [@winery, Comment.new] do |f| %>    
         	<%= f.error_messages %>
         	<fieldset>
               <ol>

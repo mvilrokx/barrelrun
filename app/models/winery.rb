@@ -27,12 +27,16 @@ class Winery < ActiveRecord::Base
 
 #  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:photo].blank? }, :allow_destroy => true
 
-  after_create   :store_customer_in_vault
+# ADD BACK IN WHEN BRAINTREE IS CONFIGURED PROPERLY
+#  after_create   :store_customer_in_vault
   before_destroy :destroy_customer_in_vault
 
   def complete_address
-    [address, city, state, zipcode, country].join(', ')
+    [address, city, state, zipcode, country].compact.join(', ')
   end
+
+  geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng
+  after_validation :geocode          # auto-fetch coordinates
 
   def with_cc_and_subscription
     self.credit_cards.build if credit_cards.empty?
@@ -48,8 +52,8 @@ class Winery < ActiveRecord::Base
   # , :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable,
          :rememberable, :trackable, :confirmable, :validatable,
-         :http_authenticatable
-
+         :encryptable
+         
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :username,
                   :winery_name, :owner_gm_name, :owner_gm_email,
@@ -58,15 +62,11 @@ class Winery < ActiveRecord::Base
                   :city, :state, :zipcode, :country, :website_url,
                   :credit_cards_attributes, :subscription_attributes,
                   :accepts_terms_of_service, :ownership_status, :descr, :price,
-		  :parking, :handicap, :accept_credit, :fam_friendly, :restaurant, :hours
+            		  :parking, :handicap, :accept_credit, :fam_friendly,
+            		  :restaurant, :hours, :lat, :lng, :id
   attr_accessor :seed_data
-#  validates_presence_of :lat, :lng
-  acts_as_mappable :auto_geocode => {:field => :complete_address,
-                                     :error_message => 'Could not locate address: you have to provide a valid address in order for us to be able to geographically locate you.'}
 
-  named_scope :top_wineries, :order => "average_rating DESC",
-                             :limit => 10,
-                             :include => {:comments => :user}
+  scope :top_wineries, order("average_rating DESC").limit(10).includes(:comments => :user)
 
   # ThinkingSphinx setup
   define_index do
@@ -97,8 +97,8 @@ class Winery < ActiveRecord::Base
  	protected
 
   	def validate_attachments
-     	errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if pictures.length > Max_Attachments
-    	pictures.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+     	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
+    	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}
  	  end
 
   	def store_customer_in_vault
@@ -107,7 +107,7 @@ class Winery < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
       end
       credit_cards do |cc|
@@ -126,8 +126,8 @@ class Winery < ActiveRecord::Base
         else
           result.errors.each do |error|
             ap error
-            errors.add_to_base error.message
-            self.creditable.errors.add_to_base error.message
+            errors[:base] << error.message
+            self.creditable.errors[:base] << error.message
 
           end
         end
@@ -138,7 +138,7 @@ class Winery < ActiveRecord::Base
       result = Braintree::Customer.delete(username)
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
       end
  	  end

@@ -1,5 +1,5 @@
 <div id="signin_menu">
-<% form_for User.new, :url => {:controller=>'users', :action=>'sign_in'} do |f| %>
+<%= form_for("user", :url => user_session_path) do |f| %>
   <%= f.error_messages %>
    <fieldset>
      <%= f.label :username %> <%= f.text_field :username %><br>

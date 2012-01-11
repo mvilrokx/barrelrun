@@ -104,7 +104,7 @@ class Subscription < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
         return false # don't update record
       end
@@ -120,7 +120,7 @@ class Subscription < ActiveRecord::Base
       )
       unless result.success?
         result.errors.each do |error|
-          errors.add_to_base error.message
+          errors[:base] << error.message
         end
         return false # don't create a new record
       end

@@ -1,21 +1,19 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-
   # Method used to add a title to each page
   def title(page_title)
-    content_for(:title) { page_title }
+    content_for(:title, page_title.to_s)
   end
 
   # Method used to determine which tab is active
   def link_with_active(text, url)
     if url == "/" then
-       if request.request_uri == "/" then
+       if request.fullpath == "/" then
          return link_to text, url, :id => "selected_main_tab"
        else
          return link_to text, url
        end
     else
-       if request.request_uri.include? url then
+       if request.fullpath.include? url then
          return link_to text, url, :id => "selected_main_tab"
        else
          return link_to text, url
@@ -62,7 +60,7 @@ module ApplicationHelper
             radio_button_tag "rating", i, false, :disabled => read_only
           end
 #        end
-      end.join
+      end.join.html_safe
 #    end
   end
 
@@ -87,6 +85,4 @@ module ApplicationHelper
     "%02d:%02d" % [ (sec/60).floor, (sec - ((sec/60).floor * 60)).round ]
   end
 
-
 end
-
