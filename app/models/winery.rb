@@ -94,9 +94,9 @@ class Winery < ActiveRecord::Base
     end
   end
 
-  def self.cached_all(force = false)
-    Rails.cache.fetch("Winery.all", :force => force) do
-      all
+  def self.cached_all()
+    Rails.cache.fetch("Winery.all") do
+      select("id, winery_name, address, city, state, zipcode, country, lat, lng").all
     end
   end
 
