@@ -15,7 +15,7 @@ class SpecialsController < ApplicationController
       @specials = Winery.find(params[:winery_id]).specials #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
       path = "wineries/" + params[:winery_id] + "/"
     elsif params[:top]
-      @specials = Special.upcoming_specials(params[:top]) #.all(:limit => params[:top])
+      @specials = Special.upcoming.top(params[:top])
       list_header = "Save Money"
       path = "top/" + params[:top] + "/"
     else

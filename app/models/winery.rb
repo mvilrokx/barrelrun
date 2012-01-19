@@ -94,6 +94,12 @@ class Winery < ActiveRecord::Base
     end
   end
 
+  def self.cached_all(force = false)
+    Rails.cache.fetch("Winery.all", :force => force) do
+      all
+    end
+  end
+
  	protected
 
   	def validate_attachments

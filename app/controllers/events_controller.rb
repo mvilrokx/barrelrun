@@ -14,7 +14,7 @@ class EventsController < ApplicationController
       @events = Winery.find(params[:winery_id]).events #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
       path = "wineries/" + params[:winery_id] + "/"
     elsif params[:top]
-      @events = Event.upcoming_events(params[:top]) #.all(:limit => params[:top])
+      @events = Event.upcoming.top(params[:top])
       list_header = "Places to Go"
       path = "top/" + params[:top] + "/"
     else

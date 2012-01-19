@@ -1,0 +1,11 @@
+%title Barrelrun - #{content_for?(:title) ? yield(:title) : "Discover and connect"}
+%meta{:charset => "utf-8"}
+%meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+%meta{:name => "description", :content => "Welcome to Barrelrun.com, the world's first wine site and application to fully connect wineries with users! Discover all sorts of interesting things about each winery and get real-time updates on awesome specials, great events, and much more!"}
+%meta{:name => "keywords", :content => "barrelrun, barrel run, wine, winery, california winery, wine application, wine site, napa, temecula, paso robles, san diego, oregon winery, washington winery, santa barbara, mendocino, livermore"}
+
+%link{:rel => "shortcut icon", :href => "/../images/favicon.ico"}
+
+= render :partial => "layouts/stylesheets"
+= csrf_meta_tags
+

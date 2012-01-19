@@ -1,0 +1,47 @@
+    <div class="container" id="header_container">
+      <div class="span-8 prepend-top" id="company_logo">
+        <%= link_to image_tag("../images/beta_logo_white.png", :border=>0), root_path %>
+      </div>
+      <%= form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+        <div id="header_search_box">
+          <div class="span-8">
+            <div class="span-8 last">
+              <label>Enter Winery, Wine, Type or Varietal</label><br>
+            </div>
+            <div class="span-8 last">
+              <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+              <%= hidden_field_tag "class[]", 'Wine' %>
+              <%= hidden_field_tag "class[]", 'Winery' %>
+            </div>
+          </div>
+          <div class="span-5">
+            <div class="span-5 last">
+              <label>Nearby (Enter City or Region)</label><br>
+            </div>
+            <div class="span-5 last">
+              <%= text_field_tag :nearby, params[:nearby], :class=>"span-4" %>
+            </div>
+          </div>
+          <div class="span-2 prepend-top">
+            <input class="button grey" type="submit" value="Search">
+          </div>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+      <div class="span-8 pull-8 last" id="signed_in">
+        <%= link_to "Signed in as " + current_user.username, edit_user_registration_path %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      </div>
+      <% elsif winery_signed_in? %>
+      <div class="span-8 pull-8 last" id="signed_in">
+        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        <%= link_to "Sign Out", destroy_winery_session_path %>
+      </div>
+      <% else %>
+      <div class="span-1 pull-1 last" id="login_icon">
+        <%= link_to  image_tag("../images/login_button.png", :border=>0), new_user_session_path, :class=>"signin" %>
+        <%= render :partial => "layouts/inline_user_sign_in" %>
+      </div>
+      <% end %>
+    </div>
+

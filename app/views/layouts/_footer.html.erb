@@ -1,0 +1,54 @@
+  <div id="footer">
+    <div class="container" style="background-color: rgb(189,189,189);">
+      <div class="span-4 colborder prepend-1"><span style="font-weight: bold;">I want to Know about</span><br>
+	<%= link_to "Barrelrun", "/pages/landingpage" %><br>
+        <%= link_to "Terms of Service", "/pages/user_terms_of_service" %><br>
+        <%= link_to "Privacy", "/pages/privacy" %><br>
+      </div>
+      <div class="span-5 colborder"><span style="font-weight: bold;">I am a biz owner and want to</span>
+        <br>Advertise<br>
+        Get more info
+      </div>
+      <div class="span-4 colborder"><span style="font-weight: bold;">I am a winery and want to</span><br>
+        <%= link_to "Register", new_winery_registration_path %><br>
+        <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
+	<%= link_to "Get more info", "/pages/landingpage_winery" %><br>
+      </div>
+        <div class="span-8 last"><span style="font-weight: bold;"></span><br>
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="barrelrun"  width="52" height="40">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+        <a href="http://twitter.com/barrelrun">
+
+        </a>
+        <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#appId=234974179883778&xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-like" data-href="http://barrelrun.com/"
+            data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div>
+
+      </div>
+      <div class="prepend-7 span-10 append-7 prepend-top last">
+        <h4>Copyright &copy <%= Time.new.year%> Barrelrun.  All rights reserved.</h4>
+      </div>
+    </div>
+  </div>
+
+  <% flash.each do |key, msg| %>
+     <% content_tag :script, :type => "text/javascript" do -%>
+        $(document).ready(function() {
+           addNotice("<p><%= msg %></p>");
+        });
+     <% end %>
+  <% end %>
+
+  <div id="message_box">
+  </div>
+
