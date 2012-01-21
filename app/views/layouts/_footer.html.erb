@@ -41,14 +41,15 @@
     </div>
   </div>
 
+  <div id="message_box">
+  </div>
+
   <% flash.each do |key, msg| %>
-     <% content_tag :script, :type => "text/javascript" do -%>
+     <%= content_tag :script, :type => "text/javascript" do %>
         $(document).ready(function() {
            addNotice("<p><%= msg %></p>");
         });
      <% end %>
   <% end %>
 
-  <div id="message_box">
-  </div>
 
