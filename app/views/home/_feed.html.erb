@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= javascript_include_tag root_url.chop + ':8080/application.js' %>
+  <%= javascript_include_tag (request.protocol + request.host + ':8080/application.js') %>
 <% end %>
 
 <div id="user_feed" style="overflow: auto; height: 600px;"></div>
