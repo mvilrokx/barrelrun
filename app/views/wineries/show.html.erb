@@ -29,7 +29,6 @@
       <div class="span-5 last">
         <div class="span-5 last strong">
           <%=h @winery.winery_name %>
-	http://maps.googleapis.com/maps/api/directions/xml?origin=Chicago,IL&destination=Los+Angeles
         </div>
 
         <%= render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)} %>
@@ -47,6 +46,8 @@
         </div>
         <div class="span-5 last strong">
           <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
+	<a href="http://maps.googleapis.com/maps/api/directions/xml?origin=Chicago,IL&destination=Los+Angeles" target="_blank"><%=h @winery.url %></a>
+	
         </div>
         <div class="span-5 last strong">
         	<hr class="space" />
