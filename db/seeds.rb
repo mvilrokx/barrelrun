@@ -20,13 +20,13 @@ end
 
 STDOUT.sync = true
 
-#wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt", "db/ListofWineries_CentraltoSouth_CA.txt"]
-wineryFiles = ["db/ListofWineries_CentraltoSouth_CA.txt"]
-#wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt", "db/ListofWines_CentraltoSouth_CA.txt"]
-wineFiles = ["db/ListofWines_CentraltoSouth_CA.txt"]
+wineryFiles = ["db/ListofWineries_AtoG_NapaRegion.txt", "db/ListofWineries_temeculaValley.txt", "db/ListofWineries_CentraltoSouth_CA.txt"]
+#wineryFiles = ["db/ListofWineries_CentraltoSouth_CA.txt"]
+wineFiles = ["db/ListofWines_AtoG_NapaRegion.txt", "db/ListofWines_temeculaValley.txt", "db/ListofWines_CentraltoSouth_CA.txt"]
+#wineFiles = ["db/ListofWines_CentraltoSouth_CA.txt"]
 
 #Winery.delete_all
-idx = Winery.maximum("id")
+idx = Winery.maximum("id")||1
 
 wineryFiles.each do |wineryFile|
   open(wineryFile) do |wineries|

@@ -1,0 +1,38 @@
+#header
+  -#
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+  = render :partial => "layouts/header"
+
+#main{:role => "main"}
+
+.body
+  .container
+    %div{:class => "span-24 last", :id => "nav"}
+      %ul
+        %li= link_with_active "Home", root_path
+        - if user_signed_in?
+          %li= link_with_active "Account", edit_user_registration_path
+          %li= link_with_active "My Favorites", favorites_path
+        - if winery_signed_in?
+          %li= link_with_active "Account", edit_winery_registration_path
+          %li= link_with_active "Wines", wines_path
+          %li= link_with_active "Events", events_path
+          %li= link_with_active "Specials", specials_path
+          %li= link_with_active "Awards", awards_path
+          %li= link_with_active "Pictures", pictures_path
+          %li= link_with_active "VLog", youtube_videos_path
+
+  .content
+    .container
+      %div{:class => "span-24 last"}
+        - flash.each do |key, msg|
+          - if msg =~ /confirm/
+            = content_tag :div, msg, :id => key, :class => "#{key} push-3 span-18 last"
+
+        =yield :layout
+
+%footer
+  = render :partial => "layouts/footer"
+  = render :partial => "layouts/javascripts"
+

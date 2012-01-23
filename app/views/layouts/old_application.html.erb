@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Barrelrun - <%= content_for?(:title) ? yield(:title) : "Discover and connect" %></title>
+  <%=stylesheet_link_tag "barrelrun",:media=> "all" %>
+  <%=stylesheet_link_tag "barrelrun_mobile" if mobile_devise? %>
+  <%=stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css" %>
+  <%=stylesheet_link_tag "css/prettyPhoto.css" %>
+  <%=stylesheet_link_tag "css3buttons.css" %>
+  <script type="text/javascript"><!--
+   function authToken(){
+     return '<%= form_authenticity_token if protect_against_forgery? -%>';
+   }
+  //--></script>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' %>
+  <%= javascript_include_tag '//cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js' %>
+  <%= javascript_include_tag '//s7.addthis.com/js/250/addthis_widget.js' %>
+  <%= javascript_include_tag 'flowplayer-3.2.4.min.js' %>
+  <%= javascript_include_tag 'jwplayer.js' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'js/jquery.prettyPhoto.js' %>
+  <%= javascript_include_tag 'jquery_ujs.js' %>
+  <%= csrf_meta_tag %> 
+  <%= yield :head %>
+  <link rel="shortcut icon" href="/../images/favicon.ico" />
+  <meta charset="utf-8" />
+  <meta name="description" content="Welcome to Barrelrun.com, the world's first wine site and application to fully connect wineries with users! Discover all sorts of interesting things about each winery and get real-time updates on awesome specials, great events, and much more!" />
+
+  <meta name="keywords" content="barrelrun, barrel run, wine, winery, california winery, wine application, wine site, napa, temecula, paso robles, san diego, oregon winery, washington winery, santa barbara, mendocino, livermore" />
+  <%= render :partial => "layouts/ga" %>
+
+<script type="text/javascript" language="JavaScript">
+// The GetCookie() function returns the number of times a cookie with a specific name has been set on the visitor's computer.
+
+// How many days shall the cookie live on your user's computer?
+DaysToLive = 365;
+
+// This function looks for a cookie with a specific name on the visitor's hard drive.
+function GetCookie(name) {
+// Start by assuming no cookie exists.
+var cookiecontent = '0';
+// The browser's cookies can hold data we're not interested in, all in one long string of characters.Thus, we need
+// to find out where our specific cookie begins and ends (provided the one we want actually exists).
+// If any cookies are available ...
+if(document.cookie.length > 0) {
+    // Determine begin position of the cookie with the specified name.
+    var cookiename = name + '=';
+    var cookiebegin = document.cookie.indexOf(cookiename);
+    // Initialize the end position at zero.
+    var cookieend = 0;
+    // If a cookie with the specified name is actually available ...
+    if(cookiebegin > -1) {
+        // Offset the begin position of the cookie by the lengh of the cookie name.
+        cookiebegin += cookiename.length;
+        // Determine the end position of the cookie.
+        cookieend = document.cookie.indexOf(";",cookiebegin);
+        if(cookieend < cookiebegin) { cookieend = document.cookie.length; }
+        // Put the cookie into our own variable "cookiecontent".
+        cookiecontent = document.cookie.substring(cookiebegin,cookieend);
+    }
+}
+// Increment cookie content by 1 and store in variable "value".
+var value = parseInt(cookiecontent) + 1;
+// Put the incremented value as a new cookie on the visitor's hard drive.
+PutCookie(name,value);
+// Return the incremented value to the calling line of code.
+return value;
+}
+
+// This function puts the cookie on the visitor's hard drive.
+function PutCookie(n,v) {
+// Begin by assuming no expiration date is applicable.
+var exp = '';
+// If an expiration date is applicable, determine the future date and store the date in variable "exp" in the correct format.
+if(DaysToLive > 0) {
+    var now = new Date();
+    then = now.getTime() + (DaysToLive * 24 * 60 * 60 * 1000);
+    now.setTime(then);
+    exp = '; expires=' +
+    now.toGMTString();
+}
+// Put the cookie on the user's hard drive with path set to root and with any applicable expiration date.
+document.cookie = n + "=" + v + '; path=/' + exp;
+}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	visits = GetCookie('page_name');
+	var pAutoOpen = false
+// When the user first visits the site, redirect them to the landing page.
+	if(visits == 1) {
+		window.location = "/pages/landingpage"
+	}
+
+	});
+</script>
+
+</head>
+<script type="text/javascript">
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/It26yRVjBVFCCWc2Zh3DQ.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>
+
+
+<body>
+  <div id="header">
+    <div class="container" id="header_container">
+      <div class="span-8 prepend-top" id="company_logo">
+        <%= link_to image_tag("../images/beta_logo_white.png", :border=>0), root_path %>
+      </div>
+      <%= form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
+        <div id="header_search_box">
+          <div class="span-8">
+            <div class="span-8 last">
+              <label>Enter Winery, Wine, Type or Varietal</label><br>
+            </div>
+            <div class="span-8 last">
+              <%= text_field_tag :search, params[:search], :class=>"span-7" %>
+              <%= hidden_field_tag "class[]", 'Wine' %>
+              <%= hidden_field_tag "class[]", 'Winery' %>
+            </div>
+          </div>
+          <div class="span-5">
+            <div class="span-5 last">
+              <label>Nearby (Enter City or Region)</label><br>
+            </div>
+            <div class="span-5 last">
+              <%= text_field_tag :nearby, params[:nearby], :class=>"span-4" %>
+            </div>
+          </div>
+          <div class="span-2 prepend-top">
+            <input class="button grey" type="submit" value="Search">
+          </div>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+      <div class="span-8 pull-8 last" id="signed_in">
+        <%= link_to "Signed in as " + current_user.username, edit_user_registration_path %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      </div>
+      <% elsif winery_signed_in? %>
+      <div class="span-8 pull-8 last" id="signed_in">
+        <%= link_to "Signed in as " + current_winery.username, edit_winery_registration_path %>
+        <%= link_to "Sign Out", destroy_winery_session_path %>
+      </div>
+      <% else %>
+      <div class="span-1 pull-1 last" id="login_icon">
+        <%= link_to  image_tag("../images/login_button.png", :border=>0), new_user_session_path, :class=>"signin" %>
+        <%= render :partial => "layouts/inline_user_sign_in" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="container">
+      <div id="nav" class="span-24 last">
+        <ul>
+          <li><%= link_with_active "Home", root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_with_active "Account", edit_user_registration_path %></li>
+          <li><%= link_with_active "My Favorites", favorites_path %></li>
+        <% end %>
+        <% if winery_signed_in? %>
+          <li><%= link_with_active "Account", edit_winery_registration_path %></li>
+          <li><%= link_with_active "Wines", wines_path %></li>
+          <li><%= link_with_active "Events", events_path %></li>
+          <li><%= link_with_active "Specials", specials_path %></li>
+          <li><%= link_with_active "Awards", awards_path %></li>
+          <li><%= link_with_active "Pictures", pictures_path %></li>
+          <li><%= link_with_active "VLog", youtube_videos_path %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="container">
+        <div class="span-24 last">
+          <% flash.each do |key, msg| %>
+            <% if msg =~ /confirm/ %>
+              <%= content_tag :div, msg, :id => key, :class => "#{key} push-3 span-18 last" %>
+            <% end %>
+          <% end %>
+
+          <%=yield :layout%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container" style="background-color: rgb(189,189,189);">
+      <div class="span-4 colborder prepend-1"><span style="font-weight: bold;">I want to Know about</span><br>
+	<%= link_to "Barrelrun", "/pages/landingpage" %><br>
+        <%= link_to "Terms of Service", "/pages/user_terms_of_service" %><br>
+        <%= link_to "Privacy", "/pages/privacy" %><br>
+      </div>
+      <div class="span-5 colborder"><span style="font-weight: bold;">I am a biz owner and want to</span>
+        <br>Advertise<br>
+        Get more info
+      </div>
+      <div class="span-4 colborder"><span style="font-weight: bold;">I am a winery and want to</span><br>
+        <%= link_to "Register", new_winery_registration_path %><br>
+        <%= link_to  content_tag(:span, 'Login'), new_winery_session_path %><br>
+	<%= link_to "Get more info", "/pages/landingpage_winery" %><br>
+      </div>
+        <div class="span-8 last"><span style="font-weight: bold;"></span><br>
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="barrelrun"  width="52" height="40">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+        <a href="http://twitter.com/barrelrun">
+
+        </a>
+        <%= link_to "Follow @barrelrun", "http://twitter.com/barrelrun" %><br>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#appId=234974179883778&xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-like" data-href="http://barrelrun.com/"
+            data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div>
+
+      </div>
+      <div class="prepend-7 span-10 append-7 prepend-top last">
+        <h4>Copyright &copy <%= Time.new.year%> Barrelrun.  All rights reserved.</h4>
+      </div>
+    </div>
+  </div>
+
+  <% flash.each do |key, msg| %>
+     <% content_tag :script, :type => "text/javascript" do -%>
+        $(document).ready(function() {
+           addNotice("<p><%= msg %></p>");
+        });
+     <% end %>
+  <% end %>
+
+  <div id="message_box">
+  </div>
+
+</body>
+</html>
+

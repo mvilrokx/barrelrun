@@ -1,0 +1,19 @@
+:javascript
+  function authToken(){
+   return '<%= form_authenticity_token if protect_against_forgery? -%>';
+  } 
+
+= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'
+= javascript_include_tag '//cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js'
+= javascript_include_tag '//s7.addthis.com/js/250/addthis_widget.js'
+= javascript_include_tag 'flowplayer-3.2.4.min.js'
+= javascript_include_tag 'jwplayer.js'
+= javascript_include_tag 'js/jquery.prettyPhoto.js'
+= javascript_include_tag 'jquery_ujs.js'
+
+= render :partial => "layouts/ga"
+= render :partial => "layouts/uv"
+= render :partial => "layouts/first_time"
+= csrf_meta_tag
+
+= yield :javascripts

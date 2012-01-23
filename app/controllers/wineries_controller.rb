@@ -2,8 +2,12 @@ class WineriesController < ApplicationController
 #  before_filter :authenticate_winery!, :except => [:rating, :index, :show]
 
   def index
-    @search = Winery.metasearch(params[:search])
-    @wineries = @search.all
+    if params[:search]
+      @search = Winery.metasearch(params[:search])
+      @wineries = @search.all
+    else
+      @wineries = Winery.cached_all
+    end
     respond_to do |format|
       format.html
       format.json { render :layout => false, :json => @wineries }
