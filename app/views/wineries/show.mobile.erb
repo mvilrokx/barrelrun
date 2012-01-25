@@ -6,17 +6,17 @@
               <a id="signed_in"><%= link_to "Sign Out", destroy_user_session_path %></a>
           <% else %>
               <a <%= link_to h("Login"), new_user_session_path %> </a>
-          <% end %>        
+          <% end %>
   </div>
- 
+
 <table>
     <tr>
         <td>
             <% if @winery.pictures.length > 0 then %>
             <%= image_tag @winery.pictures[0].url(:thumb) %>
           <% end %>
-        </td>    
-        
+        </td>
+
         <td>
           <div class="strong">
               <%=h @winery.address %>
@@ -28,7 +28,7 @@
                 <%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
             </div>
             <div class="span-5 last strong">
-                <%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
+                <%= image_tag("phone.png", :alt=>"telephone") %><%= @winery.telephone %>
             </div>
             <div class="span-5 last strong">
                 <a href="<%=h @winery.website_url %>" target="_blank"><%=h @winery.website_url %></a>
@@ -48,7 +48,7 @@
                 <% end %>
             </div>
         </td>
-    
+
     </tr>
 </table>
 
@@ -72,12 +72,12 @@
 
     <div class="entry_form">
         <% if user_signed_in? %>
-          <%= form_for [@winery, Comment.new] do |f| %>    
+          <%= form_for [@winery, Comment.new] do |f| %>
         	<%= f.error_messages %>
         	<fieldset>
               <ol>
             <li> <%= f.label :content, "Comment" %>  </li>
-            <li> <%= f.text_area :content, :rows => 5 %>  </li>  
+            <li> <%= f.text_area :content, :rows => 5 %>  </li>
               <li><%= f.submit %> </li>
              <% end %>
             </ol>
@@ -85,11 +85,11 @@
     </div>
 
     <ul id="comments">
-        <% @winery.comments.each do |comment| %>  
-        <li><%= comment.content %></li>  
-        <% end %>  
+        <% @winery.comments.each do |comment| %>
+        <li><%= comment.content %></li>
+        <% end %>
     </ul>
- 
+
 </div>
 
 <div id="map">
@@ -130,7 +130,7 @@
              <% end %>
                  </li>
             <% end %>
-        </ul>   
+        </ul>
     </div>
 </div>
 
@@ -158,7 +158,7 @@
                <% end %>
                     </li>
             <% end %>
-        </ul>  
+        </ul>
     </div>
 </div>
 
@@ -170,7 +170,7 @@
     <div class="body">
         <ul>
             <% for wine in @winery.wines %>
-                <li class="arrow">  
+                <li class="arrow">
                   <div><%= link_to h(wine.name), wine %> </div>
                     <div><%= link_to h(wine.winery.city + ", " + wine.winery.state), wine %> </div>
                     <% if user_signed_in? %>
@@ -186,7 +186,7 @@
             				<% end %>
                 </li>
       		<% end %>
-   			</ul>   
+   			</ul>
 		</div>
 </div>
 
@@ -197,10 +197,7 @@
     </div>
     <div class="body">
         			<iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src="http://www.youtube.com/embed/YXysqEMMsPc" frameborder="0">
-			</iframe>  
+			</iframe>
     </div>
 </div>
-
-
-
 

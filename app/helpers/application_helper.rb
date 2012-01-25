@@ -4,6 +4,24 @@ module ApplicationHelper
     content_for(:title, page_title.to_s)
   end
 
+  # Methods to add icons to links
+  def link_image(link, image, text, *args)
+    options = args.extract_options!
+    link_to image_tag(image, :border=>0, :alt=>text), link, :title=> text, :class => options[:class]
+  end
+
+  def show_link_image(link, *args)
+    link_image(link, "icons/page_find.png", "Show", *args)
+  end
+
+  def edit_link_image(link, *args)
+    link_image(link, "icons/page_edit.png", "Edit", *args)
+  end
+
+  def delete_link_image(link, *args)
+    link_image(link, "icons/bin_closed.png", "Delete", *args)
+  end
+
   # Method used to determine which tab is active
   def link_with_active(text, url)
     if url == "/" then
@@ -86,3 +104,4 @@ module ApplicationHelper
   end
 
 end
+

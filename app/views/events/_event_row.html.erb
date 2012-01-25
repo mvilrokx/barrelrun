@@ -14,7 +14,7 @@
   <% else %>
   <td></td>
   <% end %>
-  <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_event_path(event), :title=> "Edit", :class => 'dialog_form_link' %>
-  <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), event, :title=> "Delete", :class => 'delete' %>
+  <td><%= edit_link_image edit_event_path(event), :class => 'dialog_form_link' %></td>
+  <td><%= delete_link_image event, :class => 'delete' %></td>
 </tr>
 

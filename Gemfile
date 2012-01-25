@@ -12,11 +12,20 @@ gem 'braintree'
 gem 'meta_search'
 gem 'youtube_it', '1.2.10'
 gem 'omniauth', '~> 0.3.2'
-gem "aws-s3", :require => "aws/s3"
+gem 'aws-sdk'
 gem 'paperclip', '~> 2.3'
 gem 'alchemist'
 gem 'awesome_print'
 # gem 'newrelic_rpm'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'haml-rails'
+
+group :assets do
+  gem 'sass-rails', '~> 3.1.0'
+  gem 'coffee-rails', '~> 3.1.0'
+  gem 'uglifier'
+  gem 'compass', '~> 0.12.alpha'
+  # include other compass plugins here. E.g.:
+  gem 'compass-susy-plugin', :require => 'susy'
+end
 

@@ -30,8 +30,8 @@
         <% else %>
         <td></td>
         <% end %>
-          <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_special_path(special), :title=> "Edit", :class => 'dialog_form_link' %>
-          <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), special, :title=> "Delete", :class => 'delete' %>
+          <td><%= edit_link_image edit_special_path(special), :class => 'dialog_form_link' %></td>
+          <td><%= delete_link_image special, :class => 'delete' %></td>
         </tr>
       <% end %>
       </table>
@@ -47,3 +47,4 @@
     </div>
   </div>
 </div>
+

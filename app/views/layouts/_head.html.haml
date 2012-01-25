@@ -4,11 +4,14 @@
 %meta{:name => "description", :content => "Welcome to Barrelrun.com, the world's first wine site and application to fully connect wineries with users! Discover all sorts of interesting things about each winery and get real-time updates on awesome specials, great events, and much more!"}
 %meta{:name => "keywords", :content => "barrelrun, barrel run, wine, winery, california winery, wine application, wine site, napa, temecula, paso robles, san diego, oregon winery, washington winery, santa barbara, mendocino, livermore"}
 
-%link{:rel => "shortcut icon", :href => "/../images/favicon.ico"}
+%link{:rel => "shortcut icon", :href => "#{asset_path 'barrelrun/favicon.ico'}" }
 
 = render :partial => "layouts/stylesheets"
 = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'
+= javascript_include_tag '//maps.google.com/maps/api/js?sensor=false'
 = javascript_include_tag 'application'
+
 = csrf_meta_tags
+
 = yield :head
 

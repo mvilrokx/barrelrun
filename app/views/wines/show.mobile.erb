@@ -14,7 +14,7 @@
       <% end %>
 	</div>
 <h3><%=h @wine.name %></h3>
-<table>	
+<table>
 	<tr>
 		<td width="60" VALIGN="top">
 				<% if @wine.pictures.length > 0 then %>
@@ -24,10 +24,10 @@
         <% end -%>
       </div>
     <% else %>
-      <%= image_tag '../images/no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>        
+      <%= image_tag 'no_image_available.png', :border=>0, :alt=>'No Image Found', :size=>'200x200' %>
     <% end %>
 		</td>
-		
+
 		<td>
         <div><strong>Vintage: </strong><%=h @wine.vintage %></div>
         <div><strong>Type: </strong><%=h @wine.wine_type %></div>
@@ -49,9 +49,9 @@
           <% end %>
 				</div>
 		</td>
-	</tr>              
+	</tr>
 </table>
-<div style="height:50px; overflow: auto; margin: 10px 0px;"><%=h @wine.description %> </div>	 
+<div style="height:50px; overflow: auto; margin: 10px 0px;"><%=h @wine.description %> </div>
 
 
 </div>
