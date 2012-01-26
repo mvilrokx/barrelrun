@@ -45,8 +45,8 @@ module Barrelrun
       Bundler.require *Rails.groups(:assets => %w(development test))
     end
 
-    config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
     config.assets.enabled = true
+    config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
 
   end
 end

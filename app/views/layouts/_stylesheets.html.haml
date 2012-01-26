@@ -1,4 +1,9 @@
-=stylesheet_link_tag "application",:media=> "all"
+= stylesheet_link_tag 'screen', :media => 'screen, projection', :id => "compass", :disabled => :true
+= stylesheet_link_tag 'print', :media => 'print'
+/[if IE]
+  = stylesheet_link_tag 'ie', :media => 'screen, projection'
+
+=stylesheet_link_tag "application", :id => "non-compass"
 =stylesheet_link_tag "barrelrun_mobile" if mobile_devise?
 =stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/jquery-ui.css"
 

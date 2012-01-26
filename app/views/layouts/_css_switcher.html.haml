@@ -1,0 +1,13 @@
+#css_switcher{:style => "position: fixed; left: 0px; top: 0px;"}
+  %form
+    %button#switch_css.btn Switch CSS!
+
+:javascript
+  $("#switch_css").click(function() {
+    var isOff = $("#compass").get(0).disabled;
+    $("#compass").get(0).disabled = !isOff;
+    $("body").toggleClass("compass");
+    $("#non-compass").get(0).disabled = isOff;
+    return false;
+  });
+
