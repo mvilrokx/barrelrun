@@ -1,8 +1,18 @@
-!!!
-%html
-  %head
-    = render :partial => "layouts/head"
+!!! 5
+- ie_html :class => "no-js", :lang => "en" do
+
+  = render "head"
+
   %body{:class => params[:controller]}
-    = render :partial => "layouts/body"
-    = render :partial => "layouts/css_switcher"
+
+    = render "header"
+
+    = render "layouts/body"
+
+    = render "footer"
+
+    = render "layouts/javascripts"
+
+    -# TODO Remove this when done with conversion to Compass
+    = render "layouts/css_switcher"
 

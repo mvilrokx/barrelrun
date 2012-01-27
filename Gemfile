@@ -19,6 +19,7 @@ gem 'awesome_print'
 # gem 'newrelic_rpm'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'haml-rails'
+gem 'html5-rails'
 
 group :assets do
   gem 'sass-rails', '~> 3.1.0'
@@ -28,5 +29,6 @@ group :assets do
   # include other compass plugins here. E.g.:
   gem 'compass-susy-plugin', :require => 'susy'
   gem 'compass_twitter_bootstrap'
+  gem 'compass-h5bp'
 end
 

@@ -1,0 +1,13 @@
+header {
+  background-color: $header-background-color;
+  @include box-shadow($default-box-shadow-color $default-box-shadow-h-offset $default-box-shadow-v-offset 15px 2px  );
+  border: none;
+  #content {
+    @include container;
+    #company-logo {
+      @include prepend-top;
+      @include column(8);
+    }
+  }
+}
+
