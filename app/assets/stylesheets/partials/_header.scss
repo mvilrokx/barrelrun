@@ -1,12 +1,35 @@
+#content {
+  @include container;
+}
 header {
+  position: relative;
+  z-index: 2;
   background-color: $header-background-color;
   @include box-shadow($default-box-shadow-color $default-box-shadow-h-offset $default-box-shadow-v-offset 15px 2px  );
   border: none;
-  #content {
-    @include container;
-    #company-logo {
-      @include prepend-top;
-      @include column(8);
+  #company-logo {
+    @include prepend-top;
+    @include column(8);
+  }
+  #search-box{
+    @include column(16, true);
+    @include push(2);
+    @include prepend-top;
+
+    input[type="text"] {
+      width: 300px;
+      font-size: 1.5em;
+      @include border-radius(5px);
+      @include box-shadow($light-color 3px 3px 3px inset);
+      padding: 10px 5px 5px 5px;
+      background-color: #eee;
+      border: solid 1px $dark-color;
+      &:focus {
+        background-color: #fff;
+        outline: none;
+        @include box-shadow($light-color 0px 0px 4px 2px);
+        border: solid 1px $light-color;
+      }
     }
   }
 }

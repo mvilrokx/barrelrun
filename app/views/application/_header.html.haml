@@ -2,4 +2,9 @@
   #content
     #company-logo
       = link_to image_tag("barrelrun/beta_logo_white.png"), root_path, :id => "barrelrun-logo"
+    #search-box
+      = form_tag({:controller => "/searches", :action => "search"}, :method => :get, :id=>"search") do
+        %input{:type => "text", :placeholder => "Enter winery or wine..."}
+        %button{:class => "btn large", :value => "Search"}
+          Search
 

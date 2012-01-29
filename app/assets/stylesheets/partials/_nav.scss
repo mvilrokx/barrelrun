@@ -1,0 +1,35 @@
+nav {
+  @include container;
+  #menu-bar {
+    @include column(24, true);
+    background-color: $main-color;
+    overflow: hidden;
+    li {
+      float: left;
+    }
+    a {
+      display: block;
+      color: $added-color;
+      font: {
+        size: 1.5em;
+        weight: bold;
+      }
+      text-decoration: none;
+      padding: 10px;
+      width: 90px;
+      text-align: center;
+      @include transition-property(background-color);
+      @include transition-duration(.25s);
+      &:hover {
+        text-decoration: underline;
+        background-color: darken($main-color, 15%);
+        @include transition-property(background-color);
+        @include transition-duration(.20s);
+      }
+    }
+  }
+  #selected_main_tab {
+    background-color: darken($main-color, 15%);
+  }
+}
+
