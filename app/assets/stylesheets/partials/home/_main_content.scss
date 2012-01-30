@@ -1,0 +1,30 @@
+#main {
+  #left-column {
+    @include column(10);
+    @include colborder;
+  }
+  #barrel-deal-banner {
+    background: #EEE; padding: 0 10px;
+    h2 {
+      color: $main-color;
+    }
+    p {
+      font-size: 1.25em;
+    }
+    #deal-icon {
+      width: 35px;
+      height: 40px;
+      vertical-align: middle;
+    }
+  }
+  #middle-column {
+    @include column(6);
+    @include colborder;
+  }
+
+  #right-column {
+    @include column(6, true);
+
+  }
+}
+

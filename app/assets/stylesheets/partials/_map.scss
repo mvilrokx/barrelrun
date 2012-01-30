@@ -1,0 +1,5 @@
+#map {
+  @include column(24, true);
+  @include append-bottom;
+}
+
