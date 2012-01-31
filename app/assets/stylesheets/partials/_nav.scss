@@ -4,6 +4,7 @@ nav {
     @include column(24, true);
     background-color: $main-color;
     overflow: hidden;
+    @include text-shadow(0px -1px 0px darken($main-color,20%));
     li {
       float: left;
     }
@@ -11,7 +12,7 @@ nav {
       display: block;
       color: $added-color;
       font: {
-        size: 1.5em;
+        size: 1.3em;
         weight: bold;
       }
       text-decoration: none;

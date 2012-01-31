@@ -1,0 +1,81 @@
+// Some of my mixins - look to put these in a Compass Extension
+@mixin fancy-list {
+  @include append-bottom(5em);
+  border: 1px solid #CCC;
+  background: white;
+  @include border-radius(3px);
+  @include box-shadow(lighten($default-box-shadow-color,60%)  0px 0px 25px inset);
+  ol,ul {
+    padding-left: 40px;
+    padding-top: 10px;
+    color: #666;
+    li:first-child {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    a {
+      color: #666;
+      text-decoration: none;
+      &:hover {
+       text-decoration: underline;
+      }
+    }
+  }
+  h3 {
+    background-color: $main-color;
+    padding:10px 10px 10px 20px;
+    @include box-shadow($default-box-shadow-color 3px 3px 8px);
+    @include linear-gradient(color-stops(lighten($main-color,15%), darken($main-color,15%)));
+    position:relative;
+    @include border-radius(3px);
+    color: white;
+    @include text-shadow(0px -1px 0px darken($main-color,20%));
+    margin: 5px -5px -5px -10px;
+    padding:5px 10px;
+    text-align: center;
+    font-size:18px;
+    // this creates the wrap element (little triangle)
+    &:before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      z-index: -1;
+      border-style: solid;
+      border-width: 4px;
+      border-color:  $main-color $main-color transparent transparent;
+      left: 2px;
+      top: 100%;
+    }
+  }
+  &:before,
+  &:after {
+     content:" ";
+     background: red;
+     position:absolute;
+     z-index:-1;
+     bottom:15px;
+     left:10px;
+     width:50%;
+     height:20%;
+     max-width:300px;
+     -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+     -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+     box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+     -webkit-transform:rotate(-3deg);
+     -moz-transform:rotate(-3deg);
+     -o-transform:rotate(-3deg);
+     transform:rotate(-3deg);
+  }
+
+  &:after{
+     right:10px;
+     left:auto;
+     -webkit-transform:rotate(3deg);
+     -moz-transform:rotate(3deg);
+     -o-transform:rotate(3deg);
+     transform:rotate(3deg);
+  }
+}
+

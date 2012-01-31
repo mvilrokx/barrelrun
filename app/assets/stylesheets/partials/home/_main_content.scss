@@ -28,3 +28,11 @@
   }
 }
 
+.fancy-list {
+  ol {
+    li:first-child {
+      list-style-image: url('barrelrun/medal.jpg');
+    }
+  }
+}
+

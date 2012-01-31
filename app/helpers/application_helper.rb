@@ -1,4 +1,22 @@
 module ApplicationHelper
+
+  # Method used to create lists of objects
+  def list_objects(objects, *args)
+    options = args.extract_options!
+    options[:title] ||= objects[0].class.name.pluralize
+    options[:list_type] ||= :ul
+    options[:class] ||= 'dialog_form_link'
+
+    precede content_tag(:h3, options[:title]) do
+      haml_tag options[:list_type] do
+        objects.each do |object|
+          link = link_to (object.name + '<br>-' + object.city + ',' + object.state).html_safe, object, :title=> "Show", :class => options[:class]
+          haml_tag :li, link
+        end
+      end
+    end
+  end
+
   # Method used to add a title to each page
   def title(page_title)
     content_for(:title, page_title.to_s)
