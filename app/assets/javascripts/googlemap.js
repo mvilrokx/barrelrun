@@ -38,11 +38,11 @@ $(document).ready(function(){
                        infoWindow.setContent(this.html);
                        infoWindow.open(map,this);
                        map.panTo(this.position);
-                  };
+                  }
               );
               markersArray.push(marker);
           };
-      };
+      }
   );
 
   if (navigator.geolocation) {
@@ -103,7 +103,7 @@ $(document).ready(function(){
           function (defaultPosition){
               defaultLatLng = new google.maps.LatLng(defaultPosition.lat, defaultPosition.lng);
               map.setCenter(defaultLatLng);
-          };
+          }
       );
   };
 

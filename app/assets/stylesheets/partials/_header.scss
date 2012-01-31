@@ -20,8 +20,8 @@ header {
       width: 300px;
       font-size: 1.5em;
       @include border-radius(5px);
-      @include box-shadow($light-color 3px 3px 3px inset);
-      padding: 10px 5px 5px 5px;
+      @include box-shadow($light-color 0px 0px 3px 3px inset);
+      padding: 9px;
       background-color: #eee;
       border: solid 1px $dark-color;
       &:focus {
