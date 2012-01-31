@@ -7,7 +7,7 @@ $(document).ready(function(){
     mapTypeId: google.maps.MapTypeId.TERRAIN,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-    },
+    }
   };
 
   var map = new google.maps.Map($('#map').get(0), myOptions);
@@ -38,11 +38,11 @@ $(document).ready(function(){
                        infoWindow.setContent(this.html);
                        infoWindow.open(map,this);
                        map.panTo(this.position);
-                  }
+                  };
               );
               markersArray.push(marker);
           };
-      }
+      };
   );
 
   if (navigator.geolocation) {
@@ -79,7 +79,7 @@ $(document).ready(function(){
               addNotice("<p>We had some trouble determining your location so we defaulted your location as best we could.<p>");
               setDefaultLocation();
       };
-  }
+  };
 
   function infoWindowContent(winery) {
       var contentString =
@@ -96,16 +96,16 @@ $(document).ready(function(){
           '</div>';
 
       return contentString;
-  }
+  };
 
   function setDefaultLocation () {
       $.getJSON("/home/default_location",
           function (defaultPosition){
               defaultLatLng = new google.maps.LatLng(defaultPosition.lat, defaultPosition.lng);
               map.setCenter(defaultLatLng);
-          }
+          };
       );
-  }
+  };
 
   /**
   * Map It functionality
