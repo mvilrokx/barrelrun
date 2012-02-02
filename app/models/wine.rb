@@ -73,6 +73,14 @@ class Wine < ActiveRecord::Base
       self.tasting_notes.destroy if delete_tasting_notes?
    end
 
+  def city
+    winery.city
+  end
+
+  def state
+    winery.state
+  end
+
  	protected
    	def price_must_be_at_least_a_cent
        	errors.add(:price, 'should be at least 0.01') if !price.blank? &&

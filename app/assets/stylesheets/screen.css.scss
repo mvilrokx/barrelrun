@@ -5,3 +5,8 @@
 
 @import "partials/base";
 
+.fancy-list {
+  @include fancy-list;
+  position: relative;
+}
+

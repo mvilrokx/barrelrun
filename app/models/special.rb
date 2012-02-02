@@ -31,12 +31,12 @@ class Special < ActiveRecord::Base
   def self.top (limit = 10)
     limit(limit)
   end
-  
+
   def self.upcoming
     where("end_date >= ?", Date.today).order("start_date DESC")
   end
-  
-  
+
+
 #  named_scope :upcoming_specials, :conditions => ["end_date >= :today", {:today => Date.today}],
 #                          :order => "start_date DESC",
 #                          :limit => 10,
@@ -68,6 +68,14 @@ class Special < ActiveRecord::Base
 
   def name
     title
+  end
+
+  def city
+    winery.city
+  end
+
+  def state
+    winery.state
   end
 
  	protected

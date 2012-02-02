@@ -7,7 +7,7 @@ $(document).ready(function(){
     mapTypeId: google.maps.MapTypeId.TERRAIN,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-    },
+    }
   };
 
   var map = new google.maps.Map($('#map').get(0), myOptions);
@@ -79,7 +79,7 @@ $(document).ready(function(){
               addNotice("<p>We had some trouble determining your location so we defaulted your location as best we could.<p>");
               setDefaultLocation();
       };
-  }
+  };
 
   function infoWindowContent(winery) {
       var contentString =
@@ -96,7 +96,7 @@ $(document).ready(function(){
           '</div>';
 
       return contentString;
-  }
+  };
 
   function setDefaultLocation () {
       $.getJSON("/home/default_location",
@@ -105,7 +105,7 @@ $(document).ready(function(){
               map.setCenter(defaultLatLng);
           }
       );
-  }
+  };
 
   /**
   * Map It functionality
