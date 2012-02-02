@@ -32,3 +32,7 @@ group :assets do
   gem 'compass-h5bp'
 end
 
+group :development do
+  gem 'mongrel', '1.2.0.pre2'
+end
+

@@ -61,6 +61,7 @@ GEM
       compass
     compass_twitter_bootstrap (0.1.8)
       compass
+    daemons (1.0.10)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -73,6 +74,7 @@ GEM
       multipart-post (~> 1.1)
       rack (~> 1.1)
     fssm (0.2.8.1)
+    gem_plugin (0.2.3)
     geocoder (1.1.0)
     haml (3.1.4)
     haml-rails (0.3.4)
@@ -109,6 +111,9 @@ GEM
       meta_search
       polyamorous (~> 0.5.0)
     mime-types (1.17.2)
+    mongrel (1.2.0.pre2)
+      daemons (~> 1.0.10)
+      gem_plugin (~> 0.2.3)
     multi_json (1.0.4)
     multi_xml (0.4.1)
     multipart-post (1.1.4)
@@ -255,6 +260,7 @@ DEPENDENCIES
   jquery-rails (>= 1.0.12)
   juggernaut (= 2.0.0)
   meta_search
+  mongrel (= 1.2.0.pre2)
   mysql2
   omniauth (~> 0.3.2)
   paperclip (~> 2.3)
