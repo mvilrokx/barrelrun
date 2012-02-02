@@ -59,8 +59,6 @@ GEM
       sass (~> 3.1)
     compass-h5bp (0.0.2)
       compass
-    compass-susy-plugin (0.9)
-      compass (>= 0.11.1)
     compass_twitter_bootstrap (0.1.8)
       compass
     devise (1.5.3)
@@ -247,9 +245,8 @@ DEPENDENCIES
   aws-sdk
   braintree
   coffee-rails (~> 3.1.0)
-  compass (~> 0.12.alpha)
+  compass (= 0.12.alpha.4)
   compass-h5bp
-  compass-susy-plugin
   compass_twitter_bootstrap
   devise
   geocoder

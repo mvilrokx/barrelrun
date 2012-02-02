@@ -25,9 +25,9 @@ group :assets do
   gem 'sass-rails', '~> 3.1.0'
   gem 'coffee-rails', '~> 3.1.0'
   gem 'uglifier'
-  gem 'compass', '~> 0.12.alpha'
+  gem 'compass', '0.12.alpha.4'
   # include other compass plugins here. E.g.:
-  gem 'compass-susy-plugin', :require => 'susy'
+  # gem 'compass-susy-plugin', :require => 'susy'
   gem 'compass_twitter_bootstrap'
   gem 'compass-h5bp'
 end
