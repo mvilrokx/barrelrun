@@ -1,0 +1,6 @@
+%winery
+  %winery2
+    %h3= link_to winery.name, winery
+  %winery3
+    = "#{winery.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if winery.sphinx_attributes['@geodist']
+%hr/

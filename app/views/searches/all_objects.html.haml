@@ -1,0 +1,68 @@
+- title("Search results")
+.container
+  %hr.space
+    %filter
+      = form_tag '/searches/faceted_search', :method => "get" do
+        .accordion
+          - unless params["class"].nil?
+            .facet
+              %h4
+                = image_tag 'icons/bullet_arrow_down.png'
+                Display
+              .options
+                = check_box_tag "class[]", "Wine", params["class"].include?("Wine"), {:id => "Wine"}
+                = label_tag "Wine", "Wine", :style => 'display: inline; float: none; padding: 0px;'
+                %br/
+                = check_box_tag "class[]", "Winery", params["class"].include?("Winery"), {:id => "Winery"}
+                = label_tag "Winery", "Winery", :style => 'display: inline; float: none; padding: 0px;'
+                %br/
+          - @facets.each do |facet, facet_options|
+            - unless facet.to_s == "price" || facet.to_s == "class"
+              - if facet_options.count > 0
+                .facet
+                  %h4
+                    = image_tag 'icons/bullet_arrow_down.png'
+                    = facet.to_s.humanize
+                  .options{:style => "padding-left: 10px;"}
+                    - facet_options.each do |option, count|
+                      - if params[facet]
+                        = check_box_tag "#{facet}[]", option, params[facet].include?(option.to_s), {:id => option}
+                      - else
+                        = check_box_tag "#{facet}[]", option, false, {:id => option}
+                      = label_tag option, "#{option.blank? ? "None" : option}", :style => 'display: inline; float: none; padding: 0px;'
+                      %br/
+          - unless params[:nearby].blank?
+            .facet
+              %h4
+                = image_tag 'icons/bullet_arrow_down.png'
+                Distance (
+                %span#miles= params[:distance]||SearchesController::MILES
+                miles)
+              .options{:style => "padding-left: 10px;"}
+                0<input id="distance" type="range" name="distance" min="0" max="50" step="1" value=#{params[:distance]||SearchesController::MILES} />50
+          - unless params[:class] == ["Winery"]
+            #price_range.facet
+              %h4
+                = image_tag 'icons/bullet_arrow_down.png'
+                Price Range $#{text_field_tag :min_price, params[:min_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold; text-align: right;"}}-$#{text_field_tag :max_price, params[:max_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold;"}}
+              .options{:style => "padding: 10px;"}
+                #slider-range
+        = hidden_field_tag "nearby", params[:nearby] if !params[:nearby].blank?
+        = hidden_field_tag "search", params[:search] if !params[:search].blank?
+        = submit_tag "Apply Filter"
+    %search_results
+      = link_to "Can't find a Winery?", new_user_winery_path
+      = render :partial => "search_results"
+:javascript
+  $(function() {
+      $("#slider-range").slider({
+        range: true,
+        min:  Wine.minimum(:price).to_i ,
+        max:  Wine.maximum(:price).to_i + 1 ,
+        values: [  params[:min_price]||10  ,  params[:max_price]||50  ],
+        slide: function( event, ui ) {
+          $("#min_price").val( ui.values[0]);
+          $("#max_price").val( ui.values[1]);
+        }
+      });
+    });
