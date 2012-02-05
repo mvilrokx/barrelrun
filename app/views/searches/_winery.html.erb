@@ -1,9 +1,0 @@
-<div class="span-17 last">
-  <div class="span-10">
-    <h3><%= link_to winery.name, winery %></h3>
-  </div>
-  <div class="span-7 last">
-    <%= "#{winery.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if winery.sphinx_attributes['@geodist'] %>
-  </div>
-</div>
-<hr/>
