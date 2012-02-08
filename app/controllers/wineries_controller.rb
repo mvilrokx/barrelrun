@@ -55,11 +55,12 @@ class WineriesController < ApplicationController
   end
 
   def top_wineries
-    @wineries = Winery.top_wineries.all
+    @wineries = Winery.top_wineries
     respond_to do |format|
       format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wineries,
-                                                                       :ordered_list => true,
-                                                                       :list_header => "Top 10 Wineries" } }
+                                                                       :list_type => :ol,
+                                                                       :map_it => true,
+                                                                       :title => "Top Wineries" } }
       format.json { render :layout => false, :json => @wineries }
 #      format.json { render :layout => false,
 #                           :json => @wineries.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )

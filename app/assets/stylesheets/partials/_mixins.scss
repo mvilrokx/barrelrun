@@ -6,12 +6,17 @@
   @include border-radius(3px);
   @include box-shadow(lighten($default-box-shadow-color,60%)  0px 0px 25px inset);
   ol,ul {
-    padding-left: 40px;
-    padding-top: 10px;
+    padding: 10px 10px 10px 20px;
+//    padding-left: 20px;
+    //padding-top: 10px;
     color: #666;
     li:first-child {
       font-weight: bold;
       letter-spacing: 1px;
+    }
+    li:hover {
+      background: #E0E0E0;
+      @include border-radius(5px);
     }
     a {
       color: #666;

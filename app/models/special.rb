@@ -78,7 +78,15 @@ class Special < ActiveRecord::Base
     winery.state
   end
 
- 	protected
+  def lat
+    winery.lat
+  end
+
+  def lng
+    winery.lng
+  end
+
+protected
   	def validate_attachments
      	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
     	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}

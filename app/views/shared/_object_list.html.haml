@@ -1,3 +1,8 @@
-.list.fancy-list
-  = list_objects(object_list.all, {:title => list_header})
+//Default Values
+- title ||= []
+- list_type ||= :ul
+- map_it ||= false
+- path ||= ""
 
+.list.fancy-list
+  = list_objects(object_list.all, {:title => title, :list_type => list_type, :map_it => map_it, :path => path})

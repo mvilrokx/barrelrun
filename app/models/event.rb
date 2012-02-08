@@ -79,6 +79,14 @@ class Event < ActiveRecord::Base
     winery.state
   end
 
+  def lat
+    winery.lat
+  end
+
+  def lng
+    winery.lng
+  end
+
  	protected
 
   	def validate_attachments

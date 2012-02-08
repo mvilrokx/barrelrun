@@ -1,7 +1,7 @@
 #main {
+  @include prepend-top;
   #left-column {
-    @include column(10);
-    @include colborder;
+    @include column(8);
   }
   #barrel-deal-banner {
     background: #EEE; padding: 0 10px;
@@ -16,14 +16,18 @@
       height: 40px;
       vertical-align: middle;
     }
+    #deal-banner {
+      width: 280px;
+      height: 180px;
+      vertical-align: middle;
+    }
   }
   #middle-column {
-    @include column(6);
-    @include colborder;
+    @include column(8);
   }
 
   #right-column {
-    @include column(6, true);
+    @include column(8, true);
 
   }
 }

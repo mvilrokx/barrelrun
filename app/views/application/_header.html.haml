@@ -5,7 +5,7 @@
     #search-box
       = form_tag({:controller => "/searches", :action => "search"}, :method => :get, :id=>"search") do
         %input{:type => "text", :placeholder => "Enter winery or wine..."}
-        %button{:class => "btn large", :value => "Search"}
-          = image_tag "icons/06-magnify.png", :height => "14", :width => "14"
+        %button{:class => "btn btn-large icon", :value => "Search"}
+          %i.icon-search
           Search
 

@@ -1,26 +1,28 @@
+%hr
+
 #left-column
   #barrel-deal-banner
     %h2
       = image_tag("barrelrun/deal_icon.jpg", :alt=>"Barrel of a Deal", :id => "deal-icon")
       Barrel of a Deal
-    = image_tag("barrelrun/barrel_deal_img.jpg", :alt=>"Barrel of a Deal", :width=>"358", :height=>"230")
+    = image_tag("barrelrun/barrel_deal_img.jpg", :alt=>"Barrel of a Deal", :id => "deal-banner")
     %p Discover incredible deals direct from various wineries across the pacific west! #{link_to "Register", new_user_registration_path} to be notified when it is launched!
 
   %hr
 
   #upcoming_specials
-    = render :partial => "shared/object_list", :locals => {:object_list => @specials, :path => "top/#{Special.top_list_size}/", :list_header => "Save Money"}
+    = render :partial => "shared/object_list", :locals => {:object_list => @specials, :path => "top/#{Special.top_list_size}/", :title => "Save Money"}
 
   #upcoming_events
-    = render :partial=>"shared/object_list", :locals => {:object_list => @events, :path => "top/#{Event.top_list_size}/", :list_header => "Places to Go"}
+    = render :partial=>"shared/object_list", :locals => {:object_list => @events, :path => "top/#{Event.top_list_size}/", :title => "Places to Go"}
 
 #middle-column
   test
 
 #right-column
   #top_wineries
-    = render :partial=>"shared/object_list", :locals => {:object_list => @wineries, :type => :ol, :list_header => "Top " + @wineries.count.to_s + " Wineries" }
+    = render :partial=>"shared/object_list", :locals => {:object_list => @wineries, :list_type => :ol, :title => "Top Wineries", :map_it => true }
 
   #top_wines
-    = render :partial=>"shared/object_list", :locals => {:object_list => @wines, :type => :ol, :path => "top/#{Wine.top_list_size}/", :list_header => "Top #{Wine.top_list_size} Wines"}
+    = render :partial=>"shared/object_list", :locals => {:object_list => @wines, :list_type => :ol, :path => "top/#{Wine.top_list_size}/", :title => "Top Wines"}
 

@@ -3,6 +3,7 @@ nav {
   #menu-bar {
     @include column(24, true);
     background-color: $main-color;
+    @include linear-gradient(color-stops(lighten($main-color,15%), darken($main-color,15%)));
     overflow: hidden;
     @include text-shadow(0px -1px 0px darken($main-color,20%));
     li {
@@ -12,7 +13,7 @@ nav {
       display: block;
       color: $added-color;
       font: {
-        size: 1.3em;
+        size: 1.25em;
         weight: bold;
       }
       text-decoration: none;

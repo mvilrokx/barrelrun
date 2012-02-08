@@ -1,0 +1,31 @@
+.stars {
+  form {
+    display: none;
+    margin: 0px;
+  }
+  float: right;
+  a {
+    background: transparent url(/assets/barrelrun/barrel_rate1.png) 0 0 no-repeat;
+    display: inline-block;
+    height: 18px;
+    width: 9px;
+    text-indent: -999em;
+    overflow: hidden;
+    &.rating { 
+      background-position: 0 -72px; 
+      &.rating-right { background-position: 0 -90px; }
+    }
+    &.rating-right {
+      background-position: 0 -18px;
+      padding-right: 1px;
+    }
+    &.rating-over { 
+      background-position: 0 -36px; 
+      &.rating { background-position: 0 -36px; }
+      &.rating-right { 
+        background-position: 0 -54px; 
+        &.rating { background-position: 0 -54px; }
+      }
+    }
+  }
+}

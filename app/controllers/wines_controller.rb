@@ -31,8 +31,8 @@ class WinesController < ApplicationController
       path = "wineries/" + params[:winery_id] + "/"
     elsif params[:top]
       @wines = Wine.sort.top(params[:top]) #.all(:limit => params[:top])
-      list_header = "Top " + params[:top] + " Wines"
-      ordered_list = true
+      list_header = "Top Wines"
+      ordered_list = :ol
       path = "top/" + params[:top] + "/"
     else
       @wines = Wine.all.paginate(:page => params[:page], :include => [:pictures], :order => "updated_at DESC")
@@ -40,8 +40,8 @@ class WinesController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>"shared/object_list", :locals => {:object_list => @wines,
                                                                        :path => path,
-                                                                       :ordered_list => ordered_list,
-                                                                       :list_header => list_header } }
+                                                                       :list_type => ordered_list,
+                                                                       :title => list_header } }
       format.json { render :layout => false,
                            :json => @wines.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] },
                                                                  :winery => {:only => :winery_name}  } )
