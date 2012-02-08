@@ -1,0 +1,9 @@
+#wine{
+  @include column(17, true);
+  }
+  #wine2{
+    @include column(10);  
+    }
+    #wine3{
+    @include column(7, true);   
+    }
