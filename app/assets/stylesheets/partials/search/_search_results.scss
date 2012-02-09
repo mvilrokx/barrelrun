@@ -1,3 +1,7 @@
 #search_results{
-  @include column(5, true);
+  @include column(17, true);
+}
+
+#pagination{
+	text-align: left;
 }

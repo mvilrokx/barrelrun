@@ -2,7 +2,7 @@
 @include column(24, true);
 }
   #filter{
-    @include column(5);
+    @include column(7);
     @include push(1);
     @include prepend-top;
   }

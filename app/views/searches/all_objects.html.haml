@@ -1,7 +1,7 @@
 - title("Search results")
 .container
   %hr.space
-    %filter
+    #filter
       = form_tag '/searches/faceted_search', :method => "get" do
         .accordion
           - unless params["class"].nil?
@@ -50,19 +50,19 @@
         = hidden_field_tag "nearby", params[:nearby] if !params[:nearby].blank?
         = hidden_field_tag "search", params[:search] if !params[:search].blank?
         = submit_tag "Apply Filter"
-    %search_results
+    #search_results
       = link_to "Can't find a Winery?", new_user_winery_path
       = render :partial => "search_results"
 :javascript
   $(function() {
-      $("#slider-range").slider({
-        range: true,
-        min:  Wine.minimum(:price).to_i ,
-        max:  Wine.maximum(:price).to_i + 1 ,
-        values: [  params[:min_price]||10  ,  params[:max_price]||50  ],
-        slide: function( event, ui ) {
-          $("#min_price").val( ui.values[0]);
-          $("#max_price").val( ui.values[1]);
-        }
-      });
+    $("#slider-range").slider({
+      range:true,
+      min:= Wine.minimum(:price).to_i,
+      max:= Wine.maximum(:price).to_i + 1,
+      values:[ = params[:min_price]||10 ,=params[:max_price]||50 ],
+      slide: function( event, ui ) {
+        $("#min_price").val( ui.values[0]);
+        $("#max_price").val( ui.values[1]);
+      }
     });
+  });

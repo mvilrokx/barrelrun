@@ -1,5 +1,6 @@
 #winery{
   @include column(17, true);
+  text-align: left;
   }
   #winery2{
     @include column(10);  
