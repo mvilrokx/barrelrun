@@ -1,0 +1,13 @@
+body {
+  @include linear-gradient(color-stops(#F0F0F0, #fff));
+}
+
+#body-container {
+  @include container;
+  background: #fff;
+  min-height: 600px;
+}
+
+.alert p.error_notification {
+  margin-bottom: 0;
+}

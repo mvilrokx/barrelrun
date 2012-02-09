@@ -8,5 +8,7 @@
 //= require jquery_ujs
 //= require jquery.prettyPhoto
 //= require h5bp
+//= require bootstrap-alert
+//= require bootstrap-button
+//= require bootstrap-transition
 //= require_tree .
-

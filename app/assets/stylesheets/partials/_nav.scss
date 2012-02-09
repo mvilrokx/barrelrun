@@ -1,33 +1,31 @@
 nav {
-  @include container;
-  #menu-bar {
-    @include column(24, true);
-    background-color: $main-color;
-    @include linear-gradient(color-stops(lighten($main-color,15%), darken($main-color,15%)));
-    overflow: hidden;
-    @include text-shadow(0px -1px 0px darken($main-color,20%));
-    li {
-      float: left;
+  @include column(24, true);
+  background-color: $main-color;
+  @include linear-gradient(color-stops(lighten($main-color,15%), darken($main-color,15%)));
+  overflow: hidden;
+  @include text-shadow(0px -1px 0px darken($main-color,20%));
+  li {
+    float: left;
+  }
+  a {
+    display: block;
+    color: $added-color;
+    font: {
+      size: 1.25em;
+      weight: bold;
     }
-    a {
-      display: block;
+    text-decoration: none;
+    padding: 10px;
+    width: 98px;
+    text-align: center;
+    @include transition-property(background-color);
+    @include transition-duration(.25s);
+    &:hover {
+      text-decoration: underline;
       color: $added-color;
-      font: {
-        size: 1.25em;
-        weight: bold;
-      }
-      text-decoration: none;
-      padding: 10px;
-      width: 98px;
-      text-align: center;
+      background-color: darken($main-color, 15%);
       @include transition-property(background-color);
-      @include transition-duration(.25s);
-      &:hover {
-        text-decoration: underline;
-        background-color: darken($main-color, 15%);
-        @include transition-property(background-color);
-        @include transition-duration(.20s);
-      }
+      @include transition-duration(.20s);
     }
   }
   #selected_main_tab {

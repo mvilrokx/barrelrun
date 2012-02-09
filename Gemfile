@@ -20,6 +20,8 @@ gem 'awesome_print'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'haml-rails'
 gem 'html5-rails'
+gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
+gem 'country_select'
 
 group :assets do
   gem 'sass-rails', '~> 3.1.0'

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/plataformatec/simple_form.git
+  revision: b36a9d2c53012b5da5d00195869906250d790f06
+  specs:
+    simple_form (2.0.0.rc)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -61,6 +69,7 @@ GEM
       compass
     compass_twitter_bootstrap (2.0.0)
       compass
+    country_select (0.0.1)
     daemons (1.0.10)
     devise (2.0.0)
       bcrypt-ruby (~> 3.0)
@@ -253,6 +262,7 @@ DEPENDENCIES
   compass (= 0.12.alpha.4)
   compass-h5bp
   compass_twitter_bootstrap
+  country_select
   devise
   geocoder
   haml-rails
@@ -266,6 +276,7 @@ DEPENDENCIES
   paperclip (~> 2.3)
   rails (= 3.1.3)
   sass-rails (~> 3.1.0)
+  simple_form!
   thinking-sphinx
   uglifier
   warden

@@ -7,14 +7,12 @@
 
     = render "header"
 
-    = render "nav"
+    #body-container
 
-    = render "layouts/body"
+      = render "nav"
+      
+      = render "layouts/body"
 
     = render "footer"
 
     = render "layouts/javascripts"
-
-    -# TODO Remove this when done with conversion to Compass
-    = render "layouts/css_switcher"
-

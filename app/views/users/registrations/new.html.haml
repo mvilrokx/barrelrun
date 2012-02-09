@@ -1,0 +1,30 @@
+%br
+%br
+%br
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal' }) do |f|
+  - if f.error_notification
+    .alert.alert-error.fade.in
+      %a.close{:data => {:dismiss => "alert"}, :href => "#"} &times;
+      = f.error_notification
+
+  %legend #{resource_name.to_s.humanize} Sign up
+  = f.input :username
+  = f.input :password
+  = f.input :password_confirmation
+
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email
+  = f.input :birthdate
+  = f.input :address
+  = f.input :address2
+  = f.input :city
+  = f.input :state
+  = f.input :zipcode
+  = f.input :country
+  = f.input :telephone
+  = f.input :accepts_terms_of_service
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary', :disable_with => "Saving..."
+    = submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"

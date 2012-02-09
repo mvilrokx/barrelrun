@@ -653,7 +653,7 @@ div#copyright_notice{
    -webkit-border-radius: 5px;
 }
 
-.close {
+/*.close {
    background: transparent url('/assets/barrelrun/close_icon.gif') 0 0 no-repeat;
    height: 25px;
    width: 25px;
@@ -661,7 +661,7 @@ div#copyright_notice{
    right: 0px;
    top: 5px;
    text-indent: -9999px;
-}
+}*/
 
 #message_box p {
    color: #fff;

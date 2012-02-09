@@ -57,7 +57,7 @@
   &:before,
   &:after {
      content:" ";
-     background: red;
+     background: transparent;
      position:absolute;
      z-index:-1;
      bottom:15px;
