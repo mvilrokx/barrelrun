@@ -1,6 +1,6 @@
 #search_results
   .list
-    %pagination
+    #pagination
       = will_paginate @search_results, :container => false
       - @search_results.each do |search_result|
         - if search_result.instance_of?(Winery) then

@@ -1,16 +1,40 @@
 #container{
-@include column(24, true);
+  @include column(24, true);
 }
   #filter{
     @include column(7);
     @include push(1);
     @include prepend-top;
+    label{
+      display: inline;
+      float: none; 
+      padding: 0px;
+    }
+    #min_price{
+      border:0;
+      width: 23px;
+      margin:0px;
+      font-weight: bold;
+      text-align: right;
+    }
+    #max_price{
+      border:0; 
+      width: 23px; 
+      margin:0px; 
+      font-weight: bold
+    }
+
   }
     .options{
       padding-left: 10px;
     }
-  #search_results{
-    @include column(10, true);
+  #search_page{
+    @include column(17, true);
     @include prepend-top;
-    text-align: right;
+    #search_bar{
+      text-align: right;
+    }
+    #search_area{
+      text-align: left;
+    }
   }
