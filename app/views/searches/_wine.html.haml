@@ -1,7 +1,7 @@
-%wine
-  %wine2
-    %h3= link_to wine.name, wine, :class => 'dialog_form_link'
-    Made by #{link_to wine.winery.name, wine.winery}
-  %wine3
-    = "#{wine.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if wine.sphinx_attributes['@geodist']
-%hr/
+#wine
+	#wine2
+		%h3=link_to wine.name, wine, :class => 'dialog_form_link'
+		Made by #{link_to wine.winery.name, wine.winery}
+		#wine3
+			= "#{wine.sphinx_attributes['@geodist'].meters.to.miles.round(2)} miles from #{params[:nearby]}" if wine.sphinx_attributes['@geodist']
+		%hr/
