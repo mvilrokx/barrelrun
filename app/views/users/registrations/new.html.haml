@@ -1,30 +1,28 @@
-%br
-%br
-%br
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal' }) do |f|
-  - if f.error_notification
-    .alert.alert-error.fade.in
-      %a.close{:data => {:dismiss => "alert"}, :href => "#"} &times;
-      = f.error_notification
+.form
+  = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal' }, :defaults => {:input_html => {:class => 'span2'}} do |f|
+    - if f.error_notification
+      .alert.alert-error.fade.in
+        %a.close{:data => {:dismiss => "alert"}, :href => "#"} &times;
+        = f.error_notification
 
-  %legend #{resource_name.to_s.humanize} Sign up
-  = f.input :username
-  = f.input :password
-  = f.input :password_confirmation
+    %legend #{resource_name.to_s.humanize} Sign up
+    = f.input :username, :hint => 'maximum 19 characters'
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
 
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :email
-  = f.input :birthdate
-  = f.input :address
-  = f.input :address2
-  = f.input :city
-  = f.input :state
-  = f.input :zipcode
-  = f.input :country
-  = f.input :telephone
-  = f.input :accepts_terms_of_service
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email, :placeholder => 'user@domain.com', :input_html => { :class => "span3" }, :required => true
+    = f.input :birthdate, :hint => 'You must be older than 21 to sign up.', :order => [:day, :month, :year], :start_year => Time.now.year-110, :end_year => Time.now.year
+    = f.input :address, :input_html => { :class => "span4" }
+    = f.input :address2, :input_html => { :class => "span4" }
+    = f.input :city
+    = f.input :state
+    = f.input :zipcode, :input_html => { :class => "span1" }
+    = f.input :country, :priority => [ "United States" ]
+    = f.input :telephone
+    = f.input :accepts_terms_of_service, :label => 'Accept', :hint => link_to("Terms of Service", '/pages/user_terms_of_service', :class=>"dialog_link"), :input_html => { :class => "span1" }
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary', :disable_with => "Saving..."
-    = submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"
+    .form-actions
+      = f.button :submit, :class => 'btn-primary', :disable_with => "Saving..."
+      = submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"

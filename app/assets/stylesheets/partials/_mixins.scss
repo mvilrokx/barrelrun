@@ -41,7 +41,7 @@
     font-size:18px;
     // this creates the wrap element (little triangle)
     &:before {
-      content: "";
+      content: " ";
       display: block;
       width: 0;
       height: 0;

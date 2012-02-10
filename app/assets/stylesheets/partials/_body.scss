@@ -1,11 +1,15 @@
 body {
   @include linear-gradient(color-stops(#F0F0F0, #fff));
+  position: relative;
+  z-index:-100;
 }
 
 #body-container {
   @include container;
   background: #fff;
   min-height: 600px;
+  position: relative;
+  z-index: -2;
 }
 
 .alert p.error_notification {

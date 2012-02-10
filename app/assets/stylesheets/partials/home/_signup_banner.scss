@@ -1,13 +1,16 @@
-#signup-banner {
-  text-align: center;
-  font-size: 1.5em;
-  border: 2px solid #bdbdbd;
-  @include border-radius(10px);
-  @include linear-gradient(color-stops(white 40%, #C0C0C0 ));
-  margin: 5px 0px;
+#banner {
+	@include prepend(2);
+	@include column(20, true);
+	#signup-banner {
+	  text-align: center;
+	  font-size: 1.5em;
+	  border: 1px solid #bdbdbd;
+	  @include border-radius(5px);
+	  @include linear-gradient(color-stops(white 40%, #C0C0C0 ));
+	  margin: 5px 0px;
+	}
+	#signup-img {
+	  padding-bottom: 5px;
+	  vertical-align: middle;
+	}
 }
-#signup-img {
-  padding-bottom: 5px;
-  vertical-align: middle;
-}
-
