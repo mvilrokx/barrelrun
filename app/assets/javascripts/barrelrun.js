@@ -557,7 +557,7 @@ $('.remove_as_favorite').live('click', function() {
       success: function(data) {
         $this.text('Add to My Favorites');
         $this.attr(
-          {class: 'add_as_favorite',
+          {'class': 'add_as_favorite',
            title: 'Add to My Favorites',
            href: "/" + data[0] + "/" + data[1] + "/favorites"
         });
