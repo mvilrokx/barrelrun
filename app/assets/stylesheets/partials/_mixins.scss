@@ -10,13 +10,15 @@
 //    padding-left: 20px;
     //padding-top: 10px;
     color: #666;
+    li {
+//      border-bottom: 3px solid transparent;
+    }
     li:first-child {
       font-weight: bold;
       letter-spacing: 1px;
     }
     li:hover {
-      background: #E0E0E0;
-      @include border-radius(5px);
+//      border-bottom: 3px solid $main-color;
     }
     a {
       color: #666;
