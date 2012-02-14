@@ -26,6 +26,6 @@ group :assets do
   gem 'uglifier'
   gem 'compass', '~> 0.12.alpha'
   # include other compass plugins here. E.g.:
-  gem 'compass-susy-plugin', :require => 'susy'
+  # gem 'compass-susy-plugin', :require => 'susy'
 end
 
