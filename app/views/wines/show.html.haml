@@ -36,8 +36,8 @@
           %strong Price:
           = h number_to_currency(@wine.price)
       = link_to "View Tasting Notes", @wine.tasting_notes.url, :target => "_blank" if @wine.tasting_notes?
-  %hr.line
-  #comment_block
-    = render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)}
-    = render :partial => "shared/comment_form", :locals => {:object => @wine}
-    #wine_comments= render :partial => "shared/comments", :locals =>{:commentable => @wine}
+    %hr.line
+    #comment_block
+      = render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)}
+      = render :partial => "shared/comment_form", :locals => {:object => @wine}
+      #wine_comments= render :partial => "shared/comments", :locals =>{:commentable => @wine}

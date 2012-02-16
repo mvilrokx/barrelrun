@@ -63,6 +63,9 @@
 
     #comment_block{
       @include column(20, true);
+      #wine_comments{
+        
+      }
     }
   }
 }
