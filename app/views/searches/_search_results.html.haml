@@ -1,7 +1,7 @@
 #search_results
   .list
     #pagination
-      = will_paginate @search_results, :container => false
+      = will_paginate @search_results
       - @search_results.each do |search_result|
         - if search_result.instance_of?(Winery) then
           = render :partial => "winery", :locals => {:winery => search_result}

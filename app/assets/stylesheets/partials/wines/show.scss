@@ -4,17 +4,17 @@
   #top{
     @include column(17, true);
 
-    #colborder{
-      @include column(12);
+      #colborder{
+        @include column(5);
+      }
 
       #detail{
-      @include column(6, true);
+        @include column(6);
       }
 
       #detail2{
         @include column(6, true)
         font-size: 16px;
       }
-    }
   }
 }

@@ -1,32 +1,32 @@
 .entry_form
-  #top
-    #colborder
-      = render :partial => "shared/picture_gallery", :locals => {:object => @wine}
-      #detail
-        %h3.name= h @wine.name
-        %h4
-          Made by #{link_to @wine.winery.winery_name, @wine.winery}
-        - if user_signed_in?
-          - if @wine.favorites.find_by_user_id(current_user)
-            %a.remove_as_favorite{:href => "/wines/#{@wine.id}/favorites/#{@wine.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
-          - else
-            %a.add_as_favorite{:href => "/wines/#{@wine.id}/favorites"} Add To My Favorites
-        .addthis_toolbox.addthis_32x32_style
-        = simple_format @wine.description
-      #detail2
-        %ul{:style => "list-style: none; margin: 0px; padding: 0px;"}
-          %li
-            %strong Vintage:
-            = h @wine.vintage
-          %li
-            %strong Type:
-            = h @wine.wine_type
-          %li
-            %strong Varietal:
-            = h @wine.varietal
-          %li
-            %strong Price:
-            = h number_to_currency(@wine.price)
+  #colborder
+    = render :partial => "shared/picture_gallery", :locals => {:object => @wine}
+  #detail
+    %h3.name= h @wine.name
+    %h4
+      Made by #{link_to @wine.winery.winery_name, @wine.winery}
+      = render :partial => "shared/star_rating", :locals => {:object => @wine, :action => rating_wine_path(@wine)}
+    - if user_signed_in?
+      - if @wine.favorites.find_by_user_id(current_user)
+        %a.remove_as_favorite{:href => "/wines/#{@wine.id}/favorites/#{@wine.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
+      - else
+        %a.add_as_favorite{:href => "/wines/#{@wine.id}/favorites"} Add To My Favorites
+    .addthis_toolbox.addthis_32x32_style
+    = simple_format @wine.description
+  #detail2
+    %ul{:style => "list-style: none; margin: 0px; padding: 0px;"}
+      %li
+        %strong Vintage:
+        = h @wine.vintage
+      %li
+        %strong Type:
+        = h @wine.wine_type
+      %li
+        %strong Varietal:
+        = h @wine.varietal
+      %li
+        %strong Price:
+        = h number_to_currency(@wine.price)
     = link_to "View Tasting Notes", @wine.tasting_notes.url, :target => "_blank" if @wine.tasting_notes?
     %hr/
   .span-17.last.comment_block

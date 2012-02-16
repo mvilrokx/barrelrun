@@ -49,6 +49,8 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
+    bootstrap-will_paginate (0.0.6)
+      will_paginate
     braintree (2.13.4)
       builder (>= 2.0.0)
     builder (3.0.0)
@@ -257,6 +259,7 @@ DEPENDENCIES
   alchemist
   awesome_print
   aws-sdk
+  bootstrap-will_paginate
   braintree
   coffee-rails (~> 3.1.0)
   compass (= 0.12.alpha.4)
