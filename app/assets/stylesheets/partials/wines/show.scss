@@ -2,67 +2,70 @@
   #dialog_box{
     @include column(20, true);
 
-    #image{
-      @include column(5);
-    }
-
-    #object_details{
-      @include column(7);
-      @include colborder;
-
-      #name{
-        @include column(7, true);
-        @include append-bottom;
+    #top{
+      #image{
+        @include column(5);
       }
 
-      h4{
-        @include column(7, true);
-        @include append-bottom;
-      }
+      #object_details{
+        @include column(7);
+        @include colborder;
 
-      #star_rating{
-        @include append-bottom;
-      }
+        #name{
+          @include column(7, true);
+          @include append-bottom;
+        }
 
-      #favorites{
-        @include append-bottom;
-      }
+        h4{
+          @include column(7, true);
+          @include append-bottom;
+        }
 
-      #toolbox{
-        @include column(7, true);
-        @include append-bottom;
-      }
+        #star_rating{
+          @include append-bottom;
+        }
 
-      #description{
-        @include column(7, true);
-        height: 110px; 
-        overflow: auto; 
-        margin: 10px 0px;
-      }
-    }
+        #favorites{
+          @include append-bottom;
+        }
 
-    #object_attributes{
-      @include column(7, true);
-      font-size: 16px;
-      ul{
-        list-style: none; 
-        margin: 0px; 
-        padding: 0px;
-        li {
-          margin-top: .5em;
-          margin-bottom: .5em;
+        #toolbox{
+          @include column(7, true);
+          @include append-bottom;
+        }
+
+        #description{
+          @include column(7, true);
+          height: 110px; 
+          overflow: auto; 
+          margin: 10px 0px;
         }
       }
-    }
 
-    hr{
-      #line{
-        @include colruler;
+      #object_attributes{
+        @include column(7, true);
+        font-size: 16px;
+        ul{
+          list-style: none; 
+          margin: 0px; 
+          padding: 0px;
+          li {
+            margin-top: .5em;
+            margin-bottom: .5em;
+          }
+        }
       }
     }
 
     #comment_block{
       @include column(20, true);
+      #line{
+        hr{
+          #line{
+            @include colruler;
+          }
+        }
+      }
       #wine_comments{
         
       }
