@@ -1,20 +1,68 @@
-#entry_form{
-  @include column(17, true);
+.entry_form{
+  #dialog_box{
+    @include column(20, true);
 
-  #top{
-    @include column(17, true);
+    #image{
+      @include column(5);
+    }
 
-      #colborder{
-        @include column(5);
+    #object_details{
+      @include column(7);
+      @include colborder;
+
+      #name{
+        @include column(7, true);
+        @include append-bottom;
       }
 
-      #detail{
-        @include column(6);
+      h4{
+        @include column(7, true);
+        @include append-bottom;
       }
 
-      #detail2{
-        @include column(6, true);
-        font-size: 16px;
+      #star_rating{
+        @include append-bottom;
       }
+
+      #favorites{
+        @include append-bottom;
+      }
+
+      #toolbox{
+        @include column(7, true);
+        @include append-bottom;
+      }
+
+      #description{
+        @include column(7, true);
+        height: 110px; 
+        overflow: auto; 
+        margin: 10px 0px;
+      }
+    }
+
+    #object_attributes{
+      @include column(7, true);
+      font-size: 16px;
+      ul{
+        list-style: none; 
+        margin: 0px; 
+        padding: 0px;
+        li {
+          margin-top: .5em;
+          margin-bottom: .5em;
+        }
+      }
+    }
+
+    hr{
+      #line{
+        @include colruler;
+      }
+    }
+
+    #comment_block{
+      @include column(20, true);
+    }
   }
 }
