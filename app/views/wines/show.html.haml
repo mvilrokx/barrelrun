@@ -10,7 +10,7 @@
           Made by #{link_to @wine.winery.winery_name, @wine.winery}
         #star_rating
           = render :partial => "shared/star_rating", :locals => {:object => @wine, :action => rating_wine_path(@wine)}
-          %br
+        %br
         #favorites
           - if user_signed_in?
             - if @wine.favorites.find_by_user_id(current_user)
@@ -19,7 +19,7 @@
               %a.add_as_favorite{:href => "/wines/#{@wine.id}/favorites"} Add To My Favorites
         #toolbox
           .addthis_toolbox.addthis_32x32_style
-        %br
+          %br
         #description
           = simple_format @wine.description
       #object_attributes

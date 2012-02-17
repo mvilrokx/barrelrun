@@ -22,7 +22,7 @@
         }
 
         #star_rating{
-          @include append-bottom;
+          @include append-bottom(3em);
         }
 
         #favorites{
