@@ -5,20 +5,20 @@
   <div class="push-3 span-18 last main">
     <hr class="space">
     <div class="push-1 span-16">
-    
+
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <div class="edit_form">
         <fieldset>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
+            <%= image_tag("account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
           <%= form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true } do |f| -%>
             <%= f.error_messages %>
             <%= f.label :username, 'User Name' %>
             <span class="div_texbox">
               <%= f.text_field :username, :disabled => "disabled", :class => "fillout01" %> <i>(cannot be changed)</i>
-          	</span>         	
-          	
+          	</span>
+
             <%= f.label :password %>
             <span class="div_texbox">
               <%= f.password_field :password, :class => "fillout01" %>
@@ -29,7 +29,7 @@
           	</span>
           	<hr>
             <div class="subheading">
-              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+              <%= image_tag("personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </div>
             <%= f.label :firstname, "First Name" %>
             <span class="div_texbox">
@@ -96,3 +96,4 @@
     </div>
   </div>
 </div>
+

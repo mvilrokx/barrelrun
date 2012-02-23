@@ -19,7 +19,7 @@
         <th>Varietal</th>
         <th>Pictures</th>
         <th colspan=3>Action</th>
-      </tr>    
+      </tr>
     <% @wines.each do |wine| %>
       <tr>
         <td><%=h wine.name %></td>
@@ -34,10 +34,11 @@
           <td></td>
         <% end %>
   <% if false %> <!-- commenting out ruby code -->
-  <!--            <td><%= link_to image_tag("../images/page_find.png", :border=>0, :alt=>"Show"), wine, :title=> "Show", :class => 'dialog_form_link' %> -->
+  <!--            <td><%= link_to image_tag("page_find.png", :border=>0, :alt=>"Show"), wine, :title=> "Show", :class => 'dialog_form_link' %> -->
   <% end %>
-        <td><%= link_to image_tag("../images/page_edit.png", :border=>0, :alt=>"Edit"), edit_winery_wine_path(wine.winery, wine), :title=> "Edit", :class => 'dialog_form_link' %>
-        <td><%= link_to image_tag("../images/bin_closed.png", :border=>0, :alt=>"Delete"), wine, :title=> "Delete", :class => 'delete' %>
+        <td><%= edit_link_image edit_winery_wine_path(wine.winery, wine), :class => 'dialog_form_link' %></td>
+        <td><%= delete_link_image wine, :class => 'delete' %></td>
+
   <% if false %> <!-- commenting out ruby code -->
   <!--      <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete %></td> -->
   <!--      <td><%= link_to "Delete", delete_wine_path(wine), :class => "dialog_form_link" %></td> -->

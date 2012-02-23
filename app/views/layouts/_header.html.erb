@@ -1,6 +1,6 @@
     <div class="container" id="header_container">
       <div class="span-8 prepend-top" id="company_logo">
-        <%= link_to image_tag("../images/beta_logo_white.png", :border=>0), root_path %>
+        <%= link_to image_tag("barrelrun/beta_logo_white.png"), root_path %>
       </div>
       <%= form_tag({:controller => "/searches", :action => "search"}, :method => :get, :class=>"span-15 prepend-top", :id=>"search") do %>
         <div id="header_search_box">
@@ -39,7 +39,7 @@
       </div>
       <% else %>
       <div class="span-1 pull-1 last" id="login_icon">
-        <%= link_to  image_tag("../images/login_button.png", :border=>0), new_user_session_path, :class=>"signin" %>
+        <%= link_to  image_tag("barrelrun/login_button.png", :border=>0), new_user_session_path, :class=>"signin" %>
         <%= render :partial => "layouts/inline_user_sign_in" %>
       </div>
       <% end %>

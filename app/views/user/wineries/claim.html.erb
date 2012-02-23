@@ -5,7 +5,7 @@
   <div class="push-3 span-18 last main">
     <hr class="space">
     <div class="push-1 span-16">
-    
+
       <h2>Claim Winery</h2>
       <div class="edit_form">
 	<br>
@@ -13,14 +13,14 @@
 	<br>
         <fieldset>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
+            <%= image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
           <%= form_for @winery, :url => update_claim_user_winery_path(@winery) do |f| %>
             <%= f.error_messages %>
             <%= f.label :username, "* User Name" %>
             <span class="div_texbox">
               <%= f.text_field :username, :required => true, :class => "fillout01" %>
-          	</span>         	
+          	</span>
             <%= f.label :password, "* Password" %>
             <span class="div_texbox">
               <%= f.password_field :password, :required => true, :class => "fillout01" %>
@@ -31,7 +31,7 @@
           	</span>
           	<hr>
           <div class="subheading">
-            <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+            <%= image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
           </div>
             <%= f.label :winery_name , "* Winery name" %>
             <span class="div_texbox">
@@ -92,7 +92,7 @@
 		<br>
 <hr>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
+            <%= image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
           </div>
 
 	<div class="span-16 last">
@@ -160,6 +160,7 @@
           <% end -%>
         </fieldset>
       </div>
-      
+
   </div>
 </div>
+

@@ -4,9 +4,9 @@
       <%=h @winery.winery_name %>
 
       <% if @winery.ownership_status != 'CLAIMED' %>
-        <span style="font-size: 12px;"><%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
+        <span style="font-size: 12px;"><%= link_to image_tag("icons/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery) %><%= link_to "Do you own this winery?", claim_user_winery_path(@winery) %></span>
       <% else %>
-        <%= image_tag("../images/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
+        <%= image_tag("icons/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing") %>
       <% end %>
     </h2>
   </div>
@@ -42,10 +42,10 @@
           <%=h @winery.city %>, <%=h @winery.state %> <%=h @winery.zipcode %>
         </div>
         <div class="span-5 last strong">
-          <%= image_tag("../images/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
+          <%= image_tag("icons/phone.png", :alt=>"telephone") %><%= @winery.telephone %>
         </div>
         <div class="span-5 last strong">
-          <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>	
+          <a href="<%=h @winery.url %>" target="_blank"><%=h @winery.url %></a>
         </div>
         <div class="span-5 last strong">
         	<hr class="space" />
@@ -111,7 +111,7 @@
     <% if !@winery.awards.empty? %>
       <div class="span-13">
         <div class="span-13 last">
-          <h2><%= image_tag("../images/trophy.jpg", :alt=>"trophy") %> Awards</h2>
+          <h2><%= image_tag("icons/trophy.jpg", :alt=>"trophy") %> Awards</h2>
 
           <% for award in @winery.awards %>
             <div class="span-13 last">

@@ -14,21 +14,21 @@
   <div class="push-3 span-18 last main">
     <hr class="space">
     <div class="push-1 span-16">
-    
+
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <div class="edit_form">
         <fieldset>
 	 * Required fields
 	<br>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
+            <%= image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
           <%= form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put } do |f| -%>
             <%= f.error_messages %>
             <%= f.label :username, "* User Name" %>
             <span class="div_texbox">
               <%= f.text_field :username, :disabled => "disabled", :class => "fillout01" %> <i>(cannot be changed)</i>
-          	</span>         	
+          	</span>
             <%= f.label :password , "Password"%>
             <span class="div_texbox">
               <%= f.password_field :password, :class => "fillout01" %>
@@ -40,7 +40,7 @@
           	<hr>
 		<br>
           <div class="subheading">
-            <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+            <%= image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
           </div>
             <%= f.label :winery_name , "* Winery name"%>
             <span class="div_texbox">
@@ -101,7 +101,7 @@
 		<br>
           <hr>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
+            <%= image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Additional Details
           </div>
 
 	<div class="span-16 last">
@@ -151,7 +151,7 @@
       <span class="div_texbox">
         <%= f.check_box :fam_friendly %>
     	</span>
-	<div/>  
+	<div/>
 
 	<div class="span-16 last">
  	  <%= f.label :accept_credit, "Credit cards accepted" %>
@@ -182,3 +182,4 @@
     </div>
   </div>
 </div>
+

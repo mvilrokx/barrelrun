@@ -18,23 +18,24 @@
         <td class="table-column-header"><%= feature %></td>
         <% Subscription::LEVELS.each_with_index do |level, j| %>
           <% if Subscription::LEVEL_FEATURES[ [level, feature] ] %>
-            <% if Subscription::LEVEL_FEATURES[ [level, feature] ].respond_to? :to_str %>           
+            <% if Subscription::LEVEL_FEATURES[ [level, feature] ].respond_to? :to_str %>
               <td class="<%= "table-col-#{j}" %>" ><%= Subscription::LEVEL_FEATURES[ [level, feature] ] %></td>
             <% else %>
-              <td class="<%= "table-col-#{j}" %>" ><%= image_tag '/images/tick.png' %></td>
+              <td class="<%= "table-col-#{j}" %>" ><%= image_tag 'icons/tick.png' %></td>
             <% end %>
           <% else %>
             <td class="<%= "table-col-#{j}" %>" >&nbsp;</td>
           <% end %>
-        <% end %>  
+        <% end %>
       </tr>
-    <% end %>  
+    <% end %>
     <tr>
       <td class="table-column-header">&nbsp;</td>
       <% Subscription::LEVELS.each_with_index do |level, i| %>
         <td class="<%= "table-col-#{i}" %>" ><%= link_to "Sign Up", subscriptions_path + "/#{level.downcase}" %></td>
       <% end %>
     </tr>
-    
+
   </table>
 </div>
+

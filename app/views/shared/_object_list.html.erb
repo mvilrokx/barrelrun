@@ -8,7 +8,7 @@
     <%= ordered_list ? "<ol>".html_safe : "<ul>".html_safe %>
       <% object_list.each_with_index do |object, idx| %>
         <% if ordered_list && idx == 0 then %>
-      <li style="font-weight: bold; list-style-image: url(images/medal.jpg);">
+      <li style="font-weight: bold; list-style-image: url(<%= asset_path 'barrelrun/medal.jpg' %>);">
         <% else %>
       <li>
         <% end %>
@@ -28,7 +28,7 @@
             </form>
           </div>
             <% if object.class.name == "Wine" && editable %>
-              <%= link_to image_tag("../images/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_wine_path(object.winery, object), :title=> "Edit", :class => 'dialog_form_link' %>
+              <%= link_to image_tag("icons/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_wine_path(object.winery, object), :title=> "Edit", :class => 'dialog_form_link' %>
             <% end %>
         <% else %>
           <div style="float: right;" class="stars">

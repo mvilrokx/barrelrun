@@ -6,13 +6,13 @@
     <hr class="space">
     <div class="push-1 span-16">
 
-      <h2><%= resource_name.to_s.humanize %> Sign up</h2>            
+      <h2><%= resource_name.to_s.humanize %> Sign up</h2>
       <div class="edit_form">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f| %>
         <fieldset>
 	<p> * Required fields</p>
           <div class="subheading">
-            <%= image_tag("../images/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
+            <%= image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Account Information
           </div>
             <%= f.error_messages %>
             <%= f.label :username, "* User Name" %>
@@ -36,7 +36,7 @@
           	</span>
           	<hr>
             <div class="subheading">
-              <%= image_tag("../images/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
+              <%= image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") %> Personal Information
             </div>
             <%= f.label :first_name, "* First name" %>
             <span class="div_texbox">
@@ -51,13 +51,10 @@
               <%= tag(:input, {:id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout01"}) %>
           	</span>
 
-
-            <%= f.label :birthdate, "* Birthdate" %>  
+            <%= f.label :birthdate, "* Birthdate" %>
             <span class="div_texbox">
-              <%= f.date_select(:birthdate, {:order => [:day, :month, :year], :start_year => Time.now.year-110, :end_year => Time.now.year,}) %> <img src="/images/question.jpg" title="Because the site deals with alcohol you must be a certain age to register."/>
+              <%= f.date_select(:birthdate, {:order => [:day, :month, :year], :start_year => Time.now.year-110, :end_year => Time.now.year,})%> <%= image_tag "icons/question.jpg", :title => "Because the site deals with alcohol you must be a certain age to register." %>
           	</span>
-
-	
 
             <%= f.label :address %>
             <span class="div_texbox">

@@ -8,7 +8,7 @@
 
         <%- unless params["class"].nil? -%>
           <div class="facet">
-            <h4><%= image_tag 'bullet_arrow_down.png' %>Display</h4>
+            <h4><%= image_tag 'icons/bullet_arrow_down.png' %>Display</h4>
             <div class="options" style="padding-left: 10px;">
               <%= check_box_tag "class[]", "Wine", params["class"].include?("Wine"), {:id => "Wine"} %>
               <%= label_tag "Wine", "Wine", :style => 'display: inline; float: none; padding: 0px;' %><br/>
@@ -22,7 +22,7 @@
           <%- unless facet.to_s == "price" || facet.to_s == "class"-%>
             <%- if facet_options.count > 0 -%>
               <div class="facet">
-                <h4><%= image_tag 'bullet_arrow_down.png' %><%= facet.to_s.humanize %></h4>
+                <h4><%= image_tag 'icons/bullet_arrow_down.png' %><%= facet.to_s.humanize %></h4>
                 <div class="options" style="padding-left: 10px;">
                 <%- facet_options.each do |option, count| -%>
                   <% if params[facet] %>
@@ -40,7 +40,7 @@
 
         <%- unless params[:nearby].blank? -%>
           <div class="facet">
-            <h4><%= image_tag 'bullet_arrow_down.png' %>Distance (<span id="miles"><%= params[:distance]||SearchesController::MILES %></span>  miles)</h4>
+            <h4><%= image_tag 'icons/bullet_arrow_down.png' %>Distance (<span id="miles"><%= params[:distance]||SearchesController::MILES %></span>  miles)</h4>
             <div class="options" style="padding-left: 10px;">
               0<input id="distance" type="range" name="distance" min="0" max="50" step="1" value=<%= params[:distance]||SearchesController::MILES %> />50
             </div>
@@ -49,7 +49,7 @@
 
         <%- unless params[:class] == ["Winery"] -%>
           <div class="facet" id="price_range">
-            <h4><%= image_tag 'bullet_arrow_down.png' %>Price Range $<%= text_field_tag :min_price, params[:min_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold; text-align: right;"} %>-$<%= text_field_tag :max_price, params[:max_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold;"} %></h4>
+            <h4><%= image_tag 'icons/bullet_arrow_down.png' %>Price Range $<%= text_field_tag :min_price, params[:min_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold; text-align: right;"} %>-$<%= text_field_tag :max_price, params[:max_price], {:style => "border:0; width: 23px; margin:0px; font-weight: bold;"} %></h4>
           <div class="options" style="padding: 10px;">
             <div id="slider-range"></div>
   <script>
