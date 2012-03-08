@@ -38,6 +38,8 @@
           %li
             = image_tag("icons/phone.png", :alt=>"telephone")
             = @winery.telephone
+          %li
+            = h @winery.url
         - if @winery.price?
           %strong Price range:
           = h @winery.price
