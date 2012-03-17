@@ -1,0 +1,53 @@
+.entry_form
+  #top
+    #left
+      = render :partial => "shared/picture_gallery", :locals => {:object => @event}
+      #left_top
+        #name
+          name= h @event.name
+        #offered
+          Offered by #{link_to @event.winery.winery_name, @event.winery}
+      = render :partial => "shared/star_rating", :locals => {:object => @event, :action => rating_event_path(@event)}
+      - if user_signed_in?
+        #favorites
+          - if @event.favorites.find_by_user_id(current_user)
+            %a.remove_as_favorite{:href => "/events/#{@event.id}/favorites/#{@event.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
+          - else
+            %a.add_as_favorite{:href => "/events/#{@event.id}/favorites"} Add To My Favorites
+      #toolbox
+        .addthis_toolbox.addthis_32x32_style
+      #descr
+        = h @event.description
+    #right
+      %ul
+        %li
+          %strong Where:
+          = h @event.place
+        %li
+          %strong Invitation Type:
+          = h @event.invitation_type
+        %li
+          %strong Start:
+          = h @event.start_date.try(:strftime,'%m/%d/%Y')
+        %li
+          %strong End:
+          = h @event.end_date.try(:strftime,'%m/%d/%Y')
+        %li
+          %strong Price:
+          = h number_to_currency(@event.price)
+        %li
+          %strong Contact Name:
+          = h @event.contact_info_name
+        %li
+          %strong Phone:
+          = h @event.contact_info_phone
+        %li
+          %strong Email:
+          = h @event.contact_info_email
+  #comment_block
+    = render :partial => "shared/comments_header", :locals => {:path => event_comments_path(@event)}
+    = render :partial => "shared/comment_form", :locals => {:object => @event}
+    #event_comments= render :partial => "shared/comments", :locals =>{:commentable => @event}
+= link_to 'Edit', edit_event_path(@event)
+|
+\#{link_to 'Back', events_path}
