@@ -1,0 +1,35 @@
+.entry_form
+  #top
+    #left
+      = render :partial => "shared/picture_gallery", :locals => {:object => @special}
+      #left_top{
+        #name
+          = h @special.name
+        #offered
+            Offered by #{link_to @special.winery.winery_name, @special.winery}
+        = render :partial => "shared/star_rating", :locals => {:object => @special, :action => rating_special_path(@special)}
+        - if user_signed_in?
+          #favorites
+            - if @special.favorites.find_by_user_id(current_user)
+              %a.remove_as_favorite{:href => "/specials/#{@special.id}/favorites/#{@special.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
+            - else
+              %a.add_as_favorite{:href => "/specials/#{@special.id}/favorites"} Add To My Favorites
+        #toolbox
+          .addthis_toolbox.addthis_32x32_style
+        #descr
+          = h @special.description
+    #right
+      %ul
+        %li
+          %strong Start:
+          = h @special.start_date.try(:strftime,'%m/%d/%Y')
+        %li
+          %strong End:
+          = h @special.end_date.try(:strftime,'%m/%d/%Y')
+  #comment
+    = render :partial => "shared/comments_header", :locals => {:path => special_comments_path(@special)}
+    = render :partial => "shared/comment_form", :locals => {:object => @special}
+    #special_comments= render :partial => "shared/comments", :locals =>{:commentable => @special}
+= link_to 'Edit', edit_special_path(@special)
+|
+\#{link_to 'Back', specials_path}
