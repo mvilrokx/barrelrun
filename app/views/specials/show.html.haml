@@ -2,7 +2,7 @@
   #top
     #left
       = render :partial => "shared/picture_gallery", :locals => {:object => @special}
-      #left_top{
+      #left_top
         #name
           = h @special.name
         #offered
@@ -19,7 +19,7 @@
         #descr
           = h @special.description
     #right
-      %ul
+      %ul{:style => "list-style: none; margin: 0px; padding: 0px;"}
         %li
           %strong Start:
           = h @special.start_date.try(:strftime,'%m/%d/%Y')

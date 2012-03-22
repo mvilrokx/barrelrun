@@ -2,11 +2,11 @@
   #top
     #left
       = render :partial => "shared/picture_gallery", :locals => {:object => @event}
-      #left_top
-        #name
-          name= h @event.name
-        #offered
-          Offered by #{link_to @event.winery.winery_name, @event.winery}
+    #middle
+      #name
+        = h @event.name
+      #offered
+        Offered by #{link_to @event.winery.winery_name, @event.winery}
       = render :partial => "shared/star_rating", :locals => {:object => @event, :action => rating_event_path(@event)}
       - if user_signed_in?
         #favorites
@@ -45,9 +45,11 @@
           %strong Email:
           = h @event.contact_info_email
   #comment_block
+    #line    
+    %hr.line
     = render :partial => "shared/comments_header", :locals => {:path => event_comments_path(@event)}
     = render :partial => "shared/comment_form", :locals => {:object => @event}
     #event_comments= render :partial => "shared/comments", :locals =>{:commentable => @event}
-= link_to 'Edit', edit_event_path(@event)
-|
-\#{link_to 'Back', events_path}
+    = link_to 'Edit', edit_event_path(@event)
+    |
+    \#{link_to 'Back', events_path}
