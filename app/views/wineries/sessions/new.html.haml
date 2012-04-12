@@ -1,0 +1,23 @@
+#top
+  - title(resource_name.to_s.humanize + " Sign In")
+  #middle
+    .push-1.span-16
+      %h2
+        = resource_name.to_s.humanize
+        Sign In
+      .edit_form
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          = f.error_messages
+          %fieldset
+            = f.label :username
+            %span.div_texbox
+              = f.text_field :username, :class => "fillout01"
+            = f.label :password
+            %span.div_texbox
+              = f.password_field :password, :class => "fillout01"
+            - if devise_mapping.rememberable?
+              = f.label :remember_me
+            %span.div_texbox
+              = f.check_box :remember_me, :class => "fillout01"
+              = f.submit "Sign In"
+        = render :partial => "shared/devise_links"
