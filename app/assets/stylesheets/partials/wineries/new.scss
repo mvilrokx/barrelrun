@@ -31,6 +31,17 @@
 
         #remember{
           @include column(24, true);
+           #label{
+             @include column(2.4);
+           }
+
+            #check{
+             @include column(.8);
+           }
+
+            #submit{
+             @include column(4, true);
+           }
         }
         
       }
