@@ -1,0 +1,25 @@
+#top{
+  @include column(24, true);
+
+  #header{
+    @include column(18, true);
+  }
+
+  #title{
+    @include column(24, true);
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+    font-weight: bolder;
+    color: #000000;
+    padding-top: 12px;
+    padding-bottom: 3px;
+  }
+
+  #form{
+    @include column(24, true);
+
+    #username{
+      @include column(24, true); 
+    }
+  }
+}
