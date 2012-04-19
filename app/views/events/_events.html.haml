@@ -1,0 +1,29 @@
+#events
+  .list
+    .pagination
+      .span-13
+        = will_paginate @events, :container => false
+      .page_info.span-7.last
+        = page_entries_info @events
+    %div{:style => "overflow: auto;"}
+      %table{:style => "background: white;"}
+        %tr
+          %th Title
+          %th Description
+          %th Place
+          %th Start Date
+          %th End Date
+          %th Price
+          %th Contact Name
+          %th Contact Phone
+          %th Contact Email
+          %th Invitation Type
+          %th Pictures
+          %th{:colspan => "3"} Action
+        - for event in @events
+          = render :partial=>"event_row", :locals=>{:event=>event}
+    .pagination
+      .span-13
+        = will_paginate @events, :container => false
+      .page_info.span-7.last
+        = page_entries_info @events

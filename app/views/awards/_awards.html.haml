@@ -1,0 +1,30 @@
+#awards
+  .pagination
+    .span-13
+      = will_paginate @awards, :container => false
+    .page_info.span-7.last
+      = page_entries_info @awards
+  %div{:style => "overflow: auto;"}
+    %table{:style => "background: white;"}
+      %tr
+        %th Award
+        %th Description
+        %th Wine
+        %th Pictures
+        %th{:colspan => "3"} Action
+      - for award in @awards
+        %tr
+          %td= h award.title
+          %td= h award.description
+          %td= h award.wine.name
+          - if award.pictures.length > 0 then
+            %td= image_tag award.pictures[0].url(:thumb)
+          - else
+            %td
+          %td= edit_link_image edit_award_path(award), :class => 'dialog_form_link'
+          %td= delete_link_image award, :class => 'delete'
+  .pagination
+    .span-13
+      = will_paginate @awards, :container => false
+    .page_info.span-7.last
+      = page_entries_info @awards

@@ -1,0 +1,43 @@
+#wines
+  .list
+    .pagination
+      .span-13
+        = will_paginate @wines, :container => false
+      .page_info.span-7.last
+        = page_entries_info @wines
+    %table{:style => "background: white;"}
+      %tr
+        %th Name
+        %th Description
+        %th Price
+        %th Type
+        %th Vintage
+        %th Varietal
+        %th Pictures
+        %th{:colspan => "3"} Action
+      - @wines.each do |wine|
+        %tr
+          %td= h wine.name
+          %td= h wine.description
+          %td= h number_to_currency(wine.price)
+          %td= h wine.wine_type
+          %td= h wine.vintage
+          %td= h wine.varietal
+          - if wine.pictures.length > 0 then
+            %td= image_tag wine.pictures[0].url(:micro)
+          - else
+            %td
+          - if false
+            / commenting out ruby code
+            / <td><haml:loud> link_to image_tag(&quot;page_find.png&quot;, :border=&gt;0, :alt=&gt;&quot;Show&quot;), wine, :title=&gt; &quot;Show&quot;, :class =&gt; 'dialog_form_link' </haml:loud>
+          %td= edit_link_image edit_winery_wine_path(wine.winery, wine), :class => 'dialog_form_link'
+          %td= delete_link_image wine, :class => 'delete'
+          - if false
+            / commenting out ruby code
+            / <td><haml:loud> link_to 'Destroy', wine, :confirm =&gt; 'Are you sure?', :method =&gt; :delete </haml:loud></td>
+            / <td><haml:loud> link_to &quot;Delete&quot;, delete_wine_path(wine), :class =&gt; &quot;dialog_form_link&quot; </haml:loud></td>
+    .pagination
+      .span-13
+        = will_paginate @wines, :container => false
+      .page_info.span-7.last
+        = page_entries_info @wines

@@ -1,0 +1,26 @@
+#top
+  %fieldset
+    = form_for @special, :html => {:multipart => true } do |f|
+      = f.error_messages
+      = f.label :title
+      %span.div_texbox
+        = f.text_field :title, :required => true, :class => "fillout01"
+      .span-16.last
+        = f.label :description
+        %span.div_texbox{:style => "height: auto;"}
+          = f.text_area :description, :class => "fillout01"
+      = f.label :start_date
+      %span.div_texbox
+        = text_field_tag :start_date, @special.try(:start_date).try(:strftime,'%m/%d/%Y'), :required => true, :class => "fillout03 jqueryui_date"
+        = f.hidden_field :start_date, :id => "start_date_db"
+      = f.label :end_date
+      %span.div_texbox
+        = text_field_tag :end_date, @special.try(:end_date).try(:strftime,'%m/%d/%Y'), :required => true, :class => "fillout03 jqueryui_date"
+        = f.hidden_field :end_date, :id => "end_date_db"
+      #picture_fields
+        = f.fields_for :pictures do |builder|
+          = render :partial => "shared/picture_fields", :locals => {:f => builder}
+      %span.div_texbox= add_child_link "Add Picture?", :pictures
+      = new_child_fields_template f, :pictures, {:partial => "shared/picture"}
+      %span.div_texbox
+        = f.submit "Save"

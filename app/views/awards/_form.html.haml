@@ -1,0 +1,21 @@
+#top
+  %fieldset
+    = form_for @award, :html => {:multipart => true } do |f|
+      = f.error_messages
+      = f.label :wine_id
+      %span.div_texbox
+        = f.collection_select(:wine_id, current_winery.wines.all, :id, :name, options ={:prompt => "-Select a Wine"}, :class =>"fillout01")
+      = f.label :title, "Award"
+      %span.div_texbox
+        = f.text_field :title, :required => true, :class => "fillout01"
+      .span-16.last
+        = f.label :description
+        %span.div_texbox{:style => "height: auto;"}
+          = f.text_area :description, :class => "fillout01"
+      #picture_fields
+        = f.fields_for :pictures do |builder|
+          = render :partial => "shared/picture_fields", :locals => {:f => builder}
+      %span.div_texbox= add_child_link "Add Picture?", :pictures
+      = new_child_fields_template f, :pictures, {:partial => "shared/picture"}
+      %span.div_texbox
+        = f.submit "SaveBB"
