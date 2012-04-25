@@ -1,11 +1,8 @@
 #wines
-  .pagination
-    = will_paginate @wines, :container => false
-    .page_info
-      = page_entries_info @wines
-  .table.table-bordered.table-striped
-    .thead
-      .tr
+  = will_paginate @wines
+  %table.table.table-striped
+    %thead
+      %tr
         %th Name
         %th Description
         %th Price
@@ -14,15 +11,15 @@
         %th Varietal
         %th Pictures
         %th{:colspan => "3"} Action
-    .tbody
+    %tbody
       - @wines.each do |wine|
-        .tr
-          %td= h wine.name
-          %td= h wine.description
-          %td= h number_to_currency(wine.price)
-          %td= h wine.wine_type
-          %td= h wine.vintage
-          %td= h wine.varietal
+        %tr[wine]
+          %td= wine.name
+          %td= wine.description
+          %td= number_to_currency(wine.price)
+          %td= wine.wine_type
+          %td= wine.vintage
+          %td= wine.varietal
           - if wine.pictures.length > 0 then
             %td= image_tag wine.pictures[0].url(:micro)
           - else
@@ -36,7 +33,4 @@
             / commenting out ruby code
             / <td><haml:loud> link_to 'Destroy', wine, :confirm =&gt; 'Are you sure?', :method =&gt; :delete </haml:loud></td>
             / <td><haml:loud> link_to &quot;Delete&quot;, delete_wine_path(wine), :class =&gt; &quot;dialog_form_link&quot; </haml:loud></td>
-  .pagination
-    = will_paginate @wines, :container => false
-    .page_info
-      = page_entries_info @wines
+  = will_paginate @wines
