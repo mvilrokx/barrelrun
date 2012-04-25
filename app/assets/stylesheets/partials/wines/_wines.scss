@@ -1,22 +1,8 @@
-#wines{
-  @include column(24, true);
-  .pagination{
-  	@include column(13, true);
-    .page_info{
-    	@include column(7, true);
-    }
-   }
-  .table.table-bordered.table-striped{
-  	@include column(24, true);
-  	.thead{
-  	}
-  	.tbody{
-  	}
-   }
-  .pagination{
-    @include column(13);
-    .page_info{
-      @include column(7, true);
-     }
-   }
+.listing {
+  @include prepend-top;
+  @include prepend(1);
+  @include column(22, true);
+  h2{
+    @include append-bottom;    
+  }
 }

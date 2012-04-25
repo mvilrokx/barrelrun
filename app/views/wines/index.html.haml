@@ -1,7 +1,6 @@
-#top
-  #title
-    %h2 Wine List
-  #new_wine
+.listing
+  %h2 
+    Wine List
     = link_to 'Add New wine', new_wine_path, :id => 'new_wine', :class => 'dialog_form_link large btn'
-  %hr
+
   = render :partial => "wines"
