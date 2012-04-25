@@ -9,7 +9,7 @@
     #search-box
       = form_tag({:controller => "/searches", :action => "search"}, :method => :get, :id=>"search") do
         %input{:type => "text", :placeholder => "Enter winery or wine..."}
-        %button{:class => "btn btn-large icon", :value => "Search"}
+        %button.btn.btn-large.icon{:value => "Search"}
           %i.icon-search
           Search
 

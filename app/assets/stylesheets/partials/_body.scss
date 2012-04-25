@@ -1,5 +1,6 @@
 body {
-  @include linear-gradient(color-stops(#F0F0F0, #fff));
+  // @include linear-gradient(color-stops(#F0F0F0, #fff));
+  @include background-image(linear-gradient(left top, #F0F0F0, #FFFFFF));
   position: relative;
   z-index:-100;
 }
