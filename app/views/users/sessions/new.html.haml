@@ -1,15 +1,1 @@
-.form
-  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    - if f.error_notification
-      .alert.alert-error.fade.in
-        %a.close{:data => {:dismiss => "alert"}, :href => "#"} &times;
-        = f.error_notification
-    %legend #{resource_name.to_s.humanize} Sign In
-    = f.input :username
-    = f.input :password
-    - if devise_mapping.rememberable?
-      = f.input :remember_me, :as => :boolean, :label => false, :hint => 'Remember me', :input_html => { :class => "span1" }
-    .form-actions
-      = f.button :submit, :value => 'Sign In', :class => 'btn-primary', :disable_with => "Signing in..."
-  
-  = render :partial => "shared/devise_links"
+=render "shared/resource_sign_in"

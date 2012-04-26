@@ -1,14 +1,14 @@
 Barrelrun::Application.routes.draw do
+#  devise_for :wineries
+  devise_for :wineries, :controllers => { :registrations => "wineries/registrations" }
+  devise_for :users
+
   resources :registration_levels, 
                 :as => :registrations,
                 :only => [:index], 
                 :member => {:apply => :get}
 
   resources :authentications
-
-#  devise_for :wineries
-  devise_for :wineries, :controllers => { :registrations => "wineries/registrations" }
-  devise_for :users
 
   resources :wines do
     member do
