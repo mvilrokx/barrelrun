@@ -1,0 +1,27 @@
+#specials
+  = will_paginate @specials
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Title
+        %th Description
+        %th Start Date
+        %th End Date
+        %th Pictures
+        %th Action
+    %tbody
+      - @specials.each do |special|
+        %tr[special]
+          %td= h special.title
+          %td= h special.description
+          %td= h special.start_date.try(:strftime,'%m/%d/%Y')
+          %td= h special.end_date.try(:strftime,'%m/%d/%Y')
+          %td= image_tag special.pictures[0].url(:micro) if special.pictures.length > 0
+          %td
+            .btn-group
+              %button.btn.btn-mini.dropdown-toggle{:data => {:toggle => "dropdown"}} 
+                Action 
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_special_path(special), :class => 'dialog_form_link'
+                %li= link_to "<i class='icon-trash'></i> Delete".html_safe, special, :class => 'delete'

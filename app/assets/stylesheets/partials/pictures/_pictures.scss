@@ -1,5 +1,8 @@
-#pictures{
-  @include column(24, true);
-
-
+.listing {
+  @include prepend-top;
+  @include prepend(1);
+  @include column(22, true);
+  h2{
+    @include append-bottom;    
+  }
 }

@@ -1,19 +1,16 @@
 #pictures
-  .pagination
-    .span-13
-      = will_paginate @pictures, :container => false
-    .page_info.span-7.last
-      = page_entries_info @pictures
-  %div{:style => "overflow: auto;"}
-    %table{:style => "background: white;"}
+  = will_paginate @pictures
+  %table.table.table-striped
+    %thead
       %tr
         %th Title
         %th Name
         %th Size
         %th Picture
-        %th{:colspan => "2"} Action
-      - for picture in @pictures
-        %tr
+        %th Action
+    %tbody
+      - @pictures.each do |picture|
+        %tr[picture]
           %td= h picture.title
           %td= h picture.name
           %td
@@ -22,8 +19,3 @@
           %td= image_tag picture.url(:thumb)
           %td= show_link_image picture, :class => 'dialog_form_link'
           %td= delete_link_image picture, :class => 'delete'
-  .pagination
-    .span-13
-      = will_paginate @pictures, :container => false
-    .page_info.span-7.last
-      = page_entries_info @pictures
