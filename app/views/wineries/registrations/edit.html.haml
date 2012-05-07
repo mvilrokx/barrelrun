@@ -82,42 +82,32 @@
         = f.label :descr, "Description"
         %span.div_texbox3_descr{:style => "height: auto;"}
           = f.text_area :descr, :class => "fillout05_descr"
-
         = f.label :hours, "Hours"
         %span.div_texbox4_hours{:style => "height: auto;"}
           = f.text_area :hours, :class => "fillout06_hours"
-
-        = f.label :price, "Price range"
-        %span.div_texbox
+          = f.label :price, "Price range"
           = f.text_field :price, :class => "fillout01"
-
-        = f.label :parking, "Parking"
         %span.div_texbox
+          = f.label :parking, "Parking"
           = f.check_box :parking
-
-        = f.label :handicap, "Handicaped accessible"
         %span.div_texbox
+          = f.label :handicap, "Handicaped accessible"
           = f.check_box :handicap
-
-        = f.label :restaurant, "Restaurant"
         %span.div_texbox
+          = f.label :restaurant, "Restaurant" 
           = f.check_box :restaurant
-
-        = f.label :fam_friendly, "Family friendly"
         %span.div_texbox
+          = f.label :fam_friendly, "Family friendly"
           = f.check_box :fam_friendly
-
-        = f.label :accept_credit, "Credit cards accepted"
         %span.div_texbox
+          = f.label :accept_credit, "Credit cards accepted"
           = f.check_box :accept_credit
-        .span-16.last
+        %span.div_texbox
           = f.label :current_password, "* Current password"
-          %span.div_texbox
-            = f.password_field :current_password, :required => true, :class => "fillout01"
-            %i (for confirmation)
-          .span-16.last
-            %span.div_texbox
-              = f.check_box :accepts_terms_of_service, :required => true
-              \  #{link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link"}
-            %span.div_texbox
-              = f.submit "Update"
+          = f.password_field :current_password, :required => true, :class => "fillout01"
+          %i (for confirmation)
+      %span.div_texbox
+        = f.check_box :accepts_terms_of_service, :required => true
+        \  #{link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link"}
+      %span.div_texbox
+        = f.submit "Update"
