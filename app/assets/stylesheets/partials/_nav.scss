@@ -3,7 +3,7 @@ nav {
   background-color: $main-color;
   // @include linear-gradient(color-stops(lighten($main-color,15%), darken($main-color,15%)));
 
-  @include background-image(linear-gradient(lighten($main-color,15%), darken($main-color,15%)));
+  @include background(linear-gradient(lighten($main-color,15%), darken($main-color,15%)));
 
   position: relative;
   overflow: hidden;

@@ -7,7 +7,7 @@
 	  border: 1px solid #bdbdbd;
 	  @include border-radius(5px);
 	  // @include linear-gradient(color-stops(white 40%, #C0C0C0 ));
-	  @include background-image(linear-gradient(white 40%, #C0C0C0));
+	  @include background(linear-gradient(white 40%, #C0C0C0));
 	  margin: 5px 0px;
 	}
 	#signup-img {
