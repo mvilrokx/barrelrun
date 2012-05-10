@@ -17,6 +17,9 @@
 @import "compass/css3";
 @import "blueprint";
 @import "h5bp";
+//override until fixed in compass_twitter_bootstrap
+$iconSpritePath:          "glyphicons-halflings.png" !default;
+$iconWhiteSpritePath:     "glyphicons-halflings-white.png" !default;
 @import "compass_twitter_bootstrap";
 
 // I AM USING COMPASS RESET!!!

@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "uid"
     t.string   "access_token"
     t.string   "access_secret"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "awards", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "wine_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "awards", ["wine_id"], :name => "index_awards_on_wine_id"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.date     "expiration_date"
     t.integer  "creditable_id"
     t.string   "creditable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "credit_cards", ["creditable_type", "creditable_id"], :name => "index_credit_cards_on_creditable_type_and_creditable_id"
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "winery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "favorable_type"
     t.integer  "favorable_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "favorites", ["favorable_type", "favorable_id"], :name => "index_favorites_on_favorable_type_and_favorable_id"
@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
   create_table "pictures", :force => true do |t|
     t.integer  "pictureable_id"
     t.string   "pictureable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "rateable_type"
     t.integer  "stars",         :null => false
     t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.integer  "rateable_id"
     t.string   "rateable_type"
     t.decimal  "rate",          :precision => 4, :scale => 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   add_index "ratings", ["rateable_type", "rateable_id"], :name => "index_ratings_on_rateable_type_and_rateable_id"
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
 
   create_table "registration_levels", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.decimal  "price",      :precision => 8, :scale => 2
   end
 
@@ -142,8 +142,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "winery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "plan_id"
     t.integer  "winery_id"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "subscriptions", ["winery_id"], :name => "index_subscriptions_on_winery_id"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                           :default => 0
     t.datetime "current_sign_in_at"
@@ -178,8 +178,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password_salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
@@ -207,8 +207,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "movie_file_name"
     t.string   "movie_content_type"
     t.integer  "movie_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "title"
     t.boolean  "welcome"
     t.string   "youtube_id"
@@ -223,7 +223,7 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                                                         :default => 0
     t.datetime "current_sign_in_at"
@@ -231,8 +231,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password_salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                                             :null => false
+    t.datetime "updated_at",                                                                             :null => false
     t.string   "username"
     t.string   "winery_name"
     t.string   "owner_gm_name"
@@ -272,8 +272,8 @@ ActiveRecord::Schema.define(:version => 20111118032050) do
   create_table "wines", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                                :null => false
+    t.datetime "updated_at",                                                                :null => false
     t.float    "price",                                                    :default => 0.0
     t.decimal  "rating_average",             :precision => 6, :scale => 2, :default => 0.0
     t.string   "picture_file_name"

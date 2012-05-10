@@ -2,6 +2,7 @@ source :gemcutter
 gem "rails", "3.2.3"
 
 gem 'mysql2'
+gem 'pg' #needed for Heroku deployment, this requires $ sudo apt-get install libpq-dev
 gem 'warden'
 gem 'devise'
 gem 'geocoder'
@@ -35,6 +36,7 @@ group :assets do
   # gem 'compass-susy-plugin', :require => 'susy'
   gem 'compass_twitter_bootstrap', :git => 'https://github.com/vwall/compass-twitter-bootstrap.git'
   gem 'compass-h5bp'
+  gem 'therubyracer'
 end
 
 group :development do
