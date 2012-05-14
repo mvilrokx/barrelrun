@@ -1,0 +1,21 @@
+- ordered_list ||= false
+#list
+  %h2= defined?(list_header) ? list_header : "Wines"
+  = ordered_list ? "<ol>" : "<ul>"
+  - wines.each_with_index do |wine, idx|
+    - if ordered_list && idx == 0 then
+      %li{:style => "font-weight: bold; list-style-image: url(images/medal.jpg);"}
+    - else
+      %li
+    = link_to wine.name + '<br>-' + wine.winery.city + ',' + wine.winery.state, wine, :title=> "Show", :class => 'dialog_form_link'
+    - if user_signed_in?
+      .stars{:style => "float: right;"}
+        %form{:action => "/favorites/Wine/#{wine.id}/rate", :method => "post"}
+          = render_stars wine
+    - else
+      .stars{:style => "float: right;"}
+        %form{:action => "/favorites/Wine/#{wine.id}/rate", :method => "post"}
+          = render_stars wine, true
+  = ordered_list ? "</ol>" : "</ul>"
+%div
+  = will_paginate wines, :container => false
