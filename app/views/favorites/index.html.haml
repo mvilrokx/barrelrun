@@ -1,0 +1,25 @@
+%hr.space
+.push-1.span-22.last
+  .span-7.last.colborder
+    #fav_special_list
+      = image_tag("ajax-loader.gif", :alt => "Loading")
+      \   
+      %strong Loading...
+    #fav_event_list
+      = image_tag("ajax-loader.gif", :alt => "Loading")
+      \   
+      %strong Loading...
+  .span-7.last.colborder
+    #fav_winery_list
+      = image_tag("ajax-loader.gif", :alt => "Loading")
+      \   
+      %strong Loading...
+    #fav_wine_list
+      = image_tag("ajax-loader.gif", :alt => "Loading")
+      \   
+      %strong Loading...
+  .span-8.last
+    %h2
+      = image_tag("barrelrun/barrelspeaks_icon.jpg", :alt=>"Barrel Speaks", :width=>"40", :height=>"28")
+      Barrel Speaks
+    = render :partial=>"home/feed"

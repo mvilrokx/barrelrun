@@ -1,0 +1,78 @@
+.container
+  %hr.space
+    .push-3.span-18.last.main
+      .push-1.span-16
+        %h2
+          Edit #{resource_name.to_s.humanize}
+        .edit_form
+          %fieldset
+            .subheading
+              = image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;")
+              Account Information
+            = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true }) do |f|
+              = f.error_messages
+              = f.label :username, 'User Name'
+              %span.div_texbox
+                = f.text_field :username, :disabled => "disabled", :class => "fillout01"
+                %i (cannot be changed)
+              = f.label :password
+              %span.div_texbox
+                = f.password_field :password, :class => "fillout01"
+              = f.label :password_confirmation
+              %span.div_texbox
+                = f.password_field :password_confirmation, :class => "fillout01"
+              %hr
+                .subheading
+                  = image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;")
+                  Personal Information
+                = f.label :first_name
+                %span.div_texbox
+                  = f.text_field :first_name, :class => "fillout03"
+                = f.label :last_name
+                %span.div_texbox
+                  = f.text_field :last_name, :class => "fillout03"
+                = f.label :email
+                %span.div_texbox
+                  = tag(:input, {object_id => "user_email", :required => true, :name => "user[email]", :size => "30", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :class => "fillout02"})
+                = f.label :birthdate
+                %span.div_texbox
+                  = f.date_select(:birthdate, {:order => [:day, :month, :year], :start_year => Time.now.year-110, :end_year => Time.now.year,})
+                = f.label :address
+                %span.div_texbox
+                  = f.text_field :address, :class => "fillout01"
+                = f.label :address2
+                %span.div_texbox
+                  = f.text_field :address2, :class => "fillout01"
+                = f.label :city
+                %span.div_texbox
+                  = f.text_field :city, :class => "fillout03"
+                = f.label :state
+                %span.div_texbox
+                  = f.text_field :state, :class => "fillout04"
+                = f.label :zipcode
+                %span.div_texbox
+                  = f.text_field :zipcode, :class => "fillout04"
+                = f.label :country
+                %span.div_texbox
+                  = f.text_field :country, :class => "fillout04"
+                = f.label :telephone
+                %span.div_texbox
+                  = f.text_field :telephone, :class => "fillout03"
+                #picture_fields
+                  = f.fields_for :picture do |builder|
+                    = render :partial => "shared/picture_fields", :locals => {:f => builder}
+                - if current_user.picture then
+                  %span.div_texbox= add_child_link "Change Avatar", :picture
+                - else
+                  %span.div_texbox= add_child_link "Add Avatar", :picture
+                = new_child_fields_template f, :picture, {:partial => "shared/picture"}
+                %hr/
+                = f.label :current_password
+                %span.div_texbox
+                  = f.password_field :current_password, :required => true, :class => "fillout01"
+                  %i (for confirmation)
+                %span.div_texbox
+                  = f.submit "Update"
+          = render :partial => "shared/devise_links"
+          #jstemplates
+            = yield :jstemplates
