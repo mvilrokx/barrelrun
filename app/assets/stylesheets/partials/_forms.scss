@@ -1,0 +1,11 @@
+.form {
+  @include prepend-top;
+  @include prepend(2); 
+  @include column(20, true);
+  form {
+    //border: 1px solid $light-color;
+    padding: 20px 30px;
+    @include border-radius(10px);
+    @include box-shadow($light-color 0px 0px 10px 1px);
+  }
+}

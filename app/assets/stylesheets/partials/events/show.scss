@@ -1,0 +1,69 @@
+.entry_form{
+
+  #top{
+    @include column(25, true);
+
+    #left{
+      @include column(4);
+    }
+
+    #middle{
+      @include column(8);
+      @include colborder;
+
+      #name{
+        @include column(7, true);
+        font-size: 24px;
+        font-weight: bolder;
+        @include append-bottom;
+      }
+      #offered{
+        @include column(7, true);
+        font-size: 16px;
+        @include append-bottom;
+      }
+
+      #favorites{
+        @include column(7, true);
+        @include append-bottom;
+      }
+
+      #toolbox{
+        @include column(7, true);
+        @include append-bottom;
+      }
+
+      #descr{
+        @include column(7, true);
+        height: 110px; 
+        overflow: auto; 
+        margin: 10px 0px;
+      }
+    }
+
+    #right{
+      @include column(11, true);
+      font-size: 16px;
+      ul{
+        list-style: none; 
+        margin: 0px; 
+        padding: 0px;
+        li {
+          margin-top: .5em;
+          margin-bottom: .5em;
+        }
+      }
+    }
+  }
+
+  #comment{
+    @include column(25, true);
+    #line{
+      hr{
+        #line{
+           @include colruler;
+        }
+      }
+    }
+  }
+}

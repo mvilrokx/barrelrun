@@ -1,0 +1,7 @@
+#top
+  #title
+    %h2 Event List
+  #new_event
+    = link_to 'Add New Event', new_event_path, :id => 'new_event', :class => 'dialog_form_link large'
+  %hr/
+  = render :partial => "events"

@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def event_list
-    ordered_list = false
+    ordered_list = :ul
     list_header = "Events"
     if params[:winery_id]
       @events = Winery.find(params[:winery_id]).events #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
@@ -23,8 +23,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>"shared/object_list", :locals => {:object_list => @events,
                                                                        :path => path,
-                                                                       :ordered_list => ordered_list,
-                                                                       :list_header => list_header } }
+                                                                       :list_type => ordered_list,
+                                                                       :title => list_header } }
       format.json { render :layout => false,
                            :json => @events.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
                   }

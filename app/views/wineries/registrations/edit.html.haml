@@ -1,0 +1,113 @@
+- title("Edit " + resource_name.to_s.humanize)
+#top
+  #header
+    %ul
+      %li= link_with_active 'Winery', edit_winery_registration_path
+      - if false
+        %li= link_with_active 'Credit Cards', credit_cards_path
+        %li= link_with_active 'Subscription Information', subscriptions_path
+  %hr.space
+  #title
+    %hr.space
+    Edit #{resource_name.to_s.humanize}
+  #form
+    * Required fields
+    %br
+      = image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;")
+      Account Information
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = f.error_messages
+      #username
+        = f.label :username, "* User Name"
+        = f.text_field :username, :disabled => "disabled", :class => "fillout01"
+        %i (cannot be changed)
+        = f.label :password , "Password"
+      %span.div_texbox
+        = f.password_field :password, :class => "fillout01"
+      = f.label :password_confirmation , "Password confirmation"
+      %span.div_texbox
+        = f.password_field :password_confirmation, :class => "fillout01"
+      %hr
+      %br
+      .subheading
+        = image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;")
+        Personal Information
+      = f.label :winery_name , "* Winery name"
+      %span.div_texbox
+        = f.text_field :winery_name, :required => true, :class => "fillout01"
+      = f.label :owner_gm_name, "Owner/GM name"
+      %span.div_texbox
+        = f.text_field :owner_gm_name, :class => "fillout01"
+      = f.label :owner_gm_email, "Owner/GM email"
+      %span.div_texbox
+        = f.text_field :owner_gm_email, :class => "fillout01"
+      = f.label :contact_first_name, "* Contact first name"
+      %span.div_texbox
+        = f.text_field :contact_first_name, :required => true, :class => "fillout03"
+      = f.label :contact_last_name, "* Contact last name"
+      %span.div_texbox
+        = f.text_field :contact_last_name, :required => true, :class => "fillout03"
+      = f.label :telephone , "* Telephone"
+      %span.div_texbox
+        = f.text_field :telephone, :required => true, :class => "fillout03"
+      = f.label :email, "* Email"
+      %span.div_texbox
+        = tag(:input, {:id => "winery_email", :name => "winery[email]", :type => :email, :placeholder => 'e.g. user@domain.com', :value => f.object.email, :required => true, :class => "fillout01"})
+      = f.label :address, "* Address"
+      %span.div_texbox
+        = f.text_field :address, :required => true, :class => "fillout01"
+      = f.label :address2, "Address 2"
+      %span.div_texbox
+        = f.text_field :address2, :class => "fillout01"
+      = f.label :city, "* City"
+      %span.div_texbox
+        = f.text_field :city, :required => true, :class => "fillout03"
+      = f.label :state, "* State"
+      %span.div_texbox
+        = f.text_field :state, :required => true, :class => "fillout04"
+      = f.label :zipcode, "* Zipcode"
+      %span.div_texbox
+        = f.text_field :zipcode, :required => true, :class => "fillout04"
+      = f.label :country
+      %span.div_texbox
+        = f.text_field :country, :class => "fillout04"
+      = f.label :website_url , "* Website url "
+      %span.div_texbox
+        = f.text_field :website_url, :required => true, :class => "fillout01"
+      %br
+      %hr
+      .subheading
+        = image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;")
+        Additional Details
+        = f.label :descr, "Description"
+        %span.div_texbox3_descr{:style => "height: auto;"}
+          = f.text_area :descr, :class => "fillout05_descr"
+        = f.label :hours, "Hours"
+        %span.div_texbox4_hours{:style => "height: auto;"}
+          = f.text_area :hours, :class => "fillout06_hours"
+          = f.label :price, "Price range"
+          = f.text_field :price, :class => "fillout01"
+        %span.div_texbox
+          = f.label :parking, "Parking"
+          = f.check_box :parking
+        %span.div_texbox
+          = f.label :handicap, "Handicaped accessible"
+          = f.check_box :handicap
+        %span.div_texbox
+          = f.label :restaurant, "Restaurant" 
+          = f.check_box :restaurant
+        %span.div_texbox
+          = f.label :fam_friendly, "Family friendly"
+          = f.check_box :fam_friendly
+        %span.div_texbox
+          = f.label :accept_credit, "Credit cards accepted"
+          = f.check_box :accept_credit
+        %span.div_texbox
+          = f.label :current_password, "* Current password"
+          = f.password_field :current_password, :required => true, :class => "fillout01"
+          %i (for confirmation)
+      %span.div_texbox
+        = f.check_box :accepts_terms_of_service, :required => true
+        \  #{link_to "Terms of Service", '/pages/biz_terms_of_service', :class=>"dialog_link"}
+      %span.div_texbox
+        = f.submit "Update"

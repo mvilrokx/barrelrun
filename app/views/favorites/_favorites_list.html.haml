@@ -1,0 +1,25 @@
+- if favorites_list.first != nil then
+  - ordered_list ||= false
+  .list
+    %h2= defined?(list_header) ? list_header : favorites_list[0].class.name.pluralize
+    = ordered_list ? "<ol>".html_safe : "<ul>".html_safe
+    - favorites_list.each_with_index do |favorite, idx|
+      - if ordered_list && idx == 0 then
+        %li{:style => "font-weight: bold; list-style-image: url(images/medal.jpg);"}
+      - else
+        %li
+      - if favorite.class.name == "Winery"
+        = link_to (favorite.winery_name + '<br>-' + favorite.city + ',' + favorite.state).html_safe, favorite, :title=> "Show"
+      - else
+        = link_to (favorite.name + '<br>-'.html_safe + favorite.winery.city + ',' + favorite.winery.state).html_safe, favorite, :title=> "Show", :class => 'dialog_form_link'
+      - if user_signed_in?
+        .stars{:style => "float: right;"}
+          %form{:action => "/favorites/#{favorites_list[0].class.name}/#{favorite.id}/rate", :method => "post"}
+            = render_stars favorite
+      - else
+        .stars{:style => "float: right;"}
+          %form{:action => "/favorites/#{favorites_list[0].class.name}/#{favorite.id}/rate", :method => "post"}
+            = render_stars favorite, true
+    = ordered_list ? "</ol>".html_safe : "</ul>".html_safe
+    %div
+      = will_paginate favorites_list, :params => {:controller => "Favorites", :action => "favorite_" + favorites_list[0].class.name.pluralize.downcase }

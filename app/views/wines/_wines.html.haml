@@ -1,0 +1,31 @@
+#wines
+  = will_paginate @wines
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Price
+        %th Type
+        %th Vintage
+        %th Varietal
+        %th Pictures
+        %th Action
+    %tbody
+      - @wines.each do |wine|
+        %tr[wine]
+          %td= wine.name
+          %td= wine.description
+          %td= number_to_currency(wine.price)
+          %td= wine.wine_type
+          %td= wine.vintage
+          %td= wine.varietal
+          %td= image_tag wine.pictures[0].url(:micro) if wine.pictures.length > 0
+          %td
+            .btn-group
+              %button.btn.btn-mini.dropdown-toggle{:data => {:toggle => "dropdown"}} 
+                Action 
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_winery_wine_path(wine.winery, wine), :class => 'dialog_form_link'
+                %li= link_to "<i class='icon-trash'></i> Delete".html_safe, wine, :class => 'delete'

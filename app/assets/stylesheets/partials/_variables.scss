@@ -1,0 +1,19 @@
+// configure the blueprint framework.
+$blueprint-grid-columns: 24;
+$blueprint-container-size: 950px;
+$blueprint-grid-margin: 10px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+$footer-background-color: #BDBDBD;
+$header-background-color: #222;
+
+// Main Site Colors
+$dark-color: #0E3F53;
+$light-color: #9DB5BF;
+$main-color: #C41230;
+$smooth-color: #6C6812;
+$highlite-color: #ECE334;
+

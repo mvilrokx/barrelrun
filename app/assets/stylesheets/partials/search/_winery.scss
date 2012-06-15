@@ -1,0 +1,10 @@
+#winery{
+  @include column(17, true);
+  text-align: left;
+  }
+  #winery2{
+    @include column(10);  
+    }
+    #winery3{
+    @include column(7, true);   
+    }

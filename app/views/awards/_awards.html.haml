@@ -1,0 +1,25 @@
+#awards
+  = will_paginate @awards
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Award
+        %th Description
+        %th Wine
+        %th Pictures
+        %th Action
+    %tbody
+      - @awards.each do |award|
+        %tr[award]
+          %td= h award.title
+          %td= h award.description
+          %td= h award.wine.name
+          %td= image_tag award.pictures[0].url(:micro) if award.pictures.length > 0
+          %td
+            .btn-group
+              %button.btn.btn-mini.dropdown-toggle{:data => {:toggle => "dropdown"}} 
+                Action 
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_award_path(award), :class => 'dialog_form_link'
+                %li= link_to "<i class='icon-trash'></i> Delete".html_safe, award, :class => 'delete'

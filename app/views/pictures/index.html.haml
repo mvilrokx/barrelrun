@@ -1,0 +1,7 @@
+#top
+  .span-4
+    %h2 Picture List
+  .span-3.last
+    = link_to 'Add New Picture', new_picture_path, :id => 'new_picture', :class => 'dialog_form_link large'
+  %hr/
+  = render :partial => "pictures"

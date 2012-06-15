@@ -1,0 +1,60 @@
+.form
+  = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal crumbify' }, :defaults => {:input_html => {:class => 'span2'}} do |f|
+    - if f.error_notification
+      .alert.alert-error.fade.in
+        %a.close{:data => {:dismiss => "alert"}, :href => "#"} &times;
+        = f.error_notification
+    %legend #{resource_name.to_s.humanize} Sign up
+    %em 
+      Please search our website to see if your winery already exists.  If it does, then register by claiming your winery.  If it does not exist, then proceed with the registration process using this page.  Thank you.
+    
+    = f.hidden_field(:ownership_status, :value => "CLAIMED")
+    = f.fields_for :subscription do |subscription_builder|
+      = subscription_builder.hidden_field(:plan_id, :value => "Free")
+
+    %fieldset
+      %legend.subheading
+        = image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") 
+        Account
+      = f.input :username
+      = f.input :password, :required => true
+      = f.input :password_confirmation, :required => true
+
+    %fieldset
+      %legend.subheading
+        = image_tag("barrelrun/personal_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") 
+        Personal Information
+      = f.input :winery_name
+      = f.input :owner_gm_name
+      = f.input :owner_gm_email
+      = f.input :contact_first_name
+      = f.input :contact_last_name
+      = f.input :telephone
+      = f.input :email
+      = f.input :address
+      = f.input :address2
+      = f.input :city
+      = f.input :state
+      = f.input :zipcode
+      = f.input :country
+      = f.input :website_url
+
+    %fieldset
+      %legend.subheading
+        = image_tag("barrelrun/account_info.png", :border=>0, :width=>31, :height=>36, :style=>"padding-bottom: 10px; vertical-align: middle;") 
+        Additional Information
+      = f.input :descr
+      = f.input :hours
+      = f.input :price
+      = f.input :parking
+      = f.input :handicap, :label => "Handicaped accessible"
+      = f.input :restaurant
+      = f.input :fam_friendly, :label => "Family friendly"
+      = f.input :accept_credit, :label => "Credit Cards accepted"
+      = f.input :accepts_terms_of_service, :label => 'Accept', :hint => link_to("Terms of Service", '/pages/user_terms_of_service', :class=>"dialog_link"), :input_html => { :class => "span1" }
+
+    .form-actions
+      = f.button :submit, :class => 'btn-primary', :disable_with => "Saving..."
+      = submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"
+
+    = render :partial => "shared/devise_links"

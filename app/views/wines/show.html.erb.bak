@@ -1,0 +1,55 @@
+<div class="span-17 entry_form last">
+  <div class="span-17 last">
+    <div class="span-12 colborder">
+
+      <%= render :partial => "shared/picture_gallery", :locals => {:object => @wine} %>
+
+      <div class="span-6 last">
+        <div class="span-6 last">
+          <h3 class="name"><%=h @wine.name %></h3>
+          <h4>Made by <%= link_to @wine.winery.winery_name, @wine.winery %></h4>
+        </div>
+        <%= render :partial => "shared/star_rating", :locals => {:object => @wine, :action => rating_wine_path(@wine)} %>
+
+        <% if user_signed_in? %>
+          <div class="span-6 append-bottom last">
+          <% if @wine.favorites.find_by_user_id(current_user) %>
+            <a href="/wines/<%= @wine.id%>/favorites/<%= @wine.favorites.find_by_user_id(current_user).id %>" class="remove_as_favorite">Remove From My Favorites</a>
+          <% else %>
+            <a href="/wines/<%= @wine.id%>/favorites" class="add_as_favorite">Add To My Favorites</a>
+          <% end %>
+          </div>
+        <% end %>
+
+        <div class="span-6 last">
+        	<div class="addthis_toolbox addthis_32x32_style"></div>
+        </div>
+
+        <div class="span-6 last" style="height: 110px; overflow: auto; margin: 10px 0px;">
+          <%=simple_format @wine.description %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span-4 last" style="font-size: 16px;">
+      <ul style="list-style: none; margin: 0px; padding: 0px;" >
+        <li><strong>Vintage: </strong><%=h @wine.vintage %></li>
+        <li><strong>Type: </strong><%=h @wine.wine_type %></li>
+        <li><strong>Varietal: </strong><%=h @wine.varietal %></li>
+        <li><strong>Price: </strong><%=h number_to_currency(@wine.price) %></li>
+      </ul>
+    </div>
+
+    <%= link_to "View Tasting Notes", @wine.tasting_notes.url, :target => "_blank" if @wine.tasting_notes? %>
+    <hr/>
+
+  </div>
+
+  <div class="span-17 last comment_block">
+    <%= render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)} %>
+    <%= render :partial => "shared/comment_form", :locals => {:object => @wine} %>
+    <div id="wine_comments"><%= render :partial => "shared/comments", :locals =>{:commentable => @wine} %></div>
+  </div>
+
+</div>
+

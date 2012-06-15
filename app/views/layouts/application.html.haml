@@ -1,7 +1,18 @@
-!!!
-%html
-  %head
-    = render :partial => "layouts/head"
-  %body{:class => params[:controller]}
-    = render :partial => "layouts/body"
+!!! 5
+- ie_html :class => "no-js", :lang => "en" do
 
+  = render "head"
+
+  %body{:class => params[:controller]}
+
+    = render "header"
+
+    #body-container
+
+      = render "nav"
+      
+      = render "layouts/body"
+
+    = render "footer"
+
+    = render "layouts/javascripts"

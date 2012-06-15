@@ -1,0 +1,45 @@
+.entry_form
+  #dialog_box
+    #top
+      #image
+        = render :partial => "shared/picture_gallery", :locals => {:object => @wine}
+      #object_details
+        %h3.name= h @wine.name
+        %br
+        %h4
+          Made by #{link_to @wine.winery.winery_name, @wine.winery}
+        #star_rating
+          = render :partial => "shared/star_rating", :locals => {:object => @wine, :action => rating_wine_path(@wine)}
+        %br
+        #favorites
+          - if user_signed_in?
+            - if @wine.favorites.find_by_user_id(current_user)
+              %a.remove_as_favorite{:href => "/wines/#{@wine.id}/favorites/#{@wine.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
+            - else
+              %a.add_as_favorite{:href => "/wines/#{@wine.id}/favorites"} Add To My Favorites
+        #toolbox
+          .addthis_toolbox.addthis_32x32_style
+          %br
+        #description
+          = simple_format @wine.description
+      #object_attributes
+        %ul
+          %li
+            %strong Vintage:
+            = h @wine.vintage
+          %li
+            %strong Type:
+            = h @wine.wine_type
+          %li
+            %strong Varietal:
+            = h @wine.varietal
+          %li
+            %strong Price:
+            = h number_to_currency(@wine.price)
+        = link_to "View Tasting Notes", @wine.tasting_notes.url, :target => "_blank" if @wine.tasting_notes?
+    #comment_block
+      #line    
+        %hr.line
+      = render :partial => "shared/comments_header", :locals => {:path => wine_comments_path(@wine)}
+      = render :partial => "shared/comment_form", :locals => {:object => @wine}
+      #wine_comments= render :partial => "shared/comments", :locals =>{:commentable => @wine}

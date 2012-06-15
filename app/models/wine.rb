@@ -64,16 +64,32 @@ class Wine < ActiveRecord::Base
     @delete_tasting_notes = !value.to_i.zero?
   end
 
-   def delete_tasting_notes
-     !!@delete_tasting_notes
-   end
-   alias_method :delete_tasting_notes?, :delete_tasting_notes
+  def delete_tasting_notes
+    !!@delete_tasting_notes
+  end
+  alias_method :delete_tasting_notes?, :delete_tasting_notes
 
-   def clear_tasting_notes
-      self.tasting_notes.destroy if delete_tasting_notes?
-   end
+  def clear_tasting_notes
+    self.tasting_notes.destroy if delete_tasting_notes?
+  end
 
- 	protected
+  def city
+    winery.city
+  end
+
+  def state
+    winery.state
+  end
+
+  def lat
+    winery.lat
+  end
+
+  def lng
+    winery.lng
+  end
+
+  protected
    	def price_must_be_at_least_a_cent
        	errors.add(:price, 'should be at least 0.01') if !price.blank? &&
                           price < 0.01

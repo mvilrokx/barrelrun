@@ -31,12 +31,12 @@ class Special < ActiveRecord::Base
   def self.top (limit = 10)
     limit(limit)
   end
-  
+
   def self.upcoming
     where("end_date >= ?", Date.today).order("start_date DESC")
   end
-  
-  
+
+
 #  named_scope :upcoming_specials, :conditions => ["end_date >= :today", {:today => Date.today}],
 #                          :order => "start_date DESC",
 #                          :limit => 10,
@@ -70,7 +70,23 @@ class Special < ActiveRecord::Base
     title
   end
 
- 	protected
+  def city
+    winery.city
+  end
+
+  def state
+    winery.state
+  end
+
+  def lat
+    winery.lat
+  end
+
+  def lng
+    winery.lng
+  end
+
+protected
   	def validate_attachments
      	errors[:base] << "Too many attachments - maximum is #{Max_Attachments}" if pictures.length > Max_Attachments
     	pictures.each {|a| errors[:base] << "#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB" if a.file_size > Max_Attachment_Size}

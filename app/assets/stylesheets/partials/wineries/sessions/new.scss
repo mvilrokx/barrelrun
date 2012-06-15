@@ -1,0 +1,40 @@
+#top{
+  @include column(24, true);
+  @include prepend-top;
+
+  #middle{
+    @include column(24);
+
+    #title{
+      @include column(24, true);
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size: 20pt;
+      font-weight: bolder;
+      color: #000000;
+      padding-top: 12px;
+      padding-bottom: 3px;
+    }
+
+    #form{
+      @include column(24, true);
+
+      #fieldset{
+        @include column(24, true);
+
+        #div_texbox1{
+          @include column(24, true);
+        }
+
+        #div_texbox2{
+          @include column(24, true);
+        }
+
+        #remember{
+          @include column(24, true);
+        }
+        
+      }
+
+    }
+  }
+}

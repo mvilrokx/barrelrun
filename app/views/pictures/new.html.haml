@@ -1,0 +1,12 @@
+#top
+  %hr.space/
+  .push-3.span-18.last
+    .entry_form
+      .span-18.main
+        %hr.space/
+        .push-1.span-16.last
+          %h2 Create New Picture
+          = render :partial => 'form'
+      #jstemplates
+        = yield :jstemplates
+%p= link_to "Back to List", pictures_path

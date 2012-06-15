@@ -1,0 +1,13 @@
+#top
+  %fieldset
+    = form_for @picture, :html => {:multipart => true } do |f|
+      = f.error_messages
+      = f.label :title
+      %span.div_texbox
+        = f.text_field :title, :required => true, :class => "fillout01"
+      %span.div_texbox
+        = f.file_field :photo
+      = f.hidden_field :pictureable_id
+      = f.hidden_field :pictureable_type
+      %span.div_texbox
+        = f.submit "Save"

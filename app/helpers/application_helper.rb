@@ -1,4 +1,48 @@
 module ApplicationHelper
+
+  # Method used to create lists of objects
+  def list_objects(objects, *args)
+    options = args.extract_options!
+    options[:title] ||= objects[0].class.name.pluralize
+    options[:list_type] ||= :ul
+    options[:class] ||= 'dialog_form_link'
+    options[:map_it] ||= false
+    options[:path] ||= ""
+
+    precede content_tag(:h3, options[:title]) do
+      haml_tag options[:list_type] do
+        objects.each do |object|
+          link_content = (object.name + '<br>-' + object.city + ',' + object.state).html_safe
+          if options[:map_it]
+            link = link_to link_content, '#', :title=> "Show", :class => "map-wine", :data => {:winery_lat => object.lat, :winery_lng => object.lng}
+          else
+            link = link_to link_content, object, :title=> "Show", :class => options[:class]
+          end
+          haml_tag :li, link + barrels(object, options[:path])
+        end
+      end
+    end
+  end
+
+  def barrels(object, path)
+    capture_haml do
+      haml_tag '.stars' do
+        haml_tag :form, {:action => "/#{path + object.class.name.pluralize.downcase}/#{object.id}/rating/", :method => :post} do
+          [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map do |i|
+            haml_tag :input, {:type => :radio, :name => "rating", :value => i, :disabled => !user_signed_in?, :checked => (((object.average_rating||0)*2).round)/2.to_f == i}
+          end
+        end
+      end
+    end
+  end
+
+      # if ((rating*2).round)/2.to_f == i
+      #   radio_button_tag "rating", i, true, :disabled => read_only
+      # else
+      #   radio_button_tag "rating", i, false, :disabled => read_only
+      # end
+
+
   # Method used to add a title to each page
   def title(page_title)
     content_for(:title, page_title.to_s)
@@ -63,22 +107,23 @@ module ApplicationHelper
 
 #  def render_stars (rating = 0, read_only = false)
   def render_stars (object_to_star, read_only = false, rate = nil)
+    puts 'entering render_stars'
 #    field_set_tag nil, :class=> "stars" do
-      if object_to_star then
-        rating = object_to_star.average_rating||0
-      else
-        rating = rate
-      end
+    if object_to_star then
+      rating = object_to_star.average_rating||0
+    else
+      rating = rate
+    end
 #      (1..10).map do |i|
-      [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map do |i|
+    [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map do |i|
 #        if object_to_rate.average_rating
-          if ((rating*2).round)/2.to_f == i
-            radio_button_tag "rating", i, true, :disabled => read_only
-          else
-            radio_button_tag "rating", i, false, :disabled => read_only
-          end
+      if ((rating*2).round)/2.to_f == i
+        radio_button_tag "rating", i, true, :disabled => read_only
+      else
+        radio_button_tag "rating", i, false, :disabled => read_only
+      end
 #        end
-      end.join.html_safe
+    end.join.html_safe
 #    end
   end
 

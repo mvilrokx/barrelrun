@@ -1,0 +1,23 @@
+%tr[event]
+  %td= h event.title
+  %td= h event.description
+  %td= h event.place
+  %td= h event.start_date.try(:strftime,'%m/%d/%Y')
+  %td= h event.end_date.try(:strftime,'%m/%d/%Y')
+  %td= h event.price
+  %td= h event.contact_info_name
+  %td= h event.contact_info_phone
+  %td= h event.contact_info_email
+  %td= h event.invitation_type
+  - if event.pictures.length > 0 then
+    %td= image_tag event.pictures[0].url(:thumb)
+  - else
+    %td
+  %td
+    .btn-group
+      %button.btn.btn-mini.dropdown-toggle{:data => {:toggle => "dropdown"}} 
+        Action 
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_event_path(event), :class => 'dialog_form_link'
+        %li= link_to "<i class='icon-trash'></i> Delete".html_safe, event, :class => 'delete'

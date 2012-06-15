@@ -1,0 +1,42 @@
+#main {
+  @include prepend-top;
+  #left-column {
+    @include column(8);
+  }
+  #barrel-deal-banner {
+    background: #EEE; padding: 0 10px;
+    h2 {
+      color: $main-color;
+    }
+    p {
+      font-size: 1.25em;
+    }
+    #deal-icon {
+      width: 35px;
+      height: 40px;
+      vertical-align: middle;
+    }
+    #deal-banner {
+      width: 280px;
+      height: 180px;
+      vertical-align: middle;
+    }
+  }
+  #middle-column {
+    @include column(8);
+  }
+
+  #right-column {
+    @include column(8, true);
+
+  }
+}
+
+.fancy-list {
+  ol {
+    li:first-child {
+      list-style-image: url('barrelrun/medal.jpg');
+    }
+  }
+}
+

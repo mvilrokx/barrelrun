@@ -9,7 +9,7 @@ class SpecialsController < ApplicationController
 
 
   def special_list
-    ordered_list = false
+    ordered_list = :ul
     list_header = "Specials"
     if params[:winery_id]
       @specials = Winery.find(params[:winery_id]).specials #.paginate(:page => params[:page], :include => [:pictures], :order => "specials.updated_at DESC")
@@ -24,8 +24,8 @@ class SpecialsController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>"shared/object_list", :locals => {:object_list => @specials,
                                                                        :path => path,
-                                                                       :ordered_list => ordered_list,
-                                                                       :list_header => list_header } }
+                                                                       :list_type => ordered_list,
+                                                                       :title => list_header } }
       format.json { render :layout => false,
                            :json => @specials.to_json(:include => { :pictures => { :only => [:id, :photo_file_name] } } )
                   }

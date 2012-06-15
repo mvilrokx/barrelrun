@@ -1,0 +1,7 @@
+#top
+  #title
+    %h2 Award List
+  .span-3.last
+    = link_to 'Add New Award', new_award_path, :id => 'new_award', :class => 'dialog_form_link large'
+  %hr/
+  = render :partial => "awards"

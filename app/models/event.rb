@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
   def self.top (limit = 10)
     limit(limit)
   end
-  
+
   def self.upcoming
     where("end_date >= ?", Date.today).order("start_date DESC")
   end
@@ -69,6 +69,22 @@ class Event < ActiveRecord::Base
 
   def name
     title
+  end
+
+  def city
+    winery.city
+  end
+
+  def state
+    winery.state
+  end
+
+  def lat
+    winery.lat
+  end
+
+  def lng
+    winery.lng
   end
 
  	protected

@@ -1,0 +1,149 @@
+#top
+  #wine_name
+    = h @winery.winery_name
+    - if @winery.ownership_status != 'CLAIMED'
+      %span{:style => "font-size: 12px;"}
+        = link_to image_tag("icons/pencil.png", :border=>0, :alt=>"Edit"), edit_user_winery_path(@winery)
+        = link_to "Do you own this winery?", claim_user_winery_path(@winery)
+    - else
+      = image_tag("icons/tick.png", :alt=>"Owner verified listing", :title=>"Owner verified listing")
+  #social_media
+    .addthis_toolboxes.addthis_default_style.addthis_32x32_style
+      %a.addthis_button_email
+      %a.addthis_button_facebook
+      %a.addthis_button_twitter
+    :javascript
+      var addthis_config = {"data_track_clickback":true};    %script{:src => "http://s7.addthis.com/js/250/addthis_widget.js#pubid=mvilrokx", :type => "text/javascript"}
+#middle
+  #left
+    #left_top
+      #map
+        %img{:src => "http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=10&markers=color:blue|label:B|#{@winery.lat},#{@winery.lng}&sensor=false"}
+      #wine_details
+        %ul
+          %li
+            #name
+              = h @winery.winery_name
+          %li
+            = render :partial => "shared/star_rating", :locals => {:object => @winery, :action => rating_winery_path(@winery)}
+            %br
+          %li
+            = h @winery.address
+            = h @winery.address2
+            = h @winery.address3
+          %li
+            = h @winery.city
+            = h @winery.state 
+            = h @winery.zipcode
+          %li
+            = image_tag("icons/phone.png", :alt=>"telephone")
+            = @winery.telephone
+          %li
+            = h @winery.url
+        - if @winery.price?
+          %strong Price range:
+          = h @winery.price
+          %br
+        - if @winery.hours?
+          %strong Hours:
+          = h @winery.hours
+          %br
+        - if @winery.parking?
+          Parking available
+          %br
+        - if @winery.handicap?
+          Handicap accessible
+          %br
+        - if @winery.fam_friendly?
+          Family friendly
+          %br
+        - if @winery.restaurant?
+          Restaurant on-site
+          %br
+        - if @winery.accept_credit?
+          Credit cards accepted
+          %br
+        - if user_signed_in?
+          #favorites
+            - if @winery.favorites.find_by_user_id(current_user)
+              %a.remove_as_favorite{:href => "/wineries/#{@winery.id}/favorites/#{@winery.favorites.find_by_user_id(current_user).id}"} Remove From My Favorites
+            - else
+              %a.add_as_favorite{:href => "/wineries/#{@winery.id}/favorites"} Add To My Favorites
+    #description
+      = simple_format @winery.descr
+    - if !@winery.awards.empty?
+      #awards
+        #awards_2
+          %h2
+            = image_tag("icons/trophy.jpg", :alt=>"trophy")
+            Awards
+          - for award in @winery.awards
+            #awards_3
+              #awards_3_1
+                - if !award.pictures.empty? then
+                  = image_tag award.pictures[0].url(:thumb)
+              #awards_3_2
+                %h4{:style => "margin-bottom:0.25px;"}
+                  = award.title
+                  for #{link_to award.wine.name, award.wine, :class => "dialog_form_link"}
+                = award.description
+    #wine_special_events
+      #line    
+        %hr.line
+      #wine
+        - if @winery.ownership_status != 'CLAIMED'
+          - if user_signed_in?
+            = link_to "Add a Wine", new_user_winery_wine_path(@winery), :class => "dialog_form_link"
+          - else
+            = link_to "Register", new_user_registration_path
+            or #{link_to content_tag(:span, 'Login'), new_user_session_path} to add wines!
+      - if !@winery.wines.empty?
+        = render :partial=>"shared/object_list", :locals => {:object_list => @winery.wines, |
+          :path => "wineries/#{@winery.id}/",                                               |
+          :editable => @winery.ownership_status!='CLAIMED'? true : false}                   |
+      #specials_events
+        - if !@winery.specials.empty?
+          = render :partial=>"shared/object_list", :locals => {:object_list => @winery.specials, |
+            :path => "wineries/#{@winery.id}/"}                                                  |
+          %hr/
+        - if !@winery.events.empty?
+          = render :partial=>"shared/object_list", :locals => {:object_list => @winery.events, |
+            :path => "wineries/#{@winery.id}/"}                                                |
+  #right
+    - if !@winery.videos.empty? then
+      #welcome_video
+        %h2 Welcome Video
+        - welcome_video =  @winery.videos.first(:conditions => {:welcome => true}) || @winery.videos.first
+        <iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="205" src=#{"http://www.youtube.com/embed/#{welcome_video.youtube_id}?wmode=transparent&showinfo=0&showsearch=0&rel=0"} frameborder="0">
+      #other_videos
+        %h3 Other Videos
+        - max_height = ((@winery.videos.size.to_f/5).ceil > 3 ? 3 : (@winery.videos.size.to_f/5).ceil)*60
+        - if @winery.videos.size < 5
+          - width = @winery.videos.size
+        - elsif @winery.videos.size < 16
+          - width = 5
+        - else
+          - width = 5 + ((@winery.videos.size - 15)/3.to_f).ceil
+        - width = width * 58
+        #scrollwrap
+          #scroll
+            - @winery.videos.all(:conditions => ['ifnull(welcome,0) <> 1 AND youtube_id is not null']).each_with_index do |vid, idx|
+              = link_to image_tag("http://i.ytimg.com/vi/#{vid.youtube_id}/1.jpg", :size=>'50x50'), "http://www.youtube.com/watch?v=#{vid.youtube_id}", :rel=>"prettyPhoto[wine_vid_gal]"
+        #scrollwrap2
+          / rangeinput that controls the scroll
+          %input.vid_scroll{:max => [1, 1 + ((@winery.videos.size/3)*58)-290].max, :min => "0", :step => "1", :type => "range", :value => "0"}/
+        %hr/
+    - if !@winery.pictures.empty? then
+      #pictures
+        %h2 Winery Pictures
+        #scrollwrap.span-8.last{:style => "max-height: #{((@winery.pictures.size.to_f/5).ceil > 3 ? 3 : (@winery.pictures.size.to_f/5).ceil)*60}px;"}
+        - @winery.pictures.each_with_index do |pic, idx|
+        = link_to image_tag(pic.url(:micro), :alt=>pic.title), pic.url(:large), :title=> pic.title, :rel=>"prettyPhoto[wine_gal]"
+          / rangeinput that controls the scroll
+          %input.pic_scroll{:max => 1 + (((@winery.pictures.size/3)*58) > 275 ? ((@winery.pictures.size/3)*58) : 275)-275, :min => "0", :step => "1", :type => "range", :value => "0"}/
+      %hr/
+    #comment_block
+      = render :partial => "shared/comments_header", :locals => {:path => winery_comments_path(@winery), :span => 8}
+      = render :partial => "shared/comment_form", :locals => {:object => @winery, :span => 8}
+    #winery_comments
+      = render :partial => "shared/comments", :locals =>{:commentable => @winery, :span => 8}

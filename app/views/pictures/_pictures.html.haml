@@ -1,0 +1,21 @@
+#pictures
+  = will_paginate @pictures
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Title
+        %th Name
+        %th Size
+        %th Picture
+        %th Action
+    %tbody
+      - @pictures.each do |picture|
+        %tr[picture]
+          %td= h picture.title
+          %td= h picture.name
+          %td
+            = h (picture.file_size/1024).round()
+            KB
+          %td= image_tag picture.url(:thumb)
+          %td= show_link_image picture, :class => 'dialog_form_link'
+          %td= delete_link_image picture, :class => 'delete'

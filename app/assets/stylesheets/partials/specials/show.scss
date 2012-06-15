@@ -1,0 +1,47 @@
+.entry_form{
+  @include column(17, true);
+  #top{
+    @include column(17, true);
+    #left{
+      @include column(12);
+      #left_top{
+        @include column(6, true);
+          #name{
+            font-size: 24px;
+            }
+          #offered{
+            font-size: 16px;
+            }
+      }
+      #favorites{
+        @include column(6, true);
+        @include append-bottom;
+      }
+      #toolbox{
+        @include column(6, true);
+      }
+      #descr{
+        @include column(6, true);
+        height: 110px; 
+        overflow: auto; 
+        margin: 10px 0px;
+      }
+    }
+    #right{
+      @include column(4, true);
+      font-size: 16px;
+      ul{
+        list-style: none; 
+        margin: 0px; 
+        padding: 0px;
+        li {
+          margin-top: .5em;
+          margin-bottom: .5em;
+        }
+      }
+    }
+  }
+  #comment{
+    @include column(17, true);
+  }
+}

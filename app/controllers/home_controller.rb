@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @events = Event.upcoming.top(Event.top_list_size) # .all.paginate(:page => params[:page])
     @specials = Special.upcoming.top(Special.top_list_size) # .all.paginate(:page => params[:page])
     @wines = Wine.sort.top(Wine.top_list_size) #.paginate(:page => params[:page]) #.all(:limit => 10) #.paginate(:page => params[:page])
-    @wineries = Winery.top_wineries.all.paginate(:page => params[:page])
+    @wineries = Winery.top_wineries
   end
 
 
@@ -21,7 +21,7 @@ end
 	    @search_results = ThinkingSphinx.search(
 		    params[:search],
 		    :star => true,
-		    :page => params[:page], 
+		    :page => params[:page],
 		    :per_page => 10,
 		    :with => with_params,
 		    :conditions => condition_params,
@@ -30,7 +30,7 @@ end
       @search_result_facets = ThinkingSphinx.facets(
     		params[:search],
 		    :star => true,
-		    :page => params[:page], 
+		    :page => params[:page],
 		    :per_page => 10,
 		    :with => with_params,
 		    :conditions => condition_params,
@@ -40,7 +40,7 @@ end
 	    @search_results = ThinkingSphinx.search(
 		    params[:search],
 		    :star => true,
-		    :page => params[:page], 
+		    :page => params[:page],
 		    :per_page => 10,
 		    :with => with_params,
 		    :conditions => condition_params
@@ -48,17 +48,17 @@ end
       @search_result_facets = ThinkingSphinx.facets(
 		    params[:search],
 		    :star => true,
-		    :page => params[:page], 
+		    :page => params[:page],
 		    :per_page => 10,
 		    :with => with_params,
 		    :conditions => condition_params
 	    )
-    end	
+    end
   end
-  
+
   def default_location
       if user_signed_in?
-        unless current_user.lat.blank? || current_user.lng.blank? 
+        unless current_user.lat.blank? || current_user.lng.blank?
           @default_location = {'lat' => current_user.lat, 'lng' => current_user.lng}
         end
       elsif winery_signed_in?
@@ -76,7 +76,7 @@ end
         format.json  { render :json => @default_location }
       end
   end
-  
+
   # None of these are used by Web I believe, they are used as APIs by iPhone app
   def upcoming_events
       @events = Event.upcoming
@@ -121,7 +121,7 @@ end
   def local_wineries
       @wineries = Winery.all
       respond_to do |format|
-         format.html 
+         format.html
          format.xml { render :text=>@wineries.to_xml(:only => [:lat, :lng, :winery_name],
                                                      :root => "data")
                     }
@@ -130,3 +130,4 @@ end
   end
 
 end
+
