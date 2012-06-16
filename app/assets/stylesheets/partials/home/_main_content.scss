@@ -1,5 +1,6 @@
 #main {
-  @include prepend-top;
+  // @include prepend-top;
+  margin-top: -1.5em;
   #left-column {
     @include column(8);
   }

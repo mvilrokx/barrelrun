@@ -6,7 +6,13 @@ body {
 }
 
 #body-container {
+  // TODO: This is a bit of a mess but I didn't find a better way of doing this.
+  // container seems to automatically include the modern clearfix (overflow: hidden)
+  // but I don't want the overflow to be hidden so I have to overwrite that and then apply
+  // the classic clearfix, pie-clearfix which adds a psuedo element and clears both.
   @include container;
+  overflow: visible;
+  @include pie-clearfix;
   background: #fff;
   min-height: 600px;
   position: relative;
