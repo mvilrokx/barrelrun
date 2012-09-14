@@ -11,8 +11,8 @@ body {
   // but I don't want the overflow to be hidden so I have to overwrite that and then apply
   // the classic clearfix, pie-clearfix which adds a psuedo element and clears both.
   @include container;
-  overflow: visible;
-  @include pie-clearfix;
+//  overflow: visible;
+//  @include pie-clearfix;
   background: #fff;
   min-height: 600px;
   position: relative;

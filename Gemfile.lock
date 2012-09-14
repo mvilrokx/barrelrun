@@ -178,6 +178,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
     thinking-sphinx (2.0.12)
@@ -230,6 +231,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   sass-rails
   simple_form
+  sqlite3
   therubyracer
   thinking-sphinx
   uglifier

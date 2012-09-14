@@ -2,19 +2,19 @@
   @include container;
 }
 header {
-  position: relative;
-  z-index: 2;
+  // position: relative;
+  // z-index: 2;
   background-color: $header-background-color;
   @include box-shadow($default-box-shadow-color $default-box-shadow-h-offset $default-box-shadow-v-offset 15px 2px  );
   border: none;
   #company-logo {
-    @include prepend-top;
+    @include prepend-top(.5em);
     @include column(8);
   }
   #search-box{
-    @include column(16, true);
+    @include column(14, true);
     @include push(2);
-    @include prepend-top;
+    @include prepend-top(.5em);
 
     input[type="text"] {
       width: 300px;
@@ -22,6 +22,7 @@ header {
       @include border-radius(5px);
       @include box-shadow($light-color 0px 0px 3px 3px inset);
       padding: 9px;
+      margin-top: 9px;
       background-color: #eee;
       border: solid 1px $dark-color;
       &:focus {
